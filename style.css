@@ -335,6 +335,78 @@ footer {
   border-top: 1px solid var(--border);
 }
 
+/* Offerings Section */
+.offerings-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.offering-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.offering-card:hover {
+  border-color: var(--accent);
+}
+
+.offering-photo {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.offering-content {
+  padding: 2rem;
+}
+
+.offering-content h3 {
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.offering-description {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.instructor-info {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.instructor-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.instructor-info h4 {
+  color: var(--text);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.instructor-info p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .about-grid {
@@ -357,5 +429,15 @@ footer {
 
   nav .nav-links {
     display: none;
+  }
+
+  .instructor-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .offering-photo {
+    height: 200px;
   }
 }

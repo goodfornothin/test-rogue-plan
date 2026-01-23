@@ -1,12 +1,32 @@
 {
   "siteName": "Rogue Bachata",
   "tagline": "Movement. Connection. Freedom.",
-  "instructor": {
-    "name": "Oscar Castellino",
-    "bio": "Oscar Castellino is a performer at the highest levels of theatre and has over 20 years experience on the social dance floor. His Rogue style evolved by bringing his stage experience as a performer onto the dance floor, combining the best of both worlds into the Rogue style.",
-    "email": "voice@oscarcastellino.com",
-    "photo": "images/RogueResonance.jpg"
-  },
+  "offerings": [
+    {
+      "id": "rogue-bachata-classes",
+      "name": "Rogue Bachata Classes",
+      "description": "Improve your Bachata by focusing on basic bachata steps and movements in a fun and friendly atmosphere. Perfect for beginners and those looking to strengthen their foundation.",
+      "photo": "images/Boadicea and oscar Sensual Vibes.jpg",
+      "instructors": {
+        "names": "Boadicea & Oscar",
+        "bio": "Boadicea and Oscar are an experienced Bachata couple with prior experience in various dances. Together, they bring a special Rogue Bachata style to the dancefloor and are known for their unique connection and musicality. Their style is much sought after by people attending the socials, and they have decided to help others achieve this connection by imparting the knowledge they have gained over the years.",
+        "photo": "images/Boadicea and oscar Sensual Vibes.jpg",
+        "email": "voice@oscarcastellino.com"
+      }
+    },
+    {
+      "id": "rogue-resonance-workshops",
+      "name": "Rogue Resonance Workshops",
+      "description": "Take your dancing to the next level. If you want to further improve your technique and understanding of partner dance with lead and follow, this is for you. Explore the core principles of Rogue Resonance—groundedness, flow, and authentic connection.",
+      "photo": "images/RogueResonance.jpg",
+      "instructors": {
+        "names": "Oscar Castellino",
+        "bio": "Oscar Castellino is a performer at the highest levels of theatre and has over 20 years experience on the social dance floor. His Rogue style evolved by bringing his stage experience as a performer onto the dance floor, combining the best of both worlds into the Rogue style.",
+        "photo": "images/RogueResonance.jpg",
+        "email": "voice@oscarcastellino.com"
+      }
+    }
+  ],
   "principles": [
     {
       "name": "Rogue Body, Bond, Beyond",
@@ -35,13 +55,14 @@
   ],
   "upcomingEvents": [
     {
-      "event": "Rogue Bachata Workshop",
+      "event": "Rogue Resonance Workshop",
+      "offeringId": "rogue-resonance-workshops",
       "eventId": "create-destroy-feb-2026",
       "date": "February 2026",
       "time": "Time to be announced",
       "venue": "Create Destroy Studios",
       "address": "Archway, London",
-      "description": "Join Oscar Castellino for an immersive Rogue Bachata workshop at Create Destroy Studios. This session will explore the core principles of Rogue Resonance—groundedness, flow, and authentic connection. Suitable for all levels.",
+      "description": "Join Oscar Castellino for an immersive Rogue Resonance workshop at Create Destroy Studios. This session will explore the core principles of Rogue Resonance—groundedness, flow, and authentic connection. Suitable for all levels.",
       "photo": "images/RogueResonance.jpg",
       "status": "upcoming",
       "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSfkOaMA4Ry8oDw11oEzZ8SKroWk97GmllvqnuK0w3394_WbyA/viewform",
@@ -51,6 +72,7 @@
   "pastEvents": [
     {
       "event": "Rogue Resonance Workshop",
+      "offeringId": "rogue-resonance-workshops",
       "eventId": "camden-jan-2026",
       "date": "Wednesday, 14 January 2026",
       "time": "7 pm to 9 pm",
