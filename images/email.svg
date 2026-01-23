@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 24">
+  <style>
+    .email { 
+      font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif; 
+      font-size: 16px; 
+      fill: #e94560;
+    }
+  </style>
+  <text x="0" y="18" class="email">voice@oscarcastellino.com</text>
+</svg>
