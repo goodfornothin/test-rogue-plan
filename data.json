@@ -1,0 +1,63 @@
+{
+  "siteName": "Rogue Bachata",
+  "tagline": "Movement. Connection. Freedom.",
+  "instructor": {
+    "name": "Oscar Castellino",
+    "bio": "Oscar Castellino is a performer with the Royal Opera House and an opera singer with over 20 years experience in salsa and bachata. His Rogue style of dance evolved bringing his stage experience as an actor-singer onto the dance floor, combining the best of both worlds into the Rogue style.",
+    "email": "voice@oscarcastellino.com",
+    "photo": "images/RogueResonance.jpg"
+  },
+  "principles": [
+    {
+      "name": "Rogue Body, Bond, Beyond",
+      "description": "Ground in yourself, listen to your partner, expand into the space"
+    },
+    {
+      "name": "Rogue Legato",
+      "description": "Your center of gravity travels on a continuous, unbroken path"
+    },
+    {
+      "name": "Rogue Pause, Presence, Pivot",
+      "description": "Stop the movement, find each other, then redirect together"
+    },
+    {
+      "name": "Rogue Bounce and Roll",
+      "description": "When bodies meet, rebound elastically—never brush"
+    },
+    {
+      "name": "Rogue Humility",
+      "description": "Surrender your movement when connection is lost; seek the partner before continuing"
+    },
+    {
+      "name": "Rogue Lazy",
+      "description": "Don't hit the beats—relax into them"
+    }
+  ],
+  "upcomingEvents": [
+    {
+      "event": "Rogue Bachata Workshop",
+      "eventId": "create-destroy-feb-2026",
+      "date": "February 2026",
+      "time": "Time to be announced",
+      "venue": "Create Destroy Studios",
+      "address": "Archway, London",
+      "description": "Join Oscar Castellino for an immersive Rogue Bachata workshop at Create Destroy Studios. This session will explore the core principles of Rogue Resonance—groundedness, flow, and authentic connection. Suitable for all levels. Details coming soon.",
+      "photo": "images/RogueResonance.jpg",
+      "status": "upcoming",
+      "contactInfo": "Email voice@oscarcastellino.com for registration details. Suggested contribution £15."
+    }
+  ],
+  "pastEvents": [
+    {
+      "event": "Rogue Resonance Workshop",
+      "eventId": "camden-jan-2026",
+      "date": "Wednesday, 14 January 2026",
+      "time": "7 pm to 9 pm",
+      "venue": "Our Lady of Hal RC Church",
+      "address": "165 Arlington Rd, London NW1 7EX (near Camden Town tube station)",
+      "description": "The inaugural Rogue Resonance workshop. Participants explored the core principles: Bounce and Roll, Stop and Connect, Groundedness, Flow, and Connection. A welcoming container for all experience levels with tea, coffee, and great music.",
+      "photo": "images/RogueResonance.jpg",
+      "status": "past"
+    }
+  ]
+}
