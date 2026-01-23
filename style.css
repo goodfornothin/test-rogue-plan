@@ -367,8 +367,9 @@ footer {
 
 .offering-photo {
   width: 100%;
-  height: 300px;
+  height: 600px;
   object-fit: cover;
+  object-position: center top;
 }
 
 .offering-content {
@@ -454,6 +455,6 @@ footer {
   }
 
   .offering-photo {
-    height: 200px;
+    height: 400px;
   }
 }
