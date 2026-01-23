@@ -3,6 +3,20 @@
   "tagline": "Movement. Connection. Freedom.",
   "offerings": [
     {
+      "id": "rogue-resonance-workshops",
+      "name": "Rogue Resonance Workshops",
+      "description": "Take your dancing to the next level. If you want to further improve your technique and understanding of partner dance with lead and follow, this is for you. Explore the core principles of Rogue Resonance—groundedness, flow, and authentic connection.",
+      "photo": "images/RogueResonance.jpg",
+      "buttonText": "Join a Workshop",
+      "buttonLink": "#events",
+      "instructors": {
+        "names": "Oscar",
+        "bio": "Oscar is a performer at the highest levels of theatre and has over 20 years experience on the social dance floor. His Rogue style evolved by bringing his stage experience as a performer onto the dance floor, combining the best of both worlds into the Rogue style.",
+        "photo": "images/RogueResonance.jpg",
+        "email": "voice@oscarcastellino.com"
+      }
+    },
+    {
       "id": "rogue-bachata-classes",
       "name": "Rogue Bachata Classes",
       "description": "Improve your Bachata by focusing on basic bachata steps and movements in a fun and friendly atmosphere. Perfect for beginners and those looking to strengthen their foundation.",
@@ -11,18 +25,6 @@
         "names": "Boadicea & Oscar",
         "bio": "Boadicea and Oscar are an experienced Bachata couple with prior experience in various dances. Together, they bring a special Rogue Bachata style to the dancefloor and are known for their unique connection and musicality. Their style is much sought after by people attending the socials, and they have decided to help others achieve this connection by imparting the knowledge they have gained over the years.",
         "photo": "images/Boadicea and oscar Sensual Vibes.jpg",
-        "email": "voice@oscarcastellino.com"
-      }
-    },
-    {
-      "id": "rogue-resonance-workshops",
-      "name": "Rogue Resonance Workshops",
-      "description": "Take your dancing to the next level. If you want to further improve your technique and understanding of partner dance with lead and follow, this is for you. Explore the core principles of Rogue Resonance—groundedness, flow, and authentic connection.",
-      "photo": "images/RogueResonance.jpg",
-      "instructors": {
-        "names": "Oscar",
-        "bio": "Oscar is a performer at the highest levels of theatre and has over 20 years experience on the social dance floor. His Rogue style evolved by bringing his stage experience as a performer onto the dance floor, combining the best of both worlds into the Rogue style.",
-        "photo": "images/RogueResonance.jpg",
         "email": "voice@oscarcastellino.com"
       }
     }

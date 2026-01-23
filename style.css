@@ -386,8 +386,13 @@ footer {
 .offering-description {
   color: var(--text-muted);
   font-size: 1.1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   line-height: 1.8;
+}
+
+.offering-btn {
+  margin-bottom: 1.5rem;
+  display: inline-block;
 }
 
 .instructor-info {

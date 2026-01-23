@@ -116,6 +116,7 @@
               <div class="offering-content">
                 <h3>${offering.name}</h3>
                 <p class="offering-description">${offering.description}</p>
+                ${offering.buttonText ? `<a href="${offering.buttonLink}" class="cta-btn offering-btn">${offering.buttonText}</a>` : ''}
                 <div class="instructor-info">
                   <img src="${offering.instructors.photo}" alt="${offering.instructors.names}" class="instructor-photo">
                   <div>
