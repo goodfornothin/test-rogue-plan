@@ -3,7 +3,7 @@
   "tagline": "Movement. Connection. Freedom.",
   "instructor": {
     "name": "Oscar Castellino",
-    "bio": "Oscar Castellino is a performer with the Royal Opera House and an opera singer with over 20 years experience in salsa and bachata. His Rogue style of dance evolved bringing his stage experience as an actor-singer onto the dance floor, combining the best of both worlds into the Rogue style.",
+    "bio": "Oscar Castellino is a performer at the highest levels of theatre and has over 20 years experience on the social dance floor. His Rogue style evolved by bringing his stage experience as a performer onto the dance floor, combining the best of both worlds into the Rogue style.",
     "email": "voice@oscarcastellino.com",
     "photo": "images/RogueResonance.jpg"
   },
@@ -22,7 +22,7 @@
     },
     {
       "name": "Rogue Bounce and Roll",
-      "description": "When bodies meet, rebound elastically—never brush"
+      "description": "When bodies meet, rebound elastically or redirect"
     },
     {
       "name": "Rogue Humility",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Rogue Lazy",
-      "description": "Don't hit the beats—relax into them"
+      "description": "Relaxed and lazy, yet in time—a paradox found in both music and dance"
     }
   ],
   "upcomingEvents": [
@@ -41,10 +41,11 @@
       "time": "Time to be announced",
       "venue": "Create Destroy Studios",
       "address": "Archway, London",
-      "description": "Join Oscar Castellino for an immersive Rogue Bachata workshop at Create Destroy Studios. This session will explore the core principles of Rogue Resonance—groundedness, flow, and authentic connection. Suitable for all levels. Details coming soon.",
+      "description": "Join Oscar Castellino for an immersive Rogue Bachata workshop at Create Destroy Studios. This session will explore the core principles of Rogue Resonance—groundedness, flow, and authentic connection. Suitable for all levels.",
       "photo": "images/RogueResonance.jpg",
       "status": "upcoming",
-      "contactInfo": "Email voice@oscarcastellino.com for registration details. Suggested contribution £15."
+      "registrationLink": "https://forms.gle/YOUR_FORM_ID",
+      "contactInfo": "Email voice@oscarcastellino.com for enquiries."
     }
   ],
   "pastEvents": [

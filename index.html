@@ -39,14 +39,14 @@
   <!-- About Section -->
   <section id="about">
     <h2>The Rogue Way</h2>
-    <p class="section-subtitle">Where opera stage presence meets the dance floor</p>
+    <p class="section-subtitle">Where stage presence meets the social dance floor</p>
     
     <div class="about-grid">
       <img src="images/RogueResonance.jpg" alt="Oscar Castellino" class="about-photo">
       <div class="about-text">
         <h3>Oscar Castellino</h3>
         <p id="instructorBio">Loading...</p>
-        <p>Rogue Bachata draws from Contact Improvisation, Alexander Technique, Feldenkrais, and the connection principles of tango, zouk, and kizomba. The result is a movement practice that prioritizes authentic connection over choreography.</p>
+        <p>Rogue Bachata draws from existing movement methodologies and the connection principles of various partner dance forms. The result is a movement practice that prioritizes authentic connection over choreography.</p>
       </div>
     </div>
   </section>
@@ -152,7 +152,8 @@
             ${event.time ? `<span>🕐 ${event.time}</span>` : ''}
           </div>
           <p class="event-description">${event.description}</p>
-          <span class="event-status ${isPast ? 'past' : 'upcoming'}">${isPast ? 'Completed' : 'Upcoming'}</span>
+          ${event.registrationLink ? `<a href="${event.registrationLink}" target="_blank" class="cta-btn" style="margin-top: 1rem; display: inline-block;">Register Interest</a>` : ''}
+          <span class="event-status ${isPast ? 'past' : 'upcoming'}" style="margin-left: 1rem;">${isPast ? 'Completed' : 'Upcoming'}</span>
           ${event.contactInfo ? `<p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">${event.contactInfo}</p>` : ''}
         </div>
       `;
