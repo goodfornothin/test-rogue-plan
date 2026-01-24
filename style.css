@@ -321,6 +321,57 @@ section .section-subtitle {
   font-size: 1.1rem;
 }
 
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s;
+  border: 2px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+}
+
+.contact-btn:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.contact-icon {
+  font-size: 1.2rem;
+}
+
+.whatsapp-btn {
+  border-color: #25D366;
+  color: #25D366;
+}
+
+.whatsapp-btn:hover {
+  background: #25D366;
+  color: white;
+}
+
+.instagram-btn {
+  border-color: #E4405F;
+  color: #E4405F;
+}
+
+.instagram-btn:hover {
+  background: #E4405F;
+  color: white;
+}
+
 .contact-email {
   font-size: 1.5rem;
   font-weight: 600;
