@@ -6,13 +6,13 @@
       "id": "rogue-resonance-workshops",
       "name": "Rogue Resonance Workshops",
       "description": "Take your dancing to the next level. If you want to further improve your technique and understanding of partner dance with lead and follow, this is for you. Explore the core principles of Rogue Resonance—groundedness, flow, and authentic connection.",
-      "photo": "images/RogueResonance.jpg",
+      "photo": "images/RogueResonance.png",
       "buttonText": "Join a Workshop",
       "buttonLink": "#events",
       "instructors": {
         "names": "Oscar",
         "bio": "Oscar is a performer at the highest levels of theatre and has over 20 years experience on the social dance floor. His Rogue style evolved by bringing his stage experience as a performer onto the dance floor, combining the best of both worlds into the Rogue style.",
-        "photo": "images/RogueResonance.jpg",
+        "photo": "images/RogueResonance.png",
         "email": "voice@oscarcastellino.com"
       }
     },
@@ -65,7 +65,7 @@
       "venue": "Create Destroy Studios",
       "address": "Archway, London",
       "description": "Join Oscar for an immersive Rogue Resonance workshop at Create Destroy Studios. This session will explore the core principles of Rogue Resonance—groundedness, flow, and authentic connection. This workshop is suitable for individuals with at least a few months of bachata experience, OR those with experience in another dance form, OR anyone enthusiastic and willing to experiment. The most important quality is a willingness to try!",
-      "photo": "images/RogueResonance.jpg",
+      "photo": "images/RogueResonance.png",
       "status": "upcoming",
       "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSfkOaMA4Ry8oDw11oEzZ8SKroWk97GmllvqnuK0w3394_WbyA/viewform",
       "contactInfo": "Use the contact section below for enquiries."
@@ -81,7 +81,7 @@
       "venue": "Our Lady of Hal RC Church",
       "address": "165 Arlington Rd, London NW1 7EX (near Camden Town tube station)",
       "description": "The inaugural Rogue Resonance workshop. Participants explored the core principles: Bounce and Roll, Stop and Connect, Groundedness, Flow, and Connection. A welcoming container for all experience levels with tea, coffee, and great music.",
-      "photo": "images/RogueResonance.jpg",
+      "photo": "images/RogueResonance.png",
       "status": "past"
     }
   ]
