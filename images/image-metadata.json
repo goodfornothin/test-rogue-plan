@@ -1,0 +1,37 @@
+{
+  "images": {
+    "RogueParty.jpg": {
+      "description": "Full-length body shot of dancers at a party",
+      "focusArea": "top",
+      "subjectPosition": "heads at top, full bodies visible",
+      "objectPosition": "top",
+      "recommendedCrop": "top 25%",
+      "notes": "Align to top to show faces/heads"
+    },
+    "RogueResonance.png": {
+      "description": "Dance workshop promotional image",
+      "focusArea": "center",
+      "subjectPosition": "centered composition",
+      "objectPosition": "center 25%",
+      "recommendedCrop": "center",
+      "notes": "Use 25% vertical position for best framing"
+    },
+    "Boadicea and oscar Sensual Vibes.jpg": {
+      "description": "Partner dance photo of Boadicea and Oscar",
+      "focusArea": "center-top",
+      "subjectPosition": "upper body focus",
+      "objectPosition": "top",
+      "recommendedCrop": "top 30%",
+      "notes": "Align towards top to show faces"
+    },
+    "email.svg": {
+      "description": "Email icon SVG",
+      "focusArea": "center",
+      "subjectPosition": "centered",
+      "objectPosition": "center",
+      "recommendedCrop": "none",
+      "notes": "Vector graphic, no cropping needed"
+    }
+  },
+  "_usage": "Use this file to determine object-position CSS values when displaying images. Check the 'objectPosition' field for the recommended CSS value."
+}
