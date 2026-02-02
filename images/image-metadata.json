@@ -2,11 +2,11 @@
   "images": {
     "RogueParty.jpg": {
       "description": "Full-length body shot of dancers at a party",
-      "focusArea": "top",
-      "subjectPosition": "heads at top, full bodies visible",
-      "objectPosition": "top",
-      "recommendedCrop": "top 25%",
-      "notes": "Align to top to show faces/heads"
+      "focusArea": "upper-three-quarters",
+      "subjectPosition": "heads and upper bodies, 3/4 up from bottom",
+      "objectPosition": "0% 25%",
+      "recommendedCrop": "25% from top",
+      "notes": "Align to 25% vertical position (3/4 up from bottom) to show faces/heads and upper bodies"
     },
     "RogueResonance.png": {
       "description": "Dance workshop promotional image",
