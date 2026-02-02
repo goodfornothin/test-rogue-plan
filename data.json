@@ -57,6 +57,21 @@
   ],
   "upcomingEvents": [
     {
+      "event": "Salsa and Bachata Night with Bachata Class and Social",
+      "offeringId": "rogue-bachata-classes",
+      "eventId": "cafe-sol-feb-2026",
+      "date": "Tuesday, 18 February 2026",
+      "time": "7:00 pm onwards",
+      "venue": "Cafe Sol Clapham",
+      "address": "Clapham, London",
+      "description": "Join us for a fun Bachata class perfect for those getting into bachata, followed by free social dancing with Salsa and Bachata music for people of all levels. A fun night guaranteed with excellent hosts Oscar, Boadicea and the team from Cafe Sol who will be there for the entire night to ensure everybody has a fabulous time!",
+      "photo": "images/RogueParty.jpg",
+      "status": "upcoming",
+      "registrationLink": "https://web.dojo.app/create_booking/vendor/Qeii9WSzh79oz8lryUUAjw1enE2Ndb1Sk-yeWmx_pHQ_restaurant",
+      "contactInfo": "FREE ENTRY. Book a table at Cafe Sol website - select number of people.",
+      "landingPage": "cafe-sol-event.html"
+    },
+    {
       "event": "Rogue Resonance Workshop",
       "offeringId": "rogue-resonance-workshops",
       "eventId": "create-destroy-feb-2026",
