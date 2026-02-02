@@ -32,8 +32,8 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Rogue Bachata</h1>
-      <p class="tagline">Movement · Connection · Freedom</p>
-      <a href="#events" class="cta-btn">Join a Workshop</a>
+  <p class="tagline">Movement · Connection · Freedom</p>
+  <a href="#events" class="cta-btn">Book a Class</a>
     </div>
   </section>
 
@@ -66,8 +66,8 @@
 
   <!-- Events Section -->
   <section id="events">
-    <h2>Workshops</h2>
-    <p class="section-subtitle">Experience Rogue Bachata in person</p>
+    <h2>Events</h2>
+    <p class="section-subtitle">Workshops and Classes – Book your spot or just turn up (numbers limited)</p>
     
     <div class="events-container">
       <h3 style="color: var(--accent); margin-bottom: 1rem;">Upcoming</h3>
@@ -177,6 +177,9 @@
       const card = document.createElement('div');
       card.className = `event-card${isPast ? ' past' : ''}`;
       
+      let type = '';
+      if (event.offeringId && event.offeringId.includes('workshop')) type = 'Workshop';
+      else if (event.offeringId && event.offeringId.includes('class')) type = 'Class';
       card.innerHTML = `
         <img src="${event.photo || 'images/RogueResonance.png'}" alt="${event.event}">
         <div class="event-details">
@@ -185,14 +188,14 @@
             <span>📅 ${event.date}</span>
             <span>📍 ${event.venue}</span>
             ${event.time ? `<span>🕐 ${event.time}</span>` : ''}
+            ${type ? `<span class=\"event-type\">${type}</span>` : ''}
           </div>
           <p class="event-description">${event.description}</p>
-          ${event.registrationLink ? `<a href="${event.registrationLink}" target="_blank" class="cta-btn" style="margin-top: 1rem; display: inline-block;">Register Interest</a>` : ''}
+          ${event.registrationLink ? `<a href="${event.registrationLink}" target="_blank" class="cta-btn" style="margin-top: 1rem; display: inline-block;">${type === 'Class' ? 'Book' : 'Register'}</a>` : ''}
           <span class="event-status ${isPast ? 'past' : 'upcoming'}" style="margin-left: 1rem;">${isPast ? 'Completed' : 'Upcoming'}</span>
           ${event.contactInfo ? `<p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">${event.contactInfo}</p>` : ''}
         </div>
       `;
-      
       return card;
     }
   </script>
