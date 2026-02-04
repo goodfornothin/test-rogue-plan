@@ -96,12 +96,12 @@ curl -s "https://roguebachata.com" | grep -A5 "hero-content"
   - [ ] Image loads (Boadicea and oscar Sensual Vibes.jpg)
   - [ ] Instructors: "Boadicea & Oscar" (NO surname)
   - [ ] Button: "Join a Class" links to #events
-- [ ] **Dance Into Each Other** card displays correctly
-  - [ ] Tagline: "Private sessions for couples"
-  - [ ] Image loads (Oscar Bo Dream.png) - MUST be different from other offerings
-  - [ ] Instructors: "Oscar & Boadicea" (NO surname)
-  - [ ] Button: "Start Your Journey" links to #contact
-- [ ] **All three cards use UNIQUE images** - no duplicates
+  - [ ] **Couples Sensual Dance** card displays correctly
+    - [ ] Tagline: "Private sessions for couples"
+    - [ ] Image loads (Oscar Bo Dream.png) - MUST be different from other offerings
+    - [ ] Instructors: "Oscar & Boadicea" (NO surname)
+    - [ ] Button: "Start Your Journey" links to #contact
+  - [ ] **All three cards use UNIQUE images** - no duplicates
 
 ### 8. Principles Section (#principles)
 Verify all 6 principles display:
