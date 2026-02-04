@@ -21,9 +21,25 @@
       "name": "Rogue Bachata Classes",
       "description": "Improve your Bachata by focusing on basic bachata steps and movements in a fun and friendly atmosphere. Perfect for beginners and those looking to strengthen their foundation.",
       "photo": "images/Boadicea and oscar Sensual Vibes.jpg",
+      "buttonText": "Join a Class",
+      "buttonLink": "#events",
       "instructors": {
         "names": "Boadicea & Oscar",
         "bio": "Boadicea and Oscar are an experienced Bachata couple with prior experience in various dances. Together, they bring a special Rogue Bachata style to the dancefloor and are known for their unique connection and musicality. Their style is much sought after by people attending the socials, and they have decided to help others achieve this connection by imparting the knowledge they have gained over the years.",
+        "photo": "images/Boadicea and oscar Sensual Vibes.jpg",
+        "email": "voice@oscarcastellino.com"
+      }
+    },
+    {
+      "id": "rogue-connection-sessions",
+      "name": "Rogue Connection Sessions",
+      "description": "Exclusive in-home dance experiences for couples who want to deepen their connection, synchronicity, and presence through the art of partner dance. Tailored to your needs and your schedule—weekly, bimonthly, or monthly sessions in the comfort of your own space.",
+      "photo": "images/Boadicea and oscar Sensual Vibes.jpg",
+      "buttonText": "Get in Touch",
+      "buttonLink": "#contact",
+      "instructors": {
+        "names": "Oscar & Boadicea",
+        "bio": "Private sessions with Oscar and Boadicea, an experienced Bachata couple known for their unique connection and musicality. They bring their stage and floor expertise to create a personalized experience for couples seeking to explore movement, synchronicity, and intimate partnership through dance.",
         "photo": "images/Boadicea and oscar Sensual Vibes.jpg",
         "email": "voice@oscarcastellino.com"
       }

@@ -116,6 +116,112 @@ a:hover {
   color: var(--accent);
 }
 
+/* Offerings Section */
+.offerings-section {
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+  padding: 6rem 2rem;
+}
+
+.offerings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.offering-card {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.offering-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(233, 69, 96, 0.2);
+}
+
+.offering-photo {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.offering-content {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.offering-content h3 {
+  font-size: 1.6rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.offering-description {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.offering-btn {
+  align-self: flex-start;
+  margin-bottom: 1.5rem;
+  margin-top: auto;
+}
+
+.instructor-info {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(233, 69, 96, 0.05);
+  border-radius: 1rem;
+  border-left: 3px solid var(--accent);
+}
+
+.instructor-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.instructor-info div h4 {
+  color: var(--text);
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.instructor-info div p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .offerings-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .offering-photo {
+    height: 200px;
+  }
+}
+
 /* Navigation */
 nav {
   position: fixed;
