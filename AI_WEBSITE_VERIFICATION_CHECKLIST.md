@@ -85,13 +85,23 @@ curl -s "https://roguebachata.com" | grep -A5 "hero-content"
 - [ ] **Contact** link scrolls to #contact
 
 ### 7. Offerings Section (#offerings)
+- [ ] **Section header** shows "Choose Your Path" with "Your Journey Starts Here" eyebrow
 - [ ] **Rogue Resonance Workshops** card displays correctly
+  - [ ] Tagline: "Advanced technique & artistry"
   - [ ] Image loads (RogueResonance.png)
   - [ ] Instructor: "Oscar" (NO surname)
   - [ ] Button: "Join a Workshop" links to #events
 - [ ] **Rogue Bachata Classes** card displays correctly
+  - [ ] Tagline: "Foundations for everyone"
   - [ ] Image loads (Boadicea and oscar Sensual Vibes.jpg)
   - [ ] Instructors: "Boadicea & Oscar" (NO surname)
+  - [ ] Button: "Join a Class" links to #events
+- [ ] **Dance Into Each Other** card displays correctly
+  - [ ] Tagline: "Private sessions for couples"
+  - [ ] Image loads (Oscar Bo Dream.png) - MUST be different from other offerings
+  - [ ] Instructors: "Oscar & Boadicea" (NO surname)
+  - [ ] Button: "Start Your Journey" links to #contact
+- [ ] **All three cards use UNIQUE images** - no duplicates
 
 ### 8. Principles Section (#principles)
 Verify all 6 principles display:
@@ -184,11 +194,14 @@ curl -s "https://roguebachata.com" | grep -i "oscarcastellino.com" | grep -v "ma
 ### 15. Image Loading & Positioning
 Check all images load and are positioned correctly:
 
-| Image | Expected Position | Check |
+| Image | Expected Position | Usage |
 |-------|-------------------|-------|
-| RogueResonance.png | center 25% | Hero, Workshops |
+| RogueResonance.png | center 25% | Hero, Workshops offering |
 | RogueParty.jpg | 0% 25% | Cafe Sol event |
-| Boadicea and oscar Sensual Vibes.jpg | top | Classes section |
+| Boadicea and oscar Sensual Vibes.jpg | top | Classes offering |
+| Oscar Bo Dream.png | center 30% | Dance Into Each Other offering |
+| Oscar Bo Intense.png | center 25% | Alternative couples image |
+| Oscar Bo close couple.png | center 20% | Alternative intimate shot |
 
 Reference: See `images/image-metadata.json` for positioning details.
 
@@ -197,6 +210,7 @@ Reference: See `images/image-metadata.json` for positioning details.
 curl -sI "https://roguebachata.com/images/RogueResonance.png" | grep "200 OK"
 curl -sI "https://roguebachata.com/images/RogueParty.jpg" | grep "200 OK"
 curl -sI "https://roguebachata.com/images/Boadicea%20and%20oscar%20Sensual%20Vibes.jpg" | grep "200 OK"
+curl -sI "https://roguebachata.com/images/Oscar%20Bo%20Dream.png" | grep "200 OK"
 ```
 
 - [ ] All images return 200 OK
@@ -365,12 +379,105 @@ rogue-site/
 │   ├── RogueResonance.png
 │   ├── RogueParty.jpg
 │   ├── Boadicea and oscar Sensual Vibes.jpg
+│   ├── Oscar Bo Dream.png      # Couples offering image
+│   ├── Oscar Bo Intense.png    # Alternative couples image
+│   ├── Oscar Bo close couple.png
 │   ├── email.svg           # Obfuscated email image
 │   └── image-metadata.json # Image positioning info
 ├── create_poster.py        # Local tool for PDF posters
 ├── RogueBachata_Poster.pdf # Generated poster (local)
 └── AI_WEBSITE_VERIFICATION_CHECKLIST.md  # THIS FILE
 ```
+
+---
+
+## 🎨 DESIGN & UX EXCELLENCE RULES
+
+### 21. Visual Hierarchy & Consistency
+- [ ] **Section headers** use consistent styling (eyebrow text + main title pattern)
+- [ ] **No duplicate styling** between unrelated sections (e.g., offerings shouldn't look like principles)
+- [ ] **Card layouts** have consistent padding, borders, and hover effects
+- [ ] **Visual distinction** - each section should be clearly distinguishable
+
+### 22. Image Quality & Uniqueness
+- [ ] **Each offering uses a UNIQUE image** - no two offerings share the same photo
+- [ ] **Images are high resolution** and not pixelated
+- [ ] **object-position CSS** matches the image metadata for proper cropping
+- [ ] **Image overlays** enhance readability without obscuring the subject
+
+### 23. Typography Excellence
+- [ ] **Taglines** are visually distinct from titles (smaller, uppercase, accent color)
+- [ ] **Body text** has sufficient line-height (1.6-1.8 for readability)
+- [ ] **Font sizes scale appropriately** on mobile
+- [ ] **No orphaned words** at the end of important headings
+
+### 24. Animation & Interaction Polish
+- [ ] **Hover effects** are smooth (use ease or cubic-bezier, 0.3-0.6s duration)
+- [ ] **Transitions** feel natural, not jarring
+- [ ] **Interactive elements** have clear affordance (buttons look clickable)
+- [ ] **No layout shifts** on hover that push other content
+
+### 25. Color & Contrast
+- [ ] **Text meets WCAG AA contrast** (4.5:1 for body text, 3:1 for large text)
+- [ ] **Accent color (#e94560)** used sparingly for emphasis, not overwhelming
+- [ ] **Gradients** flow naturally without harsh color stops
+- [ ] **Dark backgrounds** don't cause eye strain (not pure #000000)
+
+### 26. Content Quality
+- [ ] **CTAs are action-oriented** ("Book a Class" not "Click Here")
+- [ ] **Descriptions** are concise but informative
+- [ ] **Taglines** communicate value quickly (good for ads)
+- [ ] **No redundant information** between sections
+
+### 27. Instagram-Ready Aesthetics
+Since the site is used for Instagram ads:
+- [ ] **Hero section** looks stunning when screenshotted
+- [ ] **Offerings** are visually appealing enough to share
+- [ ] **Brand consistency** across all visual elements
+- [ ] **Images evoke emotion** (connection, passion, elegance)
+
+### 28. World-Class Website Standards
+- [ ] **First impression** is immediately professional and trustworthy
+- [ ] **Loading performance** - site loads in under 3 seconds
+- [ ] **No visual clutter** - whitespace used effectively
+- [ ] **Modern design trends** without being dated
+- [ ] **Emotional resonance** - design evokes the feeling of dance/connection
+
+---
+
+## 🔧 DATA.JSON SCHEMA RULES
+
+### 29. Offerings Schema
+Each offering in data.json MUST have:
+```json
+{
+  "id": "unique-slug-format",
+  "name": "Display Name",
+  "tagline": "Short catchy phrase",    // REQUIRED for visual hierarchy
+  "description": "Detailed description",
+  "photo": "images/unique-image.jpg",   // MUST be unique per offering
+  "buttonText": "Action Text",
+  "buttonLink": "#section",
+  "instructors": {
+    "names": "Name(s)",                 // NO surnames on Rogue site
+    "bio": "Brief bio",
+    "photo": "images/photo.jpg",
+    "email": "email@domain.com"
+  }
+}
+```
+
+- [ ] All offerings have unique `tagline` field
+- [ ] All offerings have unique `photo` value
+- [ ] Instructor names follow privacy rules (no "Castellino")
+
+### 30. Events Schema
+Events MUST include:
+- [ ] `date` - Formatted as "Day, DD Month YYYY"
+- [ ] `event` - Event name/title
+- [ ] `venue` - Venue name
+- [ ] `photo` - Event image path
+- [ ] `instagram` - Venue Instagram (if applicable)
 
 ---
 
