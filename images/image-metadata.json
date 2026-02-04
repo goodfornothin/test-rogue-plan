@@ -31,6 +31,30 @@
       "objectPosition": "center",
       "recommendedCrop": "none",
       "notes": "Vector graphic, no cropping needed"
+    },
+    "Oscar Bo Dream.png": {
+      "description": "Dreamy artistic photo of Oscar and Boadicea dancing",
+      "focusArea": "center-top",
+      "subjectPosition": "upper bodies and faces",
+      "objectPosition": "center 30%",
+      "recommendedCrop": "30% from top",
+      "notes": "Romantic, intimate couple image for private sessions offering"
+    },
+    "Oscar Bo Intense.png": {
+      "description": "Intense close-up photo of Oscar and Boadicea",
+      "focusArea": "center",
+      "subjectPosition": "faces and upper bodies centered",
+      "objectPosition": "center 25%",
+      "recommendedCrop": "25% from top",
+      "notes": "High energy, passionate dance moment"
+    },
+    "Oscar Bo close couple.png": {
+      "description": "Close intimate photo of Oscar and Boadicea",
+      "focusArea": "center-top",
+      "subjectPosition": "faces close together",
+      "objectPosition": "center 20%",
+      "recommendedCrop": "20% from top",
+      "notes": "Intimate connection shot, great for couples offerings"
     }
   },
   "_usage": "Use this file to determine object-position CSS values when displaying images. Check the 'objectPosition' field for the recommended CSS value."

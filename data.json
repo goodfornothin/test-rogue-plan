@@ -5,6 +5,7 @@
     {
       "id": "rogue-resonance-workshops",
       "name": "Rogue Resonance Workshops",
+      "tagline": "Advanced technique & artistry",
       "description": "Take your dancing to the next level. If you want to further improve your technique and understanding of partner dance with lead and follow, this is for you. Explore the core principles of Rogue Resonance—groundedness, flow, and authentic connection.",
       "photo": "images/RogueResonance.png",
       "buttonText": "Join a Workshop",
@@ -19,6 +20,7 @@
     {
       "id": "rogue-bachata-classes",
       "name": "Rogue Bachata Classes",
+      "tagline": "Foundations for everyone",
       "description": "Improve your Bachata by focusing on basic bachata steps and movements in a fun and friendly atmosphere. Perfect for beginners and those looking to strengthen their foundation.",
       "photo": "images/Boadicea and oscar Sensual Vibes.jpg",
       "buttonText": "Join a Class",
@@ -31,16 +33,17 @@
       }
     },
     {
-      "id": "rogue-connection-sessions",
-      "name": "Rogue Connection Sessions",
-      "description": "Exclusive in-home dance experiences for couples who want to deepen their connection, synchronicity, and presence through the art of partner dance. Tailored to your needs and your schedule—weekly, bimonthly, or monthly sessions in the comfort of your own space.",
-      "photo": "images/Boadicea and oscar Sensual Vibes.jpg",
-      "buttonText": "Get in Touch",
+      "id": "dance-into-each-other",
+      "name": "Dance Into Each Other",
+      "tagline": "Private sessions for couples",
+      "description": "Discover the magic of moving as one. Exclusive in-home dance experiences designed for couples who want to deepen their connection, synchronicity, and presence through the art of partner dance. Tailored to your journey—weekly, bimonthly, or monthly sessions in the comfort of your own space.",
+      "photo": "images/Oscar Bo Dream.png",
+      "buttonText": "Start Your Journey",
       "buttonLink": "#contact",
       "instructors": {
         "names": "Oscar & Boadicea",
-        "bio": "Private sessions with Oscar and Boadicea, an experienced Bachata couple known for their unique connection and musicality. They bring their stage and floor expertise to create a personalized experience for couples seeking to explore movement, synchronicity, and intimate partnership through dance.",
-        "photo": "images/Boadicea and oscar Sensual Vibes.jpg",
+        "bio": "Private sessions with Oscar and Boadicea, an experienced Bachata couple known for their extraordinary connection and musicality. They create a personalized experience for couples seeking to explore movement, synchronicity, and intimate partnership through dance.",
+        "photo": "images/Oscar Bo Dream.png",
         "email": "voice@oscarcastellino.com"
       }
     }

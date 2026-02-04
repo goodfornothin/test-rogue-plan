@@ -116,87 +116,238 @@ a:hover {
   color: var(--accent);
 }
 
-/* Offerings Section */
+/* About Section */
+.about-section {
+  text-align: center;
+  padding: 5rem 2rem 3rem;
+}
+
+.about-intro {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.about-intro p {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* Offerings Section - World Class Design */
 .offerings-section {
-  background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
-  padding: 6rem 2rem;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--secondary) 50%, var(--bg) 100%);
+  padding: 6rem 2rem 8rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.offerings-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
+}
+
+.offerings-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.offerings-eyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.offerings-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.05em;
+  margin: 0;
 }
 
 .offerings-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  max-width: 1300px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .offering-card {
-  background: var(--card-bg);
-  border: 2px solid var(--border);
+  background: rgba(26, 26, 46, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.5rem;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
+}
+
+.offering-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
 }
 
 .offering-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(233, 69, 96, 0.2);
+  border-color: rgba(233, 69, 96, 0.3);
+  transform: translateY(-12px);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(233, 69, 96, 0.1);
+}
+
+.offering-card:hover::before {
+  transform: scaleX(1);
 }
 
 .offering-photo {
   width: 100%;
-  height: 280px;
+  height: 320px;
   object-fit: cover;
-  object-position: center;
+  object-position: center 30%;
+  transition: transform 0.6s ease;
+}
+
+.offering-card:hover .offering-photo {
+  transform: scale(1.05);
+}
+
+.offering-image-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.offering-image-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(transparent, rgba(26, 26, 46, 1));
+  pointer-events: none;
+}
+
+.offering-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 50%,
+    rgba(15, 15, 26, 0.9) 100%
+  );
+  pointer-events: none;
+}
+
+.offering-photo-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.offering-photo-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(transparent, rgba(26, 26, 46, 1));
+  pointer-events: none;
 }
 
 .offering-content {
-  padding: 2rem;
+  padding: 2rem 2rem 2.5rem;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.offering-content h3 {
-  font-size: 1.6rem;
+.offering-tagline {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
   color: var(--accent);
   margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.offering-content h3 {
+  font-size: 1.75rem;
+  color: var(--text);
+  margin-bottom: 1rem;
   font-weight: 700;
+  line-height: 1.2;
 }
 
 .offering-description {
   color: var(--text-muted);
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
   flex: 1;
 }
 
 .offering-btn {
   align-self: flex-start;
-  margin-bottom: 1.5rem;
   margin-top: auto;
+  padding: 0.9rem 2rem;
+  font-size: 0.85rem;
 }
 
 .instructor-info {
-  display: flex;
-  gap: 1rem;
-  padding: 1rem;
-  background: rgba(233, 69, 96, 0.05);
-  border-radius: 1rem;
-  border-left: 3px solid var(--accent);
+  display: none; /* Hide instructor info for cleaner cards */
 }
 
-.instructor-photo {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
+/* Responsive Offerings */
+@media (max-width: 1024px) {
+  .offerings-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .offerings-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+  }
+  
+  .offerings-section {
+    padding: 4rem 1.5rem 5rem;
+  }
+  
+  .offerings-title {
+    font-size: 2rem;
+  }
+  
+  .offering-photo {
+    height: 250px;
+  }
 }
 
 .instructor-info div h4 {

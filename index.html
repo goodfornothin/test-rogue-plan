@@ -38,15 +38,20 @@
   </section>
 
   <!-- About Section -->
-  <section id="about">
+  <section id="about" class="about-section">
     <h2>The Rogue Way</h2>
     <p class="section-subtitle">Where the performing arts meet the social dance floor</p>
+    <div class="about-intro">
+      <p>Rogue Bachata is more than dance—it's a philosophy of movement, connection, and authentic expression. Whether you're just beginning or looking to elevate your skills, we offer three distinct pathways to transform your dance journey.</p>
+    </div>
   </section>
 
-  <!-- Three Pathways Section -->
+  <!-- Choose Your Path Section -->
   <section id="offerings" class="offerings-section">
-    <h2>Three Pathways</h2>
-    <p class="section-subtitle">Choose your journey with Rogue Bachata</p>
+    <div class="offerings-header">
+      <span class="offerings-eyebrow">Your Journey Starts Here</span>
+      <h2 class="offerings-title">Choose Your Path</h2>
+    </div>
     
     <div class="offerings-grid" id="offeringsContainer">
       <!-- Offerings will be injected here as cards -->
@@ -120,8 +125,12 @@
             card.className = 'offering-card';
             card.id = offering.id;
             card.innerHTML = `
-              <img src="${offering.photo}" alt="${offering.name}" class="offering-photo">
+              <div class="offering-image-wrapper">
+                <img src="${offering.photo}" alt="${offering.name}" class="offering-photo">
+                <div class="offering-overlay"></div>
+              </div>
               <div class="offering-content">
+                ${offering.tagline ? `<span class="offering-tagline">${offering.tagline}</span>` : ''}
                 <h3>${offering.name}</h3>
                 <p class="offering-description">${offering.description}</p>
                 ${offering.buttonText ? `<a href="${offering.buttonLink}" class="cta-btn offering-btn">${offering.buttonText}</a>` : ''}
