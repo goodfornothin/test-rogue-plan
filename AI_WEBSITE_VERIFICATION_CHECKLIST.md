@@ -1,4 +1,4 @@
-# 🔍 Rogue Bachata Website Verification Checklist
+# ðŸ” Rogue Bachata Website Verification Checklist
 
 > **Purpose:** This checklist MUST be followed by any AI assistant or developer making changes to roguebachata.com. Run through this checklist after EVERY change to ensure the website is working correctly.
 
@@ -8,7 +8,20 @@
 
 ---
 
-## 📋 PRE-DEPLOYMENT CHECKLIST
+## 🚀 DEPLOYMENT & WORKFLOW
+
+- **Static Site:** This is a static website hosted on GitHub Pages. Changes are only visible on the live site after they have been committed and **pushed** to the `main` branch of the GitHub repository.
+
+- **AI Workflow:**
+    1.  **Understand the Goal:** Always read the entire prompt and this checklist first.
+    2.  **Perform the Work:** Make the requested changes to the files.
+    3.  **Verify Locally:** Follow the "Local Testing" steps to ensure your changes work as expected and have not introduced any errors.
+    4.  **Commit and Push:** At the end of a completed prompt, commit all related changes and push them to the `main` branch to make them live.
+    5.  **Verify Live:** Follow the "Live Site Verification" steps to confirm the changes are visible on roguebachata.com.
+
+---
+
+## ðŸ“‹ PRE-DEPLOYMENT CHECKLIST
 
 ### 1. Local File Verification
 Before pushing any changes, verify locally:
@@ -37,7 +50,7 @@ python3 -m http.server 8000
 
 ---
 
-## 🚀 DEPLOYMENT CHECKLIST
+## ðŸš€ DEPLOYMENT CHECKLIST
 
 ### 3. Git Push Verification
 ```bash
@@ -62,7 +75,7 @@ curl -sI "https://roguebachata.com" | grep "last-modified"
 
 ---
 
-## ✅ LIVE SITE VERIFICATION CHECKLIST
+## âœ… LIVE SITE VERIFICATION CHECKLIST
 
 ### 5. Homepage Hero Section
 **URL:** https://roguebachata.com
@@ -72,7 +85,7 @@ curl -s "https://roguebachata.com" | grep -A5 "hero-content"
 ```
 
 - [ ] **Title** shows "Rogue Bachata" (NOT "Oscar Castellino")
-- [ ] **Tagline** shows "Movement · Connection · Freedom"
+- [ ] **Tagline** shows "Movement Â· Connection Â· Freedom"
 - [ ] **CTA Button** shows "Book a Class" and links to #events
 - [ ] **Background image** loads (RogueResonance.png)
 
@@ -153,18 +166,22 @@ curl -s "https://roguebachata.com/data.json" | grep -o '"date": "Tuesday, [0-9]*
 If event has a dedicated landing page:
 
 **Cafe Sol Event Page:** https://roguebachata.com/cafe-sol-event.html
-- [ ] Page loads correctly
-- [ ] Date shows: Tuesday, 17 February 2026
-- [ ] Venue: Cafe Sol London, 13-15 Clapham High Street, SW4 7TS
-- [ ] Instagram: @cafesol_dos (NOT @cafesollondon)
-- [ ] Class price: £10
-- [ ] Social: FREE
-- [ ] Google Maps link works
-- [ ] Image loads with correct positioning (object-position: 0% 25%)
 
----
 
-## 🔒 PRIVACY VERIFICATION (CRITICAL)
+## ðŸŒ WEBSITE EDITING BEST PRACTICES
+
+### 16. Site-wide Consistency Checks
+- [ ] **ALWAYS search the entire codebase and content for event names, venue names, and key details when making changes.**
+- [ ] **Update all references** (HTML, JSON, scripts, navigation, links, images, meta tags, and any other files) to reflect new event names or details.
+- [ ] **Verify all links** to event landing pages are correct and updated everywhere (main page, event cards, navigation, etc.).
+- [ ] **Check for outdated references** to old event names, venues, or addresses and update/remove as needed.
+- [ ] **Test navigation and user flow** to ensure all links and event details are consistent and accurate.
+- [ ] **Document all changes** in the verification checklist for future reference.
+
+#### Why?
+To ensure users always see the correct event information, avoid confusion, and maintain a professional, reliable website. Inconsistent naming or broken links can harm user trust and reduce engagement. Site-wide checks are essential for every update.
+
+## ðŸ”’ PRIVACY VERIFICATION (CRITICAL)
 
 ### 13. No Surname Leakage
 The Rogue site must NOT contain "Castellino" anywhere visible:
@@ -189,7 +206,7 @@ curl -s "https://roguebachata.com" | grep -i "oscarcastellino.com" | grep -v "ma
 
 ---
 
-## 🖼️ IMAGE VERIFICATION
+## ðŸ–¼ï¸ IMAGE VERIFICATION
 
 ### 15. Image Loading & Positioning
 Check all images load and are positioned correctly:
@@ -218,7 +235,7 @@ curl -sI "https://roguebachata.com/images/Oscar%20Bo%20Dream.png" | grep "200 OK
 
 ---
 
-## 📱 RESPONSIVE DESIGN CHECK
+## ðŸ“± RESPONSIVE DESIGN CHECK
 
 ### 16. Mobile Compatibility
 Test at these viewport widths:
@@ -234,7 +251,7 @@ Check:
 
 ---
 
-## 🔗 LINK VERIFICATION
+## ðŸ”— LINK VERIFICATION
 
 ### 17. External Links
 Test all external links work:
@@ -256,7 +273,7 @@ curl -sI "https://www.google.com/maps/search/?api=1&query=Cafe+Sol+13-15+Clapham
 
 ---
 
-## 📅 DATE VERIFICATION
+## ðŸ…  DATE VERIFICATION
 
 ### 18. Event Date Accuracy
 Compare event dates against current date:
@@ -272,9 +289,9 @@ from datetime import datetime
 data = json.load(sys.stdin)
 today = datetime.now()
 for e in data.get('upcomingEvents', []):
-    print(f\"Upcoming: {e.get('date', 'NO DATE')} - {e.get('event', '')[:50]}\")
+    print(f"Upcoming: {e.get('date', 'NO DATE')} - {e.get('event', '')[:50]}")
 for e in data.get('pastEvents', []):
-    print(f\"Past: {e.get('date', 'NO DATE')} - {e.get('event', '')[:50]}\")
+    print(f"Past: {e.get('date', 'NO DATE')} - {e.get('event', '')[:50]}")
 "
 ```
 
@@ -284,7 +301,7 @@ for e in data.get('pastEvents', []):
 
 ---
 
-## 🧹 CLEANUP VERIFICATION
+## ðŸ§¹ CLEANUP VERIFICATION
 
 ### 19. No Debug/Test Content
 - [ ] No "TODO" comments visible on page
@@ -300,7 +317,7 @@ Ensure these are NOT pushed to the repo:
 
 ---
 
-## 📝 QUICK VERIFICATION COMMANDS
+## ðŸ“ QUICK VERIFICATION COMMANDS
 
 Copy-paste this block to run a quick verification:
 
@@ -339,7 +356,7 @@ echo "=== VERIFICATION COMPLETE ==="
 
 ---
 
-## 🚨 COMMON ISSUES & FIXES
+## ðŸš¨ COMMON ISSUES & FIXES
 
 | Issue | Cause | Fix |
 |-------|-------|-----|
@@ -353,7 +370,7 @@ echo "=== VERIFICATION COMPLETE ==="
 
 ---
 
-## 📞 CONTACT INFORMATION REFERENCE
+## ðŸ“ž CONTACT INFORMATION REFERENCE
 
 | Platform | Handle/Number |
 |----------|---------------|
@@ -365,33 +382,33 @@ echo "=== VERIFICATION COMPLETE ==="
 
 ---
 
-## 📁 FILE STRUCTURE REFERENCE
+## ðŸ“ FILE STRUCTURE REFERENCE
 
 ```
 rogue-site/
-├── index.html              # Main website
-├── style.css               # Styles (brand colors defined here)
-├── data.json               # All content data (events, offerings, principles)
-├── cafe-sol-event.html     # Cafe Sol event landing page
-├── CNAME                   # Domain: roguebachata.com
-├── .nojekyll               # Prevents Jekyll processing
-├── images/
-│   ├── RogueResonance.png
-│   ├── RogueParty.jpg
-│   ├── Boadicea and oscar Sensual Vibes.jpg
-│   ├── Oscar Bo Dream.png      # Couples offering image
-│   ├── Oscar Bo Intense.png    # Alternative couples image
-│   ├── Oscar Bo close couple.png
-│   ├── email.svg           # Obfuscated email image
-│   └── image-metadata.json # Image positioning info
-├── create_poster.py        # Local tool for PDF posters
-├── RogueBachata_Poster.pdf # Generated poster (local)
-└── AI_WEBSITE_VERIFICATION_CHECKLIST.md  # THIS FILE
+â”œâ”€â”€ index.html              # Main website
+â”œâ”€â”€ style.css               # Styles (brand colors defined here)
+â”œâ”€â”€ data.json               # All content data (events, offerings, principles)
+â”œâ”€â”€ cafe-sol-event.html     # Cafe Sol event landing page
+â”œâ”€â”€ CNAME                   # Domain: roguebachata.com
+â”œâ”€â”€ .nojekyll               # Prevents Jekyll processing
+â”œâ”€â”€ images/
+â”‚   â”œâ”€â”€ RogueResonance.png
+â”‚   â”œâ”€â”€ RogueParty.jpg
+â”‚   â”œâ”€â”€ Boadicea and oscar Sensual Vibes.jpg
+â”‚   â”œâ”€â”€ Oscar Bo Dream.png      # Couples offering image
+â”‚   â”œâ”€â”€ Oscar Bo Intense.png    # Alternative couples image
+â”‚   â”œâ”€â”€ Oscar Bo close couple.png
+â”‚   â”œâ”€â”€ email.svg           # Obfuscated email image
+â”‚   â””â”€â”€ image-metadata.json # Image positioning info
+â”œâ”€â”€ create_poster.py        # Local tool for PDF posters
+â”œâ”€â”€ RogueBachata_Poster.pdf # Generated poster (local)
+â””â”€â”€ AI_WEBSITE_VERIFICATION_CHECKLIST.md  # THIS FILE
 ```
 
 ---
 
-## 🎨 DESIGN & UX EXCELLENCE RULES
+## ðŸŽ¨ DESIGN & UX EXCELLENCE RULES
 
 ### 21. Visual Hierarchy & Consistency
 - [ ] **Section headers** use consistent styling (eyebrow text + main title pattern)
@@ -445,7 +462,7 @@ Since the site is used for Instagram ads:
 
 ---
 
-## 🔧 DATA.JSON SCHEMA RULES
+## ðŸ”§ DATA.JSON SCHEMA RULES
 
 ### 29. Offerings Schema
 Each offering in data.json MUST have:
@@ -481,7 +498,7 @@ Events MUST include:
 
 ---
 
-## ✅ SIGN-OFF
+## âœ… SIGN-OFF
 
 After completing all checks, record the verification:
 
