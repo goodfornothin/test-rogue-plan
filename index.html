@@ -188,6 +188,11 @@
       let type = '';
       if (event.offeringId && event.offeringId.includes('workshop')) type = 'Workshop';
       else if (event.offeringId && event.offeringId.includes('class')) type = 'Class';
+      
+      // Use landing page if available
+      const detailsLink = event.landingPage ? `<a href="${event.landingPage}" class="cta-btn" style="margin-top: 1rem; margin-right: 0.5rem; display: inline-block;">View Details</a>` : '';
+      const registerLink = event.registrationLink && !isPast ? `<a href="${event.registrationLink}" target="_blank" class="cta-btn" style="margin-top: 1rem; display: inline-block;">${type === 'Class' ? 'Book' : 'Register'}</a>` : '';
+      
       card.innerHTML = `
         <img src="${event.photo || 'images/RogueResonance.png'}" alt="${event.event}">
         <div class="event-details">
@@ -199,7 +204,7 @@
             ${type ? `<span class=\"event-type\">${type}</span>` : ''}
           </div>
           <p class="event-description">${event.description}</p>
-          ${event.registrationLink ? `<a href="${event.registrationLink}" target="_blank" class="cta-btn" style="margin-top: 1rem; display: inline-block;">${type === 'Class' ? 'Book' : 'Register'}</a>` : ''}
+          ${detailsLink}${registerLink}
           <span class="event-status ${isPast ? 'past' : 'upcoming'}" style="margin-left: 1rem;">${isPast ? 'Completed' : 'Upcoming'}</span>
           ${event.contactInfo ? `<p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">${event.contactInfo}</p>` : ''}
         </div>

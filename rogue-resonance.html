@@ -1,291 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rogue Resonance - Workshops & Events</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .rogue-hero {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: #fff;
-            padding: 3rem 1rem;
-            text-align: center;
-            border-bottom: 3px solid #e74c3c;
-        }
-
-        .rogue-hero h1 {
-            font-size: 2.5rem;
-            margin: 0;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .rogue-hero .tagline {
-            font-size: 1.3rem;
-            color: #e74c3c;
-            margin: 0.5rem 0 0 0;
-            font-style: italic;
-        }
-
-        .rogue-hero p {
-            font-size: 1.1rem;
-            margin-top: 1rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-
-        .principles-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            padding: 3rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: #f8f8f8;
-        }
-
-        .principle {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border-left: 4px solid #e74c3c;
-        }
-
-        .principle h3 {
-            color: #e74c3c;
-            margin-top: 0;
-            font-size: 1.1rem;
-        }
-
-        .principle p {
-            color: #666;
-            margin: 0.5rem 0 0 0;
-            line-height: 1.5;
-        }
-
-        .workshops-section {
-            padding: 3rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .workshops-section h2 {
-            text-align: center;
-            color: #333;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid #e74c3c;
-            padding-bottom: 1rem;
-        }
-
-        .workshop-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .workshop-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .workshop-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
-        }
-
-        .workshop-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .workshop-card-content {
-            padding: 1.5rem;
-        }
-
-        .workshop-card h3 {
-            color: #e74c3c;
-            margin-top: 0;
-            font-size: 1.3rem;
-        }
-
-        .workshop-card p {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin: 0.5rem 0;
-        }
-
-        .workshop-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-            margin: 1rem 0;
-            font-size: 0.9rem;
-            color: #999;
-        }
-
-        .workshop-meta span {
-            display: flex;
-            align-items: center;
-        }
-
-        .workshop-card-cta {
-            display: inline-block;
-            margin-top: 1rem;
-            background-color: #e74c3c;
-            color: #fff;
-            padding: 0.7rem 1.5rem;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-
-        .workshop-card-cta:hover {
-            background-color: #c0392b;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 2rem;
-            color: #999;
-        }
-
-        @media (min-width: 768px) {
-            .rogue-hero h1 {
-                font-size: 3rem;
-            }
-
-            .rogue-hero .tagline {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rogue Resonance Workshops | Rogue Bachata</title>
+  <meta name="description" content="Rogue Resonance workshops - advanced technique, authentic connection, and artistic expression through partner dance.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    
+    /* Hero for Rogue Resonance */
+    .resonance-hero {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+    
+    .resonance-hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.3;
+      z-index: 0;
+    }
+    
+    .resonance-hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, transparent 0%, var(--bg) 100%);
+      z-index: 1;
+    }
+    
+    .resonance-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+      max-width: 800px;
+    }
+    
+    .resonance-hero h1 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .resonance-hero .tagline {
+      font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+      color: var(--text-muted);
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    
+    .resonance-hero .description {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Workshops Section */
+    .workshops-section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .workshops-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    .workshops-section .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      font-size: 1rem;
+    }
+    
+    .workshops-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .workshop-card-large {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    
+    .workshop-card-large:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+    }
+    
+    .workshop-card-large img {
+      width: 100%;
+      height: 100%;
+      min-height: 250px;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .workshop-card-content {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .workshop-card-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    
+    .workshop-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    
+    .workshop-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    
+    .workshop-description {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+    
+    .workshop-cta {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-radius: 50px;
+      transition: all 0.3s;
+      border: 2px solid var(--accent);
+      font-size: 0.85rem;
+      align-self: flex-start;
+    }
+    
+    .workshop-cta:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+    
+    .workshop-status {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-left: 1rem;
+    }
+    
+    .workshop-status.upcoming {
+      background: var(--accent);
+      color: white;
+    }
+    
+    .workshop-status.past {
+      background: var(--border);
+      color: var(--text-muted);
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+    }
+    
+    @media (max-width: 768px) {
+      .workshop-card-large {
+        grid-template-columns: 1fr;
+      }
+      
+      .workshop-card-large img {
+        height: 200px;
+      }
+      
+      .workshop-card-content {
+        padding: 1.5rem;
+      }
+      
+      .workshop-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>🎭 Rogue Resonance</h1>
-        <p>Advanced technique, authentic connection, and artistic expression</p>
-    </header>
 
-    <div class="rogue-hero">
-        <h1>Rogue Resonance</h1>
-        <p class="tagline">Movement. Connection. Freedom.</p>
-        <p>Immersive workshops exploring the core principles of Rogue—groundedness, flow, and authentic connection. Whether you're seasoned or curious, find your resonance on the dance floor.</p>
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="logo">ROGUE</a>
+    <div class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#offerings">Classes & Workshops</a>
+      <a href="index.html#principles">Principles</a>
+      <a href="index.html#events">Events</a>
+      <a href="index.html#contact">Contact</a>
     </div>
+  </nav>
 
-    <main>
-        <section class="principles-showcase">
-            <div class="principle">
-                <h3>🌍 Body, Bond, Beyond</h3>
-                <p>Ground in yourself, listen to your partner, expand into the space</p>
-            </div>
-            <div class="principle">
-                <h3>🌊 Legato</h3>
-                <p>Your center of gravity travels on a continuous, unbroken path</p>
-            </div>
-            <div class="principle">
-                <h3>⏸️ Pause, Presence, Pivot</h3>
-                <p>Stop the movement, find each other, then redirect together</p>
-            </div>
-            <div class="principle">
-                <h3>🔄 Bounce and Roll</h3>
-                <p>When bodies meet, rebound elastically or redirect</p>
-            </div>
-            <div class="principle">
-                <h3>🙏 Humility</h3>
-                <p>Surrender your movement when connection is lost; seek the partner first</p>
-            </div>
-            <div class="principle">
-                <h3>😎 Lazy</h3>
-                <p>Relaxed and lazy, yet in time—a paradox found in both music and dance</p>
-            </div>
-        </section>
+  <!-- Hero Section -->
+  <section class="resonance-hero">
+    <img src="images/RogueResonance.png" alt="Rogue Resonance" class="resonance-hero-bg">
+    <div class="resonance-hero-overlay"></div>
+    <div class="resonance-hero-content">
+      <h1>Rogue Resonance</h1>
+      <p class="tagline">Advanced Technique · Authentic Connection</p>
+      <p class="description">
+        Immersive workshops exploring the core principles of Rogue—groundedness, flow, and authentic connection. 
+        Whether you're seasoned or curious, find your resonance on the dance floor.
+      </p>
+    </div>
+  </section>
 
-        <section class="workshops-section">
-            <h2>Upcoming Workshops</h2>
-            <div class="workshop-grid" id="upcomingWorkshops"></div>
-            
-            <h2 style="margin-top: 3rem;">Past Workshops</h2>
-            <div class="workshop-grid" id="pastWorkshops"></div>
-        </section>
-    </main>
+  <!-- Core Principles Section -->
+  <section id="principles" style="padding: 4rem 2rem; max-width: 1200px; margin: 0 auto;">
+    <h2>Core Principles</h2>
+    <p class="section-subtitle">The philosophy that guides every movement</p>
+    <div class="principles-grid" id="principlesGrid"></div>
+  </section>
 
-    <footer>
-        <p>&copy; 2026 Oscar Castellino. All rights reserved.</p>
-    </footer>
+  <!-- Workshops Section -->
+  <section class="workshops-section">
+    <h2>Upcoming Workshops</h2>
+    <p class="section-subtitle">Join us for an immersive Rogue Resonance experience</p>
+    <div class="workshops-grid" id="upcomingWorkshops"></div>
+  </section>
 
-    <script>
-        // Load workshops from data.json
-        async function loadWorkshops() {
-            try {
-                const response = await fetch('data.json');
-                const data = await response.json();
+  <section class="workshops-section" style="padding-top: 0;">
+    <h2 style="color: var(--text-muted);">Past Workshops</h2>
+    <p class="section-subtitle">Previous Rogue Resonance experiences</p>
+    <div class="workshops-grid" id="pastWorkshops"></div>
+  </section>
 
-                const upcomingContainer = document.getElementById('upcomingWorkshops');
-                const pastContainer = document.getElementById('pastWorkshops');
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Rogue Bachata. All rights reserved.</p>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+      <a href="index.html" style="color: var(--accent); text-decoration: none;">Back to main site</a>
+    </p>
+  </footer>
 
-                // Filter Rogue Resonance events
-                const upcomingRogue = data.upcomingEvents.filter(e => 
-                    e.offeringId === 'rogue-resonance-workshops'
-                );
-                const pastRogue = data.pastEvents.filter(e => 
-                    e.offeringId === 'rogue-resonance-workshops'
-                );
-
-                if (upcomingRogue.length === 0) {
-                    upcomingContainer.innerHTML = '<div class="empty-state"><p>No upcoming workshops currently scheduled. Check back soon!</p></div>';
-                } else {
-                    upcomingRogue.forEach(event => {
-                        upcomingContainer.innerHTML += createEventCard(event, true);
-                    });
-                }
-
-                if (pastRogue.length === 0) {
-                    pastContainer.innerHTML = '<div class="empty-state"><p>No past workshops yet.</p></div>';
-                } else {
-                    pastRogue.forEach(event => {
-                        pastContainer.innerHTML += createEventCard(event, false);
-                    });
-                }
-            } catch (error) {
-                console.error('Error loading workshops:', error);
-            }
-        }
-
-        function createEventCard(event, isUpcoming) {
-            const landingPage = event.eventId ? `rogue-resonance-${event.eventId}.html` : '#';
-            const ctaText = isUpcoming ? 'Learn More & Register' : 'View Details';
-            
-            return `
-                <div class="workshop-card">
-                    <img src="${event.photo}" alt="${event.event}">
-                    <div class="workshop-card-content">
-                        <h3>${event.event}</h3>
-                        <div class="workshop-meta">
-                            <span>📅 ${event.date}</span>
-                            <span>🕐 ${event.time || 'Time to be confirmed'}</span>
-                            <span>📍 ${event.venue}</span>
-                        </div>
-                        <p>${event.description}</p>
-                        <a href="${landingPage}" class="workshop-card-cta">${ctaText}</a>
-                    </div>
-                </div>
+  <script>
+    fetch('data.json')
+      .then(response => response.json())
+      .then(data => {
+        // Principles
+        const principlesGrid = document.getElementById('principlesGrid');
+        if (data.principles) {
+          data.principles.forEach(principle => {
+            const card = document.createElement('div');
+            card.className = 'principle-card';
+            card.innerHTML = `
+              <h3>${principle.name}</h3>
+              <p>${principle.description}</p>
             `;
+            principlesGrid.appendChild(card);
+          });
         }
 
-        // Load workshops on page load
-        document.addEventListener('DOMContentLoaded', loadWorkshops);
-    </script>
+        // Filter Rogue Resonance events
+        const upcomingRogue = data.upcomingEvents ? data.upcomingEvents.filter(e => 
+          e.offeringId === 'rogue-resonance-workshops'
+        ) : [];
+        const pastRogue = data.pastEvents ? data.pastEvents.filter(e => 
+          e.offeringId === 'rogue-resonance-workshops'
+        ) : [];
+
+        // Upcoming Workshops
+        const upcomingContainer = document.getElementById('upcomingWorkshops');
+        if (upcomingRogue.length === 0) {
+          upcomingContainer.innerHTML = '<div class="empty-state"><p>New workshops coming soon. Stay tuned!</p></div>';
+        } else {
+          upcomingRogue.forEach(event => {
+            upcomingContainer.appendChild(createWorkshopCard(event, false));
+          });
+        }
+
+        // Past Workshops
+        const pastContainer = document.getElementById('pastWorkshops');
+        if (pastRogue.length === 0) {
+          pastContainer.innerHTML = '<div class="empty-state"><p>No past workshops yet.</p></div>';
+        } else {
+          pastRogue.forEach(event => {
+            pastContainer.appendChild(createWorkshopCard(event, true));
+          });
+        }
+      })
+      .catch(err => console.error('Error loading data:', err));
+
+    function createWorkshopCard(event, isPast) {
+      const card = document.createElement('div');
+      card.className = 'workshop-card-large';
+      if (isPast) card.style.opacity = '0.7';
+      
+      const landingPage = event.landingPage || (event.eventId ? `rogue-resonance-${event.eventId}.html` : '#');
+      const ctaText = isPast ? 'View Details' : 'Learn More & Register';
+      
+      card.innerHTML = `
+        <img src="${event.photo || 'images/RogueResonance.png'}" alt="${event.event}">
+        <div class="workshop-card-content">
+          <h3>${event.event} <span class="workshop-status ${isPast ? 'past' : 'upcoming'}">${isPast ? 'Completed' : 'Upcoming'}</span></h3>
+          <div class="workshop-meta">
+            <span>📅 ${event.date}</span>
+            <span>📍 ${event.venue}</span>
+            ${event.time ? `<span>🕐 ${event.time}</span>` : ''}
+          </div>
+          <p class="workshop-description">${event.description}</p>
+          <a href="${landingPage}" class="workshop-cta">${ctaText}</a>
+        </div>
+      `;
+      return card;
+    }
+  </script>
+
 </body>
 </html>
