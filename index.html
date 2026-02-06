@@ -11,6 +11,65 @@
   <style>
     body { font-family: 'Poppins', sans-serif; }
     
+    /* Hero Video Background */
+    .hero-video-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+    
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+    
+    .hero-video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 15, 26, 0.7) 0%,
+        rgba(15, 15, 26, 0.5) 50%,
+        rgba(15, 15, 26, 0.9) 100%
+      );
+      z-index: 1;
+    }
+    
+    .hero {
+      position: relative;
+    }
+    
+    .hero .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero .hero-bg {
+      display: none; /* Hide static image when video is playing */
+    }
+    
+    .hero.no-video .hero-bg {
+      display: block;
+    }
+    
+    .hero.no-video .hero-video-container {
+      display: none;
+    }
+    
     /* Video Showcase Section */
     .videos-section {
       background: linear-gradient(180deg, var(--bg) 0%, var(--secondary) 50%, var(--bg) 100%);
@@ -272,7 +331,16 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero" id="heroSection">
+    <!-- Video Background -->
+    <div class="hero-video-container">
+      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline poster="images/Oscar Bo Dream.png">
+        <source src="videos/sensual couple.MOV" type="video/quicktime">
+        <source src="videos/sensual-couple.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
+    </div>
+    <!-- Fallback Image -->
     <img src="images/RogueResonance.png" alt="Rogue Bachata" class="hero-bg">
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -431,7 +499,7 @@
           principlesGrid.appendChild(card);
         });
 
-        // Videos
+        // Videos from YouTube Playlists
         const videosCarousel = document.getElementById('videosCarousel');
         const carouselNav = document.getElementById('carouselNav');
         const carouselDots = document.getElementById('carouselDots');
@@ -441,46 +509,47 @@
           youtubeChannelLink.href = data.youtubeChannel;
         }
         
-        if (data.videos && data.videos.length > 0) {
-          // Add single-video class if only one video
-          if (data.videos.length === 1) {
+        // Load videos from YouTube playlists
+        if (data.youtubePlaylists) {
+          const playlists = Object.values(data.youtubePlaylists);
+          
+          if (playlists.length === 1) {
             videosCarousel.classList.add('single-video');
             carouselNav.classList.add('hidden');
           }
           
-          data.videos.forEach((video, index) => {
-            const isPortrait = video.type === 'shorts';
+          playlists.forEach((playlist, index) => {
             const card = document.createElement('div');
-            card.className = `video-card ${isPortrait ? 'portrait' : 'landscape'}`;
+            card.className = 'video-card landscape'; // Playlists work best in landscape
             card.innerHTML = `
               <div class="video-wrapper">
                 <iframe 
-                  src="https://www.youtube.com/embed/${video.youtubeId}" 
-                  title="${video.title}"
+                  src="https://www.youtube.com/embed/videoseries?list=${playlist.id}" 
+                  title="${playlist.title}"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowfullscreen
                   loading="lazy">
                 </iframe>
               </div>
               <div class="video-card-info">
-                <h3>${video.title}</h3>
-                <p>${video.description}</p>
+                <h3>${playlist.title}</h3>
+                <p>${playlist.description}</p>
               </div>
             `;
             videosCarousel.appendChild(card);
             
             // Create dot for carousel
-            if (data.videos.length > 1) {
+            if (playlists.length > 1) {
               const dot = document.createElement('button');
               dot.className = `carousel-dot${index === 0 ? ' active' : ''}`;
-              dot.setAttribute('aria-label', `Go to video ${index + 1}`);
+              dot.setAttribute('aria-label', `Go to ${playlist.title}`);
               dot.addEventListener('click', () => scrollToVideo(index));
               carouselDots.appendChild(dot);
             }
           });
           
           // Carousel navigation
-          if (data.videos.length > 1) {
+          if (playlists.length > 1) {
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
             let currentIndex = 0;
@@ -491,7 +560,7 @@
             });
             
             nextBtn.addEventListener('click', () => {
-              currentIndex = Math.min(data.videos.length - 1, currentIndex + 1);
+              currentIndex = Math.min(playlists.length - 1, currentIndex + 1);
               scrollToVideo(currentIndex);
             });
             
@@ -504,6 +573,19 @@
               updateDots(currentIndex);
             });
           }
+        }
+        
+        // Hero video fallback
+        const heroVideo = document.getElementById('heroVideo');
+        const heroSection = document.getElementById('heroSection');
+        if (heroVideo) {
+          heroVideo.addEventListener('error', function() {
+            heroSection.classList.add('no-video');
+          });
+          // Check if video can play
+          heroVideo.addEventListener('canplay', function() {
+            heroSection.classList.remove('no-video');
+          });
         }
         
         function scrollToVideo(index) {

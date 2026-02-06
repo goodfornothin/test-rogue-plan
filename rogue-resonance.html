@@ -11,6 +11,52 @@
   <style>
     body { font-family: 'Poppins', sans-serif; }
     
+    /* Hero Video Background */
+    .hero-video-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+    
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+    
+    .hero-video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 15, 26, 0.6) 0%,
+        rgba(15, 15, 26, 0.4) 50%,
+        rgba(15, 15, 26, 0.95) 100%
+      );
+      z-index: 1;
+    }
+    
+    .resonance-hero.no-video .resonance-hero-bg {
+      display: block;
+    }
+    
+    .resonance-hero.no-video .hero-video-container {
+      display: none;
+    }
+    
     /* Hero for Rogue Resonance */
     .resonance-hero {
       min-height: 60vh;
@@ -350,8 +396,17 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="resonance-hero">
-    <img src="images/RogueResonance.png" alt="Rogue Resonance" class="resonance-hero-bg">
+  <section class="resonance-hero" id="heroSection">
+    <!-- Video Background -->
+    <div class="hero-video-container">
+      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline poster="images/Oscar Bo Dream.png">
+        <source src="videos/sensual couple.MOV" type="video/quicktime">
+        <source src="videos/sensual-couple.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
+    </div>
+    <!-- Fallback Image -->
+    <img src="images/RogueResonance.png" alt="Rogue Resonance" class="resonance-hero-bg" style="display: none;">
     <div class="resonance-hero-overlay"></div>
     <div class="resonance-hero-content">
       <h1>Rogue Resonance</h1>
@@ -406,33 +461,35 @@
     fetch('data.json')
       .then(response => response.json())
       .then(data => {
-        // Featured Video
+        // Featured Video from Workshop Playlist
         const videoContainer = document.getElementById('featuredVideoContainer');
-        if (data.videos && data.videos.length > 0) {
-          // Find featured workshop video or first workshop video
-          const featuredVideo = data.videos.find(v => v.featured && v.category === 'workshop') 
-            || data.videos.find(v => v.category === 'workshop')
-            || data.videos[0];
-          
-          if (featuredVideo) {
-            const isPortrait = featuredVideo.type === 'shorts';
-            const videoCard = document.createElement('div');
-            videoCard.className = 'featured-video-card';
-            videoCard.innerHTML = `
-              <div class="video-wrapper ${isPortrait ? 'portrait' : 'landscape'}">
-                <iframe 
-                  src="https://www.youtube.com/embed/${featuredVideo.youtubeId}" 
-                  title="${featuredVideo.title}"
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen>
-                </iframe>
-              </div>
-              <h3>${featuredVideo.title}</h3>
-              ${featuredVideo.description ? `<p>${featuredVideo.description}</p>` : ''}
-            `;
-            videoContainer.appendChild(videoCard);
-          }
+        if (data.youtubePlaylists && data.youtubePlaylists.workshops) {
+          const playlist = data.youtubePlaylists.workshops;
+          const videoCard = document.createElement('div');
+          videoCard.className = 'featured-video-card';
+          videoCard.innerHTML = `
+            <div class="video-wrapper landscape">
+              <iframe 
+                src="https://www.youtube.com/embed/videoseries?list=${playlist.id}" 
+                title="${playlist.title}"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
+            </div>
+            <h3>${playlist.title}</h3>
+            <p>${playlist.description}</p>
+          `;
+          videoContainer.appendChild(videoCard);
+        }
+
+        // Hero video fallback
+        const heroVideo = document.getElementById('heroVideo');
+        const heroSection = document.getElementById('heroSection');
+        if (heroVideo) {
+          heroVideo.addEventListener('error', function() {
+            heroSection.classList.add('no-video');
+          });
         }
 
         // Principles

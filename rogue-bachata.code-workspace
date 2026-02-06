@@ -1,0 +1,22 @@
+{
+  "folders": [
+    {
+      "name": "Rogue Bachata Website",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "html.format.wrapLineLength": 120,
+    "files.associations": {
+      "*.json": "jsonc"
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "ritwickdey.liveserver",
+      "esbenp.prettier-vscode",
+      "formulahendry.auto-rename-tag"
+    ]
+  }
+}

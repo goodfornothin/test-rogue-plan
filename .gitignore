@@ -1,0 +1,14 @@
+# macOS system files
+.DS_Store
+
+# Logs
+*.log
+
+# Editor backup files
+*.swp
+*.swo
+*~
+
+# Python cache (if using poster scripts)
+__pycache__/
+*.pyc

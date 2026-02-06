@@ -74,18 +74,29 @@
       "description": "Relaxed and lazy, yet in time—a paradox found in both music and dance"
     }
   ],
-  "videos": [
-    {
-      "id": "workshop-reel-1",
-      "title": "Rogue Resonance Workshop",
-      "description": "Experience the magic of a Rogue Bachata workshop - connection, flow, and authentic expression on the dance floor.",
-      "youtubeId": "Pn9snyxvrAs",
-      "type": "shorts",
-      "category": "workshop",
-      "featured": true
+  "youtubePlaylists": {
+    "workshops": {
+      "id": "PLLp_C8UrgAs-gbpSm1938jmKrWolktE6o",
+      "title": "Bachata Workshops",
+      "description": "Rogue Resonance workshop sessions and technique demonstrations"
+    },
+    "dances": {
+      "id": "PLLp_C8UrgAs9AuU4po1pGhsv_C_hPLmFQ",
+      "title": "Bachata Dances",
+      "description": "Social dancing and performances"
+    },
+    "sensual": {
+      "id": "PLLp_C8UrgAs9mqjnrYFtMaplehd0Nd_H9",
+      "title": "Sensual Couple Dancing",
+      "description": "Beautiful sensual bachata moments"
     }
-  ],
+  },
   "youtubeChannel": "https://www.youtube.com/@RogueBachata",
+  "backgroundVideo": {
+    "src": "videos/sensual couple.MOV",
+    "poster": "images/Oscar Bo Dream.png",
+    "alt": "Sensual bachata dancing"
+  },
   "upcomingEvents": [
     {
       "event": "Café Sol Salsa Bachata Night",
