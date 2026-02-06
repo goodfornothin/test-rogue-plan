@@ -39,7 +39,7 @@
       "description": "Discover the magic of moving as one. Exclusive in-home dance experiences designed for couples who want to deepen their connection, synchronicity, and presence through the art of partner dance. Tailored to your journey—weekly, bimonthly, or monthly sessions in the comfort of your own space.",
       "photo": "images/Oscar Bo Dream.png",
       "buttonText": "Start Your Journey",
-      "buttonLink": "#contact",
+      "buttonLink": "sensual-couples.html",
       "instructors": {
         "names": "Oscar & Boadicea",
         "bio": "Private sessions with Oscar and Boadicea, an experienced Bachata couple known for their extraordinary connection and musicality. They create a personalized experience for couples seeking to explore movement, synchronicity, and intimate partnership through dance.",
@@ -78,22 +78,25 @@
     "workshops": {
       "id": "PLLp_C8UrgAs-gbpSm1938jmKrWolktE6o",
       "title": "Bachata Workshops",
-      "description": "Rogue Resonance workshop sessions and technique demonstrations"
+      "description": "Rogue Resonance workshop sessions and technique demonstrations",
+      "format": "portrait"
     },
     "dances": {
       "id": "PLLp_C8UrgAs9AuU4po1pGhsv_C_hPLmFQ",
       "title": "Bachata Dances",
-      "description": "Social dancing and performances"
+      "description": "Social dancing and performances",
+      "format": "portrait"
     },
     "sensual": {
       "id": "PLLp_C8UrgAs9mqjnrYFtMaplehd0Nd_H9",
       "title": "Sensual Couple Dancing",
-      "description": "Beautiful sensual bachata moments"
+      "description": "Beautiful sensual bachata moments",
+      "format": "portrait"
     }
   },
   "youtubeChannel": "https://www.youtube.com/@RogueBachata",
   "backgroundVideo": {
-    "src": "videos/sensual couple.MOV",
+    "src": "videos/sensual-couple.mp4",
     "poster": "images/Oscar Bo Dream.png",
     "alt": "Sensual bachata dancing"
   },
