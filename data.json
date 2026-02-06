@@ -74,6 +74,18 @@
       "description": "Relaxed and lazy, yet in time—a paradox found in both music and dance"
     }
   ],
+  "videos": [
+    {
+      "id": "workshop-reel-1",
+      "title": "Rogue Resonance Workshop",
+      "description": "Experience the magic of a Rogue Bachata workshop - connection, flow, and authentic expression on the dance floor.",
+      "youtubeId": "Pn9snyxvrAs",
+      "type": "shorts",
+      "category": "workshop",
+      "featured": true
+    }
+  ],
+  "youtubeChannel": "https://www.youtube.com/@RogueBachata",
   "upcomingEvents": [
     {
       "event": "Café Sol Salsa Bachata Night",

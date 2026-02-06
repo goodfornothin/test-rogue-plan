@@ -213,6 +213,104 @@
       color: var(--text-muted);
     }
     
+    /* Featured Video Section */
+    .featured-video-section {
+      background: linear-gradient(180deg, var(--bg) 0%, var(--secondary) 50%, var(--bg) 100%);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    
+    .featured-video-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    .featured-video-section .section-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+    
+    .featured-video-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .featured-video-card {
+      background: rgba(26, 26, 46, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: all 0.4s;
+      max-width: 350px;
+    }
+    
+    .featured-video-card:hover {
+      border-color: rgba(233, 69, 96, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(233, 69, 96, 0.1);
+    }
+    
+    .featured-video-card .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 177.78%; /* Portrait 9:16 */
+    }
+    
+    .featured-video-card .video-wrapper.landscape {
+      padding-bottom: 56.25%; /* Landscape 16:9 */
+    }
+    
+    .featured-video-card .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .featured-video-card h3 {
+      color: var(--text);
+      font-size: 1rem;
+      margin: 1rem 1.25rem 0.5rem;
+      font-weight: 600;
+    }
+    
+    .featured-video-card p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin: 0 1.25rem 1.25rem;
+      line-height: 1.5;
+    }
+    
+    .featured-video-card .video-info {
+      padding: 1.25rem;
+    }
+    
+    .featured-video-card .video-info h3 {
+      color: var(--text);
+      font-size: 1rem;
+      margin: 0 0 0.5rem 0;
+      font-weight: 600;
+    }
+    
+    .featured-video-card .video-info p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin: 0;
+      line-height: 1.5;
+    }
+    
     @media (max-width: 768px) {
       .workshop-card-large {
         grid-template-columns: 1fr;
@@ -229,6 +327,10 @@
       .workshop-meta {
         flex-direction: column;
         gap: 0.5rem;
+      }
+      
+      .featured-video-card {
+        max-width: 300px;
       }
     }
   </style>
@@ -258,6 +360,17 @@
         Immersive workshops exploring the core principles of Rogue—groundedness, flow, and authentic connection. 
         Whether you're seasoned or curious, find your resonance on the dance floor.
       </p>
+    </div>
+  </section>
+
+  <!-- Featured Video Section -->
+  <section class="featured-video-section">
+    <h2>Experience Rogue Resonance</h2>
+    <p class="section-subtitle">
+      See what happens in a Rogue workshop — connection, flow, and authentic expression on the dance floor.
+    </p>
+    <div class="featured-video-container" id="featuredVideoContainer">
+      <!-- Featured video will be injected here -->
     </div>
   </section>
 
@@ -293,6 +406,35 @@
     fetch('data.json')
       .then(response => response.json())
       .then(data => {
+        // Featured Video
+        const videoContainer = document.getElementById('featuredVideoContainer');
+        if (data.videos && data.videos.length > 0) {
+          // Find featured workshop video or first workshop video
+          const featuredVideo = data.videos.find(v => v.featured && v.category === 'workshop') 
+            || data.videos.find(v => v.category === 'workshop')
+            || data.videos[0];
+          
+          if (featuredVideo) {
+            const isPortrait = featuredVideo.type === 'shorts';
+            const videoCard = document.createElement('div');
+            videoCard.className = 'featured-video-card';
+            videoCard.innerHTML = `
+              <div class="video-wrapper ${isPortrait ? 'portrait' : 'landscape'}">
+                <iframe 
+                  src="https://www.youtube.com/embed/${featuredVideo.youtubeId}" 
+                  title="${featuredVideo.title}"
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen>
+                </iframe>
+              </div>
+              <h3>${featuredVideo.title}</h3>
+              ${featuredVideo.description ? `<p>${featuredVideo.description}</p>` : ''}
+            `;
+            videoContainer.appendChild(videoCard);
+          }
+        }
+
         // Principles
         const principlesGrid = document.getElementById('principlesGrid');
         if (data.principles) {
