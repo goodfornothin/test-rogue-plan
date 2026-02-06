@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rogue Resonance Workshop - Camden, January 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .workshop-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #fff;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 3px solid #e74c3c;
+        }
+
+        .workshop-header h1 {
+            font-size: 2rem;
+            margin: 0 0 0.5rem 0;
+            font-weight: 700;
+        }
+
+        .workshop-header .subtitle {
+            font-size: 1.2rem;
+            color: #e74c3c;
+            margin: 0;
+        }
+
+        .breadcrumb {
+            padding: 1rem;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+
+        .breadcrumb a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .workshop-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .past-event-badge {
+            display: inline-block;
+            background-color: #95a5a6;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Content Sections */
+        .workshop-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .workshop-content {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .workshop-details {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .workshop-details h2 {
+            color: #e74c3c;
+            font-size: 1.5rem;
+            margin-top: 0;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 1rem;
+        }
+
+        .workshop-details h3 {
+            color: #333;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .workshop-details p,
+        .workshop-details li {
+            color: #666;
+            line-height: 1.6;
+            margin: 0.5rem 0;
+        }
+
+        .workshop-details ul {
+            padding-left: 1.5rem;
+        }
+
+        .workshop-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 4px solid #e74c3c;
+        }
+
+        .info-card h3 {
+            color: #333;
+            margin-top: 0;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .info-card p {
+            color: #666;
+            margin: 0.5rem 0 0 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .principles-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .principle-badge {
+            background: #f8f8f8;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #e74c3c;
+            font-size: 0.9rem;
+        }
+
+        .principle-badge strong {
+            color: #e74c3c;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .principle-badge p {
+            color: #666;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .instructor-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .instructor-card h3 {
+            color: #333;
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .instructor-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+            line-height: 1.5;
+        }
+
+        .highlights {
+            background: #f0f7ff;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+            margin: 1.5rem 0;
+        }
+
+        .highlights h4 {
+            margin-top: 0;
+            color: #2980b9;
+        }
+
+        .highlights ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .highlights li {
+            color: #555;
+            margin: 0.3rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎭 Rogue Resonance</h1>
+        <p>Advanced technique, authentic connection, and artistic expression</p>
+    </header>
+
+    <div class="workshop-header">
+        <h1>Rogue Resonance Workshop</h1>
+        <p class="subtitle">Our Lady of Hal RC Church, Camden</p>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="rogue-resonance.html">← Back to All Workshops</a>
+    </div>
+
+    <main class="workshop-main">
+        <div class="past-event-badge">
+            ✓ Past Event — Held Wednesday, 14 January 2026
+        </div>
+
+        <div class="workshop-content">
+            <!-- Main Content -->
+            <section class="workshop-details">
+                <h2>The Inaugural Rogue Resonance Workshop</h2>
+                <p>
+                    This was our first Rogue Resonance workshop, and it was a beautiful inaugural experience! 
+                    Participants came together to explore the core principles of Rogue movement in an intimate, 
+                    welcoming container designed for all experience levels.
+                </p>
+
+                <div class="highlights">
+                    <h4>📍 What Happened</h4>
+                    <ul>
+                        <li>Explored Bounce and Roll—the elasticity of bodies meeting in partnership</li>
+                        <li>Practiced Stop and Connect—pausing to find presence before moving again</li>
+                        <li>Cultivated Groundedness—finding stability and presence in your own body</li>
+                        <li>Experienced Flow—moving with ease and efficiency through space</li>
+                        <li>Deepened Connection—creating meaningful partnership moments</li>
+                    </ul>
+                </div>
+
+                <h3>About This Workshop</h3>
+                <p>
+                    The inaugural Rogue Resonance workshop brought together dancers from various backgrounds for an 
+                    immersive experience. In this welcoming container, participants explored the foundations of the 
+                    Rogue style—those core principles that make this approach to partner dance unique and powerful.
+                </p>
+
+                <p>
+                    The atmosphere was warm and supportive, with tea and coffee available throughout. Great music 
+                    set the tone for exploration and authentic connection.
+                </p>
+
+                <h3>Core Rogue Principles Explored</h3>
+                <div class="principles-grid">
+                    <div class="principle-badge">
+                        <strong>Body, Bond, Beyond</strong>
+                        <p>Ground in yourself, listen to your partner, expand into the space</p>
+                    </div>
+                    <div class="principle-badge">
+                        <strong>Legato</strong>
+                        <p>Your center of gravity travels on a continuous, unbroken path</p>
+                    </div>
+                    <div class="principle-badge">
+                        <strong>Pause, Presence, Pivot</strong>
+                        <p>Stop the movement, find each other, then redirect together</p>
+                    </div>
+                    <div class="principle-badge">
+                        <strong>Bounce and Roll</strong>
+                        <p>When bodies meet, rebound elastically or redirect</p>
+                    </div>
+                    <div class="principle-badge">
+                        <strong>Humility</strong>
+                        <p>Surrender your movement when connection is lost; seek the partner first</p>
+                    </div>
+                    <div class="principle-badge">
+                        <strong>Lazy</strong>
+                        <p>Relaxed and lazy, yet in time—a paradox found in both music and dance</p>
+                    </div>
+                </div>
+
+                <h3>Experience Level</h3>
+                <p>
+                    This workshop was welcoming to all experience levels. Whether you were a beginner curious about 
+                    partner dance or an experienced dancer from another style, there was space for you to explore 
+                    and discover your own Rogue Resonance.
+                </p>
+            </section>
+
+            <!-- Sidebar -->
+            <aside class="workshop-sidebar">
+                <!-- Event Details -->
+                <div class="info-card">
+                    <h3>📅 Event Details</h3>
+                    <p><strong>Date:</strong> Wednesday, 14 January 2026</p>
+                    <p><strong>Time:</strong> 7:00 pm - 9:00 pm</p>
+                    <p><strong>Venue:</strong> Our Lady of Hal RC Church</p>
+                    <p><strong>Address:</strong> 165 Arlington Rd, London NW1 7EX</p>
+                    <p style="font-size: 0.85rem; color: #999; margin-top: 0.5rem;">
+                        Near Camden Town tube station
+                    </p>
+                </div>
+
+                <!-- Instructor -->
+                <div class="instructor-card">
+                    <h3>Your Instructor</h3>
+                    <p style="color: #999; font-size: 0.85rem; margin-bottom: 1rem;">Oscar Castellino</p>
+                    <p>
+                        Oscar is a performer at the highest levels of theatre with over 20 years of experience on the 
+                        social dance floor. His Rogue style brings theatrical performance experience onto the dance floor.
+                    </p>
+                </div>
+
+                <!-- Highlights -->
+                <div class="info-card">
+                    <h3>☕ What Made It Special</h3>
+                    <p style="margin: 0.5rem 0;">
+                        ✓ Warm, welcoming container<br>
+                        ✓ Tea & coffee provided<br>
+                        ✓ Great music & energy<br>
+                        ✓ All levels welcome<br>
+                        ✓ Deep exploration of Rogue principles
+                    </p>
+                </div>
+
+                <!-- Contact -->
+                <div class="info-card">
+                    <h3>❓ Learn More</h3>
+                    <p>
+                        Contact Oscar at <strong>voice@oscarcastellino.com</strong> to hear about 
+                        upcoming Rogue Resonance workshops.
+                    </p>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Other Rogue Resonance Events -->
+        <section style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #e74c3c;">
+            <h2 style="color: #333; text-align: center; margin-bottom: 2rem;">Other Rogue Resonance Workshops</h2>
+            <div id="otherWorkshops" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Oscar Castellino. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Load other Rogue Resonance workshops
+        async function loadOtherWorkshops() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+
+                const container = document.getElementById('otherWorkshops');
+                
+                // Filter all Rogue Resonance events EXCEPT this one
+                const allRogue = [
+                    ...data.upcomingEvents,
+                    ...data.pastEvents
+                ].filter(e => 
+                    e.offeringId === 'rogue-resonance-workshops' && 
+                    e.eventId !== 'camden-jan-2026'
+                );
+
+                if (allRogue.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; color: #999; grid-column: 1 / -1;">No other workshops currently available.</p>';
+                } else {
+                    allRogue.forEach(event => {
+                        const isUpcoming = data.upcomingEvents.some(e => e.eventId === event.eventId);
+                        const landingPage = `rogue-resonance-${event.eventId}.html`;
+                        const status = isUpcoming ? '(Upcoming)' : '(Past)';
+                        
+                        container.innerHTML += `
+                            <div class="workshop-card" style="box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <img src="${event.photo}" alt="${event.event}">
+                                <div class="workshop-card-content">
+                                    <h3>${event.event} ${status}</h3>
+                                    <p style="font-size: 0.9rem; color: #999;">📅 ${event.date}</p>
+                                    <p style="color: #666; font-size: 0.9rem;">${event.description.substring(0, 100)}...</p>
+                                    <a href="${landingPage}" class="workshop-card-cta">View Workshop</a>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading other workshops:', error);
+            }
+        }
+
+        // Add workshop-card styling dynamically
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .workshop-card {
+                background: white;
+                border-radius: 8px;
+                overflow: hidden;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .workshop-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 12px rgba(0,0,0,0.1) !important;
+            }
+            .workshop-card img {
+                width: 100%;
+                height: 150px;
+                object-fit: cover;
+            }
+            .workshop-card-content {
+                padding: 1rem;
+            }
+            .workshop-card h3 {
+                color: #e74c3c;
+                margin: 0;
+                font-size: 1rem;
+            }
+            .workshop-card-cta {
+                display: inline-block;
+                background-color: #e74c3c;
+                color: #fff;
+                padding: 0.5rem 1rem;
+                text-decoration: none;
+                border-radius: 4px;
+                font-weight: 600;
+                font-size: 0.85rem;
+                transition: background-color 0.3s ease;
+            }
+            .workshop-card-cta:hover {
+                background-color: #c0392b;
+            }
+        `;
+        document.head.appendChild(style);
+
+        document.addEventListener('DOMContentLoaded', loadOtherWorkshops);
+    </script>
+</body>
+</html>

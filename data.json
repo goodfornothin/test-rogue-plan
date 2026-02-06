@@ -96,7 +96,7 @@
       "event": "Rogue Resonance Workshop",
       "offeringId": "rogue-resonance-workshops",
       "eventId": "create-destroy-feb-2026",
-      "date": "February 2026",
+      "date": "January/February 2026",
       "time": "Time to be announced",
       "venue": "Create Destroy Studios",
       "address": "Archway, London",
@@ -104,7 +104,8 @@
       "photo": "images/RogueResonance.png",
       "status": "upcoming",
       "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSfkOaMA4Ry8oDw11oEzZ8SKroWk97GmllvqnuK0w3394_WbyA/viewform",
-      "contactInfo": "Use the contact section below for enquiries."
+      "contactInfo": "Use the contact section below for enquiries.",
+      "landingPage": "rogue-resonance-create-destroy-feb-2026.html"
     }
   ],
   "pastEvents": [
@@ -118,7 +119,8 @@
       "address": "165 Arlington Rd, London NW1 7EX (near Camden Town tube station)",
       "description": "The inaugural Rogue Resonance workshop. Participants explored the core principles: Bounce and Roll, Stop and Connect, Groundedness, Flow, and Connection. A welcoming container for all experience levels with tea, coffee, and great music.",
       "photo": "images/RogueResonance.png",
-      "status": "past"
+      "status": "past",
+      "landingPage": "rogue-resonance-camden-jan-2026.html"
     }
   ]
 }
