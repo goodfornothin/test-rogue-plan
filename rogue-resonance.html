@@ -464,10 +464,11 @@
         const videoContainer = document.getElementById('featuredVideoContainer');
         if (data.youtubePlaylists && data.youtubePlaylists.workshops) {
           const playlist = data.youtubePlaylists.workshops;
+          const isPortrait = playlist.format !== 'landscape';
           const videoCard = document.createElement('div');
           videoCard.className = 'featured-video-card';
           videoCard.innerHTML = `
-            <div class="video-wrapper landscape">
+            <div class="video-wrapper ${isPortrait ? '' : 'landscape'}">
               <iframe 
                 src="https://www.youtube.com/embed/videoseries?list=${playlist.id}" 
                 title="${playlist.title}"
