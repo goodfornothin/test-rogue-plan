@@ -346,6 +346,118 @@
       line-height: 1.7;
     }
     
+    /* Pricing Section */
+    .pricing-section {
+      padding: 5rem 2rem;
+      background: var(--bg);
+      text-align: center;
+    }
+    
+    .pricing-section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    .pricing-section .section-subtitle {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    
+    .pricing-options {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .pricing-card {
+      background: rgba(26, 26, 46, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1rem;
+      padding: 2.5rem 2rem;
+      min-width: 260px;
+      flex: 1;
+      max-width: 300px;
+      transition: all 0.4s;
+    }
+    
+    .pricing-card:hover {
+      border-color: rgba(233, 69, 96, 0.4);
+      transform: translateY(-5px);
+    }
+    
+    .pricing-card.featured {
+      border-color: var(--accent);
+      position: relative;
+    }
+    
+    .pricing-card.featured::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    .pricing-card h3 {
+      color: var(--text);
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+    
+    .pricing-card .frequency {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .pricing-card .price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    
+    .pricing-card .price span {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+    
+    .pricing-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem 0;
+      text-align: left;
+    }
+    
+    .pricing-card ul li {
+      color: var(--text-muted);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.9rem;
+    }
+    
+    .pricing-card ul li::before {
+      content: '✓ ';
+      color: var(--accent);
+    }
+    
     /* Contact Section */
     .contact-section {
       padding: 5rem 2rem;
@@ -537,7 +649,48 @@
     </div>
   </section>
 
-
+  <!-- Pricing Section -->
+  <section class="pricing-section">
+    <h2>Session Packages</h2>
+    <p class="section-subtitle">
+      Choose the rhythm that fits your lifestyle. All sessions are approximately 90 minutes in the comfort of your home.
+    </p>
+    <div class="pricing-options">
+      <div class="pricing-card">
+        <h3>Discovery</h3>
+        <p class="frequency">Single Session</p>
+        <p class="price">£150</p>
+        <ul>
+          <li>90-minute in-home session</li>
+          <li>Personalized assessment</li>
+          <li>Foundation techniques</li>
+          <li>Music recommendations</li>
+        </ul>
+      </div>
+      <div class="pricing-card featured">
+        <h3>Journey</h3>
+        <p class="frequency">Monthly (4 sessions)</p>
+        <p class="price">£500 <span>/month</span></p>
+        <ul>
+          <li>Weekly 90-minute sessions</li>
+          <li>Progressive curriculum</li>
+          <li>Video recordings of progress</li>
+          <li>WhatsApp support between sessions</li>
+        </ul>
+      </div>
+      <div class="pricing-card">
+        <h3>Immersion</h3>
+        <p class="frequency">Bi-weekly (2 sessions)</p>
+        <p class="price">£280 <span>/month</span></p>
+        <ul>
+          <li>Bi-weekly 90-minute sessions</li>
+          <li>Structured progression</li>
+          <li>Practice exercises</li>
+          <li>Email support</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
   <!-- Contact Section -->
   <section class="contact-section" id="contact">
