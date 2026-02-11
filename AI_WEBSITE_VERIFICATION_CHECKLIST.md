@@ -4,7 +4,7 @@
 
 > **Live Site:** https://roguebachata.com  
 > **Repository:** https://github.com/goodfornothin/test-rogue-plan  
-> **Local Folder:** `/Users/admin/github/oscarcastellinowebsite/rogue-site` (via symlink)
+> **Local Folder:** `/Users/admin/github/test rogue plan`
 
 ---
 
@@ -16,8 +16,30 @@
     1.  **Understand the Goal:** Always read the entire prompt and this checklist first.
     2.  **Perform the Work:** Make the requested changes to the files.
     3.  **Verify Locally:** Follow the "Local Testing" steps to ensure your changes work as expected and have not introduced any errors.
-    4.  **Commit and Push:** At the end of a completed prompt, commit all related changes and push them to the `main` branch to make them live.
-    5.  **Verify Live:** Follow the "Live Site Verification" steps to confirm the changes are visible on roguebachata.com.
+    4.  **MANDATORY PRE-COMMIT AUDIT:** Before committing, run a full site audit (see below). Fix any issues found.
+    5.  **Commit and Push:** At the end of a completed prompt, commit all related changes and push them to the `main` branch to make them live.
+    6.  **Verify Live:** Follow the "Live Site Verification" steps to confirm the changes are visible on roguebachata.com.
+
+---
+
+## ⚠️ MANDATORY PRE-COMMIT SITE AUDIT
+
+**This MUST be done before EVERY commit. No exceptions.**
+
+Run these checks and fix any issues before committing:
+
+1. **JSON valid:** `python3 -c "import json; json.load(open('data.json'))"`
+2. **Privacy check (no Castellino visible):** `grep -ri "castellino" index.html data.json | grep -v "mailto:" | grep -v "voice@oscarcastellino" | grep -v "atob"` → should return nothing
+3. **YouTube playlists correct:**
+   - `workshops` = `PLLp_C8UrgAs9AuU4po1pGhsv_C_hPLmFQ` (workshop footage)
+   - `dances` = `PLLp_C8UrgAs-gbpSm1938jmKrWolktE6o` (social dancing)
+   - `sensual` = `PLLp_C8UrgAs9mqjnrYFtMaplehd0Nd_H9` (sensual clips)
+   - ⚠️ These have been confused before. ALWAYS verify the IDs match the content.
+4. **Event dates:** No past dates in upcomingEvents, no future dates in pastEvents
+5. **Images exist:** All image paths in data.json reference files that exist in `images/`
+6. **Links work:** `href="#"` should NOT be used — use `javascript:void(0)` or actual targets
+7. **Rogue Parties data:** Verify `rogueParties` array in data.json has correct venue/day/price info
+8. **No pricing on couples page:** sensual-couples.html should NOT show £ prices, only email contact buttons
 
 ---
 
@@ -27,7 +49,7 @@
 Before pushing any changes, verify locally:
 
 ```bash
-cd /Users/admin/github/oscarcastellinowebsite/rogue-site
+cd /Users/admin/github/test\ rogue\ plan
 ```
 
 - [ ] **Git status clean** - Run `git status` to check for uncommitted changes
@@ -92,6 +114,7 @@ curl -s "https://roguebachata.com" | grep -A5 "hero-content"
 ### 6. Navigation
 - [ ] **Logo** links to top of page
 - [ ] **About** link scrolls to #about section
+- [ ] **Rogue Parties** link scrolls to #parties section
 - [ ] **Classes & Workshops** link scrolls to #offerings
 - [ ] **Principles** link scrolls to #principles
 - [ ] **Events** link scrolls to #events
@@ -148,8 +171,15 @@ As of the last update, verify:
 
 | Event | Expected Date | Venue |
 |-------|---------------|-------|
+| Rogue Mondays at Big Chill | Monday, 23 February 2026 | Big Chill, Kings Cross |
 | Cafe Sol Bachata Night | Tuesday, 17 February 2026 | Cafe Sol London, Clapham |
 | Rogue Resonance Workshop | January/February 2026 | Create Destroy Studios, Archway |
+
+### Rogue Parties (recurring)
+| Party | Day | Venue | Class Price | Social Price |
+|-------|-----|-------|-------------|--------------|
+| Rogue Tuesdays | Every Tuesday | Cafe Sol London, Clapham | £10 | Free |
+| Rogue Mondays | Mondays | Big Chill, Kings Cross | £5 | Free |
 
 ```bash
 # Quick check for Cafe Sol event date
@@ -518,5 +548,5 @@ Actions taken:
 
 ---
 
-*Last updated: 3 February 2026*
-*Version: 1.0*
+*Last updated: 11 February 2026*
+*Version: 1.1*

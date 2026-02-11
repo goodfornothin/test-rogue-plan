@@ -314,6 +314,182 @@
         padding: 1rem;
       }
     }
+
+    /* Featured Events Carousel */
+    .featured-events-section {
+      padding: 4rem 2rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .featured-events-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .featured-events-eyebrow {
+      display: inline-block;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .featured-events-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.05em;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .featured-carousel {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 1rem 0;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .featured-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .featured-event-card {
+      flex: 0 0 auto;
+      scroll-snap-align: center;
+      width: calc(50% - 1rem);
+      min-width: 320px;
+      background: rgba(26, 26, 46, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .featured-event-card:hover {
+      border-color: rgba(233, 69, 96, 0.4);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(233, 69, 96, 0.1);
+    }
+
+    .featured-event-image {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .featured-event-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .featured-event-day-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--accent);
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .featured-event-info {
+      padding: 1.5rem;
+    }
+
+    .featured-event-info h3 {
+      font-size: 1.3rem;
+      margin: 0 0 0.4rem 0;
+      color: var(--text);
+    }
+
+    .featured-event-venue {
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .featured-event-time {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .featured-event-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .featured-event-prices {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .featured-event-price {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.3rem 0.8rem;
+      background: rgba(233, 69, 96, 0.15);
+      border: 1px solid rgba(233, 69, 96, 0.3);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      color: var(--text);
+    }
+
+    .featured-event-price strong {
+      color: var(--accent);
+    }
+
+    .featured-carousel-nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .featured-carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .featured-carousel-dot.active {
+      background: var(--accent);
+      transform: scale(1.2);
+    }
+
+    @media (max-width: 768px) {
+      .featured-event-card {
+        width: 85vw;
+        min-width: 280px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -323,6 +499,7 @@
     <a href="#" class="logo">ROGUE</a>
     <div class="nav-links">
       <a href="#about">About</a>
+      <a href="#parties">Rogue Parties</a>
       <a href="#offerings">Classes & Workshops</a>
       <a href="#principles">Principles</a>
       <a href="#events">Events</a>
@@ -346,6 +523,20 @@
       <h1>Rogue Bachata</h1>
   <p class="tagline">Movement · Connection · Freedom</p>
   <a href="#events" class="cta-btn">Book a Class</a>
+    </div>
+  </section>
+
+  <!-- Featured Rogue Parties Carousel -->
+  <section class="featured-events-section" id="parties">
+    <div class="featured-events-header">
+      <span class="featured-events-eyebrow">Rogue Parties</span>
+      <h2 class="featured-events-title">Where We Dance</h2>
+    </div>
+    <div class="featured-carousel" id="featuredCarousel">
+      <!-- Rogue Parties cards injected here -->
+    </div>
+    <div class="featured-carousel-nav" id="featuredCarouselNav">
+      <!-- Dots injected here -->
     </div>
   </section>
 
@@ -434,7 +625,7 @@
       <p>Whether you're a complete beginner or an experienced dancer, Rogue workshops welcome all levels. Reach out to register for upcoming events or inquire about private sessions.</p>
       
       <div class="contact-links">
-        <a href="#" class="contact-btn email-btn" onclick="window.location.href=atob('bWFpbHRvOnZvaWNlQG9zY2FyY2FzdGVsbGluby5jb20=');return false;">
+        <a href="javascript:void(0)" class="contact-btn email-btn" onclick="window.location.href=atob('bWFpbHRvOnZvaWNlQG9zY2FyY2FzdGVsbGluby5jb20=');return false;">
           <span class="contact-icon">✉️</span> Email
         </a>
         <a href="https://wa.me/447596031416" target="_blank" class="contact-btn whatsapp-btn">
@@ -497,6 +688,61 @@
           `;
           principlesGrid.appendChild(card);
         });
+
+        // Rogue Parties Carousel
+        const featuredCarousel = document.getElementById('featuredCarousel');
+        const featuredNav = document.getElementById('featuredCarouselNav');
+        if (data.rogueParties && data.rogueParties.length > 0) {
+          data.rogueParties.forEach((party, index) => {
+            const card = document.createElement('a');
+            card.className = 'featured-event-card';
+            card.href = party.landingPage || party.bookingLink || '#events';
+            if (party.bookingLink && !party.landingPage) card.target = '_blank';
+            card.innerHTML = `
+              <div class="featured-event-image">
+                <img src="${party.photo}" alt="${party.name}">
+                <span class="featured-event-day-badge">${party.day}</span>
+              </div>
+              <div class="featured-event-info">
+                <h3>${party.name}</h3>
+                <p class="featured-event-venue">📍 ${party.venue}</p>
+                <p class="featured-event-time">🕐 ${party.time}</p>
+                <p class="featured-event-desc">${party.description}</p>
+                <div class="featured-event-prices">
+                  <span class="featured-event-price">Class: <strong>${party.classPrice}</strong></span>
+                  <span class="featured-event-price">Social: <strong>${party.socialPrice}</strong></span>
+                </div>
+              </div>
+            `;
+            featuredCarousel.appendChild(card);
+
+            // Dot nav
+            if (data.rogueParties.length > 1) {
+              const dot = document.createElement('button');
+              dot.className = `featured-carousel-dot${index === 0 ? ' active' : ''}`;
+              dot.addEventListener('click', () => {
+                card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                featuredNav.querySelectorAll('.featured-carousel-dot').forEach((d, i) => {
+                  d.classList.toggle('active', i === index);
+                });
+              });
+              featuredNav.appendChild(dot);
+            }
+          });
+
+          // Update dots on scroll
+          if (data.rogueParties.length > 1) {
+            featuredCarousel.addEventListener('scroll', () => {
+              const cards = featuredCarousel.querySelectorAll('.featured-event-card');
+              const scrollLeft = featuredCarousel.scrollLeft;
+              const cardWidth = cards[0].offsetWidth + 32;
+              const activeIndex = Math.round(scrollLeft / cardWidth);
+              featuredNav.querySelectorAll('.featured-carousel-dot').forEach((d, i) => {
+                d.classList.toggle('active', i === activeIndex);
+              });
+            });
+          }
+        }
 
         // Videos from YouTube Playlists
         const videosCarousel = document.getElementById('videosCarousel');

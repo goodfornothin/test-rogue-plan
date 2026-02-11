@@ -76,13 +76,13 @@
   ],
   "youtubePlaylists": {
     "workshops": {
-      "id": "PLLp_C8UrgAs-gbpSm1938jmKrWolktE6o",
+      "id": "PLLp_C8UrgAs9AuU4po1pGhsv_C_hPLmFQ",
       "title": "Bachata Workshops",
       "description": "Rogue Resonance workshop sessions and technique demonstrations",
       "format": "portrait"
     },
     "dances": {
-      "id": "PLLp_C8UrgAs9AuU4po1pGhsv_C_hPLmFQ",
+      "id": "PLLp_C8UrgAs-gbpSm1938jmKrWolktE6o",
       "title": "Bachata Dances",
       "description": "Social dancing and performances",
       "format": "portrait"
@@ -100,7 +100,57 @@
     "poster": "images/Oscar Bo Dream.png",
     "alt": "Sensual bachata dancing"
   },
+  "rogueParties": [
+    {
+      "id": "rogue-tuesdays",
+      "name": "Rogue Tuesdays",
+      "venue": "Cafe Sol London",
+      "day": "Every Tuesday",
+      "time": "7:30 pm – late",
+      "tagline": "Bachata class + social dancing in Clapham",
+      "description": "Join us every Tuesday for a fun Bachata class (7:30–8:30 pm, £10) followed by free social dancing and watching. Hosted by Oscar, Boadicea, and the Cafe Sol team.",
+      "photo": "images/RogueParty.jpg",
+      "address": "13-15 Clapham High Street, London SW4 7TS",
+      "mapsLink": "https://www.google.com/maps/search/?api=1&query=Cafe+Sol+13-15+Clapham+High+Street+London+SW4+7TS",
+      "instagram": "https://www.instagram.com/cafesol_dos/",
+      "landingPage": "cafe-sol-event.html",
+      "classPrice": "£10",
+      "socialPrice": "Free"
+    },
+    {
+      "id": "rogue-mondays",
+      "name": "Rogue Mondays",
+      "venue": "Big Chill, Kings Cross",
+      "day": "Mondays",
+      "time": "7:30 pm – late",
+      "tagline": "Bachata class + social at Kings Cross",
+      "description": "Kick off your week with Rogue Mondays at Big Chill Kings Cross! Beginner-friendly Bachata class at 7:30 pm (£5) followed by free social dancing. No experience needed, no partner required.",
+      "photo": "images/RogueResonance.png",
+      "address": "Big Chill, Kings Cross, London",
+      "mapsLink": "https://www.google.com/maps/search/?api=1&query=Big+Chill+Kings+Cross+London",
+      "instagram": "https://www.instagram.com/roguebachata/",
+      "bookingLink": "https://www.fatsoma.com/e/xlbejgec/salsa-mondays-at-big-chill-king-s-cross",
+      "classPrice": "£5",
+      "socialPrice": "Free"
+    }
+  ],
   "upcomingEvents": [
+    {
+      "event": "Rogue Mondays at Big Chill Kings Cross",
+      "offeringId": "rogue-bachata-classes",
+      "eventId": "big-chill-feb-2026",
+      "date": "Monday, 23 February 2026",
+      "time": "7:30 pm – Bachata class (£5), 8:30 pm – Social dancing (Free)",
+      "venue": "Big Chill, Kings Cross",
+      "address": "Big Chill, Kings Cross, London",
+      "mapsLink": "https://www.google.com/maps/search/?api=1&query=Big+Chill+Kings+Cross+London",
+      "instagram": "https://www.instagram.com/roguebachata/",
+      "description": "Kick off your week with Rogue Mondays at Big Chill Kings Cross! Join Oscar and Boadicea from Rogue Bachata for a beginner-friendly Bachata class at 7:30 pm (£5), followed by free social dancing from 8:30 pm. No experience needed. No partner required. Just bring yourself and your energy!",
+      "photo": "images/RogueResonance.png",
+      "status": "upcoming",
+      "registrationLink": "https://www.fatsoma.com/e/xlbejgec/salsa-mondays-at-big-chill-king-s-cross",
+      "contactInfo": "Class: £5. Social dancing: FREE."
+    },
     {
       "event": "Café Sol Salsa Bachata Night",
       "offeringId": "rogue-bachata-classes",
