@@ -69,6 +69,109 @@
     .hero.no-video .hero-video-container {
       display: none;
     }
+
+    /* Hero Carousel */
+    .hero-carousel {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 300px;
+    }
+
+    .hero-slide {
+      position: absolute;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      pointer-events: none;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .hero-card {
+      background: rgba(15, 15, 26, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1.5rem;
+      padding: 3rem 4rem;
+      text-align: center;
+      max-width: 600px;
+      width: 90%;
+    }
+
+    .hero-card h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-card-subtitle {
+      font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+      color: var(--text-muted);
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .hero-carousel-nav {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+    }
+
+    .hero-dot:hover {
+      background: rgba(233, 69, 96, 0.5);
+      border-color: var(--accent);
+    }
+
+    .hero-dot.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.3);
+    }
+
+    @media (max-width: 768px) {
+      .hero-card {
+        padding: 2rem 1.5rem;
+        width: 92%;
+      }
+
+      .hero-carousel {
+        min-height: 260px;
+      }
+    }
     
     /* Video Showcase Section */
     .videos-section {
@@ -496,7 +599,7 @@
 
   <!-- Navigation -->
   <nav>
-    <a href="#" class="logo">ROGUE</a>
+    <a href="#heroSection" class="logo">ROGUE</a>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#parties">Rogue Parties</a>
@@ -507,7 +610,7 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero Carousel Section -->
   <section class="hero" id="heroSection">
     <!-- Video Background -->
     <div class="hero-video-container">
@@ -519,10 +622,58 @@
     <!-- Fallback Image -->
     <img src="images/RogueResonance.png" alt="Rogue Bachata" class="hero-bg">
     <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>Rogue Bachata</h1>
-  <p class="tagline">Movement · Connection · Freedom</p>
-  <a href="#events" class="cta-btn">Book a Class</a>
+
+    <!-- Hero Carousel -->
+    <div class="hero-carousel" id="heroCarousel">
+      <!-- Slide 1: Rogue Bachata (Main) -->
+      <div class="hero-slide active" data-index="0">
+        <div class="hero-card">
+          <h1>Rogue Bachata</h1>
+          <p class="hero-card-subtitle">Movement · Connection · Freedom</p>
+          <a href="#events" class="cta-btn">Book</a>
+        </div>
+      </div>
+      <!-- Slide 2: Rogue Mondays -->
+      <div class="hero-slide" data-index="1">
+        <div class="hero-card">
+          <h1>Rogue Mondays</h1>
+          <p class="hero-card-subtitle">at Kings Cross</p>
+          <a href="https://www.fatsoma.com/e/xlbejgec/salsa-mondays-at-big-chill-king-s-cross" target="_blank" class="cta-btn">Book</a>
+        </div>
+      </div>
+      <!-- Slide 3: Rogue Tuesdays -->
+      <div class="hero-slide" data-index="2">
+        <div class="hero-card">
+          <h1>Rogue Tuesdays</h1>
+          <p class="hero-card-subtitle">at Clapham</p>
+          <a href="cafe-sol-event.html" class="cta-btn">Book</a>
+        </div>
+      </div>
+      <!-- Slide 4: Rogue Workshops -->
+      <div class="hero-slide" data-index="3">
+        <div class="hero-card">
+          <h1>Rogue Workshops</h1>
+          <p class="hero-card-subtitle">Advanced Technique & Artistry</p>
+          <a href="rogue-resonance.html" class="cta-btn">Book</a>
+        </div>
+      </div>
+      <!-- Slide 5: Couples Sensual -->
+      <div class="hero-slide" data-index="4">
+        <div class="hero-card">
+          <h1>Couples Sensual</h1>
+          <p class="hero-card-subtitle">Dance Into Each Other</p>
+          <a href="sensual-couples.html" class="cta-btn">Book</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Carousel Dots -->
+    <div class="hero-carousel-nav">
+      <button class="hero-dot active" data-slide="0" aria-label="Rogue Bachata"></button>
+      <button class="hero-dot" data-slide="1" aria-label="Rogue Mondays"></button>
+      <button class="hero-dot" data-slide="2" aria-label="Rogue Tuesdays"></button>
+      <button class="hero-dot" data-slide="3" aria-label="Rogue Workshops"></button>
+      <button class="hero-dot" data-slide="4" aria-label="Couples Sensual"></button>
     </div>
   </section>
 
@@ -644,6 +795,57 @@
   </footer>
 
   <script>
+    // Hero Carousel
+    (function() {
+      const slides = document.querySelectorAll('.hero-slide');
+      const dots = document.querySelectorAll('.hero-dot');
+      let current = 0;
+      let autoTimer;
+
+      function goToSlide(index) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = index;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      function nextSlide() {
+        goToSlide((current + 1) % slides.length);
+      }
+
+      function startAuto() {
+        autoTimer = setInterval(nextSlide, 5000);
+      }
+
+      function resetAuto() {
+        clearInterval(autoTimer);
+        startAuto();
+      }
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          goToSlide(parseInt(dot.dataset.slide));
+          resetAuto();
+        });
+      });
+
+      // Swipe support for mobile
+      let touchStartX = 0;
+      const carousel = document.getElementById('heroCarousel');
+      carousel.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+      carousel.addEventListener('touchend', e => {
+        const diff = e.changedTouches[0].screenX - touchStartX;
+        if (Math.abs(diff) > 50) {
+          if (diff < 0) goToSlide((current + 1) % slides.length);
+          else goToSlide((current - 1 + slides.length) % slides.length);
+          resetAuto();
+        }
+      });
+
+      startAuto();
+    })();
+
     fetch('data.json')
       .then(response => response.json())
       .then(data => {
