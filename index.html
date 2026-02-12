@@ -129,34 +129,50 @@
       margin-bottom: 2rem;
     }
 
-    .hero-carousel-nav {
-      position: relative;
-      z-index: 2;
+
+    .hero-carousel-arrows {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
       display: flex;
-      gap: 0.6rem;
-      margin-top: 1.5rem;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+      z-index: 3;
+      height: 0;
     }
-
-    .hero-dot {
-      width: 12px;
-      height: 12px;
+    .hero-arrow {
+      background: rgba(20,20,30,0.18);
+      border: none;
+      color: var(--text);
+      font-size: 2.2rem;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.25);
-      border: 2px solid rgba(255, 255, 255, 0.3);
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      transition: all 0.3s ease;
-      padding: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+      opacity: 0.7;
+      pointer-events: auto;
+      margin: 0 1vw;
+      outline: none;
     }
-
-    .hero-dot:hover {
-      background: rgba(233, 69, 96, 0.5);
-      border-color: var(--accent);
-    }
-
-    .hero-dot.active {
+    .hero-arrow:hover, .hero-arrow:focus {
       background: var(--accent);
-      border-color: var(--accent);
-      transform: scale(1.3);
+      color: #fff;
+      opacity: 1;
+      transform: scale(1.08);
+    }
+    @media (max-width: 768px) {
+      .hero-arrow {
+        font-size: 1.5rem;
+        width: 34px;
+        height: 34px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -622,7 +638,7 @@
         <div class="hero-card">
           <h1>Rogue Bachata</h1>
           <p class="hero-card-subtitle">Movement · Connection · Freedom</p>
-          <a href="#events" class="cta-btn">Book</a>
+          <a href="#events" class="cta-btn">More</a>
         </div>
       </div>
       <!-- Slide 2: Rogue Mondays -->
@@ -630,7 +646,7 @@
         <div class="hero-card">
           <h1>Rogue Mondays</h1>
           <p class="hero-card-subtitle">at Kings Cross</p>
-          <a href="https://www.fatsoma.com/e/xlbejgec/salsa-mondays-at-big-chill-king-s-cross" target="_blank" class="cta-btn">Book</a>
+          <a href="https://www.fatsoma.com/e/xlbejgec/salsa-mondays-at-big-chill-king-s-cross" target="_blank" class="cta-btn">More</a>
         </div>
       </div>
       <!-- Slide 3: Rogue Tuesdays -->
@@ -638,7 +654,7 @@
         <div class="hero-card">
           <h1>Rogue Tuesdays</h1>
           <p class="hero-card-subtitle">at Clapham</p>
-          <a href="cafe-sol-event.html" class="cta-btn">Book</a>
+          <a href="cafe-sol-event.html" class="cta-btn">More</a>
         </div>
       </div>
       <!-- Slide 4: Rogue Workshops -->
@@ -646,7 +662,7 @@
         <div class="hero-card">
           <h1>Rogue Workshops</h1>
           <p class="hero-card-subtitle">Advanced Technique & Artistry</p>
-          <a href="rogue-resonance.html" class="cta-btn">Book</a>
+          <a href="rogue-resonance.html" class="cta-btn">More</a>
         </div>
       </div>
       <!-- Slide 5: Couples Sensual -->
@@ -654,18 +670,15 @@
         <div class="hero-card">
           <h1>Couples Sensual</h1>
           <p class="hero-card-subtitle">Dance Into Each Other</p>
-          <a href="sensual-couples.html" class="cta-btn">Book</a>
+          <a href="sensual-couples.html" class="cta-btn">More</a>
         </div>
       </div>
     </div>
 
-    <!-- Hero Carousel Dots -->
-    <div class="hero-carousel-nav">
-      <button class="hero-dot active" data-slide="0" aria-label="Rogue Bachata"></button>
-      <button class="hero-dot" data-slide="1" aria-label="Rogue Mondays"></button>
-      <button class="hero-dot" data-slide="2" aria-label="Rogue Tuesdays"></button>
-      <button class="hero-dot" data-slide="3" aria-label="Rogue Workshops"></button>
-      <button class="hero-dot" data-slide="4" aria-label="Couples Sensual"></button>
+    <!-- Hero Carousel Arrows -->
+    <div class="hero-carousel-arrows">
+      <button class="hero-arrow hero-arrow-left" aria-label="Previous" tabindex="0">&#8592;</button>
+      <button class="hero-arrow hero-arrow-right" aria-label="Next" tabindex="0">&#8594;</button>
     </div>
   </section>
 
@@ -787,40 +800,41 @@
   </footer>
 
   <script>
-    // Hero Carousel
+    // Hero Carousel with sleek arrows
     (function() {
       const slides = document.querySelectorAll('.hero-slide');
-      const dots = document.querySelectorAll('.hero-dot');
+      const left = document.querySelector('.hero-arrow-left');
+      const right = document.querySelector('.hero-arrow-right');
       let current = 0;
       let autoTimer;
 
       function goToSlide(index) {
         slides[current].classList.remove('active');
-        dots[current].classList.remove('active');
-        current = index;
+        current = (index + slides.length) % slides.length;
         slides[current].classList.add('active');
-        dots[current].classList.add('active');
       }
 
       function nextSlide() {
-        goToSlide((current + 1) % slides.length);
+        goToSlide(current + 1);
+      }
+      function prevSlide() {
+        goToSlide(current - 1);
       }
 
       function startAuto() {
         autoTimer = setInterval(nextSlide, 5000);
       }
-
       function resetAuto() {
         clearInterval(autoTimer);
         startAuto();
       }
 
-      dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-          goToSlide(parseInt(dot.dataset.slide));
-          resetAuto();
-        });
-      });
+      left.addEventListener('click', () => { prevSlide(); resetAuto(); });
+      right.addEventListener('click', () => { nextSlide(); resetAuto(); });
+
+      // Keyboard accessibility
+      left.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { prevSlide(); resetAuto(); }});
+      right.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { nextSlide(); resetAuto(); }});
 
       // Swipe support for mobile
       let touchStartX = 0;
@@ -829,8 +843,8 @@
       carousel.addEventListener('touchend', e => {
         const diff = e.changedTouches[0].screenX - touchStartX;
         if (Math.abs(diff) > 50) {
-          if (diff < 0) goToSlide((current + 1) % slides.length);
-          else goToSlide((current - 1 + slides.length) % slides.length);
+          if (diff < 0) nextSlide();
+          else prevSlide();
           resetAuto();
         }
       });
