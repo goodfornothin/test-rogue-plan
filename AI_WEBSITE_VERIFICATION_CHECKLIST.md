@@ -1,73 +1,71 @@
-# Rogue Bachata – AI Checklist
+# Rogue Bachata – AI Verification Checklist
 
-> Static site on GitHub Pages. Changes go live after `git push origin main`.
 > **Repo:** https://github.com/goodfornothin/test-rogue-plan
-> **Local:** `/Users/admin/github/test rogue plan`
 > **Live:** https://roguebachata.com
 
 ---
 
-## Before Every Commit – Run These Checks
+## 🔄 1. Content Sync (Do This First)
+
+Before making any content updates, always sync the latest media from Google Drive:
 
 ```bash
-cd "/Users/admin/github/test rogue plan"
+# Syncs images/ and videos/ from Google Drive
+./sync_media.sh
+```
 
-# 1. JSON must be valid
-python3 -c "import json; json.load(open('data.json')); print('OK')"
+---
 
-# 2. No "Castellino" visible (email in mailto/atob is fine)
-grep -ri "castellino" index.html data.json | grep -v "mailto:" | grep -v "voice@oscarcastellino" | grep -v "atob"
-# ^ Should print nothing
+## ✅ 2. Pre-Commit Verification (Run These Checks)
 
-# 3. YouTube playlist IDs correct
+Run these commands in the project root to ensure site integrity.
+
+```bash
+# A. JSON Validation (Critical for site content)
+python3 -c "import json; json.load(open('data.json')); print('✅ JSON Valid')"
+
+# B. Privacy Check (No "Castellino" visible, email obfuscated)
+grep -ri "castellino" index.html data.json | grep -v "mailto:" | grep -v "voice@oscarcastellino" | grep -v "atob" && echo "❌ Privacy Issue Found" || echo "✅ Privacy Check Passed"
+
+# C. YouTube Playlist ID Check
 python3 -c "
 import json; d=json.load(open('data.json'))
 p=d['youtubePlaylists']
-assert p['workshops']['id']=='PLLp_C8UrgAs9AuU4po1pGhsv_C_hPLmFQ','workshops wrong'
-assert p['dances']['id']=='PLLp_C8UrgAs-gbpSm1938jmKrWolktE6o','dances wrong'
-assert p['sensual']['id']=='PLLp_C8UrgAs9mqjnrYFtMaplehd0Nd_H9','sensual wrong'
-print('Playlists OK')
+assert p['workshops']['id']=='PLLp_C8UrgAs9AuU4po1pGhsv_C_hPLmFQ','workshops ID wrong'
+assert p['dances']['id']=='PLLp_C8UrgAs-gbpSm1938jmKrWolktE6o','dances ID wrong'
+assert p['sensual']['id']=='PLLp_C8UrgAs9mqjnrYFtMaplehd0Nd_H9','sensual ID wrong'
+print('✅ Playlists OK')
 "
 
-# 4. No href="#" (use javascript:void(0) or real targets)
-grep -rn 'href="#"' index.html
-# ^ Should print nothing
+# D. Broken Link Check (No empty hrefs)
+grep -rn 'href="#"' index.html && echo "❌ Empty hrefs found" || echo "✅ Link Check Passed"
 ```
 
-Fix anything that fails, then commit:
+---
+
+## 🔑 3. Key Rules & Constraints
+
+| Category | Rule |
+|----------|------|
+| **Privacy** | Never show "Castellino" visibly (use "Oscar"). Email must be obfuscated with `atob()`. |
+| **Media** | Images/Videos must be synced via `./sync_media.sh` before use. Do not manually add large files if they exist on Drive. |
+| **Links** | Never use `href="#"`. Use `javascript:void(0)` or real targets. |
+| **Structure** | All dynamic content (events, classes, text) lives in `data.json`. Do not hardcode content in HTML. |
+| **Deployment** | Always commit and push changes immediately after verifying them so they are visible online. |
+
+---
+
+## 🚀 4. Deployment (Commit & Push)
+
+After passing all checks, you **MUST** commit and push your changes for them to go live.
 
 ```bash
-git add -A && git commit -m "describe changes" && git push origin main
+# 1. Stage changes
+git add -A
+
+# 2. Commit with a clear message
+git commit -m "update: [description of changes]"
+
+# 3. Push to main branch (triggers deployment)
+git push origin main
 ```
-
----
-
-## Key Rules
-
-| Rule | Detail |
-|------|--------|
-| **Privacy** | Never show "Castellino" visibly. Use only "Oscar" or "Boadicea & Oscar". Email is obfuscated with `atob()`. |
-| **YouTube IDs** | workshops = `PLLp_C8UrgAs9AuU4po1pGhsv_C_hPLmFQ`, dances = `PLLp_C8UrgAs-gbpSm1938jmKrWolktE6o`, sensual = `PLLp_C8UrgAs9mqjnrYFtMaplehd0Nd_H9`. These have been swapped before — always verify. |
-| **Couples page** | sensual-couples.html must NOT show £ prices. Only email contact buttons. |
-| **Contact email** | `voice@oscarcastellino.com` — always obfuscated, never in plain HTML. |
-| **Links** | Never use `href="#"`. Use `javascript:void(0)` with onclick, or a real target. |
-| **Hero** | 5-slide carousel: Rogue Bachata, Rogue Mondays (Kings Cross), Rogue Tuesdays (Clapham), Rogue Workshops, Couples Sensual. Button text is "Book". |
-| **Rogue Parties** | Tuesdays = Cafe Sol, Clapham (£10 class, free social). Mondays = Big Chill, Kings Cross (£5 class, free social). |
-
----
-
-## File Reference
-
-| File | Purpose |
-|------|---------|
-| `index.html` | Homepage with hero carousel, offerings, events, contact |
-| `style.css` | Global styles, CSS variables for brand colours |
-| `data.json` | All dynamic content (offerings, events, playlists, parties) |
-| `sensual-couples.html` | Couples dance page (no prices, email buttons only) |
-| `rogue-resonance.html` | Workshops page |
-| `cafe-sol-event.html` | Cafe Sol event landing page |
-| `images/` | All site images |
-
----
-
-*Last updated: 11 February 2026*
