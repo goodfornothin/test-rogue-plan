@@ -197,7 +197,8 @@
       "description": "Join our free social at 8:30 pm! 90% Bachata music being played all night long. No partner required, just come and dance.",
       "photo": "images/Bachata-Tuesdays-Social.png",
       "status": "upcoming",
-      "contactInfo": "Free Entry"
+      "contactInfo": "Free Entry",
+      "landingPage": "bachata-tuesdays.html"
     },
     {
       "event": "Rogue Resonance Workshop",
