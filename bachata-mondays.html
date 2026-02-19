@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bachata Mondays | Big Chill, Kings Cross</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background: rgba(26, 26, 46, 0.95);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    nav .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav .logo:hover { color: var(--accent); }
+    nav .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    nav .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 0.3rem;
+    }
+    nav .nav-links a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    @media (max-width: 768px) {
+      nav { flex-direction: column; gap: 1rem; padding: 1rem; }
+      nav .nav-links { flex-wrap: wrap; gap: 1rem; justify-content: center; }
+    }
+
+    /* Video Hero */
+    .event-hero {
+      position: relative;
+      height: 70vh;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .event-hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+    .event-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.65) 100%);
+      z-index: 1;
+    }
+    .event-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      max-width: 700px;
+    }
+    .event-hero-content .event-label {
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.7rem;
+      font-weight: 600;
+    }
+    .event-hero-content h1 {
+      font-size: clamp(2.2rem, 7vw, 4rem);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 0.6rem;
+    }
+    .event-hero-content .hero-venue {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 0.4rem;
+    }
+    .event-hero-content .hero-time {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .event-hero-content .hero-free {
+      font-size: 1.1rem;
+      color: #fff;
+      background: rgba(233, 69, 96, 0.2);
+      border: 1px solid rgba(233, 69, 96, 0.5);
+      border-radius: 2rem;
+      display: inline-block;
+      padding: 0.4rem 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .cta-btn-hero {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .cta-btn-hero:hover {
+      background: #ff5c7a;
+      transform: translateY(-2px);
+    }
+
+    /* Main content area */
+    .event-content {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3rem;
+    }
+
+    /* Artwork card */
+    .artwork-card {
+      border-radius: 1.2rem;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+    }
+    .artwork-card img {
+      width: 100%;
+      display: block;
+      border-radius: 1.2rem;
+    }
+
+    /* Info blocks */
+    .info-block {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .info-block h2 {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .info-block p, .info-block ul {
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+    .info-block ul {
+      list-style: none;
+      padding: 0;
+    }
+    .info-block ul li::before {
+      content: "→ ";
+      color: var(--accent);
+    }
+
+    .detail-row {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      color: var(--text);
+    }
+    .detail-row .label {
+      color: var(--accent);
+      font-weight: 600;
+      min-width: 80px;
+      flex-shrink: 0;
+    }
+
+    /* Action buttons */
+    .action-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 2rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .action-btn:hover { transform: translateY(-2px); }
+    .action-btn.map {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .action-btn.map:hover { background: rgba(255,255,255,0.14); }
+    .action-btn.whatsapp {
+      background: #25d366;
+      color: #fff;
+    }
+    .action-btn.whatsapp:hover { background: #20bd5a; }
+    .action-btn.instagram {
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: var(--text);
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="logo">ROGUE</a>
+    <div class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#offerings">Classes</a>
+      <a href="index.html#events">Events</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Video Hero -->
+  <section class="event-hero">
+    <video class="event-hero-video" autoplay muted loop playsinline poster="images/Oscar Bo Dream.png">
+      <source src="videos/sensual-couple.mp4" type="video/mp4">
+    </video>
+    <div class="event-hero-overlay"></div>
+    <div class="event-hero-content">
+      <div class="event-label">Every Monday · Kings Cross</div>
+      <h1>Bachata Mondays</h1>
+      <div class="hero-venue">Big Chill Bar, Kings Cross</div>
+      <div class="hero-time">8:30 PM · Free</div>
+      <div class="hero-free">No booking needed — just show up</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Big+Chill+Kings+Cross+London" target="_blank" class="cta-btn-hero">Get Directions</a>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="event-content">
+
+    <!-- Artwork -->
+    <div class="artwork-card">
+      <img src="images/bachata-mondays-big-chill.jpg" alt="Bachata Mondays at Big Chill Kings Cross">
+    </div>
+
+    <!-- What's happening -->
+    <div class="info-block">
+      <h2>The Party</h2>
+      <p>Every Monday from 8:30 PM, Big Chill Kings Cross becomes a Bachata dancefloor. Pure Bachata music, great crowd, relaxed vibes. No class, no booking, no fuss — just come and dance.</p>
+    </div>
+
+    <!-- Event details -->
+    <div class="info-block">
+      <h2>Details</h2>
+      <div class="detail-row">
+        <span class="label">When</span>
+        <span>Every Monday</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Party from</span>
+        <span>8:30 PM</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Entry</span>
+        <span>Free</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Venue</span>
+        <span>Big Chill Bar, Kings Cross, London</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Music</span>
+        <span>Bachata all night</span>
+      </div>
+    </div>
+
+    <!-- What to expect -->
+    <div class="info-block">
+      <h2>What to Expect</h2>
+      <ul>
+        <li>Bachata music from 8:30 PM</li>
+        <li>Friendly social dancing atmosphere</li>
+        <li>All levels welcome — beginners to advanced</li>
+        <li>No partner needed</li>
+        <li>Free entry</li>
+      </ul>
+    </div>
+
+    <!-- Find us & connect -->
+    <div class="info-block">
+      <h2>Find Us</h2>
+      <p style="margin-bottom: 1.2rem;">Big Chill Bar, Kings Cross, London. Come down from 8:30 PM and ask for the Bachata room.</p>
+      <div class="action-links">
+        <a class="action-btn map" href="https://www.google.com/maps/search/?api=1&query=Big+Chill+Kings+Cross+London" target="_blank">📍 Google Maps</a>
+        <a class="action-btn whatsapp" href="https://wa.me/447596031416" target="_blank">💬 WhatsApp Us</a>
+        <a class="action-btn instagram" href="https://www.instagram.com/roguebachata/" target="_blank">📷 @roguebachata</a>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Questions? Drop us a message on WhatsApp or Instagram and we'll get back to you.</p>
+    </div>
+
+    <!-- Note about the class (optional awareness) -->
+    <div class="info-block" style="border-color: rgba(233, 69, 96, 0.3);">
+      <h2>Earlier in the Evening</h2>
+      <p>There's also a Bachata class earlier at 7:30 PM for just £5, if you want to warm up first. <a href="https://www.fatsoma.com/e/xlbejgec/salsa-mondays-at-big-chill-king-s-cross" target="_blank" style="color: var(--accent);">Book the class here</a> — but the social from 8:30 PM is completely free and needs no booking.</p>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Rogue Bachata. All rights reserved.</p>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+      <a href="index.html">Back to main site</a>
+    </p>
+  </footer>
+
+</body>
+</html>
