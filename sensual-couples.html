@@ -569,7 +569,10 @@
   <!-- Navigation -->
   <nav>
     <a href="index.html" class="logo">ROGUE</a>
-    <div class="nav-links">
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span>☰</span>
+    </button>
+    <div class="nav-links" id="navLinks">
       <a href="index.html#about">About</a>
       <a href="index.html#offerings">Classes & Workshops</a>
       <a href="index.html#principles">Principles</a>
@@ -786,6 +789,25 @@
         }
       })
       .catch(err => console.error('Error loading data:', err));
+  </script>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+      
+      // Close menu when a link is clicked
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+        });
+      });
+    }
   </script>
 
 </body>
