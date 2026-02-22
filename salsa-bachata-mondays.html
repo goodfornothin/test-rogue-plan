@@ -8,7 +8,7 @@
   <!-- Open Graph / Social Media Preview -->
   <meta property="og:title" content="Beginner Salsa & Bachata Classes + Social | Kings Cross">
   <meta property="og:description" content="Never danced before? Perfect. Join us every Monday at 7:30 PM in Kings Cross for beginner-friendly Salsa & Bachata classes, then stay for free social dancing. No partner needed. Just turn up.">
-  <meta property="og:image" content="https://roguebachata.com/images/bachata-mondays-big-chill.jpg">
+  <meta property="og:image" content="https://roguebachata.com/images/big-chill-salsa-poster.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://roguebachata.com/salsa-bachata-mondays.html">
@@ -23,6 +23,28 @@
       background: var(--bg);
       color: var(--text);
       font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Full-page video background */
+    .fullpage-video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      object-position: center;
+      z-index: -2;
+    }
+    .fullpage-video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: -1;
     }
 
     /* Navigation */
@@ -31,12 +53,12 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.5rem 2rem;
-      background: rgba(26, 26, 46, 0.95);
+      background: rgba(26, 26, 46, 0.8);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(12px);
     }
     nav .logo {
       font-size: 1.2rem;
@@ -69,36 +91,17 @@
       nav .nav-links { flex-wrap: wrap; gap: 1rem; justify-content: center; }
     }
 
-    /* Video Hero */
+    /* Hero header (no separate video — uses full-page bg) */
     .event-hero {
       position: relative;
-      height: 75vh;
-      min-height: 480px;
+      min-height: 50vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
-    }
-    .event-hero-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      z-index: 0;
-    }
-    .event-hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.7) 100%);
-      z-index: 1;
+      padding: 3rem 1.5rem;
     }
     .event-hero-content {
-      position: relative;
-      z-index: 2;
       text-align: center;
-      padding: 2rem 1.5rem;
       max-width: 720px;
     }
     .event-hero-content .event-label {
@@ -116,16 +119,18 @@
       line-height: 1.15;
       color: #fff;
       margin-bottom: 0.8rem;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
     }
     .event-hero-content .hero-tagline {
       font-size: 1.15rem;
-      color: rgba(255,255,255,0.9);
+      color: rgba(255,255,255,0.95);
       margin-bottom: 0.5rem;
       line-height: 1.5;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
     }
     .event-hero-content .hero-venue {
       font-size: 1.1rem;
-      color: rgba(255,255,255,0.8);
+      color: rgba(255,255,255,0.85);
       margin-bottom: 0.3rem;
     }
     .event-hero-content .hero-time {
@@ -137,12 +142,13 @@
     .event-hero-content .hero-free {
       font-size: 1rem;
       color: #fff;
-      background: rgba(233, 69, 96, 0.2);
+      background: rgba(233, 69, 96, 0.25);
       border: 1px solid rgba(233, 69, 96, 0.5);
       border-radius: 2rem;
       display: inline-block;
       padding: 0.4rem 1.4rem;
       margin-bottom: 1.8rem;
+      backdrop-filter: blur(4px);
     }
     .cta-btn-hero {
       display: inline-block;
@@ -163,32 +169,35 @@
 
     /* Main content area */
     .event-content {
+      position: relative;
       max-width: 660px;
       margin: 0 auto;
       padding: 2.5rem 1.5rem 3rem;
     }
 
-    /* YouTube embed */
+    /* YouTube embed — PROMINENT top placement */
     .youtube-feature {
       margin-bottom: 2rem;
       border-radius: 1.2rem;
       overflow: hidden;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.5);
-      background: #000;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(233, 69, 96, 0.3);
     }
     .youtube-feature .yt-header {
-      padding: 1.2rem 1.5rem 0.6rem;
+      padding: 1.4rem 1.5rem 0.8rem;
       text-align: center;
     }
     .youtube-feature .yt-header h2 {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       color: var(--accent);
       margin-bottom: 0.3rem;
       letter-spacing: 0.05em;
     }
     .youtube-feature .yt-header p {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.7);
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
     }
     .youtube-shorts-wrap {
       display: flex;
@@ -198,6 +207,7 @@
     .youtube-shorts-wrap iframe {
       border-radius: 0.8rem;
       max-width: 100%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
 
     /* Artwork card */
@@ -205,7 +215,7 @@
       border-radius: 1.2rem;
       overflow: hidden;
       margin-bottom: 2rem;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
     }
     .artwork-card img {
       width: 100%;
@@ -213,13 +223,14 @@
       border-radius: 1.2rem;
     }
 
-    /* Info blocks */
+    /* Info blocks — semi-transparent over video bg */
     .info-block {
-      background: rgba(255,255,255,0.04);
+      background: rgba(26, 26, 46, 0.75);
       border: 1px solid var(--border);
       border-radius: 1rem;
       padding: 1.5rem;
       margin-bottom: 1.2rem;
+      backdrop-filter: blur(10px);
     }
     .info-block h2 {
       font-size: 1.1rem;
@@ -282,11 +293,12 @@
     }
     .action-btn:hover { transform: translateY(-2px); }
     .action-btn.map {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.1);
       border: 1px solid var(--border);
       color: var(--text);
+      backdrop-filter: blur(4px);
     }
-    .action-btn.map:hover { background: rgba(255,255,255,0.14); }
+    .action-btn.map:hover { background: rgba(255,255,255,0.18); }
     .action-btn.whatsapp {
       background: #25d366;
       color: #fff;
@@ -302,14 +314,15 @@
     }
     .action-btn.book:hover { background: #ff5c7a; }
 
-    /* Friendly callout */
+    /* Friendly callout — semi-transparent */
     .friendly-callout {
-      background: linear-gradient(135deg, rgba(233, 69, 96, 0.08), rgba(233, 69, 96, 0.15));
-      border: 1px solid rgba(233, 69, 96, 0.3);
+      background: linear-gradient(135deg, rgba(233, 69, 96, 0.1), rgba(233, 69, 96, 0.2));
+      border: 1px solid rgba(233, 69, 96, 0.35);
       border-radius: 1rem;
       padding: 1.5rem;
       margin-bottom: 1.2rem;
       text-align: center;
+      backdrop-filter: blur(10px);
     }
     .friendly-callout h2 {
       font-size: 1.2rem;
@@ -322,19 +335,27 @@
       font-size: 1rem;
     }
 
-    /* Footer */
+    /* Footer — semi-transparent */
     footer {
-      background: var(--primary);
+      position: relative;
+      background: rgba(26, 26, 46, 0.85);
       color: var(--text);
       text-align: center;
       padding: 2rem;
       margin-top: 2rem;
       border-top: 1px solid var(--border);
+      backdrop-filter: blur(10px);
     }
     footer a { color: var(--accent); text-decoration: none; }
   </style>
 </head>
 <body>
+
+  <!-- Full-page video background -->
+  <video class="fullpage-video-bg" autoplay muted loop playsinline poster="images/bachata-mondays-big-chill.jpg">
+    <source src="videos/fun-bachata-bg.mp4" type="video/mp4">
+  </video>
+  <div class="fullpage-video-overlay"></div>
 
   <!-- Navigation -->
   <nav>
@@ -347,12 +368,8 @@
     </div>
   </nav>
 
-  <!-- Video Hero with fun bachata background -->
+  <!-- Hero header -->
   <section class="event-hero">
-    <video class="event-hero-video" autoplay muted loop playsinline poster="images/bachata-mondays-big-chill.jpg">
-      <source src="videos/fun-bachata-bg.mp4" type="video/mp4">
-    </video>
-    <div class="event-hero-overlay"></div>
     <div class="event-hero-content">
       <div class="event-label">Every Monday · Kings Cross · 7:30 PM</div>
       <h1>Beginner Salsa &amp; Bachata Classes &amp; Social</h1>
@@ -367,7 +384,7 @@
   <!-- Main Content -->
   <div class="event-content">
 
-    <!-- YouTube Video — Prominent -->
+    <!-- YouTube Video — PROMINENT at top -->
     <div class="youtube-feature">
       <div class="yt-header">
         <h2>See What It's Like</h2>
@@ -375,8 +392,8 @@
       </div>
       <div class="youtube-shorts-wrap">
         <iframe
-          width="315"
-          height="560"
+          width="360"
+          height="640"
           src="https://www.youtube.com/embed/xcp0onzVhMc"
           title="Salsa Bachata Mondays at Kings Cross"
           frameborder="0"
@@ -446,11 +463,6 @@
       </div>
     </div>
 
-    <!-- Poster artwork -->
-    <div class="artwork-card">
-      <img src="images/bachata-mondays-big-chill.jpg" alt="Beginner Salsa and Bachata Classes at Big Chill Kings Cross">
-    </div>
-
     <!-- No experience callout -->
     <div class="friendly-callout">
       <h2>Seriously, You Don't Need Experience</h2>
@@ -468,6 +480,11 @@
         <a class="action-btn instagram" href="https://www.instagram.com/roguebachata/" target="_blank">📷 @roguebachata</a>
       </div>
       <p style="color: var(--text-muted); font-size: 0.9rem;">Got questions? Just message us on WhatsApp or Instagram — we're friendly, promise.</p>
+    </div>
+
+    <!-- Poster artwork — at end of page -->
+    <div class="artwork-card">
+      <img src="images/big-chill-salsa-poster.png" alt="Big Chill Salsa & Bachata Poster — Monday Nights at Kings Cross">
     </div>
 
   </div>
