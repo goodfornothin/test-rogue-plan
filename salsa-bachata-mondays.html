@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beginner Salsa & Bachata Classes + Social | Kings Cross, Monday Nights</title>
+
+  <!-- Open Graph / Social Media Preview -->
+  <meta property="og:title" content="Beginner Salsa & Bachata Classes + Social | Kings Cross">
+  <meta property="og:description" content="Never danced before? Perfect. Join us every Monday at 7:30 PM in Kings Cross for beginner-friendly Salsa & Bachata classes, then stay for free social dancing. No partner needed. Just turn up.">
+  <meta property="og:image" content="https://roguebachata.com/images/bachata-mondays-big-chill.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://roguebachata.com/salsa-bachata-mondays.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background: rgba(26, 26, 46, 0.95);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    nav .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav .logo:hover { color: var(--accent); }
+    nav .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    nav .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 0.3rem;
+    }
+    nav .nav-links a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    @media (max-width: 768px) {
+      nav { flex-direction: column; gap: 1rem; padding: 1rem; }
+      nav .nav-links { flex-wrap: wrap; gap: 1rem; justify-content: center; }
+    }
+
+    /* Video Hero */
+    .event-hero {
+      position: relative;
+      height: 75vh;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .event-hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+    .event-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.7) 100%);
+      z-index: 1;
+    }
+    .event-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      max-width: 720px;
+    }
+    .event-hero-content .event-label {
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.7rem;
+      font-weight: 600;
+    }
+    .event-hero-content h1 {
+      font-size: clamp(1.8rem, 6vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+    .event-hero-content .hero-tagline {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+    .event-hero-content .hero-venue {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 0.3rem;
+    }
+    .event-hero-content .hero-time {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .event-hero-content .hero-free {
+      font-size: 1rem;
+      color: #fff;
+      background: rgba(233, 69, 96, 0.2);
+      border: 1px solid rgba(233, 69, 96, 0.5);
+      border-radius: 2rem;
+      display: inline-block;
+      padding: 0.4rem 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .cta-btn-hero {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .cta-btn-hero:hover {
+      background: #ff5c7a;
+      transform: translateY(-2px);
+    }
+
+    /* Main content area */
+    .event-content {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3rem;
+    }
+
+    /* YouTube embed */
+    .youtube-feature {
+      margin-bottom: 2rem;
+      border-radius: 1.2rem;
+      overflow: hidden;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+      background: #000;
+    }
+    .youtube-feature .yt-header {
+      padding: 1.2rem 1.5rem 0.6rem;
+      text-align: center;
+    }
+    .youtube-feature .yt-header h2 {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.05em;
+    }
+    .youtube-feature .yt-header p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+    }
+    .youtube-shorts-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 1rem 1rem 1.5rem;
+    }
+    .youtube-shorts-wrap iframe {
+      border-radius: 0.8rem;
+      max-width: 100%;
+    }
+
+    /* Artwork card */
+    .artwork-card {
+      border-radius: 1.2rem;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+    }
+    .artwork-card img {
+      width: 100%;
+      display: block;
+      border-radius: 1.2rem;
+    }
+
+    /* Info blocks */
+    .info-block {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .info-block h2 {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .info-block p, .info-block ul {
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+    .info-block ul {
+      list-style: none;
+      padding: 0;
+    }
+    .info-block ul li {
+      margin-bottom: 0.4rem;
+    }
+    .info-block ul li::before {
+      content: "✓ ";
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .detail-row {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      color: var(--text);
+    }
+    .detail-row .label {
+      color: var(--accent);
+      font-weight: 600;
+      min-width: 80px;
+      flex-shrink: 0;
+    }
+
+    /* Action buttons */
+    .action-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 2rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .action-btn:hover { transform: translateY(-2px); }
+    .action-btn.map {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .action-btn.map:hover { background: rgba(255,255,255,0.14); }
+    .action-btn.whatsapp {
+      background: #25d366;
+      color: #fff;
+    }
+    .action-btn.whatsapp:hover { background: #20bd5a; }
+    .action-btn.instagram {
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: #fff;
+    }
+    .action-btn.book {
+      background: var(--accent);
+      color: #fff;
+    }
+    .action-btn.book:hover { background: #ff5c7a; }
+
+    /* Friendly callout */
+    .friendly-callout {
+      background: linear-gradient(135deg, rgba(233, 69, 96, 0.08), rgba(233, 69, 96, 0.15));
+      border: 1px solid rgba(233, 69, 96, 0.3);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+    .friendly-callout h2 {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .friendly-callout p {
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: var(--text);
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="logo">ROGUE</a>
+    <div class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#offerings">Classes</a>
+      <a href="index.html#events">Events</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Video Hero with fun bachata background -->
+  <section class="event-hero">
+    <video class="event-hero-video" autoplay muted loop playsinline poster="images/bachata-mondays-big-chill.jpg">
+      <source src="videos/fun-bachata-bg.mp4" type="video/mp4">
+    </video>
+    <div class="event-hero-overlay"></div>
+    <div class="event-hero-content">
+      <div class="event-label">Every Monday · Kings Cross · 7:30 PM</div>
+      <h1>Beginner Salsa &amp; Bachata Classes &amp; Social</h1>
+      <p class="hero-tagline">Never danced before? Neither had most of us. Come try something new this Monday.</p>
+      <div class="hero-venue">Big Chill Bar, Kings Cross, London</div>
+      <div class="hero-time">Mondays from 7:30 PM</div>
+      <div class="hero-free">No experience needed · No partner needed</div>
+      <a href="https://www.fatsoma.com/e/xlbejgec/salsa-mondays-at-big-chill-king-s-cross" target="_blank" class="cta-btn-hero">Book Your Spot — £5</a>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="event-content">
+
+    <!-- YouTube Video — Prominent -->
+    <div class="youtube-feature">
+      <div class="yt-header">
+        <h2>See What It's Like</h2>
+        <p>A quick look at what Monday nights are all about</p>
+      </div>
+      <div class="youtube-shorts-wrap">
+        <iframe
+          width="315"
+          height="560"
+          src="https://www.youtube.com/embed/xcp0onzVhMc"
+          title="Salsa Bachata Mondays at Kings Cross"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <!-- Friendly welcome -->
+    <div class="friendly-callout">
+      <h2>Your Monday Just Got Better</h2>
+      <p>Forget the Monday blues. Every week, a group of friendly people get together at a cool bar in Kings Cross to learn some Latin dance moves and have a great time. You don't need to know anything about dancing — that's the whole point. We'll teach you from scratch, and you'll be moving and laughing before you know it.</p>
+    </div>
+
+    <!-- What to expect — beginner friendly -->
+    <div class="info-block">
+      <h2>What Actually Happens</h2>
+      <ul>
+        <li>We start with a beginner Salsa &amp; Bachata class at 7:30 PM — completely from scratch</li>
+        <li>You'll learn fun moves you can actually use, with zero pressure</li>
+        <li>After the class, the social starts — free dancing, chat, drinks, good vibes</li>
+        <li>You don't need a partner — we rotate so everyone dances with everyone</li>
+        <li>The crowd is super friendly — mostly people who started exactly where you are</li>
+      </ul>
+    </div>
+
+    <!-- Why this is great for non-dancers -->
+    <div class="info-block">
+      <h2>Perfect If You...</h2>
+      <ul>
+        <li>Want to try something completely new</li>
+        <li>Are looking for a fun thing to do on a Monday evening</li>
+        <li>Want to meet new people in London</li>
+        <li>Have always been curious about Latin dancing but felt too shy</li>
+        <li>Just moved to London and want a weekly social</li>
+        <li>Want a bit of exercise that doesn't feel like exercise</li>
+      </ul>
+    </div>
+
+    <!-- Event details -->
+    <div class="info-block">
+      <h2>Details</h2>
+      <div class="detail-row">
+        <span class="label">When</span>
+        <span>Every Monday</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Class</span>
+        <span>7:30 PM — beginner Salsa &amp; Bachata</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Social</span>
+        <span>8:30 PM — free dancing (no booking needed)</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Price</span>
+        <span>£5 for the class · Social dancing is free</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Venue</span>
+        <span>Big Chill Bar, Kings Cross, London</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Vibe</span>
+        <span>Relaxed, friendly, zero judgement</span>
+      </div>
+    </div>
+
+    <!-- Poster artwork -->
+    <div class="artwork-card">
+      <img src="images/bachata-mondays-big-chill.jpg" alt="Beginner Salsa and Bachata Classes at Big Chill Kings Cross">
+    </div>
+
+    <!-- No experience callout -->
+    <div class="friendly-callout">
+      <h2>Seriously, You Don't Need Experience</h2>
+      <p>We mean it. Most people who come have never danced before. The class is built for absolute beginners — we break everything down step by step, and everyone's in the same boat. It's more about having fun and meeting cool people than being "good" at dancing. Come as you are.</p>
+    </div>
+
+    <!-- Find us & connect -->
+    <div class="info-block">
+      <h2>Find Us &amp; Get in Touch</h2>
+      <p style="margin-bottom: 1.2rem;">Big Chill Bar, Kings Cross, London. Show up from 7:30 PM — just head in and ask for the dance class.</p>
+      <div class="action-links">
+        <a class="action-btn book" href="https://www.fatsoma.com/e/xlbejgec/salsa-mondays-at-big-chill-king-s-cross" target="_blank">🎟️ Book Class — £5</a>
+        <a class="action-btn map" href="https://www.google.com/maps/search/?api=1&query=Big+Chill+Kings+Cross+London" target="_blank">📍 Google Maps</a>
+        <a class="action-btn whatsapp" href="https://wa.me/447596031416" target="_blank">💬 WhatsApp Us</a>
+        <a class="action-btn instagram" href="https://www.instagram.com/roguebachata/" target="_blank">📷 @roguebachata</a>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Got questions? Just message us on WhatsApp or Instagram — we're friendly, promise.</p>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Rogue Bachata. All rights reserved.</p>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+      <a href="index.html">Back to main site</a> · <a href="bachata-mondays.html">Bachata Mondays (for dancers)</a>
+    </p>
+  </footer>
+
+</body>
+</html>
