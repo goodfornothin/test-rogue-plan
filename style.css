@@ -18,6 +18,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 70px;
 }
 
 body {
@@ -393,6 +394,21 @@ nav .logo {
   font-weight: 700;
   color: var(--text);
   letter-spacing: 0.1em;
+}
+
+nav .menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+nav .nav-links {
+  display: flex;
+  align-items: center;
 }
 
 nav .nav-links a {
@@ -775,6 +791,38 @@ footer {
 
   .events-container {
     padding: 0 0.5rem;
+  }
+
+  nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(15, 15, 26, 0.95);
+    flex-direction: column;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
+
+  nav .nav-links.open {
+    display: flex;
+  }
+
+  nav .nav-links a {
+    margin: 0.5rem 1rem;
+    padding: 0.5rem 0;
+  }
+
+  nav .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
   }
 
   nav .nav-links {
