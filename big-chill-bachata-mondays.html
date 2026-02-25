@@ -134,7 +134,7 @@
       font-size: clamp(3.2rem, 11vw, 6.5rem);
       font-family: 'Playfair Display', serif;
       font-weight: 800;
-      line-height: 0.85;
+      line-height: 0.92;
       letter-spacing: -0.02em;
       word-spacing: -0.05em;
       background: linear-gradient(
@@ -151,6 +151,7 @@
       -webkit-text-fill-color: transparent;
       filter: drop-shadow(0 0 10px rgba(247, 200, 224, 0.45));
       animation: titleShine 6s linear infinite;
+      padding-bottom: 0.14em;
       margin-bottom: 1.2rem;
     }
 
@@ -160,6 +161,9 @@
     }
     .title-line {
       display: block;
+    }
+    .title-line:last-child {
+      padding-bottom: 0.08em;
     }
     .event-hero-content .hero-time {
       font-size: 1.05rem;
