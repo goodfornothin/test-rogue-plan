@@ -75,6 +75,12 @@
     }
   ],
   "youtubePlaylists": {
+    "bigchillmondays": {
+      "id": "PLLp_C8UrgAs-5NbNAbpETbA24wlrwE_Ed",
+      "title": "Big Chill Bachata Mondays",
+      "description": "Videos from Big Chill Bachata Mondays at King's Cross.",
+      "format": "landscape"
+    },
     "workshops": {
       "id": "PLLp_C8UrgAs9AuU4po1pGhsv_C_hPLmFQ",
       "title": "Bachata Workshops",
