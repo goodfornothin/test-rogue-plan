@@ -626,11 +626,12 @@
 
         subtitle.textContent = (match && match.description) || 'Latest videos from Big Chill Bachata Mondays.';
 
-        // Standard playlist embed
+        // Embed only the specified Shorts video
+        const shortsId = 'KE_OfUvBYmg';
         carousel.innerHTML = `
           <iframe
-            src="https://www.youtube.com/embed/videoseries?list=${playlistId}"
-            title="Big Chill Bachata Mondays Playlist"
+            src="https://www.youtube.com/embed/${shortsId}?rel=0"
+            title="Big Chill Bachata Mondays Short"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
             loading="lazy"
