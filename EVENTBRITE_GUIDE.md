@@ -24,7 +24,7 @@ The **private token** is the only credential you need for the API. Use it as a B
 
 ## Recurring Events We Create
 
-### Big Chill Bachata Mondays
+### Bachata Mondays @King's Cross
 - **Venue:** Big Chill Bar, 257-259 Pentonville Rd, Kings Cross, London N1 9NL
 - **Schedule:** Every Monday, 7:30 PM – 11:30 PM
 - **Class ticket:** £5 · Bachata Class at 7:30 PM (limited spots)
@@ -65,7 +65,7 @@ That's it. The scripts in `scripts/` do everything else.
 
 Always pull the description text from the live website landing page, not from memory.
 
-For Big Chill Bachata Mondays:
+For Bachata Mondays @King's Cross:
 ```
 https://roguebachata.com/big-chill-bachata-mondays.html
 ```
@@ -100,7 +100,7 @@ Open `scripts/create_eventbrite_event.py` and fill in the CONFIG section at the 
 
 ```python
 PRIVATE_TOKEN       = "WWCC7IYMEIDP5CQQJOQA"   # do not change
-EVENT_NAME          = "Big Chill Bachata Mondays"
+EVENT_NAME          = "Bachata Mondays @King's Cross"
 VENUE_NAME          = "Big Chill Bar"
 VENUE_ADDR1         = "257-259 Pentonville Rd"
 VENUE_CITY          = "London"
@@ -122,7 +122,7 @@ python3 scripts/create_eventbrite_event.py
 Expected output:
 ```
 ============================================================
-  Creating Eventbrite event: Big Chill Bachata Mondays
+  Creating Eventbrite event: Bachata Mondays @King's Cross
   Start: 2026-03-02T19:30:00Z  End: 2026-03-02T23:30:00Z
 ============================================================
 
@@ -331,7 +331,7 @@ All in `/Users/admin/github/test rogue plan/images/`:
 
 | Playlist | ID | URL |
 |---|---|---|
-| Big Chill Bachata Mondays | `PLLp_C8UrgAs-5NbNAbpETbA24wlrwE_Ed` | https://www.youtube.com/playlist?list=PLLp_C8UrgAs-5NbNAbpETbA24wlrwE_Ed |
+| Bachata Mondays @King's Cross | `PLLp_C8UrgAs-5NbNAbpETbA24wlrwE_Ed` | https://www.youtube.com/playlist?list=PLLp_C8UrgAs-5NbNAbpETbA24wlrwE_Ed |
 | Bachata Dances (social) | `PLLp_C8UrgAs-gbpSm1938jmKrWolktE6o` | https://www.youtube.com/playlist?list=PLLp_C8UrgAs-gbpSm1938jmKrWolktE6o |
 | Sensual Dancing | `PLLp_C8UrgAs9mqjnrYFtMaplehd0Nd_H9` | https://www.youtube.com/playlist?list=PLLp_C8UrgAs9mqjnrYFtMaplehd0Nd_H9 |
 | Workshops | `PLLp_C8UrgAs9AuU4po1pGhsv_C_hPLmFQ` | https://www.youtube.com/playlist?list=PLLp_C8UrgAs9AuU4po1pGhsv_C_hPLmFQ |
@@ -365,7 +365,7 @@ When writing the event description HTML:
 
 | Event | Eventbrite ID | URL | Date |
 |---|---|---|---|
-| Big Chill Bachata Mondays | 1984197315584 | https://www.eventbrite.co.uk/e/big-chill-bachata-mondays-tickets-1984197315584 | Mon 2 Mar 2026 |
+| Bachata Mondays @King's Cross | 1984197315584 | https://www.eventbrite.co.uk/e/big-chill-bachata-mondays-tickets-1984197315584 | Mon 2 Mar 2026 |
 
 ---
 

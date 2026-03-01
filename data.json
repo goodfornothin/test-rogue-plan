@@ -77,8 +77,8 @@
   "youtubePlaylists": {
     "bigchillmondays": {
       "id": "PLLp_C8UrgAs-5NbNAbpETbA24wlrwE_Ed",
-      "title": "Big Chill Bachata Mondays",
-      "description": "Videos from Big Chill Bachata Mondays at King's Cross.",
+      "title": "Bachata Mondays @King's Cross",
+      "description": "Videos from Bachata Mondays @King's Cross at King's Cross.",
       "format": "landscape"
     },
     "workshops": {
@@ -125,7 +125,7 @@
     },
     {
       "id": "rogue-mondays",
-      "name": "Big Chill Bachata Mondays",
+      "name": "Bachata Mondays @King's Cross",
       "venue": "Big Chill, Kings Cross",
       "day": "Every Monday",
       "time": "7:30 pm \u2013 late",
@@ -159,7 +159,7 @@
   ],
   "upcomingEvents": [
     {
-      "event": "Big Chill Bachata Mondays",
+      "event": "Bachata Mondays @King's Cross",
       "offeringId": "rogue-bachata-classes",
       "eventId": "big-chill-bachata-mondays-2026",
       "date": "Every Monday",

@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Big Chill Bachata Mondays | Bachata London King's Cross</title>
+  <title>Bachata Mondays @King's Cross | Bachata London King's Cross</title>
+  <meta name="description" content="Looking for Kings Cross salsa, big chill salsa night, or big chill latin night? Join us for the best Bachata and Salsa in Central London. Welcoming dancers from Bachata exchange, salsateca, and more!">
+  <meta name="keywords" content="big chill salsa night, big chill latin night, kings cross salsa, salsa central london, bachata exchange, salsateca, bachata london">
 
-  <meta property="og:title" content="Big Chill Bachata Mondays | King's Cross">
+  <meta property="og:title" content="Bachata Mondays @King's Cross | King's Cross">
   <meta property="og:description" content="Every Monday at Big Chill, King's Cross: Bachata class at 7:30 PM (£5) and free social from 8:30 PM, open to all levels.">
   <meta property="og:image" content="https://roguebachata.com/images/bachata-mondays-big-chill.jpg">
   <meta property="og:image:width" content="1200">
@@ -459,12 +461,14 @@
 
   <section class="event-hero">
     <div class="event-hero-content">
-      <div class="hero-location">King's Cross</div>
       <h1>
-        <span class="title-line">Big Chill</span>
         <span class="title-line">Bachata</span>
         <span class="title-line">Mondays</span>
+        <span class="title-line">@King's Cross</span>
       </h1>
+      <div class="hero-location" style="margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.4rem; color: #fff; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+        <span style="font-size: 1.5rem;">📍</span> at Big Chill
+      </div>
       <div class="event-label">Every Monday</div>
       <div class="hero-time">Bachata class 7:30 PM (£5) · Open to all levels</div>
       <div class="hero-free">Free Social from 8:30 PM</div>
@@ -532,7 +536,7 @@
     </div>
 
     <div class="artwork-card">
-      <img src="images/bachata-mondays-big-chill.jpg" alt="Big Chill Bachata Mondays at King's Cross">
+      <img src="images/bachata-mondays-big-chill.jpg" alt="Bachata Mondays @King's Cross at King's Cross">
     </div>
 
     <div class="info-block">
@@ -612,26 +616,26 @@
         const response = await fetch('data.json');
         const data = await response.json();
         const playlists = data.youtubePlaylists ? Object.values(data.youtubePlaylists) : [];
-        const match = playlists.find(p => (p.title || '').toLowerCase() === 'big chill bachata mondays')
-          || playlists.find(p => (p.title || '').toLowerCase().includes('big chill bachata mondays'));
+        const match = playlists.find(p => (p.title || '').toLowerCase() === 'bachata mondays @king's cross')
+          || playlists.find(p => (p.title || '').toLowerCase().includes('bachata mondays @king's cross'));
 
         let playlistId = match && match.id ? match.id : '';
         if (!playlistId) {
-          playlistId = await discoverPlaylistIdByTitle('Big Chill Bachata Mondays');
+          playlistId = await discoverPlaylistIdByTitle('Bachata Mondays @King's Cross');
         }
 
         if (!playlistId) {
           return;
         }
 
-        subtitle.textContent = (match && match.description) || 'Latest videos from Big Chill Bachata Mondays.';
+        subtitle.textContent = (match && match.description) || 'Latest videos from Bachata Mondays @King's Cross.';
 
         // Embed only the specified Shorts video
         const shortsId = 'KE_OfUvBYmg';
         carousel.innerHTML = `
           <iframe
             src="https://www.youtube.com/embed/${shortsId}?rel=0"
-            title="Big Chill Bachata Mondays Short"
+            title="Bachata Mondays @King's Cross Short"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
             loading="lazy"

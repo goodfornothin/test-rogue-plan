@@ -19,7 +19,7 @@ import mimetypes
 PRIVATE_TOKEN = "WWCC7IYMEIDP5CQQJOQA"   # Eventbrite private token (account: voice@oscarcastellino.com)
 
 # Event name — match exactly what's on the website page being promoted
-EVENT_NAME = "Big Chill Bachata Mondays"
+EVENT_NAME = "Bachata Mondays @King's Cross"
 
 # Venue
 VENUE_NAME  = "Big Chill Bar"
@@ -52,7 +52,7 @@ BANNER_IMAGE_PATH = "/Users/admin/github/test rogue plan/images/bachata-mondays-
 # DO NOT use emoji (\U0001f3b5 etc.) — they truncate the description at that point.
 # Use Unicode escapes (\u00a3 for £, \u2014 for —) or plain ASCII.
 # DO NOT set both description and summary in the same API call (SUMMARY_DESCRIPTION_CONFLICT).
-DESCRIPTION_HTML = """<h2>Big Chill Bachata Mondays \u2014 King's Cross</h2>
+DESCRIPTION_HTML = """<h2>Bachata Mondays @King's Cross \u2014 King's Cross</h2>
 <p>Join us every Monday at King's Cross for Bachata class and social dancing. Everyone is welcome \u2014 all levels can join.</p>
 <h2>What's On</h2>
 <ul>
@@ -80,7 +80,7 @@ DESCRIPTION_HTML = """<h2>Big Chill Bachata Mondays \u2014 King's Cross</h2>
 <p>Big Chill is one of the coolest places in King's Cross to throw a Bachata Monday: central, easy to reach, full of energy, and made for social vibes. The space feels raw and vibrant, so the class warms everyone up and the floor naturally opens into that 8:30 PM social magic where people connect fast, dance more, and stay late.</p>
 <h2>Watch Us Dance Before You Arrive</h2>
 <ul>
-<li><a href="https://www.youtube.com/playlist?list=PLLp_C8UrgAs-5NbNAbpETbA24wlrwE_Ed">Videos from Big Chill Bachata Mondays</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLLp_C8UrgAs-5NbNAbpETbA24wlrwE_Ed">Videos from Bachata Mondays @King's Cross</a></li>
 <li><a href="https://www.youtube.com/playlist?list=PLLp_C8UrgAs-gbpSm1938jmKrWolktE6o">Rogue Bachata Social Dancing</a></li>
 <li><a href="https://www.youtube.com/@RogueBachata">Rogue Bachata on YouTube</a></li>
 </ul>
