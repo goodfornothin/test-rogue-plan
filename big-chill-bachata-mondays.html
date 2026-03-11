@@ -295,17 +295,16 @@
       color: #fff;
     }
 
-    .playlist-section {
+    .video-section {
       background: rgba(26, 26, 46, 0.78);
       border: 1px solid var(--border);
       border-radius: 1rem;
       padding: 1.5rem;
       margin-bottom: 1.2rem;
       backdrop-filter: blur(8px);
-      display: none;
     }
 
-    .playlist-section h2 {
+    .video-section h2 {
       font-size: 1.1rem;
       color: var(--accent);
       margin-bottom: 0.8rem;
@@ -314,18 +313,8 @@
       letter-spacing: 0.05em;
     }
 
-    .playlist-subtitle {
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      line-height: 1.6;
-    }
-
-    .playlist-carousel {
-      position: relative;
+    .video-container {
       width: 100%;
-      max-width: 100%;
-      margin-left: 0;
-      margin-right: 0;
       border-radius: 1rem;
       overflow: hidden;
       box-shadow: 0 8px 30px rgba(0,0,0,0.45);
@@ -335,55 +324,11 @@
       min-height: 420px;
     }
 
-    .playlist-slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-
-    .playlist-slide.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .playlist-slide iframe {
+    .video-container iframe {
       width: 100%;
       height: 100%;
       border: 0;
       display: block;
-      aspect-ratio: 9 / 16;
-    }
-
-    .playlist-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.35);
-      background: rgba(0,0,0,0.5);
-      color: #fff;
-      cursor: pointer;
-      z-index: 2;
-      font-size: 1.05rem;
-    }
-
-    .playlist-arrow.prev { left: 0.75rem; }
-    .playlist-arrow.next { right: 0.75rem; }
-
-    .playlist-arrow:hover {
-      background: rgba(233, 69, 96, 0.78);
-      border-color: rgba(233, 69, 96, 0.9);
-    }
-
-    .playlist-status {
-      margin-top: 0.75rem;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      text-align: center;
     }
 
     .venue-story {
@@ -472,7 +417,7 @@
       <div class="event-label">Every Monday</div>
       <div class="hero-time">Bachata class 7:30 PM (£5) · Open to all levels</div>
       <div class="hero-free">Free Social from 8:30 PM</div>
-      <a href="https://www.fatsoma.com/e/5o78eo2j/salsa-mondays-bachata-party-at-big-chill" target="_blank" class="cta-btn-hero">Book Class (£5)</a>
+      <a href="https://www.fatsoma.com/e/e9j7k5wf/bachata-mondays-at-big-chill" target="_blank" class="cta-btn-hero">Book Class (£5)</a>
     </div>
   </section>
 
@@ -512,7 +457,7 @@
       </div>
       <div class="detail-row">
         <span class="label">Book</span>
-        <span><a href="https://www.fatsoma.com/e/5o78eo2j/salsa-mondays-bachata-party-at-big-chill" target="_blank" style="color: var(--accent);">Fatsoma ticket link</a></span>
+        <span><a href="https://www.fatsoma.com/e/e9j7k5wf/bachata-mondays-at-big-chill" target="_blank" style="color: var(--accent);">Fatsoma ticket link</a></span>
       </div>
     </div>
 
@@ -528,11 +473,17 @@
       </ul>
     </div>
 
-    <div class="playlist-section" id="playlistSection">
+    <div class="video-section">
       <h2>Big Chill Videos</h2>
-      <p class="playlist-subtitle" id="playlistSubtitle"></p>
-      <div class="playlist-carousel" id="playlistCarousel"></div>
-      <p class="playlist-status" id="playlistStatus"></p>
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/rQQ-yDUZMmc?rel=0"
+          title="Bachata Mondays @King's Cross"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
     </div>
 
     <div class="artwork-card">
@@ -589,67 +540,6 @@
       });
     }
 
-    async function discoverPlaylistIdByTitle(title) {
-      const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(`${title} Rogue Bachata playlist`)}`;
-      const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(searchUrl)}`;
-
-      try {
-        const response = await fetch(proxyUrl);
-        if (!response.ok) return '';
-        const html = await response.text();
-        const matches = Array.from(html.matchAll(/\/playlist\?list=([A-Za-z0-9_-]+)/g));
-        const ids = [...new Set(matches.map(match => match[1]))];
-        return ids.find(id => id.startsWith('PL')) || ids[0] || '';
-      } catch (_error) {
-        return '';
-      }
-    }
-
-    async function loadBigChillPlaylist() {
-      const section = document.getElementById('playlistSection');
-      const subtitle = document.getElementById('playlistSubtitle');
-      const carousel = document.getElementById('playlistCarousel');
-      const status = document.getElementById('playlistStatus');
-      if (!section || !subtitle || !carousel || !status) return;
-
-      try {
-        const response = await fetch('data.json');
-        const data = await response.json();
-        const playlists = data.youtubePlaylists ? Object.values(data.youtubePlaylists) : [];
-        const match = playlists.find(p => (p.title || '').toLowerCase() === 'bachata mondays @king's cross')
-          || playlists.find(p => (p.title || '').toLowerCase().includes('bachata mondays @king's cross'));
-
-        let playlistId = match && match.id ? match.id : '';
-        if (!playlistId) {
-          playlistId = await discoverPlaylistIdByTitle('Bachata Mondays @King's Cross');
-        }
-
-        if (!playlistId) {
-          return;
-        }
-
-        subtitle.textContent = (match && match.description) || 'Latest videos from Bachata Mondays @King's Cross.';
-
-        // Embed only the specified Shorts video
-        const shortsId = 'KE_OfUvBYmg';
-        carousel.innerHTML = `
-          <iframe
-            src="https://www.youtube.com/embed/${shortsId}?rel=0"
-            title="Bachata Mondays @King's Cross Short"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-            style="width:100%;height:100%;aspect-ratio:9/16;border:0;display:block;">
-          </iframe>
-        `;
-        status.textContent = '';
-        section.style.display = 'block';
-      } catch (error) {
-        console.error('Unable to load Big Chill playlist:', error);
-      }
-    }
-
-    loadBigChillPlaylist();
   </script>
 </body>
 </html>
