@@ -20,6 +20,12 @@ Make changes, then: git add . && git commit -m 'message' && git push
 siteName, tagline, offerings, principles, youtubePlaylists, youtubeChannel,
 backgroundVideo, rogueParties, upcomingEvents, pastEvents
 
+## Integrations available
+You have access to:
+- Gmail (read/send emails via MCP)
+- Google Calendar (read/create/edit events via MCP)
+- GitHub (via git commands — commit, push, pull)
+
 ## Telegram access
 You are connected via Telegram. The user (elpadrinosalsero) owns this project.
 When asked to make changes: edit files, commit, push. No approval needed.
