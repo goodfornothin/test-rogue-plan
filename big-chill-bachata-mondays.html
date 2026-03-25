@@ -3,556 +3,654 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bachata Mondays @King's Cross | Bachata London King's Cross</title>
-  <meta name="description" content="Looking for Kings Cross salsa, big chill salsa night, or big chill latin night? Join us for the best Bachata and Salsa in Central London. Welcoming dancers from Bachata exchange, salsateca, and more!">
-  <meta name="keywords" content="big chill salsa night, big chill latin night, kings cross salsa, salsa central london, bachata exchange, salsateca, bachata london">
-
-  <meta property="og:title" content="Bachata Mondays @King's Cross | King's Cross">
-  <meta property="og:description" content="Every Monday at Big Chill, King's Cross: Bachata class at 7:30 PM (£5) and free social from 8:30 PM, open to all levels.">
-  <meta property="og:image" content="https://roguebachata.com/images/bachata-mondays-big-chill.jpg">
+  <title>Bachata for Beginners | Try Bachata Monday | Rogue Bachata London</title>
+  <meta name="description" content="Never tried Bachata? Come shake off the Monday blues. Friendly class every Monday at King's Cross, London. All levels welcome — no partner needed.">
+  <meta property="og:title" content="Bachata for Beginners | Try Bachata This Monday | Rogue Bachata London">
+  <meta property="og:description" content="Never tried Bachata? Come shake off the Monday blues. Friendly class every Monday at King's Cross — no experience, no partner needed. Just £5.">
+  <meta property="og:image" content="https://roguebachata.com/images/try-bachata-og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://roguebachata.com/big-chill-bachata-mondays.html">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-
-  <link rel="stylesheet" href="style.css">
+  <meta name="twitter:image" content="https://roguebachata.com/images/try-bachata-og.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Playfair+Display:wght@800&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink: #F35F96;
+      --pink-dark: #c83c74;
+      --pink-light: #f99dbf;
+      --pink-glow: rgba(243, 95, 150, 0.25);
+      --dark: #0d0d1a;
+      --card-bg: rgba(10, 8, 20, 0.72);
+    }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      background: var(--bg);
-      color: var(--text);
       font-family: 'Poppins', sans-serif;
+      background: var(--dark);
+      color: #fff;
       overflow-x: hidden;
     }
 
-    .fullpage-video-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+    /* ── HERO SECTION ── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 2rem 1.2rem 2.5rem;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: top;
-      z-index: -2;
+      z-index: 0;
     }
 
-    .fullpage-video-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.29);
-      z-index: -1;
+    /* subtle gradient overlay — keeps video visible but text readable */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.08) 0%,
+        rgba(0,0,0,0.12) 40%,
+        rgba(0,0,0,0.65) 75%,
+        rgba(0,0,0,0.82) 100%
+      );
+      z-index: 1;
     }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 2rem;
-      background: rgba(26, 26, 46, 0.82);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(8px);
-    }
-    nav .logo {
-      font-size: 1.2rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      color: var(--text);
-      text-decoration: none;
-    }
-    nav .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-    nav .nav-links a {
-      color: var(--text);
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.3s;
-      border-bottom: 2px solid transparent;
-      padding-bottom: 0.3rem;
-    }
-    nav .nav-links a:hover {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
-    }
-    nav .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--text);
-      font-size: 1.5rem;
-      cursor: pointer;
-      padding: 0.5rem;
-    }
-
-    .event-hero {
+    .hero-content {
       position: relative;
-      min-height: 65vh;
-      min-height: 420px;
+      z-index: 2;
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+    }
+
+    /* ── BADGE ── */
+    .badge {
+      display: inline-block;
+      background: var(--pink);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 2rem;
+      margin-bottom: 1.2rem;
+      box-shadow: none;
+    }
+
+    /* ── ROTATING MESSAGES ── */
+    .message-area {
+      min-height: 4.5rem;
+      margin-bottom: 1.2rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 2.5rem 1.5rem;
+      position: relative;
     }
 
-    .event-hero-content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 1.5rem;
-      max-width: 760px;
-    }
-    .hero-location {
-      font-size: clamp(1rem, 3vw, 1.5rem);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #e94560;
+    .rotating-msg {
+      position: absolute;
+      width: 100%;
+      font-size: clamp(1.3rem, 5.5vw, 1.75rem);
       font-weight: 700;
-      margin-bottom: 0.4rem;
-      text-shadow: 0 0 18px rgba(233, 69, 96, 0.5);
+      line-height: 1.25;
+      color: #fff;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.7);
     }
-    .event-hero-content .event-label {
-      font-size: 0.85rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 0;
-      margin-top: 0.6rem;
-      font-weight: 500;
+
+    .rotating-msg.active {
+      opacity: 1;
+      transform: translateY(0);
     }
-    .event-hero-content h1 {
-      font-size: clamp(3.2rem, 11vw, 6.5rem);
+
+    /* ── CARD BLOCK ── */
+    .hero-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255,30,120,0.35);
+      border-radius: 1.4rem;
+      padding: 1.5rem 1.4rem 1.8rem;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.45);
+      margin-bottom: 1.2rem;
+    }
+
+    .card-heading {
       font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 8vw, 2.8rem);
       font-weight: 800;
-      line-height: 0.92;
-      letter-spacing: -0.02em;
-      word-spacing: -0.05em;
-      background: linear-gradient(
-        120deg,
-        #f7d7e6 0%,
-        #f2bfd6 30%,
-        #fff4fa 50%,
-        #efb2cc 70%,
-        #e79fbe 100%
-      );
-      background-size: 250% 100%;
+      line-height: 1.05;
+      background: linear-gradient(135deg, #fff 30%, #ff9fd4 70%, var(--pink-light) 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 10px rgba(247, 200, 224, 0.45));
-      animation: titleShine 6s linear infinite;
-      padding-bottom: 0.14em;
-      margin-bottom: 1.2rem;
+      margin-bottom: 0.6rem;
     }
 
-    @keyframes titleShine {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
+    .card-sub {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.6;
+      margin-bottom: 1.3rem;
     }
-    .title-line {
+
+    /* ── DOTS ── */
+    .dots {
+      display: flex;
+      gap: 0.4rem;
+      justify-content: center;
+      margin-bottom: 1.4rem;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+
+    .dot.active { background: var(--pink); }
+
+    /* ── BUTTONS ── */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .btn-primary {
       display: block;
-    }
-    .title-line:last-child {
-      padding-bottom: 0.08em;
-    }
-    .event-hero-content .hero-time {
-      font-size: 1.05rem;
-      color: rgba(200, 190, 180, 0.82);
-      margin-top: 0.7rem;
-      margin-bottom: 0.8rem;
+      width: 100%;
+      padding: 1rem 1.5rem;
+      background: var(--pink);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 3rem;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: none;
+      transition: background 0.2s, transform 0.15s;
       letter-spacing: 0.02em;
     }
-    .event-hero-content .hero-free {
-      font-size: clamp(1.1rem, 2.8vw, 1.6rem);
-      color: #fff;
-      background: linear-gradient(90deg, transparent, rgba(233, 69, 96, 0.35) 15%, rgba(233, 69, 96, 0.35) 85%, transparent);
-      border: none;
-      border-top: 1px solid rgba(233, 69, 96, 0.4);
-      border-bottom: 1px solid rgba(233, 69, 96, 0.4);
-      border-radius: 0;
+
+    .btn-primary:active { transform: scale(0.97); }
+
+    .btn-primary:hover { background: var(--pink-dark); }
+
+    .btn-secondary {
       display: block;
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
-      padding: 0.7rem 0;
-      margin-bottom: 1.4rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    .cta-btn-hero {
-      display: inline-block;
-      padding: 1rem 2.4rem;
-      background: var(--accent);
-      color: #fff;
-      border-radius: 2rem;
-      font-size: 1rem;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .event-content {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem 3rem;
-    }
-
-    .artwork-card {
-      border-radius: 1.2rem;
-      overflow: hidden;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.5);
-    }
-    .artwork-card img {
       width: 100%;
-      display: block;
-      border-radius: 1.2rem;
-    }
-
-    .info-block {
-      background: rgba(26, 26, 46, 0.78);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      margin-bottom: 1.2rem;
-      backdrop-filter: blur(8px);
-    }
-    .info-block h2 {
-      font-size: 1.1rem;
-      color: var(--accent);
-      margin-bottom: 0.8rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-    .info-block p, .info-block ul {
-      color: var(--text);
-      line-height: 1.7;
-      font-size: 1rem;
-    }
-    .info-block ul {
-      list-style: none;
-      padding: 0;
-    }
-    .info-block ul li::before {
-      content: "→ ";
-      color: var(--accent);
-    }
-
-    .detail-row {
-      display: flex;
-      gap: 0.6rem;
-      align-items: flex-start;
-      margin-bottom: 0.55rem;
-      font-size: 1rem;
-      color: var(--text);
-    }
-    .detail-row .label {
-      color: var(--accent);
-      font-weight: 600;
-      min-width: 95px;
-      flex-shrink: 0;
-    }
-
-    .action-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1.2rem;
-    }
-    .action-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: 2rem;
+      padding: 0.95rem 1.5rem;
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,30,120,0.5);
+      color: #fff;
       font-size: 0.95rem;
       font-weight: 600;
+      border-radius: 3rem;
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,30,120,0.15);
+      border-color: var(--pink);
+    }
+
+    .btn-ghost {
+      display: block;
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 0.4rem;
+      transition: color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--pink-light); }
+
+    .btn-ghost span {
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+
+    .btn-ghost:hover span { transform: translateY(3px); }
+
+    /* ── DETAILS SECTION ── */
+    .details {
+      padding: 3rem 1.2rem 4rem;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 0.5rem;
+    }
+
+    .details h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 6vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.6rem;
+    }
+
+    /* ── PERKS ── */
+    .perks {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .perk {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: rgba(255,30,120,0.08);
+      border: 1px solid rgba(255,30,120,0.2);
+      border-radius: 1rem;
+      padding: 1rem 1.1rem;
+    }
+
+    .perk-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 0.1rem;
+    }
+
+    .perk-text strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.2rem;
+    }
+
+    .perk-text span {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+
+    /* ── SCHEDULE CARD ── */
+    .schedule-card {
+      background: rgba(255,30,120,0.1);
+      border: 1.5px solid rgba(255,30,120,0.4);
+      border-radius: 1.2rem;
+      padding: 1.4rem;
+      margin-bottom: 2rem;
+    }
+
+    .schedule-card h3 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--pink-light);
+      margin-bottom: 1rem;
+    }
+
+    .schedule-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .schedule-row:last-child { border-bottom: none; }
+
+    .schedule-row .time {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .schedule-row .what {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .schedule-row .price {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--pink-light);
+    }
+
+    /* ── BOOK SECTION ── */
+    .book-block {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .book-block p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+    }
+
+    /* ── VENUE ── */
+    .venue-info {
+      text-align: center;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 1.5rem;
+    }
+
+    .venue-info a {
+      color: var(--pink-light);
       text-decoration: none;
     }
-    .action-btn.map {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid var(--border);
-      color: var(--text);
+
+    /* ── CONTACT BLOCK ── */
+    .contact-block {
+      background: rgba(232,160,180,0.08);
+      border: 1px solid rgba(232,160,180,0.25);
+      border-radius: 1.2rem;
+      padding: 1.4rem;
+      margin-bottom: 1.5rem;
     }
-    .action-btn.whatsapp {
-      background: #25d366;
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 1.1rem;
+      border-radius: 0.9rem;
+      text-decoration: none;
       color: #fff;
-    }
-    .action-btn.instagram {
-      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-      color: #fff;
+      font-size: 0.9rem;
+      transition: opacity 0.2s;
     }
 
-    .video-section {
-      background: rgba(26, 26, 46, 0.78);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      margin-bottom: 1.2rem;
-      backdrop-filter: blur(8px);
+    .contact-btn:hover { opacity: 0.85; }
+
+    .contact-btn strong { display: block; font-weight: 700; font-size: 0.95rem; }
+    .contact-btn small { display: block; opacity: 0.7; font-size: 0.8rem; }
+
+    .contact-icon { font-size: 1.5rem; flex-shrink: 0; }
+
+    .contact-btn.whatsapp { background: #1a8a45; }
+    .contact-btn.facebook { background: #1877f2; }
+    .contact-btn.instagram {
+      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     }
 
-    .video-section h2 {
-      font-size: 1.1rem;
-      color: var(--accent);
-      margin-bottom: 0.8rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-
-    .video-container {
-      width: 100%;
-      border-radius: 1rem;
-      overflow: hidden;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.45);
-      border: 1px solid rgba(233, 69, 96, 0.3);
-      background: rgba(0,0,0,0.25);
-      aspect-ratio: 9 / 16;
-      min-height: 420px;
-    }
-
-    .video-container iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-    }
-
-    .venue-story {
-      background: rgba(233, 69, 96, 0.14);
-      border: 1px solid rgba(233, 69, 96, 0.4);
-    }
-
-    .venue-story p {
-      font-size: 1.03rem;
-      line-height: 1.8;
-      color: #fff;
-    }
-
+    /* ── FOOTER ── */
     footer {
-      background: var(--primary);
-      color: var(--text);
       text-align: center;
-      padding: 2rem;
-      margin-top: 2rem;
-      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+      border-top: 1px solid rgba(255,255,255,0.06);
     }
 
-    @media (max-width: 768px) {
-      nav {
+    footer a { color: rgba(255,30,120,0.7); text-decoration: none; }
+
+    /* ── DESKTOP ── */
+    @media (min-width: 768px) {
+      .hero {
+        align-items: center;
+        padding: 3rem 2rem;
+      }
+
+      .hero-content {
+        max-width: 540px;
+      }
+
+      .btn-group {
         flex-direction: row;
-        gap: 0;
-        padding: 1rem 1.5rem;
+        flex-wrap: wrap;
       }
-      nav .menu-toggle {
-        display: block;
+
+      .btn-primary { width: auto; flex: 1; }
+      .btn-secondary { width: auto; flex: 1; }
+      .btn-ghost { width: 100%; }
+
+      .details {
+        max-width: 620px;
+        padding: 4rem 2rem 5rem;
       }
-      nav .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(26, 26, 46, 0.98);
-        flex-direction: column;
-        padding: 1rem 0;
-        border-top: 1px solid var(--border);
-        backdrop-filter: blur(10px);
-        z-index: 99;
-        gap: 0;
-      }
-      nav .nav-links.open {
-        display: flex;
-      }
-      nav .nav-links a {
-        padding: 0.75rem 1.5rem;
-        margin: 0;
+
+      .perks {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <video class="fullpage-video-bg" autoplay muted loop playsinline poster="images/big-chill-event-background-poster.jpg" id="bgVideo">
-    <source src="videos/big-chill-bachata-mondays-bg.mp4" type="video/mp4">
-    <source src="videos/big-chill-event-background.mp4" type="video/mp4">
-  </video>
-  <div class="fullpage-video-overlay"></div>
 
-  <nav>
-    <a href="index.html" class="logo">ROGUE</a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-      <span>☰</span>
-    </button>
-    <div class="nav-links" id="navLinks">
-      <a href="index.html#about">About</a>
-      <a href="index.html#offerings">Classes</a>
-      <a href="index.html#events">Events</a>
-      <a href="index.html#contact">Contact</a>
-    </div>
-  </nav>
+  <!-- ══ HERO ══ -->
+  <section class="hero" id="top">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="videos/try-bachata-bg.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
 
-  <section class="event-hero">
-    <div class="event-hero-content">
-      <h1>
-        <span class="title-line">Bachata</span>
-        <span class="title-line">Mondays</span>
-        <span class="title-line">@King's Cross</span>
-      </h1>
-      <div class="hero-location" style="margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.4rem; color: #fff; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-        <span style="font-size: 1.5rem;">📍</span> at Big Chill
+    <div class="hero-content">
+      <div class="badge">Every Monday · King's Cross</div>
+
+      <!-- rotating messages -->
+      <div class="message-area" aria-live="polite">
+        <p class="rotating-msg active">Shake off the Monday blues 💃</p>
+        <p class="rotating-msg">Make friends. Have fun. Dance.</p>
+        <p class="rotating-msg">No experience? Perfect. 🙌</p>
+        <p class="rotating-msg">The friendliest crowd in London</p>
+        <p class="rotating-msg">No partner needed — ever</p>
+        <p class="rotating-msg">Your Monday just got a lot better</p>
       </div>
-      <div class="event-label">Every Monday</div>
-      <div class="hero-time">Bachata class 7:30 PM (£5) · Open to all levels</div>
-      <div class="hero-free">Free Social from 8:30 PM</div>
-      <a href="https://www.fatsoma.com/e/69g7xpnr/bachata-mondays-at-big-chill-in-london" target="_blank" class="cta-btn-hero">Book Class (£5)</a>
+
+      <div class="dots" id="dots"></div>
+
+      <div class="hero-card">
+        <h1 class="card-heading">Try Bachata<br>This Monday</h1>
+        <p class="card-sub">
+          A 1-hour class for complete beginners, then free social dancing from 8:30 PM.
+          Everyone is welcome — no experience, no partner, no problem.
+        </p>
+
+        <div class="btn-group">
+          <a href="https://www.fatsoma.com/e/69g7xpnr/bachata-mondays-at-big-chill-in-london" target="_blank" class="btn-primary">
+            🎉 Join for £5 →
+          </a>
+          <a href="#contact" class="btn-secondary">
+            💬 Any questions?
+          </a>
+        </div>
+
+        <a href="#details" class="btn-ghost">Find out more <span>↓</span></a>
+      </div>
     </div>
   </section>
 
-  <div class="event-content">
-    <div class="info-block">
-      <h2>What's On</h2>
-      <p>Join us every Monday at King's Cross for Bachata class and social dancing. Everyone is welcome — all levels can join.</p>
-    </div>
+  <!-- ══ DETAILS ══ -->
+  <section class="details" id="details">
+    <p class="section-label">What to expect</p>
+    <h2>You'll love it here.</h2>
 
-    <div class="info-block" style="border-color: rgba(233, 69, 96, 0.45);">
-      <h2>Main Focus</h2>
-      <p style="font-size: 1.3rem; font-weight: 700; color: #fff; line-height: 1.5;">FREE SOCIAL FROM 8:30 PM</p>
-      <p style="margin-top: 0.5rem; color: var(--text-muted);">Come for the social even if you skip class. No partner needed.</p>
-    </div>
-
-    <div class="info-block">
-      <h2>Details</h2>
-      <div class="detail-row">
-        <span class="label">When</span>
-        <span>Every Monday</span>
+    <div class="perks">
+      <div class="perk">
+        <div class="perk-icon">💃</div>
+        <div class="perk-text">
+          <strong>Bachata class at 7:30 PM</strong>
+          <span>Friendly, easy-going 1-hour class. Absolute beginners totally welcome.</span>
+        </div>
       </div>
-      <div class="detail-row">
-        <span class="label">Class</span>
-        <span>Bachata · 7:30 PM · £5</span>
+      <div class="perk">
+        <div class="perk-icon">🎶</div>
+        <div class="perk-text">
+          <strong>Free social from 8:30 PM</strong>
+          <span>After class, the floor opens up. Come and dance or just vibe — no pressure.</span>
+        </div>
       </div>
-      <div class="detail-row">
-        <span class="label">Social</span>
-        <span>Free from 8:30 PM</span>
+      <div class="perk">
+        <div class="perk-icon">👐</div>
+        <div class="perk-text">
+          <strong>No partner needed</strong>
+          <span>Everyone rotates. You'll dance with loads of people and make instant friends.</span>
+        </div>
       </div>
-      <div class="detail-row">
-        <span class="label">Level</span>
-        <span>Open to all levels</span>
+      <div class="perk">
+        <div class="perk-icon">📍</div>
+        <div class="perk-text">
+          <strong>Big Chill, King's Cross</strong>
+          <span>Central London, super easy to get to. Trains, tubes, buses — all on your doorstep.</span>
+        </div>
       </div>
-      <div class="detail-row">
-        <span class="label">Venue</span>
-        <span>Big Chill Bar, King's Cross, London</span>
+      <div class="perk">
+        <div class="perk-icon">💸</div>
+        <div class="perk-text">
+          <strong>Just £5 for the class</strong>
+          <span>That's it. The social after is completely free.</span>
+        </div>
       </div>
-      <div class="detail-row">
-        <span class="label">Book</span>
-        <span><a href="https://www.fatsoma.com/e/69g7xpnr/bachata-mondays-at-big-chill-in-london" target="_blank" style="color: var(--accent);">Fatsoma ticket link</a></span>
-      </div>
-    </div>
-
-    <div class="info-block">
-      <h2>What To Expect</h2>
-      <ul>
-        <li>Bachata class at 7:30 PM</li>
-        <li>Free social dancing from 8:30 PM</li>
-        <li>Bachata-focused Monday night at King's Cross</li>
-        <li>Open to all levels</li>
-        <li>No partner needed</li>
-        <li>Friendly crowd, all welcome</li>
-      </ul>
-    </div>
-
-    <div class="video-section">
-      <h2>Big Chill Videos</h2>
-      <div class="video-container">
-        <iframe
-          src="https://www.youtube.com/embed/rQQ-yDUZMmc?rel=0"
-          title="Bachata Mondays @King's Cross"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
+      <div class="perk">
+        <div class="perk-icon">😊</div>
+        <div class="perk-text">
+          <strong>The friendliest crowd</strong>
+          <span>No cliques, no judgement. Just good music, good vibes, and great people.</span>
+        </div>
       </div>
     </div>
 
-    <div class="artwork-card">
-      <img src="images/bachata-mondays-big-chill.jpg" alt="Bachata Mondays @King's Cross at King's Cross">
-    </div>
-
-    <div class="info-block">
-      <h2>Find Us</h2>
-      <p style="margin-bottom: 1rem;">Big Chill Bar, King's Cross, London</p>
-      <div class="action-links">
-        <a class="action-btn map" href="https://www.google.com/maps/search/?api=1&query=Big+Chill+Kings+Cross+London" target="_blank">📍 Google Maps</a>
-        <a class="action-btn whatsapp" href="https://wa.me/447596031416" target="_blank">💬 WhatsApp Us</a>
-        <a class="action-btn instagram" href="https://www.instagram.com/roguebachata/" target="_blank">📷 @roguebachata</a>
+    <div class="schedule-card">
+      <h3>Monday Night Schedule</h3>
+      <div class="schedule-row">
+        <span class="time">7:30 PM</span>
+        <span class="what">Bachata Class</span>
+        <span class="price">£5</span>
+      </div>
+      <div class="schedule-row">
+        <span class="time">8:30 PM</span>
+        <span class="what">Free Social Dancing</span>
+        <span class="price">Free</span>
+      </div>
+      <div class="schedule-row">
+        <span class="time">Every Monday</span>
+        <span class="what">Big Chill Bar, King's Cross</span>
+        <span class="price">All levels</span>
       </div>
     </div>
 
-    <div class="info-block venue-story">
-      <h2>Why Big Chill, King's Cross</h2>
-      <p>Big Chill is one of the coolest places in King's Cross to throw a Bachata Monday: central, easy to reach, full of energy, and made for social vibes. The space feels raw and vibrant, so the class warms everyone up and the floor naturally opens into that 8:30 PM social magic where people connect fast, dance more, and stay late.</p>
+    <div class="book-block">
+      <p>
+        Reserve your spot in the class — it fills up fast.<br>
+        Or just show up for the free social — no booking needed.
+      </p>
+      <a href="https://www.fatsoma.com/e/69g7xpnr/bachata-mondays-at-big-chill-in-london" target="_blank" class="btn-primary" style="display:inline-block; width:100%;">
+        🎉 Book My £5 Class
+      </a>
     </div>
 
-    <div class="artwork-card">
-      <img id="venueImage" src="images/big-chill-venue.jpg" alt="Big Chill venue at King's Cross" onerror="this.onerror=null;this.src='images/bachata-mondays-big-chill.jpg';">
-    </div>
-
-    <div class="video-section">
-      <h2>Free Social at Big Chill Bachata Mondays</h2>
-      <div class="video-container">
-        <iframe
-          src="https://www.youtube.com/embed/b-PS_dhDE8Q?rel=0"
-          title="Free Social at Big Chill Bachata Mondays"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
+    <div class="contact-block" id="contact">
+      <p class="section-label" style="margin-bottom:0.4rem;">Get in touch</p>
+      <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:1.2rem;">We'd love to hear from you</h3>
+      <div class="contact-links">
+        <a href="https://wa.me/447596031416" target="_blank" class="contact-btn whatsapp">
+          <span class="contact-icon">💬</span>
+          <span>
+            <strong>WhatsApp</strong>
+            <small>Message us directly</small>
+          </span>
+        </a>
+        <a href="https://www.facebook.com/people/Rogue-Bachata/61587393734685/" target="_blank" class="contact-btn facebook">
+          <span class="contact-icon">📘</span>
+          <span>
+            <strong>Facebook</strong>
+            <small>Rogue Bachata</small>
+          </span>
+        </a>
+        <a href="https://www.instagram.com/roguebachata/" target="_blank" class="contact-btn instagram">
+          <span class="contact-icon">📷</span>
+          <span>
+            <strong>Instagram</strong>
+            <small>@roguebachata</small>
+          </span>
+        </a>
       </div>
     </div>
-  </div>
+
+    <div class="venue-info">
+      <p>Big Chill Bar · 1 Horsefall St · London N1C 4AA</p>
+      <p style="margin-top:0.4rem;">
+        <a href="https://www.google.com/maps/search/?api=1&query=Big+Chill+Kings+Cross+London" target="_blank">📍 Get directions</a>
+      </p>
+    </div>
+  </section>
 
   <footer>
-    <p>© 2026 Rogue Bachata. All rights reserved.</p>
-    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
-      <a href="index.html" style="color: var(--accent); text-decoration: none;">Back to main site</a>
-    </p>
+    <p>© 2026 <a href="index.html">Rogue Bachata</a>. Made with love in London.</p>
   </footer>
 
   <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
+    // Rotating messages
+    const msgs = document.querySelectorAll('.rotating-msg');
+    const dotsContainer = document.getElementById('dots');
+    let current = 0;
 
-    if (menuToggle) {
-      menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-      });
+    // Build dots
+    msgs.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Message ' + (i + 1));
+      d.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(d);
+    });
 
-      navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('open');
-        });
-      });
+    const dotEls = dotsContainer.querySelectorAll('.dot');
+
+    function goTo(n) {
+      msgs[current].classList.remove('active');
+      dotEls[current].classList.remove('active');
+      current = n;
+      msgs[current].classList.add('active');
+      dotEls[current].classList.add('active');
     }
 
-    const bgVideo = document.getElementById('bgVideo');
-    if (bgVideo) {
-      bgVideo.addEventListener('error', () => {
-        bgVideo.style.display = 'none';
-      });
-    }
-
+    setInterval(() => {
+      goTo((current + 1) % msgs.length);
+    }, 3000);
   </script>
+
 </body>
 </html>

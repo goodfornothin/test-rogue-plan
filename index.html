@@ -616,6 +616,94 @@
       }
     }
 
+    /* Bachata for Beginners Section */
+    .beginners-section {
+      background: linear-gradient(135deg, rgba(243,95,150,0.12) 0%, rgba(13,13,26,0.98) 60%);
+      border-top: 1px solid rgba(243,95,150,0.25);
+      border-bottom: 1px solid rgba(243,95,150,0.25);
+      padding: 4rem 1.5rem;
+    }
+
+    .beginners-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .beginners-eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .beginners-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff 30%, #ff9fd4 70%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.6rem;
+      line-height: 1.1;
+    }
+
+    .beginners-subtitle {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2rem;
+    }
+
+    .beginners-perks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+      margin-bottom: 2.5rem;
+      text-align: left;
+    }
+
+    .beginners-perk {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      background: rgba(255,30,120,0.07);
+      border: 1px solid rgba(255,30,120,0.18);
+      border-radius: 0.9rem;
+      padding: 0.9rem 1rem;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.5;
+    }
+
+    .beginners-perk-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    .beginners-cta {
+      display: inline-block;
+      padding: 1rem 2.4rem;
+      background: var(--accent);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 3rem;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .beginners-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    @media (max-width: 540px) {
+      .beginners-perks { grid-template-columns: 1fr; }
+    }
+
     /* Featured Events Carousel */
     .featured-events-section {
       padding: 4rem 2rem 3rem;
@@ -836,35 +924,51 @@
             <span class="title-line">@King's Cross</span>
           </h1>
           <p class="hero-card-subtitle">Every Monday · Class 7:30 PM (£5) · Free Social from 8:30 PM</p>
+          <a href="free-bachata-social-mondays.html" target="_blank" class="cta-btn">See Details</a>
+        </div>
+      </div>
+      <!-- Slide 2: Bachata for Beginners -->
+      <div class="hero-slide" data-index="1">
+        <div class="hero-card big-chill">
+          <p class="hero-location">King's Cross</p>
+          <h1>
+            <span class="title-line">Bachata</span>
+            <span class="title-line">for</span>
+            <span class="title-line">Beginners</span>
+          </h1>
+          <p class="hero-card-subtitle">Try Bachata this Monday · Class 7:30 PM (£5) · No experience needed</p>
           <a href="big-chill-bachata-mondays.html" target="_blank" class="cta-btn">See Details</a>
         </div>
       </div>
-      <!-- Slide 2: Rogue Bachata (Main) -->
-      <div class="hero-slide" data-index="1">
+      <!-- Slide 3: Bachata Clapham @ Cafe Sol -->
+      <div class="hero-slide" data-index="2">
+        <div class="hero-card">
+          <h1>
+            <span class="title-line">Bachata</span>
+            <span class="title-line">Clapham</span>
+          </h1>
+          <p class="hero-card-subtitle">@ Cafe Sol · Every Tuesday</p>
+          <a href="cafe-sol-event.html" class="cta-btn">More</a>
+        </div>
+      </div>
+      <!-- Slide 4: Rogue Bachata (Main) -->
+      <div class="hero-slide" data-index="3">
         <div class="hero-card">
           <h1>Rogue Bachata</h1>
           <p class="hero-card-subtitle">Movement · Connection · Freedom</p>
           <a href="#events" class="cta-btn">More</a>
         </div>
       </div>
-      <!-- Slide 3: Rogue Tuesdays -->
-      <div class="hero-slide" data-index="2">
-        <div class="hero-card">
-          <h1>Rogue Tuesdays</h1>
-          <p class="hero-card-subtitle">at Clapham</p>
-          <a href="cafe-sol-event.html" class="cta-btn">More</a>
-        </div>
-      </div>
-      <!-- Slide 4: Rogue Workshops -->
-      <div class="hero-slide" data-index="3">
+      <!-- Slide 5: Rogue Workshops -->
+      <div class="hero-slide" data-index="4">
         <div class="hero-card">
           <h1>Rogue Workshops</h1>
           <p class="hero-card-subtitle">Advanced Technique & Artistry</p>
           <a href="rogue-resonance.html" class="cta-btn">More</a>
         </div>
       </div>
-      <!-- Slide 5: Couples Sensual -->
-      <div class="hero-slide" data-index="4">
+      <!-- Slide 6: Couples Sensual -->
+      <div class="hero-slide" data-index="5">
         <div class="hero-card">
           <h1>Couples Sensual</h1>
           <p class="hero-card-subtitle">Dance Into Each Other</p>
@@ -877,6 +981,42 @@
     <div class="hero-carousel-arrows">
       <button class="hero-arrow hero-arrow-left" aria-label="Previous" tabindex="0">&#8592;</button>
       <button class="hero-arrow hero-arrow-right" aria-label="Next" tabindex="0">&#8594;</button>
+    </div>
+  </section>
+
+  <!-- Bachata for Beginners London Section -->
+  <section class="beginners-section" id="beginners">
+    <div class="beginners-inner">
+      <span class="beginners-eyebrow">Every Monday · King's Cross</span>
+      <h2 class="beginners-title">Bachata for Beginners London</h2>
+      <p class="beginners-subtitle">Never danced before? That's exactly why you should come.</p>
+      <div class="beginners-perks">
+        <div class="beginners-perk">
+          <span class="beginners-perk-icon">💃</span>
+          <span>1-hour beginner class at 7:30 PM — taught from absolute zero</span>
+        </div>
+        <div class="beginners-perk">
+          <span class="beginners-perk-icon">🎶</span>
+          <span>Free social dancing from 8:30 PM — no booking needed</span>
+        </div>
+        <div class="beginners-perk">
+          <span class="beginners-perk-icon">👐</span>
+          <span>No partner needed — everyone rotates, everyone connects</span>
+        </div>
+        <div class="beginners-perk">
+          <span class="beginners-perk-icon">💸</span>
+          <span>Just £5 for the class · Free social after</span>
+        </div>
+        <div class="beginners-perk">
+          <span class="beginners-perk-icon">📍</span>
+          <span>Big Chill Bar, King's Cross — central, easy to reach</span>
+        </div>
+        <div class="beginners-perk">
+          <span class="beginners-perk-icon">😊</span>
+          <span>The friendliest crowd in London — no cliques, no judgement</span>
+        </div>
+      </div>
+      <a href="big-chill-bachata-mondays.html" class="beginners-cta">Try Bachata This Monday →</a>
     </div>
   </section>
 
