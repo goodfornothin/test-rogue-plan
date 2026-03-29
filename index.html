@@ -30,15 +30,58 @@
       "name": "Rogue Bachata London",
       "url": "https://roguebachata.com",
       "telephone": "+447596031416",
+      "image": "https://roguebachata.com/images/bachata-mondays-big-chill.jpg",
+      "priceRange": "£5–£10",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Big Chill Bar, Kings Cross",
         "addressLocality": "London",
+        "addressRegion": "London",
+        "postalCode": "N1C 4AX",
         "addressCountry": "GB"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "51.5307",
+        "longitude": "-0.1242"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Monday",
+          "opens": "19:30",
+          "closes": "23:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Tuesday",
+          "opens": "19:30",
+          "closes": "23:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/roguebachata/",
+        "https://www.youtube.com/@RogueBachata"
+      ],
+      "description": "Bachata and salsa classes and free social dancing in London. Weekly events every Monday at Big Chill Kings Cross (£5) and every Tuesday at Cafe Sol Clapham (£10). Beginners welcome — no partner needed."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Oscar Castellino",
+      "jobTitle": "Bachata Instructor & Performer",
+      "url": "https://roguebachata.com",
+      "image": "https://roguebachata.com/images/RogueResonance.png",
+      "description": "Oscar is a performer with over 20 years of social dance experience and a background in professional theatre. He teaches Rogue Bachata — a distinctive style combining stage artistry with authentic partner connection. Based in London.",
+      "knowsAbout": ["Bachata", "Sensual Bachata", "Partner Dance", "Latin Dance", "Rogue Bachata"],
+      "worksFor": {
+        "@type": "DanceSchool",
+        "name": "Rogue Bachata London",
+        "url": "https://roguebachata.com"
       },
       "sameAs": [
         "https://www.instagram.com/roguebachata/"
-      ],
-      "description": "Bachata and salsa classes and free social dancing in London. Weekly parties every Monday at Big Chill Kings Cross and every Tuesday at Cafe Sol Clapham. All levels welcome."
+      ]
     },
     {
       "@context": "https://schema.org",
@@ -130,6 +173,76 @@
       ],
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "eventStatus": "https://schema.org/EventScheduled"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need a partner to attend Rogue Bachata classes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No partner needed at all. We rotate partners during classes so everyone gets to dance with different people. Just come on your own and you'll be paired up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Rogue Bachata suitable for complete beginners?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Our Monday class at King's Cross is specifically designed for beginners — no experience required. You'll learn basic Bachata steps in a friendly, welcoming environment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does Rogue Bachata cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Monday beginners class at King's Cross is just £5. The Tuesday class at Cafe Sol Clapham is £10. Social dancing after both classes is completely free."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where are Rogue Bachata classes held?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We run two weekly events: every Monday at Big Chill Bar, King's Cross, London — and every Tuesday at Cafe Sol, 13-15 Clapham High Street, London SW4 7TS."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Bachata?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bachata is a partner dance from the Dominican Republic, danced to romantic Latin music. It's known for its sensual hip movements, close connection, and expressive styling. It's one of the easiest Latin dances to pick up, making it perfect for beginners."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I wear to a Bachata class?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Comfortable clothes you can move in — nothing special required. For shoes, anything with a smooth sole works well. Avoid trainers with thick rubber soles as they grip the floor too much. Heels are optional."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Rogue Bachata's style?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rogue Bachata is a distinctive style developed by Oscar, combining his 20+ years of social dance experience with his background as a theatre performer. It focuses on authentic connection, groundedness, flow, and musical expression — known as Rogue Resonance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to book in advance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Booking is recommended for Monday classes at King's Cross. You can book online via the link on this page. Tuesday Cafe Sol events are pay-on-the-door. The free social dancing after both events requires no booking."
+          }
+        }
+      ]
     }
   ]
   </script>
@@ -237,7 +350,7 @@
       width: 100%;
     }
 
-    .hero-card h1 {
+    .hero-card h1, .hero-card h2 {
       font-size: clamp(2.5rem, 8vw, 5rem);
       font-weight: 700;
       letter-spacing: 0.1em;
@@ -272,7 +385,7 @@
       text-shadow: 0 0 16px rgba(233, 69, 96, 0.45);
     }
 
-    .hero-card.big-chill h1 {
+    .hero-card.big-chill h1, .hero-card.big-chill h2 {
       font-size: clamp(3rem, 10vw, 6rem);
       font-family: 'Playfair Display', serif;
       font-weight: 800;
@@ -931,11 +1044,11 @@
       <div class="hero-slide" data-index="1">
         <div class="hero-card big-chill">
           <p class="hero-location">King's Cross</p>
-          <h1>
+          <h2>
             <span class="title-line">Bachata</span>
             <span class="title-line">for</span>
             <span class="title-line">Beginners</span>
-          </h1>
+          </h2>
           <p class="hero-card-subtitle">Try Bachata this Monday · Class 7:30 PM (£5) · No experience needed</p>
           <a href="big-chill-bachata-mondays.html" target="_blank" class="cta-btn">See Details</a>
         </div>
@@ -943,10 +1056,10 @@
       <!-- Slide 3: Bachata Clapham @ Cafe Sol -->
       <div class="hero-slide" data-index="2">
         <div class="hero-card">
-          <h1>
+          <h2>
             <span class="title-line">Bachata</span>
             <span class="title-line">Clapham</span>
-          </h1>
+          </h2>
           <p class="hero-card-subtitle">@ Cafe Sol · Every Tuesday</p>
           <a href="cafe-sol-event.html" class="cta-btn">More</a>
         </div>
@@ -954,7 +1067,7 @@
       <!-- Slide 4: Rogue Bachata (Main) -->
       <div class="hero-slide" data-index="3">
         <div class="hero-card">
-          <h1>Rogue Bachata</h1>
+          <h2>Rogue Bachata</h2>
           <p class="hero-card-subtitle">Movement · Connection · Freedom</p>
           <a href="#events" class="cta-btn">More</a>
         </div>
@@ -962,7 +1075,7 @@
       <!-- Slide 5: Rogue Workshops -->
       <div class="hero-slide" data-index="4">
         <div class="hero-card">
-          <h1>Rogue Workshops</h1>
+          <h2>Rogue Workshops</h2>
           <p class="hero-card-subtitle">Advanced Technique & Artistry</p>
           <a href="rogue-resonance.html" class="cta-btn">More</a>
         </div>
@@ -970,7 +1083,7 @@
       <!-- Slide 6: Couples Sensual -->
       <div class="hero-slide" data-index="5">
         <div class="hero-card">
-          <h1>Couples Sensual</h1>
+          <h2>Couples Sensual</h2>
           <p class="hero-card-subtitle">Dance Into Each Other</p>
           <a href="sensual-couples.html" class="cta-btn">More</a>
         </div>
