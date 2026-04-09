@@ -33,11 +33,11 @@
     .fullpage-video-bg {
       position: fixed;
       top: 0;
-      left: 0;
-      width: 100vw;
+      left: 50%;
+      transform: translateX(-50%);
       height: 100vh;
-      object-fit: cover;
-      object-position: top;
+      width: auto;
+      max-width: 100%;
       z-index: -2;
     }
 
@@ -221,12 +221,12 @@
     }
 
     .info-block {
-      background: rgba(26, 26, 46, 0.78);
+      background: rgba(26, 26, 46, 0.30);
       border: 1px solid var(--border);
       border-radius: 1rem;
       padding: 1.5rem;
       margin-bottom: 1.2rem;
-      backdrop-filter: blur(8px);
+      backdrop-filter: none;
     }
     .info-block h2 {
       font-size: 1.1rem;
@@ -296,12 +296,12 @@
     }
 
     .video-section {
-      background: rgba(26, 26, 46, 0.78);
+      background: rgba(26, 26, 46, 0.30);
       border: 1px solid var(--border);
       border-radius: 1rem;
       padding: 1.5rem;
       margin-bottom: 1.2rem;
-      backdrop-filter: blur(8px);
+      backdrop-filter: none;
     }
 
     .video-section h2 {
@@ -386,8 +386,8 @@
 </head>
 <body>
   <video class="fullpage-video-bg" autoplay muted loop playsinline poster="images/big-chill-event-background-poster.jpg" id="bgVideo">
+    <source src="videos/mondays-social-bg.mp4" type="video/mp4">
     <source src="videos/big-chill-bachata-mondays-bg.mp4" type="video/mp4">
-    <source src="videos/big-chill-event-background.mp4" type="video/mp4">
   </video>
   <div class="fullpage-video-overlay"></div>
 
@@ -409,7 +409,7 @@
       <h1>
         <span class="title-line">Bachata</span>
         <span class="title-line">Mondays</span>
-        <span class="title-line">@King's Cross</span>
+        <span class="title-line" style="font-size: 0.6em;">King's Cross</span>
       </h1>
       <div class="hero-location" style="margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.4rem; color: #fff; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
         <span style="font-size: 1.5rem;">📍</span> at Big Chill
