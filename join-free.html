@@ -295,9 +295,79 @@
     @media (min-width: 640px) {
       main { padding: 3rem 2rem 4rem; }
     }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: rgba(15, 15, 26, 0.9);
+      backdrop-filter: blur(10px);
+    }
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #eee;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+    }
+    nav .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #eee;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    nav .nav-links { display: flex; align-items: center; }
+    nav .nav-links a {
+      color: #eee;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.3s;
+    }
+    nav .nav-links a:hover { color: #e94560; }
+    @media (max-width: 768px) {
+      nav .menu-toggle { display: block; }
+      nav .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        flex-direction: column;
+        background: rgba(15, 15, 26, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem 0;
+      }
+      nav .nav-links.open { display: flex; }
+      nav .nav-links a { margin: 0.5rem 1rem; padding: 0.5rem 0; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="logo">ROGUE</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span>☰</span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#about">About</a>
+      <a href="index.html#offerings">Classes & Workshops</a>
+      <a href="index.html#principles">Principles</a>
+      <a href="index.html#events">Events</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
 
   <video class="bg-video" autoplay muted loop playsinline>
     <source src="videos/try-bachata-bg.mp4" type="video/mp4">
@@ -382,5 +452,16 @@
   <footer>
     <p>© 2026 <a href="index.html">Rogue Bachata</a> · Made with love in London</p>
   </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('open'));
+      });
+    }
+  </script>
 </body>
 </html>
