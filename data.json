@@ -119,7 +119,7 @@
       "address": "13-15 Clapham High Street, London SW4 7TS",
       "mapsLink": "https://www.google.com/maps/search/?api=1&query=Cafe+Sol+13-15+Clapham+High+Street+London+SW4+7TS",
       "instagram": "https://www.instagram.com/cafesol_dos/",
-      "landingPage": "cafe-sol-tuesdays.html",
+      "landingPage": "cafe-sol-event.html",
       "classPrice": "£10",
       "socialPrice": "Free"
     },
@@ -169,7 +169,7 @@
       "address": "13-15 Clapham High Street, London SW4 7TS",
       "mapsLink": "https://www.google.com/maps/search/?api=1&query=Cafe+Sol+13-15+Clapham+High+Street+London+SW4+7TS",
       "instagram": "https://www.instagram.com/cafesol_dos/",
-      "landingPage": "cafe-sol-tuesdays.html",
+      "landingPage": "cafe-sol-event.html",
       "classPrice": "£10",
       "socialPrice": "Free"
     }
@@ -205,9 +205,9 @@
       "description": "Join us for a fun Bachata class (7:30-8:30 pm, £10) perfect for those getting into bachata, followed by FREE social dancing and watching for all levels. Hosted by Oscar, Boadicea, and the Cafe Sol team.",
       "photo": "images/RogueParty.jpg",
       "status": "upcoming",
-      "registrationLink": "cafe-sol-tuesdays.html",
+      "registrationLink": "cafe-sol-event.html",
       "contactInfo": "Class: £10. Social dancing and watching: FREE.",
-      "landingPage": "cafe-sol-tuesdays.html"
+      "landingPage": "cafe-sol-event.html"
     },
     {
       "event": "Bachata Tuesdays @ Cafe Sol - Free Social",
@@ -223,7 +223,7 @@
       "photo": "images/Bachata-Tuesdays-Social.png",
       "status": "upcoming",
       "contactInfo": "Free Entry",
-      "landingPage": "cafe-sol-tuesdays.html"
+      "landingPage": "cafe-sol-event.html"
     },
     {
       "event": "Rogue Resonance Workshop",
@@ -256,7 +256,7 @@
       "photo": "images/Bachata-Tuesdays-Social.png",
       "status": "past",
       "contactInfo": "Free Entry",
-      "landingPage": "cafe-sol-tuesdays.html"
+      "landingPage": "cafe-sol-event.html"
     },
     {
       "event": "Café Sol Salsa Bachata Night",
@@ -271,9 +271,9 @@
       "description": "Join us for a fun Bachata class (7:30-8:30 pm, £10) perfect for those getting into bachata, followed by FREE social dancing and watching for all levels. Hosted by Oscar, Boadicea, and the Cafe Sol team.",
       "photo": "images/RogueParty.jpg",
       "status": "past",
-      "registrationLink": "cafe-sol-tuesdays.html",
+      "registrationLink": "cafe-sol-event.html",
       "contactInfo": "Class: £10. Social dancing and watching: FREE.",
-      "landingPage": "cafe-sol-tuesdays.html"
+      "landingPage": "cafe-sol-event.html"
     },
     {
       "event": "Rogue Resonance Workshop",
@@ -301,9 +301,9 @@
       "description": "Join us for a fun Bachata class (7:30-8:30 pm, £10) perfect for those getting into bachata, followed by FREE social dancing and watching for all levels. Hosted by Oscar, Boadicea, and the Cafe Sol team.",
       "photo": "images/RogueParty.jpg",
       "status": "past",
-      "registrationLink": "cafe-sol-tuesdays.html",
+      "registrationLink": "cafe-sol-event.html",
       "contactInfo": "Class: £10. Social dancing and watching: FREE.",
-      "landingPage": "cafe-sol-tuesdays.html"
+      "landingPage": "cafe-sol-event.html"
     },
     {
       "event": "Bachata Tuesdays @ Cafe Sol - Free Social",
@@ -319,7 +319,7 @@
       "photo": "images/Bachata-Tuesdays-Social.png",
       "status": "past",
       "contactInfo": "Free Entry",
-      "landingPage": "cafe-sol-tuesdays.html"
+      "landingPage": "cafe-sol-event.html"
     }
   ]
 }
