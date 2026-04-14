@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banner Design Options — Rogue Bachata</title>
+  <style>
+    :root {
+      --accent: #e94560;
+      --accent2: #F35F96;
+      --bg: #0f0f1a;
+      --text: #eee;
+      --gold: #f5c542;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding-bottom: 4rem;
+    }
+    a { color: var(--accent2); }
+
+    /* ─── Page labels ─── */
+    .section-label {
+      text-align: center;
+      padding: 2.5rem 1rem 1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #888;
+    }
+    .section-label strong { color: #ccc; font-size: 1rem; display: block; margin-bottom: 0.3rem; }
+    .time-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #666;
+      margin-top: 0.4rem;
+    }
+    .separator { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 1rem 2rem; }
+
+    /* ════════════════════════════════════════
+       OPTION 1 — Slim top bar (refined current)
+    ════════════════════════════════════════ */
+    .opt1 {
+      background: linear-gradient(90deg, #1a0a2e 0%, #2d0f4e 50%, #1a0a2e 100%);
+      border-bottom: 2px solid rgba(243,95,150,0.5);
+      padding: 0.65rem 1.2rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #fff;
+      position: relative;
+      line-height: 1.6;
+    }
+    .opt1 .close-btn {
+      position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: #aaa; font-size: 1.1rem; cursor: pointer;
+    }
+    .opt1 .close-btn:hover { color: #fff; }
+    .opt1 .tag { color: var(--accent2); font-weight: 700; }
+    .opt1 .pill {
+      display: inline-block;
+      background: rgba(243,95,150,0.15);
+      border: 1px solid rgba(243,95,150,0.4);
+      border-radius: 20px;
+      padding: 0.1rem 0.6rem;
+      font-size: 0.75rem;
+      margin-right: 0.4rem;
+      color: var(--accent2);
+      font-weight: 600;
+    }
+
+    /* ════════════════════════════════════════
+       OPTION 2 — Scrolling ticker / newsreel
+    ════════════════════════════════════════ */
+    .opt2 {
+      background: #10001a;
+      border-top: 1px solid rgba(243,95,150,0.3);
+      border-bottom: 1px solid rgba(243,95,150,0.3);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 0.55rem 0;
+      font-size: 0.85rem;
+      color: #ddd;
+      position: relative;
+    }
+    .opt2-label {
+      display: inline-block;
+      background: var(--accent2);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.7rem;
+      margin-right: 1.5rem;
+      vertical-align: middle;
+    }
+    .ticker-track {
+      display: inline-block;
+      animation: ticker 28s linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-sep { color: var(--accent2); margin: 0 1.2rem; }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ════════════════════════════════════════
+       OPTION 3 — Card banner (bold, visual)
+    ════════════════════════════════════════ */
+    .opt3 {
+      background: linear-gradient(135deg, #1f0535 0%, #3a0d52 60%, #1f0535 100%);
+      border-bottom: 3px solid var(--accent2);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .opt3-icon { font-size: 2rem; flex-shrink: 0; }
+    .opt3-body { flex: 1; min-width: 200px; }
+    .opt3-body .title { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent2); font-weight: 700; margin-bottom: 0.25rem; }
+    .opt3-body .msg { font-size: 0.9rem; color: #eee; line-height: 1.5; }
+    .opt3 .events { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .opt3-event {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(243,95,150,0.3);
+      border-radius: 8px;
+      padding: 0.5rem 0.9rem;
+      font-size: 0.8rem;
+      text-decoration: none;
+      color: #fff;
+      transition: background 0.2s;
+    }
+    .opt3-event:hover { background: rgba(243,95,150,0.15); }
+    .opt3-event .evt-date { color: var(--accent2); font-weight: 700; display: block; font-size: 0.75rem; }
+    .opt3-close { background: none; border: none; color: #888; cursor: pointer; font-size: 1.2rem; margin-left: auto; align-self: flex-start; }
+
+    /* ════════════════════════════════════════
+       OPTION 4 — Floating toast (bottom-right)
+    ════════════════════════════════════════ */
+    .opt4-demo {
+      position: relative;
+      height: 160px;
+      background: rgba(255,255,255,0.02);
+      border: 1px dashed rgba(255,255,255,0.1);
+      border-radius: 8px;
+      margin: 0 1.5rem;
+      overflow: hidden;
+    }
+    .opt4-demo-label {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      color: #444; font-size: 0.8rem; text-align: center;
+      pointer-events: none;
+    }
+    .opt4 {
+      position: absolute;
+      bottom: 1rem; right: 1rem;
+      width: 280px;
+      background: linear-gradient(135deg, #1f0535, #2d0f4e);
+      border: 1px solid rgba(243,95,150,0.5);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      font-size: 0.82rem;
+      color: #eee;
+      line-height: 1.5;
+    }
+    .opt4-header {
+      display: flex; align-items: center; gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .opt4-header .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent2); animation: pulse 1.5s infinite; }
+    .opt4-header .label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent2); }
+    .opt4-close { margin-left: auto; background: none; border: none; color: #888; cursor: pointer; font-size: 0.9rem; }
+    .opt4 a { color: var(--accent2); }
+    .opt4-actions { margin-top: 0.6rem; display: flex; gap: 0.5rem; }
+    .opt4-btn {
+      flex: 1; text-align: center; padding: 0.35rem;
+      border-radius: 6px; font-size: 0.75rem; font-weight: 600;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .opt4-btn.primary { background: var(--accent2); color: #fff; }
+    .opt4-btn.secondary { background: rgba(255,255,255,0.08); color: #ccc; }
+    .opt4-btn:hover { opacity: 0.85; }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
+    }
+
+    /* ════════════════════════════════════════
+       OPTION 5 — Sticky side tab (expands)
+    ════════════════════════════════════════ */
+    .opt5-demo {
+      position: relative;
+      height: 180px;
+      background: rgba(255,255,255,0.02);
+      border: 1px dashed rgba(255,255,255,0.1);
+      border-radius: 8px;
+      margin: 0 1.5rem;
+      overflow: hidden;
+    }
+    .opt5-demo-label {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      color: #444; font-size: 0.8rem; text-align: center;
+      pointer-events: none;
+    }
+    .opt5-tab {
+      position: absolute;
+      right: 0; top: 50%; transform: translateY(-50%);
+      display: flex; align-items: stretch;
+      cursor: pointer;
+    }
+    .opt5-label {
+      writing-mode: vertical-rl;
+      background: var(--accent2);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.8rem 0.4rem;
+      border-radius: 8px 0 0 8px;
+    }
+    .opt5-panel {
+      background: linear-gradient(135deg, #1f0535, #2d0f4e);
+      border: 1px solid rgba(243,95,150,0.4);
+      border-right: none;
+      border-radius: 8px 0 0 8px;
+      padding: 0.8rem;
+      width: 220px;
+      font-size: 0.78rem;
+      color: #eee;
+      line-height: 1.5;
+    }
+    .opt5-panel .title { color: var(--accent2); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .opt5-panel a { color: var(--accent2); }
+
+    /* ─── Simulated page content ─── */
+    .fake-page {
+      height: 80px;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 80px,
+        transparent 80px, transparent 160px
+      );
+      display: flex; align-items: center; justify-content: center;
+      color: #333; font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div style="text-align:center; padding: 2rem 1rem 0.5rem;">
+    <div style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; color:#555; margin-bottom:0.5rem;">Rogue Bachata — Internal Preview</div>
+    <h1 style="font-size:1.4rem; color:#eee;">Banner Design Options</h1>
+    <p style="font-size:0.82rem; color:#666; margin-top:0.5rem;">All banners use time-bound JS — they disappear automatically on their expiry date</p>
+  </div>
+
+
+  <!-- ══ OPTION 1 ══ -->
+  <div class="section-label">
+    <strong>Option 1 — Slim top bar (refined)</strong>
+    Current style, cleaner pills + close button
+  </div>
+  <div class="time-note">Expires: Easter notice hides after 6 Apr · "Tonight" hides after midnight tonight</div>
+
+  <div class="opt1" id="opt1">
+    <span class="pill">Tonight</span>
+    <span class="tag">Café Sol</span> is on tonight (Tue) —
+    <a href="cafe-sol-event.html" style="color:#F35F96;">join us in Clapham</a>
+    &nbsp;·&nbsp;
+    <span class="tag">⚠️ Easter Mon 6 Apr:</span> Bachata Mondays may not run — watch our socials.
+    &nbsp;·&nbsp;
+    <strong>Next confirmed: <a href="https://fatso.ma/3A2R" target="_blank" style="color:#F35F96;">13 April →</a></strong>
+    <button class="close-btn" onclick="document.getElementById('opt1').style.display='none'">✕</button>
+  </div>
+  <div class="fake-page">· · · site content below · · ·</div>
+
+  <hr class="separator">
+
+
+  <!-- ══ OPTION 2 ══ -->
+  <div class="section-label">
+    <strong>Option 2 — Scrolling ticker</strong>
+    News-style, hovers to pause, loops continuously
+  </div>
+  <div class="time-note">Each item expires independently — JS removes them when date passes</div>
+
+  <div class="opt2">
+    <span class="opt2-label">Updates</span>
+    <span class="ticker-track">
+      🎉 <strong>Café Sol TONIGHT</strong> (Tue 1 Apr) — Bachata class 7:30 pm · Free social 8:30 pm
+      <span class="ticker-sep">◆</span>
+      ⚠️ <strong>Easter Monday 6 Apr:</strong> Bachata Mondays may not run — check our socials for updates
+      <span class="ticker-sep">◆</span>
+      📅 <strong>Next confirmed Monday: 13 April</strong> at Big Chill, King's Cross — Book now at fatso.ma/3A2R
+      <span class="ticker-sep">◆</span>
+      🎉 <strong>Café Sol TONIGHT</strong> (Tue 1 Apr) — Bachata class 7:30 pm · Free social 8:30 pm
+      <span class="ticker-sep">◆</span>
+      ⚠️ <strong>Easter Monday 6 Apr:</strong> Bachata Mondays may not run — check our socials for updates
+      <span class="ticker-sep">◆</span>
+      📅 <strong>Next confirmed Monday: 13 April</strong> at Big Chill, King's Cross — Book now at fatso.ma/3A2R
+      <span class="ticker-sep">◆</span>
+    </span>
+  </div>
+  <div class="fake-page">· · · site content below · · ·</div>
+
+  <hr class="separator">
+
+
+  <!-- ══ OPTION 3 ══ -->
+  <div class="section-label">
+    <strong>Option 3 — Full-width card banner</strong>
+    More visual, event cards with links, dismissable
+  </div>
+  <div class="time-note">Each event card is individually time-bound and removed by JS when expired</div>
+
+  <div class="opt3" id="opt3">
+    <div class="opt3-icon">📣</div>
+    <div class="opt3-body">
+      <div class="title">What's on</div>
+      <div class="msg">Quick update from Rogue Bachata — tap to see details or book:</div>
+    </div>
+    <div class="events">
+      <a href="cafe-sol-event.html" class="opt3-event" id="opt3-tonight">
+        <span class="evt-date">Tonight · Tue 1 Apr</span>
+        Café Sol — class 7:30 pm (£10)<br>Free social 8:30 pm
+      </a>
+      <a href="#" class="opt3-event" id="opt3-easter">
+        <span class="evt-date">⚠️ Mon 6 Apr — Easter</span>
+        Bachata Mondays may not run<br><em style="color:#aaa;">Watch our socials for update</em>
+      </a>
+      <a href="https://fatso.ma/3A2R" target="_blank" class="opt3-event" id="opt3-13apr">
+        <span class="evt-date">Mon 13 Apr ✓ Confirmed</span>
+        Big Chill King's Cross<br>Class £5 · Free social 8:30 pm
+      </a>
+    </div>
+    <button class="opt3-close" onclick="document.getElementById('opt3').style.display='none'">✕</button>
+  </div>
+  <div class="fake-page">· · · site content below · · ·</div>
+
+  <hr class="separator">
+
+
+  <!-- ══ OPTION 4 ══ -->
+  <div class="section-label">
+    <strong>Option 4 — Floating toast (bottom-right)</strong>
+    Non-intrusive pop-up, pulsing dot, with action buttons
+  </div>
+  <div class="time-note">Appears on load, auto-hides after 12 seconds, dismissable — expires 13 Apr</div>
+
+  <div class="opt4-demo">
+    <div class="opt4-demo-label">← simulated page area →<br>(toast appears bottom-right)</div>
+    <div class="opt4" id="opt4">
+      <div class="opt4-header">
+        <div class="dot"></div>
+        <div class="label">Rogue Update</div>
+        <button class="opt4-close" onclick="document.getElementById('opt4').style.display='none'">✕</button>
+      </div>
+      <div>
+        <strong style="color:var(--accent2);">Tonight:</strong> Café Sol is on — <a href="cafe-sol-event.html">join us in Clapham</a><br>
+        <strong style="color:var(--accent2);">⚠️ 6 Apr Easter:</strong> Mondays TBC — watch socials<br>
+        <strong style="color:var(--accent2);">✅ 13 Apr:</strong> Next confirmed Monday
+      </div>
+      <div class="opt4-actions">
+        <a href="https://fatso.ma/3A2R" target="_blank" class="opt4-btn primary">Book 13 Apr →</a>
+        <a href="cafe-sol-event.html" class="opt4-btn secondary">Café Sol tonight</a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="separator">
+
+
+  <!-- ══ OPTION 5 ══ -->
+  <div class="section-label">
+    <strong>Option 5 — Sticky side tab</strong>
+    Sits on the right edge, expands on click — unobtrusive until needed
+  </div>
+  <div class="time-note">Tab hides itself after all updates expire (13 Apr)</div>
+
+  <div class="opt5-demo">
+    <div class="opt5-demo-label">← simulated page →</div>
+    <div class="opt5-tab">
+      <div class="opt5-panel">
+        <div class="title">📣 Updates</div>
+        <strong style="color:var(--accent2);">Tonight:</strong> <a href="cafe-sol-event.html">Café Sol</a> — class 7:30 pm<br><br>
+        <strong style="color:var(--accent2);">⚠️ 6 Apr:</strong> Easter — Mondays TBC<br><br>
+        <strong style="color:var(--accent2);">✅ 13 Apr:</strong> <a href="https://fatso.ma/3A2R" target="_blank">Book Big Chill →</a>
+      </div>
+      <div class="opt5-label">Updates</div>
+    </div>
+  </div>
+
+  <hr class="separator">
+
+  <!-- Notes -->
+  <div style="max-width: 600px; margin: 2rem auto; padding: 0 1.5rem; font-size: 0.82rem; color: #666; line-height: 1.7;">
+    <p style="color:#aaa; font-weight:600; margin-bottom:0.5rem;">Time-bound logic (JS) — how it works:</p>
+    <ul style="padding-left: 1.2rem;">
+      <li>"Café Sol tonight" card/message → hidden after midnight 1 Apr 2026</li>
+      <li>"Easter Monday TBC" → hidden after 23:59 on 6 Apr 2026</li>
+      <li>"Next confirmed 13 Apr" → hidden after 23:59 on 13 Apr 2026</li>
+      <li>If all messages expire → entire banner/tab hides automatically</li>
+      <li>Dismissal (✕ button) → stored in sessionStorage, won't reappear until next visit</li>
+    </ul>
+  </div>
+
+  <script>
+    // Time-bound logic demo
+    const now = new Date();
+    const endOfTonight = new Date('2026-04-02T00:00:00');
+    const endOfEaster  = new Date('2026-04-07T00:00:00');
+    const endOf13Apr   = new Date('2026-04-14T00:00:00');
+
+    // Option 3 card expiry demo
+    if (now >= endOfTonight && document.getElementById('opt3-tonight')) {
+      document.getElementById('opt3-tonight').remove();
+    }
+    if (now >= endOfEaster && document.getElementById('opt3-easter')) {
+      document.getElementById('opt3-easter').remove();
+    }
+    if (now >= endOf13Apr && document.getElementById('opt3-13apr')) {
+      document.getElementById('opt3-13apr').remove();
+    }
+    // If all cards gone, hide opt3
+    const opt3 = document.getElementById('opt3');
+    if (opt3 && opt3.querySelectorAll('.opt3-event').length === 0) {
+      opt3.style.display = 'none';
+    }
+
+    // Option 4 — auto-hide toast after 12s
+    setTimeout(() => {
+      const t = document.getElementById('opt4');
+      if (t) t.style.display = 'none';
+    }, 12000);
+  </script>
+
+</body>
+</html>
