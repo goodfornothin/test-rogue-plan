@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rogue Resonance Workshops | Rogue Bachata</title>
+  <meta name="description" content="Rogue Resonance workshops - advanced technique, authentic connection, and artistic expression through partner dance.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    
+    /* Hero Video Background */
+    .hero-video-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+    
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+    
+    .hero-video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 15, 26, 0.6) 0%,
+        rgba(15, 15, 26, 0.4) 50%,
+        rgba(15, 15, 26, 0.95) 100%
+      );
+      z-index: 1;
+    }
+    
+    .resonance-hero.no-video .resonance-hero-bg {
+      display: block;
+    }
+    
+    .resonance-hero.no-video .hero-video-container {
+      display: none;
+    }
+    
+    /* Hero for Rogue Resonance */
+    .resonance-hero {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+    
+    .resonance-hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.3;
+      z-index: 0;
+    }
+    
+    .resonance-hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, transparent 0%, var(--bg) 100%);
+      z-index: 1;
+    }
+    
+    .resonance-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+      max-width: 800px;
+    }
+    
+    .resonance-hero h1 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .resonance-hero .tagline {
+      font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+      color: var(--text-muted);
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    
+    .resonance-hero .description {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Workshops Section */
+    .workshops-section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .workshops-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    .workshops-section .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      font-size: 1rem;
+    }
+    
+    .workshops-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .workshop-card-large {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    
+    .workshop-card-large:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+    }
+    
+    .workshop-card-large img {
+      width: 100%;
+      height: 100%;
+      min-height: 250px;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .workshop-card-content {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .workshop-card-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    
+    .workshop-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    
+    .workshop-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    
+    .workshop-description {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+    
+    .workshop-cta {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-radius: 50px;
+      transition: all 0.3s;
+      border: 2px solid var(--accent);
+      font-size: 0.85rem;
+      align-self: flex-start;
+    }
+    
+    .workshop-cta:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+    
+    .workshop-status {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-left: 1rem;
+    }
+    
+    .workshop-status.upcoming {
+      background: var(--accent);
+      color: white;
+    }
+    
+    .workshop-status.past {
+      background: var(--border);
+      color: var(--text-muted);
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+    }
+    
+    /* Featured Video Section */
+    .featured-video-section {
+      background: linear-gradient(180deg, var(--bg) 0%, var(--secondary) 50%, var(--bg) 100%);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    
+    .featured-video-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    .featured-video-section .section-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+    
+    .featured-video-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .featured-video-card {
+      background: rgba(26, 26, 46, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: all 0.4s;
+      max-width: 350px;
+    }
+    
+    .featured-video-card:hover {
+      border-color: rgba(233, 69, 96, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(233, 69, 96, 0.1);
+    }
+    
+    .featured-video-card .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 177.78%; /* Portrait 9:16 */
+    }
+    
+    .featured-video-card .video-wrapper.landscape {
+      padding-bottom: 56.25%; /* Landscape 16:9 */
+    }
+    
+    .featured-video-card .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .featured-video-card h3 {
+      color: var(--text);
+      font-size: 1rem;
+      margin: 1rem 1.25rem 0.5rem;
+      font-weight: 600;
+    }
+    
+    .featured-video-card p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin: 0 1.25rem 1.25rem;
+      line-height: 1.5;
+    }
+    
+    .featured-video-card .video-info {
+      padding: 1.25rem;
+    }
+    
+    .featured-video-card .video-info h3 {
+      color: var(--text);
+      font-size: 1rem;
+      margin: 0 0 0.5rem 0;
+      font-weight: 600;
+    }
+    
+    .featured-video-card .video-info p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin: 0;
+      line-height: 1.5;
+    }
+    
+    @media (max-width: 768px) {
+      .workshop-card-large {
+        grid-template-columns: 1fr;
+      }
+      
+      .workshop-card-large img {
+        height: 200px;
+      }
+      
+      .workshop-card-content {
+        padding: 1.5rem;
+      }
+      
+      .workshop-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .featured-video-card {
+        max-width: 300px;
+      }
+    }
+  </style>
+
+  <style>
+    /* Pastel nav demo */
+    nav { transition: background 0.5s ease !important; }
+    nav.pastel-pink { background: rgba(255, 182, 193, 0.92) !important; }
+    nav.pastel-blue  { background: rgba(173, 216, 230, 0.92) !important; }
+    nav.pastel-pink .logo, nav.pastel-pink .nav-links a, nav.pastel-pink .menu-toggle,
+    nav.pastel-blue  .logo, nav.pastel-blue  .nav-links a, nav.pastel-blue  .menu-toggle
+      { color: #1a1a2e !important; }
+    nav.pastel-pink .nav-links a:hover,
+    nav.pastel-blue  .nav-links a:hover { color: #e94560 !important; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="demo-home.html" class="logo">ROGUE</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span>☰</span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#about">About</a>
+      <a href="index.html#offerings">Classes & Workshops</a>
+      <a href="index.html#principles">Principles</a>
+      <a href="index.html#events">Events</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="resonance-hero" id="heroSection">
+    <!-- Video Background -->
+    <div class="hero-video-container">
+      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline poster="images/Oscar Bo Dream.png">
+        <source src="videos/sensual-couple.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
+    </div>
+    <!-- Fallback Image -->
+    <img src="images/RogueResonance.png" alt="Rogue Resonance" class="resonance-hero-bg" style="display: none;">
+    <div class="resonance-hero-overlay"></div>
+    <div class="resonance-hero-content">
+      <h1>Rogue Resonance</h1>
+      <p class="tagline">Advanced Technique · Authentic Connection</p>
+      <p class="description">
+        Immersive workshops exploring the core principles of Rogue—groundedness, flow, and authentic connection. 
+        Whether you're seasoned or curious, find your resonance on the dance floor.
+      </p>
+    </div>
+  </section>
+
+  <!-- Featured Video Section -->
+  <section class="featured-video-section">
+    <h2>Experience Rogue Resonance</h2>
+    <p class="section-subtitle">
+      See what happens in a Rogue workshop — connection, flow, and authentic expression on the dance floor.
+    </p>
+    <div class="featured-video-container" id="featuredVideoContainer">
+      <!-- Featured video will be injected here -->
+    </div>
+  </section>
+
+  <!-- Core Principles Section -->
+  <section id="principles" style="padding: 4rem 2rem; max-width: 1200px; margin: 0 auto;">
+    <h2>Core Principles</h2>
+    <p class="section-subtitle">The philosophy that guides every movement</p>
+    <div class="principles-grid" id="principlesGrid"></div>
+  </section>
+
+  <!-- Workshops Section -->
+  <section class="workshops-section">
+    <h2>Upcoming Workshops</h2>
+    <p class="section-subtitle">Join us for an immersive Rogue Resonance experience</p>
+    <div class="workshops-grid" id="upcomingWorkshops"></div>
+  </section>
+
+  <section class="workshops-section" style="padding-top: 0;">
+    <h2 style="color: var(--text-muted);">Past Workshops</h2>
+    <p class="section-subtitle">Previous Rogue Resonance experiences</p>
+    <div class="workshops-grid" id="pastWorkshops"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Rogue Bachata. All rights reserved.</p>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+      <a href="demo-home.html" style="color: var(--accent); text-decoration: none;">Back to main site</a>
+    </p>
+  </footer>
+
+  <script>
+    fetch('data.json')
+      .then(response => response.json())
+      .then(data => {
+        // Featured Video from Workshop Playlist
+        const videoContainer = document.getElementById('featuredVideoContainer');
+        if (data.youtubePlaylists && data.youtubePlaylists.workshops) {
+          const playlist = data.youtubePlaylists.workshops;
+          const videoCard = document.createElement('div');
+          videoCard.className = 'featured-video-card';
+          videoCard.innerHTML = `
+            <div class="video-wrapper">
+              <iframe 
+                src="https://www.youtube.com/embed/videoseries?list=${playlist.id}" 
+                title="${playlist.title}"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
+            </div>
+            <h3>${playlist.title}</h3>
+            <p>${playlist.description}</p>
+          `;
+          videoContainer.appendChild(videoCard);
+        }
+
+        // Hero video fallback
+        const heroVideo = document.getElementById('heroVideo');
+        const heroSection = document.getElementById('heroSection');
+        if (heroVideo) {
+          heroVideo.addEventListener('error', function() {
+            heroSection.classList.add('no-video');
+          });
+        }
+
+        // Principles
+        const principlesGrid = document.getElementById('principlesGrid');
+        if (data.principles) {
+          data.principles.forEach(principle => {
+            const card = document.createElement('div');
+            card.className = 'principle-card';
+            card.innerHTML = `
+              <h3>${principle.name}</h3>
+              <p>${principle.description}</p>
+            `;
+            principlesGrid.appendChild(card);
+          });
+        }
+
+        // Filter Rogue Resonance events
+        const upcomingRogue = data.upcomingEvents ? data.upcomingEvents.filter(e => 
+          e.offeringId === 'rogue-resonance-workshops'
+        ) : [];
+        const pastRogue = data.pastEvents ? data.pastEvents.filter(e => 
+          e.offeringId === 'rogue-resonance-workshops'
+        ) : [];
+
+        // Upcoming Workshops
+        const upcomingContainer = document.getElementById('upcomingWorkshops');
+        if (upcomingRogue.length === 0) {
+          upcomingContainer.innerHTML = '<div class="empty-state"><p>New workshops coming soon. Stay tuned!</p></div>';
+        } else {
+          upcomingRogue.forEach(event => {
+            upcomingContainer.appendChild(createWorkshopCard(event, false));
+          });
+        }
+
+        // Past Workshops
+        const pastContainer = document.getElementById('pastWorkshops');
+        if (pastRogue.length === 0) {
+          pastContainer.innerHTML = '<div class="empty-state"><p>No past workshops yet.</p></div>';
+        } else {
+          pastRogue.forEach(event => {
+            pastContainer.appendChild(createWorkshopCard(event, true));
+          });
+        }
+      })
+      .catch(err => console.error('Error loading data:', err));
+
+    function createWorkshopCard(event, isPast) {
+      const card = document.createElement('div');
+      card.className = 'workshop-card-large';
+      if (isPast) card.style.opacity = '0.7';
+      
+      const landingPage = event.landingPage || (event.eventId ? `rogue-resonance-${event.eventId}.html` : '#');
+      const ctaText = isPast ? 'View Details' : 'Learn More & Register';
+      
+      card.innerHTML = `
+        <img src="${event.photo || 'images/RogueResonance.png'}" alt="${event.event}">
+        <div class="workshop-card-content">
+          <h3>${event.event} <span class="workshop-status ${isPast ? 'past' : 'upcoming'}">${isPast ? 'Completed' : 'Upcoming'}</span></h3>
+          <div class="workshop-meta">
+            <span>📅 ${event.date}</span>
+            <span>📍 ${event.venue}</span>
+            ${event.time ? `<span>🕐 ${event.time}</span>` : ''}
+          </div>
+          <p class="workshop-description">${event.description}</p>
+          <a href="${landingPage}" class="workshop-cta">${ctaText}</a>
+        </div>
+      `;
+      return card;
+    }
+  </script>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+      
+      // Close menu when a link is clicked
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+        });
+      });
+    }
+  </script>
+
+  <script>
+    (function(){
+      var nav = document.querySelector('nav');
+      if (!nav) return;
+      var classes = ['pastel-pink', 'pastel-blue'];
+      function pick() {
+        nav.classList.remove('pastel-pink', 'pastel-blue');
+        nav.classList.add(classes[Math.floor(Math.random() * 2)]);
+      }
+      pick();
+      document.addEventListener('click', pick);
+    })();
+  </script>
+</body>
+</html>
