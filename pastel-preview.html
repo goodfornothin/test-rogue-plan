@@ -995,14 +995,18 @@
   </style>
 
   <style>
-    /* PASTEL PREVIEW - nav color switcher */
-    nav { transition: background 0.5s ease; }
-    nav.pastel-pink { background: rgba(255, 182, 193, 0.92); }
-    nav.pastel-blue  { background: rgba(173, 216, 230, 0.92); }
-    nav.pastel-pink .logo, nav.pastel-pink .nav-links a, nav.pastel-pink .menu-toggle,
-    nav.pastel-blue  .logo, nav.pastel-blue  .nav-links a, nav.pastel-blue  .menu-toggle { color: #1a1a2e; }
-    nav.pastel-pink .nav-links a:hover,
-    nav.pastel-blue  .nav-links a:hover { color: var(--accent); }
+    /* PASTEL PREVIEW - pastel blue nav, pastel pink text */
+    nav {
+      background: rgba(173, 216, 230, 0.92) !important;
+    }
+    nav .logo,
+    nav .nav-links a,
+    nav .menu-toggle {
+      color: #c0507a !important;
+    }
+    nav .nav-links a:hover {
+      color: #8b2252 !important;
+    }
   </style>
 </head>
 <body>
@@ -1590,20 +1594,6 @@
       });
     }
 
-    // Pastel title bar: randomly switch between pink and blue on any link click
-    const navEl = document.querySelector('nav');
-    const pastelClasses = ['pastel-pink', 'pastel-blue'];
-
-    function setRandomPastel() {
-      navEl.classList.remove('pastel-pink', 'pastel-blue');
-      navEl.classList.add(pastelClasses[Math.floor(Math.random() * 2)]);
-    }
-
-    setRandomPastel();
-
-    document.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', setRandomPastel);
-    });
   </script>
 
 </body>
