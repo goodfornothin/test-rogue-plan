@@ -387,6 +387,29 @@ nav {
   z-index: 100;
   background: rgba(15, 15, 26, 0.9);
   backdrop-filter: blur(10px);
+  transition: background 0.5s ease;
+}
+
+nav.pastel-pink {
+  background: rgba(255, 182, 193, 0.92);
+}
+
+nav.pastel-blue {
+  background: rgba(173, 216, 230, 0.92);
+}
+
+nav.pastel-pink .logo,
+nav.pastel-pink .nav-links a,
+nav.pastel-pink .menu-toggle,
+nav.pastel-blue .logo,
+nav.pastel-blue .nav-links a,
+nav.pastel-blue .menu-toggle {
+  color: #1a1a2e;
+}
+
+nav.pastel-pink .nav-links a:hover,
+nav.pastel-blue .nav-links a:hover {
+  color: var(--accent);
 }
 
 nav .logo {

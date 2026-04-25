@@ -1565,12 +1565,12 @@
     // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
-    
+
     if (menuToggle) {
       menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('open');
       });
-      
+
       // Close menu when a link is clicked
       navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
@@ -1578,6 +1578,21 @@
         });
       });
     }
+
+    // Pastel title bar: randomly switch between pink and blue on any link click
+    const navEl = document.querySelector('nav');
+    const pastelClasses = ['pastel-pink', 'pastel-blue'];
+
+    function setRandomPastel() {
+      navEl.classList.remove('pastel-pink', 'pastel-blue');
+      navEl.classList.add(pastelClasses[Math.floor(Math.random() * 2)]);
+    }
+
+    setRandomPastel();
+
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', setRandomPastel);
+    });
   </script>
 
 </body>
