@@ -495,7 +495,7 @@
       letter-spacing: 0.1em;
       transition: color 0.3s;
     }
-    nav .nav-links a:hover { color: #e94560; }
+    nav .nav-links a:hover { color: #e94560 !important; }
     @media (max-width: 768px) {
       nav .menu-toggle { display: block; }
       nav .nav-links {
@@ -517,9 +517,9 @@
     nav.pastel-pink { background: rgba(255, 182, 193, 0.92); }
     nav.pastel-blue  { background: rgba(173, 216, 230, 0.92); }
     nav.pastel-pink .logo, nav.pastel-pink .nav-links a, nav.pastel-pink .menu-toggle,
-    nav.pastel-blue  .logo, nav.pastel-blue  .nav-links a, nav.pastel-blue  .menu-toggle { color: #1a1a2e; }
+    nav.pastel-blue  .logo, nav.pastel-blue  .nav-links a, nav.pastel-blue  .menu-toggle { color: #1a1a2e !important; }
     nav.pastel-pink .nav-links a:hover,
-    nav.pastel-blue  .nav-links a:hover { color: #e94560; }
+    nav.pastel-blue  .nav-links a:hover { color: #e94560 !important; }
   </style>
 </head>
 <body>
@@ -753,7 +753,7 @@
         nav.classList.add(classes[Math.floor(Math.random() * 2)]);
       }
       pick();
-      document.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', pick); });
+      document.addEventListener('click', pick);
     })();
   </script>
 </body>

@@ -821,7 +821,7 @@
         nav.classList.add(classes[Math.floor(Math.random() * 2)]);
       }
       pick();
-      document.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', pick); });
+      document.addEventListener('click', pick);
     })();
   </script>
 </body>

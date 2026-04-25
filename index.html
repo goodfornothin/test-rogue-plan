@@ -1570,9 +1570,7 @@
       navEl.classList.add(pastelClasses[Math.floor(Math.random() * 2)]);
     }
     setRandomPastel();
-    document.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', setRandomPastel);
-    });
+    document.addEventListener('click', setRandomPastel);
 
     // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
