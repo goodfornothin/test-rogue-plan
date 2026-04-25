@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pastel Nav Demo — Page 1 | Rogue Bachata</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Pastel switching classes (demo override — not yet on main style.css) */
+    nav { transition: background 0.5s ease !important; background: rgba(15,15,26,0.9) !important; }
+    nav.pastel-pink { background: rgba(255, 182, 193, 0.92) !important; }
+    nav.pastel-blue  { background: rgba(173, 216, 230, 0.92) !important; }
+    nav.pastel-pink .logo, nav.pastel-pink .nav-links a, nav.pastel-pink .menu-toggle,
+    nav.pastel-blue  .logo, nav.pastel-blue  .nav-links a, nav.pastel-blue  .menu-toggle { color: #1a1a2e !important; }
+
+    body { font-family: 'Segoe UI', sans-serif; background: #0f0f1a; color: #eee; }
+
+    .demo-banner {
+      position: fixed; top: 68px; left: 0; right: 0; z-index: 99;
+      background: rgba(233,69,96,0.92); color: #fff;
+      text-align: center; padding: 0.55rem 1rem;
+      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em;
+    }
+
+    .page-content {
+      padding-top: 120px;
+      max-width: 900px; margin: 0 auto; padding-left: 2rem; padding-right: 2rem;
+    }
+
+    .page-hero {
+      text-align: center; padding: 4rem 0 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .page-hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      background: linear-gradient(135deg, #eee 0%, #e94560 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 1rem;
+    }
+    .page-hero p { color: #aaa; font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; }
+
+    .nav-label {
+      display: inline-block; font-size: 0.75rem; text-transform: uppercase;
+      letter-spacing: 0.2em; color: #e94560; font-weight: 700; margin-bottom: 0.5rem;
+    }
+
+    .color-indicator {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50px; padding: 0.5rem 1.2rem; font-size: 0.9rem; margin-top: 0.5rem;
+    }
+    .color-swatch {
+      width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3);
+    }
+
+    .section-block {
+      padding: 3rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .section-block h2 { font-size: 1.5rem; margin-bottom: 1rem; color: #e94560; }
+    .section-block p  { color: #aaa; line-height: 1.8; }
+
+    .page-nav-links {
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      padding: 3rem 0; justify-content: center;
+    }
+    .page-nav-links a {
+      padding: 0.9rem 2rem; border-radius: 50px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15);
+      color: #eee; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      transition: all 0.3s;
+    }
+    .page-nav-links a:hover { background: #e94560; border-color: #e94560; color: #fff; }
+    .page-nav-links a.highlight {
+      background: #e94560; border-color: #e94560; color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="mainNav">
+    <a href="#top" class="logo">ROGUE</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#events">Events</a>
+      <a href="#classes">Classes</a>
+      <a href="pastel-demo-2.html">→ Page 2</a>
+    </div>
+  </nav>
+
+  <div class="demo-banner">
+    COLOUR DEMO — click any nav link or button to switch between pastel pink and pastel blue
+  </div>
+
+  <div class="page-content" id="top">
+
+    <div class="page-hero">
+      <span class="nav-label">Page 1 of 2</span>
+      <h1>Pastel Nav Demo</h1>
+      <p>The header bar randomly switches between pastel pink and pastel blue every time you click a link — including the nav links and the buttons below.</p>
+      <div class="color-indicator" id="colorIndicator">
+        <span class="color-swatch" id="colorSwatch"></span>
+        <span id="colorLabel">Loading…</span>
+      </div>
+    </div>
+
+    <div class="section-block" id="about">
+      <h2>About</h2>
+      <p>Rogue Bachata — London's most distinctive bachata scene. This section shows what the dark page body looks like beneath the pastel header. The body colours stay exactly as they are; only the nav bar changes.</p>
+    </div>
+
+    <div class="section-block" id="events">
+      <h2>Events</h2>
+      <p>Weekly bachata classes every Monday at Big Chill Kings Cross (£5 class, free social from 8:30pm) and every Tuesday at Cafe Sol Clapham (£10). Click this section's heading link or any nav item to trigger a colour switch.</p>
+    </div>
+
+    <div class="section-block" id="classes">
+      <h2>Classes</h2>
+      <p>Beginner-friendly classes with no partner needed. Try clicking the links below to navigate between pages and watch the header colour change each time.</p>
+    </div>
+
+    <div class="page-nav-links">
+      <a href="#about">Scroll to About</a>
+      <a href="#events">Scroll to Events</a>
+      <a href="#classes">Scroll to Classes</a>
+      <a href="pastel-demo-2.html" class="highlight">Go to Page 2 →</a>
+    </div>
+
+  </div>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    const swatch = document.getElementById('colorSwatch');
+    const label  = document.getElementById('colorLabel');
+    const pastelClasses = ['pastel-pink', 'pastel-blue'];
+    const pastelNames   = { 'pastel-pink': 'Pastel Pink', 'pastel-blue': 'Pastel Blue' };
+    const pastelColors  = { 'pastel-pink': 'rgb(255,182,193)', 'pastel-blue': 'rgb(173,216,230)' };
+
+    function setRandomPastel() {
+      nav.classList.remove('pastel-pink', 'pastel-blue');
+      const chosen = pastelClasses[Math.floor(Math.random() * 2)];
+      nav.classList.add(chosen);
+      swatch.style.background = pastelColors[chosen];
+      label.textContent = 'Current: ' + pastelNames[chosen];
+    }
+
+    setRandomPastel();
+
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', setRandomPastel);
+    });
+  </script>
+
+</body>
+</html>
