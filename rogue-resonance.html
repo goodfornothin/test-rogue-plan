@@ -582,5 +582,19 @@
     }
   </script>
 
+
+  <script>
+    (function(){
+      var nav = document.querySelector('nav');
+      if (!nav) return;
+      var classes = ['pastel-pink', 'pastel-blue'];
+      function pick() {
+        nav.classList.remove('pastel-pink', 'pastel-blue');
+        nav.classList.add(classes[Math.floor(Math.random() * 2)]);
+      }
+      pick();
+      document.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', pick); });
+    })();
+  </script>
 </body>
 </html>
