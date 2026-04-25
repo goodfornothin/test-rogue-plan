@@ -511,6 +511,15 @@
       nav .nav-links.open { display: flex; }
       nav .nav-links a { margin: 0.5rem 1rem; padding: 0.5rem 0; }
     }
+  
+    /* Pastel nav colour switching */
+    nav { transition: background 0.5s ease; }
+    nav.pastel-pink { background: rgba(255, 182, 193, 0.92); }
+    nav.pastel-blue  { background: rgba(173, 216, 230, 0.92); }
+    nav.pastel-pink .logo, nav.pastel-pink .nav-links a, nav.pastel-pink .menu-toggle,
+    nav.pastel-blue  .logo, nav.pastel-blue  .nav-links a, nav.pastel-blue  .menu-toggle { color: #1a1a2e; }
+    nav.pastel-pink .nav-links a:hover,
+    nav.pastel-blue  .nav-links a:hover { color: #e94560; }
   </style>
 </head>
 <body>
@@ -733,5 +742,19 @@
     }
   </script>
 
+
+  <script>
+    (function(){
+      var nav = document.querySelector('nav');
+      if (!nav) return;
+      var classes = ['pastel-pink', 'pastel-blue'];
+      function pick() {
+        nav.classList.remove('pastel-pink', 'pastel-blue');
+        nav.classList.add(classes[Math.floor(Math.random() * 2)]);
+      }
+      pick();
+      document.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', pick); });
+    })();
+  </script>
 </body>
 </html>
