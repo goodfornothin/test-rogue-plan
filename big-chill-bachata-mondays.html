@@ -577,80 +577,101 @@
     }
 
     /* ── Navigation ── */
+    /* ── Logo (mask-recoloured PNG) ── */
+    .logo-mask {
+      display: inline-block;
+      background-color: var(--nav-logo-color, #FFB7C5);
+      -webkit-mask: url('images/Rogue Bachata Logo _transparent_.png') center / contain no-repeat;
+              mask: url('images/Rogue Bachata Logo _transparent_.png') center / contain no-repeat;
+      transition: background-color 0.5s ease;
+    }
+    .nav-logo { width: 170px; aspect-ratio: 974 / 502; -webkit-mask-size: 100% auto; mask-size: 100% auto; }
+    .nav-logo-wrapper {
+      position: absolute; top: 0; bottom: 0; left: 50%;
+      transform: translateX(-50%); height: 100%; overflow: hidden;
+      display: flex; align-items: center; pointer-events: none;
+    }
+    .nav-logo-wrapper a { pointer-events: auto; }
+    @media (max-width: 560px) { .nav-logo { width: 130px; } }
+
+    /* ── Navigation ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      padding: 1rem 2rem;
+      padding: 0.2rem 1.2rem;
+      height: 36px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 100;
       background: rgba(15, 15, 26, 0.9);
       backdrop-filter: blur(10px);
+      transition: background 0.5s ease;
     }
     nav .logo {
-      font-size: 1.5rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: #eee;
       text-decoration: none;
       letter-spacing: 0.1em;
+      white-space: nowrap;
     }
     nav .menu-toggle {
       display: none;
       background: none;
       border: none;
       color: #eee;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       cursor: pointer;
-      padding: 0.5rem;
+      padding: 0.25rem 0.5rem;
     }
     nav .nav-links { display: flex; align-items: center; }
     nav .nav-links a {
       color: #eee;
       text-decoration: none;
-      margin-left: 2rem;
-      font-size: 0.9rem;
+      margin-left: 1.5rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
       transition: color 0.3s;
     }
     nav .nav-links a:hover { color: #e94560 !important; }
-    @media (max-width: 768px) {
-      nav .menu-toggle { display: block; }
-      nav .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0; right: 0;
-        flex-direction: column;
-        background: rgba(15, 15, 26, 0.95);
-        backdrop-filter: blur(10px);
-        padding: 1rem 0;
-      }
-      nav .nav-links.open { display: flex; }
-      nav .nav-links a { margin: 0.5rem 1rem; padding: 0.5rem 0; }
-    }
-  
-    /* Pastel nav colour switching */
-    nav { transition: background 0.5s ease; }
     nav.pastel-pink { background: rgba(255, 182, 193, 0.92); }
     nav.pastel-blue  { background: rgba(173, 216, 230, 0.92); }
+    nav.pastel-pink .nav-logo { background-color: #87CEEB; }
+    nav.pastel-blue  .nav-logo { background-color: #FFB7C5; }
     nav.pastel-pink .logo, nav.pastel-pink .nav-links a, nav.pastel-pink .menu-toggle,
     nav.pastel-blue  .logo, nav.pastel-blue  .nav-links a, nav.pastel-blue  .menu-toggle { color: #1a1a2e !important; }
     nav.pastel-pink .nav-links a:hover,
     nav.pastel-blue  .nav-links a:hover { color: #e94560 !important; }
-    nav.pastel-pink .nav-links { background: rgba(255, 182, 193, 0.97) !important; border-top-color: rgba(26,26,46,0.15) !important; }
-    nav.pastel-blue  .nav-links { background: rgba(173, 216, 230, 0.97) !important; border-top-color: rgba(26,26,46,0.15) !important; }
+    @media (max-width: 900px) {
+      nav .menu-toggle { display: block; }
+      nav .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        flex-direction: column;
+        background: rgba(15, 15, 26, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      nav .nav-links.open { display: flex; }
+      nav .nav-links a { margin: 0.5rem 1rem; padding: 0.5rem 0; }
+      nav.pastel-pink .nav-links { background: rgba(255, 182, 193, 0.97) !important; border-top-color: rgba(26,26,46,0.15) !important; }
+      nav.pastel-blue  .nav-links { background: rgba(173, 216, 230, 0.97) !important; border-top-color: rgba(26,26,46,0.15) !important; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
   <nav>
     <a href="index.html" class="logo">ROGUE</a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-      <span>☰</span>
-    </button>
+    <div class="nav-logo-wrapper">
+      <a href="index.html" class="logo-mask nav-logo" aria-label="Rogue Bachata"></a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
     <div class="nav-links" id="navLinks">
       <a href="index.html#about">About</a>
       <a href="index.html#offerings">Classes & Workshops</a>
