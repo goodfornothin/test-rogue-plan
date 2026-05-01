@@ -417,7 +417,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   z-index: 100;
-  height: 36px;
+  height: 72px;
   background: rgba(15, 15, 26, 0.9);
   backdrop-filter: blur(10px);
   transition: background 0.5s ease;
@@ -863,7 +863,7 @@ footer {
 }
 
 /* Nav collapses to hamburger before links overlap the centered logo */
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   nav .nav-links {
     display: none;
     position: absolute;
