@@ -581,19 +581,19 @@
     /* ── Logo (mask-recoloured PNG) ── */
     .logo-mask {
       display: inline-block;
-      background-color: var(--nav-logo-color, #FFB7C5);
+      background-color: var(--nav-logo-color, #CC929E);
       -webkit-mask: url('images/Rogue Bachata Logo _transparent_.png') center / contain no-repeat;
               mask: url('images/Rogue Bachata Logo _transparent_.png') center / contain no-repeat;
       transition: background-color 0.5s ease;
     }
-    .nav-logo { width: 170px; aspect-ratio: 974 / 502; -webkit-mask-size: 100% auto; mask-size: 100% auto; }
+    .nav-logo { width: 265px; aspect-ratio: 974 / 502; -webkit-mask-size: 100% auto; mask-size: 100% auto; }
     .nav-logo-wrapper {
       position: absolute; top: 0; bottom: 0; left: 50%;
       transform: translateX(-50%); height: 100%; overflow: hidden;
       display: flex; align-items: center; pointer-events: none;
     }
     .nav-logo-wrapper a { pointer-events: auto; }
-    @media (max-width: 560px) { .nav-logo { width: 130px; } }
+    
 
     /* ── Navigation ── */
     nav {
@@ -602,7 +602,7 @@
       padding: 0.2rem 1.2rem;
       height: 72px;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       z-index: 100;
       background: rgba(15, 15, 26, 0.9);
@@ -640,13 +640,15 @@
     nav .nav-links a:hover { color: #e94560 !important; }
     nav.pastel-pink { background: rgba(255, 182, 193, 0.92); }
     nav.pastel-blue  { background: rgba(173, 216, 230, 0.92); }
-    nav.pastel-pink .nav-logo { background-color: #87CEEB; }
-    nav.pastel-blue  .nav-logo { background-color: #FFB7C5; }
+    nav.pastel-pink .nav-logo { background-color: #6CA5BC; }
+    nav.pastel-blue  .nav-logo { background-color: #CC929E; }
     nav.pastel-pink .logo, nav.pastel-pink .nav-links a, nav.pastel-pink .menu-toggle,
     nav.pastel-blue  .logo, nav.pastel-blue  .nav-links a, nav.pastel-blue  .menu-toggle { color: #1a1a2e !important; }
     nav.pastel-pink .nav-links a:hover,
     nav.pastel-blue  .nav-links a:hover { color: #e94560 !important; }
     @media (max-width: 1100px) {
+      nav { justify-content: space-between; }
+      .nav-logo-wrapper { position: static; transform: none; height: 100%; pointer-events: auto; overflow: hidden; flex-shrink: 0; }
       nav .menu-toggle { display: block; }
       nav .nav-links {
         display: none;
@@ -670,17 +672,18 @@
 <body>
 
   <nav>
-    <a href="index.html" class="logo">ROGUE</a>
     <div class="nav-logo-wrapper">
       <a href="index.html" class="logo-mask nav-logo" aria-label="Rogue Bachata"></a>
     </div>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
     <div class="nav-links" id="navLinks">
       <a href="index.html#about">About</a>
+      <a href="index.html#parties">Rogue Parties</a>
       <a href="index.html#offerings">Classes & Workshops</a>
       <a href="index.html#principles">Principles</a>
       <a href="index.html#events">Events</a>
       <a href="index.html#contact">Contact</a>
+    <a href="links.html">Links</a>
     </div>
   </nav>
 

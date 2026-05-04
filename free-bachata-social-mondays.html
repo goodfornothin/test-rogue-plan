@@ -88,7 +88,7 @@
       transition: background-color 0.5s ease;
     }
     .nav-logo {
-      width: 170px;
+      width: 265px;
       aspect-ratio: 974 / 502;
       background-color: var(--nav-logo-color, var(--logo-color));
       -webkit-mask-size: 100% auto;
@@ -118,7 +118,7 @@
       top: 0; left: 0; right: 0;
       padding: 0.25rem 1.2rem;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       z-index: 100;
       background: rgba(15, 15, 26, 0.85);
@@ -128,8 +128,8 @@
     }
     nav.pastel-pink { background: rgba(255, 182, 193, 0.92); }
     nav.pastel-blue { background: rgba(173, 216, 230, 0.92); }
-    nav.pastel-pink .nav-logo { background-color: #87CEEB; }
-    nav.pastel-blue  .nav-logo { background-color: #FFB7C5; }
+    nav.pastel-pink .nav-logo { background-color: #6CA5BC; }
+    nav.pastel-blue  .nav-logo { background-color: #CC929E; }
 
     nav .logo {
       font-size: 1.1rem;
@@ -167,6 +167,8 @@
     nav .nav-links a:hover { color: var(--pastel-pink); }
 
     @media (max-width: 1100px) {
+      nav { justify-content: space-between; }
+      .nav-logo-wrapper { position: static; transform: none; height: 100%; pointer-events: auto; overflow: hidden; flex-shrink: 0; }
       nav .menu-toggle { display: block; }
       nav .nav-links {
         display: none;
@@ -183,9 +185,6 @@
       nav.pastel-blue  .nav-links { background: rgba(173, 216, 230, 0.97) !important; border-top-color: rgba(26,26,46,0.15) !important; }
       nav .nav-links.open { display: flex; }
       nav .nav-links a { margin: 0.5rem 1rem; padding: 0.5rem 0; }
-    }
-    @media (max-width: 560px) {
-      .nav-logo { width: 130px; }
     }
 
     /* ── HERO — recreates the poster ── */
@@ -485,17 +484,18 @@
 <body>
 
   <nav>
-    <a href="index.html" class="logo">ROGUE</a>
     <div class="nav-logo-wrapper">
       <a href="index.html" class="logo-mask nav-logo" aria-label="Rogue Bachata"></a>
     </div>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
     <div class="nav-links" id="navLinks">
       <a href="index.html#about">About</a>
-      <a href="index.html#parties">Parties</a>
-      <a href="index.html#offerings">Classes</a>
+      <a href="index.html#parties">Rogue Parties</a>
+      <a href="index.html#offerings">Classes & Workshops</a>
+      <a href="index.html#principles">Principles</a>
       <a href="index.html#events">Events</a>
       <a href="index.html#contact">Contact</a>
+      <a href="links.html">Links</a>
     </div>
   </nav>
 
@@ -581,7 +581,7 @@
     (function () {
       var nav = document.querySelector('nav');
       if (!nav) return;
-      var PINK = '#FFB7C5', BLUE = '#87CEEB';
+      var PINK = '#CC929E', BLUE = '#6CA5BC';
       function flip() {
         nav.classList.remove('pastel-pink', 'pastel-blue');
         var isPink = Math.random() < 0.5;

@@ -384,13 +384,13 @@ a:hover {
 }
 /* nav variant: fills element width, wrapper clips top/bottom */
 .nav-logo {
-  width: 170px;
+  width: 265px;
   aspect-ratio: 974 / 502;
-  background-color: var(--nav-logo-color, var(--logo-color, #FFB7C5));
+  background-color: var(--nav-logo-color, var(--logo-color, #CC929E));
   -webkit-mask-size: 100% auto;
           mask-size: 100% auto;
 }
-/* absolutely centered in the nav bar, clips vertically */
+/* centered on wide, flows left on mobile */
 .nav-logo-wrapper {
   position: absolute;
   top: 0; bottom: 0; left: 50%;
@@ -401,10 +401,7 @@ a:hover {
   align-items: center;
   pointer-events: none;
 }
-.nav-logo-wrapper a { pointer-events: auto; }
-@media (max-width: 560px) {
-  .nav-logo { width: 130px; }
-}
+.nav-logo-wrapper a { pointer-events: auto; display: block; }
 
 /* Navigation */
 nav {
@@ -414,7 +411,7 @@ nav {
   right: 0;
   padding: 0.2rem 1.2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   z-index: 100;
   height: 72px;
@@ -427,8 +424,8 @@ nav.pastel-pink { background: rgba(255, 182, 193, 0.92); }
 nav.pastel-blue  { background: rgba(173, 216, 230, 0.92); }
 
 /* Logo flips to opposite colour when nav switches */
-nav.pastel-pink .nav-logo { background-color: #87CEEB; }
-nav.pastel-blue  .nav-logo { background-color: #FFB7C5; }
+nav.pastel-pink .nav-logo { background-color: #6CA5BC; }
+nav.pastel-blue  .nav-logo { background-color: #CC929E; }
 
 nav.pastel-pink .logo,
 nav.pastel-pink .nav-links a,
@@ -864,6 +861,23 @@ footer {
 
 /* Nav collapses to hamburger before links overlap the centered logo */
 @media (max-width: 1100px) {
+  nav {
+    justify-content: space-between;
+  }
+
+  .nav-logo-wrapper {
+    position: static;
+    transform: none;
+    height: 100%;
+    pointer-events: auto;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  nav .menu-toggle {
+    display: block;
+  }
+
   nav .nav-links {
     display: none;
     position: absolute;
@@ -887,9 +901,5 @@ footer {
   nav .nav-links a {
     margin: 0.5rem 1rem;
     padding: 0.5rem 0;
-  }
-
-  nav .menu-toggle {
-    display: block;
   }
 }
