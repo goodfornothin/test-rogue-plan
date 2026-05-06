@@ -23,8 +23,8 @@ html {
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  background: #FFB7C5;
+  color: #1a1a2e;
   line-height: 1.7;
 }
 
@@ -386,22 +386,18 @@ a:hover {
 .nav-logo {
   width: 265px;
   aspect-ratio: 974 / 502;
-  background-color: var(--nav-logo-color, var(--logo-color, #CC929E));
+  background-color: var(--nav-logo-color, var(--logo-color, #6CA5BC));
   -webkit-mask-size: 100% auto;
           mask-size: 100% auto;
 }
-/* centered on wide, flows left on mobile */
 .nav-logo-wrapper {
-  position: absolute;
-  top: 0; bottom: 0; left: 50%;
-  transform: translateX(-50%);
   height: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
-  pointer-events: none;
+  flex-shrink: 0;
 }
-.nav-logo-wrapper a { pointer-events: auto; display: block; }
+.nav-logo-wrapper a { display: block; }
 
 /* Navigation */
 nav {
@@ -411,11 +407,11 @@ nav {
   right: 0;
   padding: 0.2rem 1.2rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   z-index: 100;
   height: 72px;
-  background: rgba(15, 15, 26, 0.9);
+  background: rgba(255, 182, 193, 0.92);
   backdrop-filter: blur(10px);
   transition: background 0.5s ease;
 }
@@ -443,7 +439,7 @@ nav.pastel-blue  .nav-links { background: rgba(173, 216, 230, 0.97) !important; 
 nav .logo {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--text);
+  color: #1a1a2e;
   letter-spacing: 0.1em;
   text-decoration: none;
   white-space: nowrap;
@@ -453,7 +449,7 @@ nav .menu-toggle {
   display: none;
   background: none;
   border: none;
-  color: var(--text);
+  color: #1a1a2e;
   font-size: 1.3rem;
   cursor: pointer;
   padding: 0.25rem 0.5rem;
@@ -465,7 +461,7 @@ nav .nav-links {
 }
 
 nav .nav-links a {
-  color: var(--text);
+  color: #1a1a2e;
   margin-left: 1.5rem;
   font-size: 0.78rem;
   text-transform: uppercase;
@@ -861,19 +857,6 @@ footer {
 
 /* Nav collapses to hamburger before links overlap the centered logo */
 @media (max-width: 1100px) {
-  nav {
-    justify-content: space-between;
-  }
-
-  .nav-logo-wrapper {
-    position: static;
-    transform: none;
-    height: 100%;
-    pointer-events: auto;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-
   nav .menu-toggle {
     display: block;
   }
