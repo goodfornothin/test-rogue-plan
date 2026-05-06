@@ -43,7 +43,7 @@
     "organizer": { "@type": "Organization", "name": "Rogue Bachata", "url": "https://roguebachata.com" },
     "offers": [
       { "@type": "Offer", "name": "Dance Class", "price": "10", "priceCurrency": "GBP",
-        "url": "https://www.fatsoma.com/e/z0qfpgl5/rogue-bachata-mondays-bank-holiday-special",
+        "url": "https://www.fatsoma.com/e/x6ii0yaz/rogue-bachata-mondays-keystone-crescent",
         "availability": "https://schema.org/InStock" },
       { "@type": "Offer", "name": "Free Social Dancing from 8:30pm", "price": "0",
         "priceCurrency": "GBP", "availability": "https://schema.org/InStock" }
@@ -95,13 +95,11 @@
               mask-size: 100% auto;
     }
     .nav-logo-wrapper {
-      position: absolute;
-      top: 0; bottom: 0; left: 50%;
-      transform: translateX(-50%);
       height: 100%;
       overflow: hidden;
       display: flex;
       align-items: center;
+      flex-shrink: 0;
     }
     .hero-logo {
       display: block;
@@ -118,10 +116,10 @@
       top: 0; left: 0; right: 0;
       padding: 0.25rem 1.2rem;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
       z-index: 100;
-      background: rgba(15, 15, 26, 0.85);
+      background: rgba(255, 182, 193, 0.92);
       backdrop-filter: blur(10px);
       transition: background 0.5s ease;
       height: 72px;
@@ -135,7 +133,7 @@
       font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: 0.1em;
-      color: #fff;
+      color: #1a1a2e;
       text-decoration: none;
     }
     nav.pastel-pink .logo,
@@ -149,14 +147,14 @@
       display: none;
       background: none;
       border: none;
-      color: #fff;
+      color: #1a1a2e;
       font-size: 1.3rem;
       cursor: pointer;
       padding: 0.25rem;
     }
     nav .nav-links { display: flex; align-items: center; }
     nav .nav-links a {
-      color: #fff;
+      color: #1a1a2e;
       text-decoration: none;
       margin-left: 1.5rem;
       font-size: 0.78rem;
@@ -167,8 +165,6 @@
     nav .nav-links a:hover { color: var(--pastel-pink); }
 
     @media (max-width: 1100px) {
-      nav { justify-content: space-between; }
-      .nav-logo-wrapper { position: static; transform: none; height: 100%; pointer-events: auto; overflow: hidden; flex-shrink: 0; }
       nav .menu-toggle { display: block; }
       nav .nav-links {
         display: none;
@@ -521,7 +517,7 @@
     </div>
 
     <div class="cta-row">
-      <a href="https://www.fatsoma.com/e/z0qfpgl5/rogue-bachata-mondays-bank-holiday-special" target="_blank" class="btn btn-primary">Book class · £10</a>
+      <a href="https://www.fatsoma.com/e/x6ii0yaz/rogue-bachata-mondays-keystone-crescent" target="_blank" class="btn btn-primary">Book class · £10</a>
       <a href="#details" class="btn btn-secondary">More details</a>
     </div>
 
