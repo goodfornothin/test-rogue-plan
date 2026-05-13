@@ -382,7 +382,6 @@ a:hover {
           mask: url('images/Rogue Bachata Logo _transparent_.png') center / contain no-repeat;
   transition: background-color 0.5s ease;
 }
-/* nav variant: fills element width, wrapper clips top/bottom */
 .nav-logo {
   width: 265px;
   aspect-ratio: 974 / 502;
@@ -392,7 +391,7 @@ a:hover {
 }
 .nav-logo-wrapper {
   height: 100%;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   align-items: center;
   flex-shrink: 0;
