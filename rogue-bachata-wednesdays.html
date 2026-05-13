@@ -179,28 +179,29 @@
     }
 
     .line-rogue {
-      font-size: clamp(2.8rem, 12.5vw, 6.4rem);
+      font-size: clamp(1.8rem, 8vw, 4rem);
       color: var(--pastel-pink);
       text-shadow:
         0 0 14px var(--pink),
         0 0 30px rgba(255,27,140,0.55),
-        0 0 60px rgba(255,27,140,0.25),
-        0 3px 8px rgba(0,0,0,0.75);
-      line-height: 0.9;
+        0 3px 8px rgba(0,0,0,0.85);
+      line-height: 1;
       letter-spacing: 0.01em;
     }
 
     .line-wednesdays {
-      font-size: clamp(2.2rem, 10vw, 5.2rem);
+      font-size: clamp(3.4rem, 15vw, 8rem);
       color: var(--pastel-cyan);
       text-shadow:
-        0 0 14px var(--cyan),
-        0 0 30px rgba(0,223,255,0.55),
-        0 0 60px rgba(0,223,255,0.25),
-        0 3px 8px rgba(0,0,0,0.75);
+        0 0 16px var(--cyan),
+        0 0 35px rgba(0,223,255,0.55),
+        0 0 70px rgba(0,223,255,0.25),
+        0 4px 6px rgba(0,0,0,1),
+        0 8px 20px rgba(0,0,0,0.9),
+        0 14px 40px rgba(0,0,0,0.7);
       line-height: 0.95;
       letter-spacing: 0.01em;
-      margin-bottom: 0.15em;
+      margin-bottom: 0.12em;
     }
 
     .line-location {
@@ -402,6 +403,9 @@
     .faq-item[open] summary::after { transform: rotate(45deg); }
     .faq-item p { margin-top: 0.7rem; font-size: 0.92rem; color: rgba(255,255,255,0.82); line-height: 1.65; }
 
+    .poster-block { padding: 3rem 1.2rem 4rem; background: #05000f; text-align: center; }
+    .poster-img { max-width: 460px; width: 100%; height: auto; border-radius: 0.6rem; box-shadow: 0 14px 40px rgba(0,0,0,0.6), 0 0 30px rgba(255,27,140,0.18); }
+
     footer { text-align: center; padding: 1.2rem; font-size: 0.78rem; color: rgba(255,255,255,0.35); background: #05000f; }
     footer a { color: var(--pastel-pink); text-decoration: none; }
   </style>
@@ -495,6 +499,12 @@
           <p>Booking is recommended for the class — it fills up. The free social from 8:30pm needs no booking.</p></details>
       </div>
     </div>
+  </section>
+
+  <section class="poster-block">
+    <img class="poster-img"
+         src="images/Rogue Bachata Wednesdays Keystone.png"
+         alt="Rogue Bachata Wednesdays King's Cross · Dance Class 7:30 PM £10 · Free Social 8:30 PM · Keystone Crescent">
   </section>
 
   <footer>
