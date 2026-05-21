@@ -687,7 +687,7 @@
 <body>
 
   <!-- Fixed video background -->
-  <video class="page-video" autoplay muted loop playsinline poster="images/Rogue Tuesdays Poster.JPG">
+  <video class="page-video" autoplay muted loop playsinline webkit-playsinline poster="images/Rogue Tuesdays Poster.JPG">
     <source src="videos/cafe-sol-new-bg.mp4" type="video/mp4">
   </video>
   <div class="page-video-overlay"></div>
@@ -976,6 +976,24 @@
       }
       pick();
       document.addEventListener('click', pick);
+    })();
+  </script>
+  <script>
+    (function() {
+      var vid = document.querySelector('video');
+      if (!vid) return;
+      var p = vid.play();
+      if (p !== undefined) {
+        p.catch(function() {
+          var resume = function() {
+            vid.play();
+            document.removeEventListener('touchstart', resume);
+            document.removeEventListener('click', resume);
+          };
+          document.addEventListener('touchstart', resume, { passive: true });
+          document.addEventListener('click', resume, { passive: true });
+        });
+      }
     })();
   </script>
 </body>
