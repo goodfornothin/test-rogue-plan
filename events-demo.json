@@ -1,0 +1,42 @@
+{
+  "lastUpdated": "2026-05-28T22:30:00Z",
+  "source": "https://www.fatsoma.com/p/roguebachata",
+  "note": "DEMO DATA — this is the shape the GitHub Action scraper will write to events.json automatically every Wednesday night.",
+  "events": [
+    {
+      "date": "2026-06-03",
+      "startTime": "19:30",
+      "title": "Rogue Bachata Wednesdays · Keystone Crescent",
+      "venue": "Keystone Crescent, King's Cross",
+      "url": "https://www.fatsoma.com/e/a4rbtiyp/rogue-bachata-wednesdays-keystone-crescent"
+    },
+    {
+      "date": "2026-06-10",
+      "startTime": "19:30",
+      "title": "Rogue Bachata Wednesdays · Keystone Crescent",
+      "venue": "Keystone Crescent, King's Cross",
+      "url": "https://www.fatsoma.com/e/b5xy10cd/rogue-bachata-wednesdays-keystone-crescent"
+    },
+    {
+      "date": "2026-06-17",
+      "startTime": "19:30",
+      "title": "Rogue Bachata Wednesdays · Keystone Crescent",
+      "venue": "Keystone Crescent, King's Cross",
+      "url": "https://www.fatsoma.com/e/c6zw20ef/rogue-bachata-wednesdays-keystone-crescent"
+    },
+    {
+      "date": "2026-06-24",
+      "startTime": "19:30",
+      "title": "Rogue Bachata Wednesdays · Keystone Crescent",
+      "venue": "Keystone Crescent, King's Cross",
+      "url": "https://www.fatsoma.com/e/d7av30gh/rogue-bachata-wednesdays-keystone-crescent"
+    },
+    {
+      "date": "2026-07-01",
+      "startTime": "19:30",
+      "title": "Rogue Bachata Wednesdays · Keystone Crescent",
+      "venue": "Keystone Crescent, King's Cross",
+      "url": "https://www.fatsoma.com/e/e8bu40ij/rogue-bachata-wednesdays-keystone-crescent"
+    }
+  ]
+}
