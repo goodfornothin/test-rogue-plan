@@ -1,7 +1,6 @@
 {
   "lastUpdated": "2026-05-28T22:30:00Z",
   "source": "https://www.fatsoma.com/p/roguebachata",
-  "note": "DEMO DATA — this is the shape the GitHub Action scraper will write to events.json automatically every Wednesday night.",
   "events": [
     {
       "date": "2026-06-03",
