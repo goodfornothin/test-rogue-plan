@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rogue Bachata Wednesdays | King's Cross | Free Social 8:30 PM</title>
+  <meta name="description" content="Rogue Bachata Wednesdays at Keystone Crescent, King's Cross. Class 7:30 PM (£10), free social dancing from 8:30 PM. All levels welcome — no partner needed.">
+  <meta property="og:title" content="Rogue Bachata Wednesdays | King's Cross | Free Social Dancing">
+  <meta property="og:description" content="Join us every Wednesday at Keystone Crescent, King's Cross. Dance Class 7:30 PM (£10), Free Social 8:30 PM.">
+  <meta property="og:image" content="https://roguebachata.com/images/Rogue%20Bachata%20Wednesdays%20Keystone.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1697">
+  <meta property="og:url" content="https://roguebachata.com/rogue-bachata-wednesdays.html">
+  <meta property="og:type" content="website">
+  <meta property="og:logo" content="https://roguebachata.com/images/Rogue%20Bachata%20Logo%20_transparent_.png" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://roguebachata.com/images/Rogue%20Bachata%20Wednesdays%20Keystone.png">
+  <link rel="canonical" href="https://roguebachata.com/rogue-bachata-wednesdays.html">
+  <link rel="icon" href="images/Rogue Bachata Logo.svg" type="image/svg+xml">
+  <link rel="icon" href="images/Rogue Bachata Logo _transparent_.png" type="image/png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Rogue Bachata Wednesdays at Keystone Crescent, King's Cross",
+    "description": "Every Wednesday at Keystone Crescent, King's Cross. Dance class 7:30pm (£10), free social dancing from 8:30pm. No partner needed.",
+    "url": "https://roguebachata.com/rogue-bachata-wednesdays.html",
+    "image": "https://roguebachata.com/images/Rogue%20Bachata%20Wednesdays%20Keystone.png",
+    "location": {
+      "@type": "Place",
+      "name": "Keystone Crescent",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Keystone Crescent",
+        "addressLocality": "London",
+        "postalCode": "N1 9DX",
+        "addressCountry": "GB"
+      }
+    },
+    "organizer": { "@type": "Organization", "name": "Rogue Bachata", "url": "https://roguebachata.com" },
+    "offers": [
+      { "@type": "Offer", "name": "Dance Class", "price": "10", "priceCurrency": "GBP",
+        "url": "https://www.fatsoma.com/e/a4rbtiyp/rogue-bachata-wednesdays-keystone-crescent",
+        "availability": "https://schema.org/InStock" },
+      { "@type": "Offer", "name": "Free Social Dancing from 8:30pm", "price": "0",
+        "priceCurrency": "GBP", "availability": "https://schema.org/InStock" }
+    ],
+    "eventSchedule": {
+      "@type": "Schedule",
+      "repeatFrequency": "P1W",
+      "byDay": "https://schema.org/Wednesday",
+      "startTime": "19:30",
+      "endTime": "23:00"
+    },
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus": "https://schema.org/EventScheduled"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800;1,900&family=Righteous&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink:        #FF1B8C;
+      --cyan:        #00DFFF;
+      --pastel-pink: #FFB7C5;
+      --pastel-cyan: #80D8EF;
+      --dark:        #05000f;
+      --nav-logo-color: var(--pastel-pink);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--dark) url('images/keystone-crescent-dancefloor.jpg') no-repeat center top fixed;
+      background-size: cover;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ── LOGO MASK ── */
+    .logo-mask {
+      display: inline-block;
+      background-color: var(--nav-logo-color, var(--pastel-pink));
+      -webkit-mask: url('images/Rogue Bachata Logo _transparent_.png') center / contain no-repeat;
+              mask: url('images/Rogue Bachata Logo _transparent_.png') center / contain no-repeat;
+      transition: background-color 0.5s;
+    }
+    .nav-logo {
+      width: 230px; aspect-ratio: 974/502;
+      -webkit-mask-size: 100% auto; mask-size: 100% auto;
+    }
+    .nav-logo-wrapper { display: flex; align-items: center; height: 100%; flex-shrink: 0; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 68px; padding: 0 1.2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      z-index: 100;
+      background: rgba(255, 182, 193, 0.92);
+      backdrop-filter: blur(10px);
+      transition: background 0.5s;
+    }
+    nav.pastel-blue  { background: rgba(173, 216, 230, 0.92); }
+    nav.pastel-pink .nav-logo { background-color: #6CA5BC; }
+    nav.pastel-blue  .nav-logo { background-color: #CC929E; }
+    nav .menu-toggle { display: none; background: none; border: none; color: #1a1a2e; font-size: 1.3rem; cursor: pointer; padding: 0.25rem; }
+    nav .nav-links { display: flex; align-items: center; }
+    nav .nav-links a { color: #1a1a2e !important; text-decoration: none; margin-left: 1.5rem; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; transition: color 0.2s; }
+    nav .nav-links a:hover { color: var(--pink) !important; }
+    @media (max-width: 1100px) {
+      nav .menu-toggle { display: block; }
+      nav .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; padding: 0.7rem 0; border-top: 1px solid rgba(26,26,46,0.15); }
+      nav.pastel-pink .nav-links { background: rgba(255,182,193,0.97); }
+      nav.pastel-blue  .nav-links { background: rgba(173,216,230,0.97); }
+      nav .nav-links.open { display: flex; }
+      nav .nav-links a { margin: 0.45rem 1.5rem; padding: 0.4rem 0; }
+    }
+
+    /* ── HERO: full-screen poster layout ── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(5,0,16,0.78) 0%,
+        rgba(5,0,16,0.28) 20%,
+        rgba(5,0,16,0.18) 48%,
+        rgba(5,0,16,0.50) 72%,
+        rgba(5,0,16,0.94) 100%
+      );
+      z-index: 0;
+    }
+
+    /* Top content: logo + title */
+    .hero-top {
+      position: relative; z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 1.5rem 1.2rem;
+    }
+
+    .hero-logo-mark {
+      display: block;
+      width: min(140px, 30vw);
+      aspect-ratio: 974/502;
+      background-color: var(--pastel-pink);
+      filter: drop-shadow(0 0 14px rgba(255,27,140,0.65)) drop-shadow(0 0 8px rgba(0,229,255,0.4));
+      margin: 0 auto 0.6rem;
+      -webkit-mask-size: 100% auto; mask-size: 100% auto;
+    }
+
+    .poster-heading { line-height: 1; }
+
+    .poster-line {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .line-rogue {
+      font-size: clamp(1.8rem, 8vw, 4rem);
+      color: var(--pastel-pink);
+      text-shadow:
+        0 0 14px var(--pink),
+        0 0 30px rgba(255,27,140,0.55),
+        0 3px 8px rgba(0,0,0,0.85);
+      line-height: 1;
+      letter-spacing: 0.01em;
+    }
+
+    .line-wednesdays {
+      font-size: clamp(2rem, 10vw, 7rem);
+      color: var(--pastel-cyan);
+      text-shadow:
+        0 0 16px var(--cyan),
+        0 0 35px rgba(0,223,255,0.55),
+        0 0 70px rgba(0,223,255,0.25),
+        0 4px 6px rgba(0,0,0,1),
+        0 8px 20px rgba(0,0,0,0.9),
+        0 14px 40px rgba(0,0,0,0.7);
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.12em;
+    }
+
+    .line-location {
+      font-size: clamp(1.5rem, 5.5vw, 2.8rem);
+      color: #fff;
+      font-weight: 800;
+      text-transform: none;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.6);
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+
+    .booking-note {
+      font-size: clamp(0.7rem, 2.2vw, 0.85rem);
+      color: rgba(255,255,255,0.65);
+      font-style: italic;
+      letter-spacing: 0.06em;
+      margin-top: 0.9rem;
+    }
+
+    /* ── SCHEDULE BAND ── */
+    .schedule-band {
+      position: relative; z-index: 1;
+      background: rgba(3,0,12,0.82);
+      border-top: 2px solid rgba(255,27,140,0.7);
+      border-bottom: 2px solid rgba(0,223,255,0.6);
+      padding: 1rem 1.5rem;
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+
+    .sched-free {
+      display: block;
+      font-size: clamp(1.05rem, 4.5vw, 1.8rem);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--pastel-pink);
+      text-shadow: 0 0 14px var(--pink), 0 0 28px rgba(255,27,140,0.5);
+      line-height: 1.3;
+    }
+
+    .sched-class {
+      display: block;
+      font-size: clamp(0.9rem, 3.8vw, 1.5rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--pastel-cyan);
+      text-shadow: 0 0 12px var(--cyan), 0 0 24px rgba(0,223,255,0.45);
+      line-height: 1.3;
+    }
+
+    /* ── VENUE BLOCK ── */
+    .venue-block {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 1.2rem 1.5rem 1.8rem;
+      background: linear-gradient(to bottom, rgba(3,0,12,0.35), rgba(3,0,12,0.92));
+    }
+
+    .venue-name {
+      font-family: 'Righteous', sans-serif;
+      font-size: clamp(1.9rem, 8vw, 4rem);
+      color: var(--pastel-cyan);
+      text-shadow: 0 0 20px var(--cyan), 0 0 40px rgba(0,223,255,0.38);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .venue-address {
+      font-size: clamp(0.75rem, 2.5vw, 0.95rem);
+      font-weight: 600;
+      color: rgba(255,255,255,0.72);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+    .venue-address a { color: inherit; text-decoration: none; }
+    .venue-address a:hover { color: var(--pastel-cyan); }
+
+    /* ── CTA BUTTONS ── */
+    .cta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 560px) {
+      .cta-row { flex-direction: row; }
+    }
+
+    .btn {
+      display: block;
+      padding: 0.95rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 0.4rem;
+      text-decoration: none;
+      text-align: center;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.22s;
+      flex: 1;
+    }
+
+    .btn-pink {
+      color: var(--pastel-pink);
+      background: transparent;
+      border: 2px solid var(--pink);
+      box-shadow: 0 0 18px rgba(255,27,140,0.5), inset 0 0 14px rgba(255,27,140,0.12);
+      text-shadow: 0 0 10px var(--pink);
+    }
+    .btn-pink:hover {
+      background: var(--pink); color: #fff;
+      box-shadow: 0 0 32px rgba(255,27,140,0.9);
+      text-shadow: none;
+    }
+
+    .btn-cyan {
+      color: var(--pastel-cyan);
+      background: transparent;
+      border: 2px solid var(--cyan);
+      box-shadow: 0 0 14px rgba(0,223,255,0.42), inset 0 0 12px rgba(0,223,255,0.1);
+      text-shadow: 0 0 10px var(--cyan);
+    }
+    .btn-cyan:hover {
+      background: var(--cyan); color: #001520;
+      text-shadow: none;
+    }
+
+    /* ── DETAILS SECTION ── */
+    .details {
+      background: linear-gradient(to bottom, rgba(5,0,16,0.94), #05000f 70%);
+      backdrop-filter: blur(4px);
+      padding: 4rem 1.2rem 4rem;
+    }
+    .details-inner { max-width: 720px; margin: 0 auto; }
+
+    .section-label {
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--pastel-cyan);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 10px rgba(0,223,255,0.5);
+    }
+
+    .details h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 2.4rem);
+      text-align: center;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 16px rgba(255,27,140,0.4);
+    }
+
+    .perks { display: grid; gap: 0.85rem; margin-bottom: 2.5rem; }
+    @media (min-width: 640px) { .perks { grid-template-columns: 1fr 1fr; } }
+
+    .perk {
+      display: flex; gap: 0.9rem;
+      padding: 1rem 1.1rem;
+      background: rgba(10,0,25,0.65);
+      border: 1px solid rgba(255,27,140,0.28);
+      border-radius: 0.5rem;
+      backdrop-filter: blur(8px);
+    }
+    .perk-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .perk-text strong { display: block; font-weight: 700; margin-bottom: 0.15rem; }
+    .perk-text span { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.55; }
+
+    /* FAQ */
+    .faq h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      text-align: center;
+      margin: 2.5rem 0 1.5rem;
+      text-shadow: 0 0 14px rgba(0,223,255,0.45);
+    }
+
+    .faq-item {
+      background: rgba(10,0,25,0.75);
+      border: 1px solid rgba(0,223,255,0.2);
+      border-left: 3px solid var(--pink);
+      border-radius: 0.5rem;
+      padding: 1.05rem 1.25rem;
+      margin-bottom: 0.75rem;
+      backdrop-filter: blur(8px);
+    }
+    .faq-item summary { cursor: pointer; font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: var(--cyan); font-size: 1.3rem; font-weight: 300; text-shadow: 0 0 10px var(--cyan); transition: transform 0.2s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item p { margin-top: 0.7rem; font-size: 0.92rem; color: rgba(255,255,255,0.82); line-height: 1.65; }
+
+    .poster-block { padding: 3rem 1.2rem 4rem; background: #05000f; text-align: center; }
+    .poster-img { max-width: 460px; width: 100%; height: auto; border-radius: 0.6rem; box-shadow: 0 14px 40px rgba(0,0,0,0.6), 0 0 30px rgba(255,27,140,0.18); }
+
+    footer { text-align: center; padding: 1.2rem; font-size: 0.78rem; color: rgba(255,255,255,0.35); background: #05000f; }
+    footer a { color: var(--pastel-pink); text-decoration: none; }
+
+    /* ── DEMO BANNER ── */
+    .demo-banner {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: #ffd400; color: #111; text-align: center;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.03em;
+      padding: 0.5rem 1rem; font-family: 'Poppins', sans-serif;
+    }
+
+    /* ── LIVE EVENTS WIDGET ── */
+    .events-section { background: #05000f; padding: 3.5rem 1.2rem 1rem; }
+    .events-inner { max-width: 540px; margin: 0 auto; }
+    .events-label {
+      text-align: center; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--pastel-cyan);
+      margin-bottom: 1.4rem; text-shadow: 0 0 10px rgba(0,223,255,0.5);
+    }
+    .feat-card {
+      background: linear-gradient(135deg, rgba(255,27,140,0.14), rgba(0,223,255,0.08));
+      border: 1.5px solid var(--pink);
+      border-radius: 1rem; padding: 1.5rem 1.4rem;
+      box-shadow: 0 0 26px rgba(255,27,140,0.35);
+      text-align: center; margin-bottom: 1.2rem;
+    }
+    .feat-tag {
+      display: inline-block; font-size: 0.65rem; font-weight: 800;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: #fff; background: var(--pink); padding: 0.3rem 0.85rem;
+      border-radius: 2rem; margin-bottom: 0.9rem;
+    }
+    .feat-date {
+      font-family: 'Righteous', sans-serif; font-size: clamp(1.7rem, 7vw, 2.4rem);
+      color: var(--pastel-cyan); text-shadow: 0 0 18px var(--cyan); line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+    .feat-meta { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 1.2rem; }
+    .feat-btn {
+      display: block; padding: 1rem 1.4rem; font-size: 0.95rem; font-weight: 700;
+      border-radius: 0.5rem; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 0.08em; color: #fff; background: var(--pink);
+      box-shadow: 0 0 22px rgba(255,27,140,0.6); transition: all 0.2s;
+    }
+    .feat-btn:hover { background: #ff3d9e; box-shadow: 0 0 34px rgba(255,27,140,0.9); }
+
+    .upcoming-toggle {
+      width: 100%; background: transparent; border: 1px solid rgba(0,223,255,0.35);
+      color: var(--pastel-cyan); font-family: 'Poppins', sans-serif;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em;
+      padding: 0.8rem; border-radius: 0.5rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      transition: background 0.2s;
+    }
+    .upcoming-toggle:hover { background: rgba(0,223,255,0.08); }
+    .upcoming-toggle .chev { transition: transform 0.25s; }
+    .upcoming-toggle.open .chev { transform: rotate(180deg); }
+    .upcoming-list { list-style: none; margin: 0.8rem 0 0; padding: 0; display: none; }
+    .upcoming-list.open { display: block; }
+    .up-item {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 0.85rem 1rem; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 0.5rem; margin-bottom: 0.55rem; background: rgba(255,255,255,0.03);
+    }
+    .up-date { font-weight: 600; font-size: 0.92rem; color: #fff; }
+    .up-sub { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+    .up-book {
+      flex-shrink: 0; font-size: 0.78rem; font-weight: 700; text-decoration: none;
+      color: var(--pastel-cyan); border: 1px solid rgba(0,223,255,0.5);
+      padding: 0.45rem 0.9rem; border-radius: 2rem; transition: all 0.2s;
+    }
+    .up-book:hover { background: var(--cyan); color: #001520; }
+    .events-updated { text-align: center; font-size: 0.7rem; color: rgba(255,255,255,0.3); margin-top: 1.2rem; }
+  </style>
+</head>
+<body>
+
+  <nav class="pastel-pink">
+    <div class="nav-logo-wrapper">
+      <a href="index.html" class="logo-mask nav-logo" aria-label="Rogue Bachata"></a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#about">About</a>
+      <a href="index.html#parties">Rogue Parties</a>
+      <a href="index.html#offerings">Classes &amp; Workshops</a>
+      <a href="index.html#principles">Principles</a>
+      <a href="index.html#events">Events</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="links.html">Links</a>
+    </div>
+  </nav>
+
+  <!-- ══ HERO: poster-style ══ -->
+  <section class="hero">
+
+    <div class="hero-top">
+
+      <!-- RB logo mark -->
+      <span class="logo-mask hero-logo-mark" aria-label="Rogue Bachata"></span>
+
+      <h1 class="poster-heading">
+        <span class="poster-line line-rogue">Rogue Bachata</span>
+        <span class="poster-line line-wednesdays">Wednesdays</span>
+        <span class="poster-line line-location">King's Cross</span>
+      </h1>
+
+      <p class="booking-note">for bookings &nbsp;·&nbsp; roguebachata.com &nbsp;·&nbsp; or at door</p>
+
+    </div>
+
+    <!-- Schedule band -->
+    <div class="schedule-band">
+      <span class="sched-free">Free Social Dancing &nbsp; 8:30 PM</span>
+      <span class="sched-class">Dance Class &nbsp;·&nbsp; 7:30 PM &nbsp; £10</span>
+    </div>
+
+    <!-- Venue + CTA -->
+    <div class="venue-block">
+      <div class="venue-name">Keystone Crescent</div>
+      <div class="venue-address">
+        <a href="https://www.google.com/maps/search/?api=1&query=Keystone+Crescent+London+N1+9DX" target="_blank">
+          King's Cross &nbsp;·&nbsp; London N1 9DX
+        </a>
+      </div>
+      <div class="cta-row">
+        <a id="heroBookBtn" href="https://www.fatsoma.com/e/a4rbtiyp/rogue-bachata-wednesdays-keystone-crescent" target="_blank" class="btn btn-pink">Book Class · £10</a>
+        <a href="#upcoming" class="btn btn-cyan">See Dates</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══ LIVE EVENTS (auto-updated from Fatsoma) ══ -->
+  <section class="events-section" id="upcoming">
+    <div class="events-inner">
+      <p class="events-label">Upcoming Wednesdays</p>
+      <div id="eventsWidget"><p style="text-align:center;color:rgba(255,255,255,0.5);font-size:0.9rem;">Loading dates…</p></div>
+    </div>
+  </section>
+
+  <!-- ══ DETAILS ══ -->
+  <section class="details" id="details">
+    <div class="details-inner">
+      <p class="section-label">What to expect</p>
+      <h2>Your midweek spark. Every Wednesday.</h2>
+
+      <div class="perks">
+        <div class="perk"><div class="perk-icon">💃</div><div class="perk-text"><strong>Class at 7:30 PM</strong><span>One-hour bachata class. All levels welcome.</span></div></div>
+        <div class="perk"><div class="perk-icon">🎶</div><div class="perk-text"><strong>Free social from 8:30</strong><span>The floor opens up. Dance till late.</span></div></div>
+        <div class="perk"><div class="perk-icon">👐</div><div class="perk-text"><strong>No partner needed</strong><span>Everyone rotates. Instant friends.</span></div></div>
+        <div class="perk"><div class="perk-icon">📍</div><div class="perk-text"><strong>Keystone Crescent</strong><span>Stunning venue. 2 min from King's Cross.</span></div></div>
+        <div class="perk"><div class="perk-icon">💸</div><div class="perk-text"><strong>Just £10 for the class</strong><span>Class £10. Social after is free.</span></div></div>
+        <div class="perk"><div class="perk-icon">😊</div><div class="perk-text"><strong>The friendliest crowd</strong><span>No cliques. No judgement.</span></div></div>
+      </div>
+
+      <div class="faq">
+        <h3>Frequently asked</h3>
+        <details class="faq-item"><summary>Do I need a partner?</summary>
+          <p>No. Most people come alone. We rotate partners throughout the class.</p></details>
+        <details class="faq-item"><summary>Is this for complete beginners?</summary>
+          <p>Yes — designed from the ground up for absolute beginners. If you've never danced before, this is the perfect place to start.</p></details>
+        <details class="faq-item"><summary>How much does it cost?</summary>
+          <p>The 1-hour class is £10. Social dancing from 8:30pm is completely free.</p></details>
+        <details class="faq-item"><summary>Where is it?</summary>
+          <p>Keystone Crescent, King's Cross, London N1 9DX. 2 min walk from King's Cross / St Pancras stations.</p></details>
+        <details class="faq-item"><summary>What should I wear?</summary>
+          <p>Comfortable clothes. Smooth or leather-soled shoes work best — avoid thick rubber-soled trainers.</p></details>
+        <details class="faq-item"><summary>Do I need to book?</summary>
+          <p>Booking is recommended for the class — it fills up. The free social from 8:30pm needs no booking.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="poster-block">
+    <img class="poster-img"
+         src="images/Rogue Bachata Wednesdays Keystone.png"
+         alt="Rogue Bachata Wednesdays King's Cross · Dance Class 7:30 PM £10 · Free Social 8:30 PM · Keystone Crescent">
+  </section>
+
+  <footer>
+    <p>© 2026 <a href="index.html">Rogue Bachata</a>. Made with love in London.</p>
+  </footer>
+
+  <div class="demo-banner">⚙️ DEMO PAGE — events below are pulled automatically from your Fatsoma profile. Live pages are unchanged.</div>
+
+  <!-- ══ EVENTS RENDERER (reads events.json the scraper writes) ══ -->
+  <script>
+    (function () {
+      var WIDGET = document.getElementById('eventsWidget');
+      var DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+      function fmtFull(d) { return DAYS[d.getDay()] + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear(); }
+      function fmtShort(d) { return DAYS[d.getDay()].slice(0,3) + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()]; }
+      function to12h(t) {
+        if (!t) return '';
+        var p = t.split(':'), h = +p[0], m = p[1];
+        var ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12;
+        return h + (m !== '00' ? ':' + m : '') + ' ' + ap;
+      }
+
+      fetch('events-demo.json')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          var now = new Date();
+          var events = (data.events || [])
+            .map(function (e) { e._d = new Date(e.date + 'T' + (e.startTime || '19:30') + ':00'); return e; })
+            .filter(function (e) { return e._d >= new Date(now.getFullYear(), now.getMonth(), now.getDate()); })
+            .sort(function (a, b) { return a._d - b._d; });
+
+          if (!events.length) {
+            WIDGET.innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.6);">No upcoming dates listed right now. <a href="' + data.source + '" target="_blank" style="color:var(--pastel-cyan);">See our Fatsoma →</a></p>';
+            return;
+          }
+
+          var feat = events[0];
+          var rest = events.slice(1);
+
+          // point the hero button at the nearest event too
+          var heroBtn = document.getElementById('heroBookBtn');
+          if (heroBtn) heroBtn.href = feat.url;
+
+          var html = ''
+            + '<div class="feat-card">'
+            +   '<span class="feat-tag">Next Wednesday</span>'
+            +   '<div class="feat-date">' + fmtFull(feat._d) + '</div>'
+            +   '<div class="feat-meta">Class ' + to12h(feat.startTime) + ' · £10 · ' + feat.venue + '</div>'
+            +   '<a href="' + feat.url + '" target="_blank" class="feat-btn">Book This Wednesday →</a>'
+            + '</div>';
+
+          if (rest.length) {
+            html += '<button class="upcoming-toggle" id="upToggle">Coming up — ' + rest.length + ' more date' + (rest.length > 1 ? 's' : '') + ' <span class="chev">▾</span></button>';
+            html += '<ul class="upcoming-list" id="upList">';
+            rest.forEach(function (e) {
+              html += '<li class="up-item">'
+                + '<span><span class="up-date">' + fmtShort(e._d) + '</span><br><span class="up-sub">Class ' + to12h(e.startTime) + ' · £10</span></span>'
+                + '<a class="up-book" href="' + e.url + '" target="_blank">Book →</a>'
+                + '</li>';
+            });
+            html += '</ul>';
+          }
+
+          if (data.lastUpdated) {
+            html += '<p class="events-updated">Auto-updated from Fatsoma · ' + new Date(data.lastUpdated).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }) + '</p>';
+          }
+
+          WIDGET.innerHTML = html;
+
+          var t = document.getElementById('upToggle'), l = document.getElementById('upList');
+          if (t) t.addEventListener('click', function () { t.classList.toggle('open'); l.classList.toggle('open'); });
+        })
+        .catch(function () {
+          WIDGET.innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.6);">Couldn\'t load dates. <a href="https://www.fatsoma.com/p/roguebachata" target="_blank" style="color:var(--pastel-cyan);">Book on Fatsoma →</a></p>';
+        });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var nav = document.querySelector('nav');
+      if (!nav) return;
+      var PINK = '#CC929E', BLUE = '#6CA5BC';
+      function flip() {
+        nav.classList.remove('pastel-pink', 'pastel-blue');
+        var isPink = Math.random() < 0.5;
+        nav.classList.add(isPink ? 'pastel-pink' : 'pastel-blue');
+        document.documentElement.style.setProperty('--nav-logo-color', isPink ? BLUE : PINK);
+      }
+      flip();
+      document.addEventListener('click', flip);
+    })();
+
+    var menuToggle = document.getElementById('menuToggle');
+    var navLinks   = document.getElementById('navLinks');
+    if (menuToggle) menuToggle.addEventListener('click', function () { navLinks.classList.toggle('open'); });
+  </script>
+
+</body>
+</html>
