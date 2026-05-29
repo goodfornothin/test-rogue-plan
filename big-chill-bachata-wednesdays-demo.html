@@ -851,7 +851,7 @@
         return h + (m !== '00' ? ':' + m : '') + ' ' + ap;
       }
 
-      fetch('events-demo.json')
+      fetch('events.json')
         .then(function (r) { return r.json(); })
         .then(function (data) {
           var now = new Date();
