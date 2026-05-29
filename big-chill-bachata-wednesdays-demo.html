@@ -536,12 +536,12 @@
     }
 
     /* ── LIVE EVENTS WIDGET ── */
-    .events-section { background: var(--dark); padding: 1.2rem 1.2rem 1rem; }
+    .events-section { background: var(--dark); padding: 0 1.2rem 1.5rem; margin-top: -1px; }
     .events-inner { max-width: 520px; margin: 0 auto; }
     .events-label {
       text-align: center; font-size: 0.72rem; font-weight: 700;
       letter-spacing: 0.2em; text-transform: uppercase; color: var(--pink);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.2rem; padding-top: 1.2rem;
     }
     .feat-card {
       background: rgba(243,95,150,0.12); border: 1.5px solid var(--pink);
@@ -571,19 +571,21 @@
       text-transform: uppercase; color: rgba(255,255,255,0.38);
       margin-bottom: 0.5rem; padding-left: 0.2rem;
     }
-    .upcoming-list { list-style: none; margin: 0; padding: 0; }
+    .upcoming-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
     .up-item {
       display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-      padding: 0.65rem 0.2rem; border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 0.7rem 1rem;
+      background: rgba(243,95,150,0.08);
+      border: 1px solid rgba(243,95,150,0.35);
+      border-radius: 0.8rem;
     }
-    .up-item:last-child { border-bottom: none; }
-    .up-date { font-weight: 600; font-size: 0.88rem; color: rgba(255,255,255,0.75); }
-    .up-sub { font-size: 0.72rem; color: rgba(255,255,255,0.38); }
+    .up-date { font-weight: 700; font-size: 0.92rem; color: #fff; }
     .up-book {
-      flex-shrink: 0; font-size: 0.74rem; font-weight: 600; text-decoration: none;
-      color: rgba(243,95,150,0.7); transition: color 0.2s;
+      flex-shrink: 0; font-size: 0.78rem; font-weight: 700; text-decoration: none;
+      color: var(--pink-light); border: 1px solid rgba(243,95,150,0.5);
+      padding: 0.3rem 0.8rem; border-radius: 2rem; transition: all 0.2s;
     }
-    .up-book:hover { color: var(--pink); }
+    .up-book:hover { background: var(--pink); color: #fff; }
     .events-updated { text-align: center; font-size: 0.7rem; color: rgba(255,255,255,0.3); margin-top: 1rem; }
   </style>
   <link rel="icon" href="images/Rogue Bachata Logo.svg" type="image/svg+xml">

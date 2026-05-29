@@ -418,7 +418,7 @@
     }
 
     /* ── LIVE EVENTS WIDGET ── */
-    .events-section { background: #05000f; padding: 1.2rem 1.2rem 1rem; }
+    .events-section { background: rgba(5,0,15,0.2); padding: 1.2rem 1.2rem 1rem; }
     .events-inner { max-width: 540px; margin: 0 auto; }
     .events-label {
       text-align: center; font-size: 0.72rem; font-weight: 700;
@@ -457,19 +457,21 @@
       text-transform: uppercase; color: rgba(255,255,255,0.4);
       margin-bottom: 0.5rem; padding-left: 0.2rem;
     }
-    .upcoming-list { list-style: none; margin: 0; padding: 0; }
+    .upcoming-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
     .up-item {
       display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-      padding: 0.65rem 0.2rem; border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 0.7rem 1rem;
+      background: linear-gradient(135deg, rgba(255,27,140,0.1), rgba(0,223,255,0.05));
+      border: 1px solid rgba(255,27,140,0.35);
+      border-radius: 0.6rem;
     }
-    .up-item:last-child { border-bottom: none; }
-    .up-date { font-weight: 600; font-size: 0.88rem; color: rgba(255,255,255,0.78); }
-    .up-sub { font-size: 0.72rem; color: rgba(255,255,255,0.38); }
+    .up-date { font-weight: 700; font-size: 0.92rem; color: #fff; }
     .up-book {
-      flex-shrink: 0; font-size: 0.74rem; font-weight: 600; text-decoration: none;
-      color: rgba(0,223,255,0.7); transition: color 0.2s;
+      flex-shrink: 0; font-size: 0.78rem; font-weight: 700; text-decoration: none;
+      color: var(--pastel-cyan); border: 1px solid rgba(0,223,255,0.4);
+      padding: 0.3rem 0.8rem; border-radius: 2rem; transition: all 0.2s;
     }
-    .up-book:hover { color: var(--cyan); }
+    .up-book:hover { background: rgba(0,223,255,0.15); color: var(--cyan); }
     .events-updated { text-align: center; font-size: 0.7rem; color: rgba(255,255,255,0.3); margin-top: 1rem; }
   </style>
 </head>
