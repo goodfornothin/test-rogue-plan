@@ -625,7 +625,6 @@
             + '<div class="feat-card">'
             +   '<span class="feat-tag">Next Wednesday</span>'
             +   '<div class="feat-date">' + fmtFull(feat._d) + '</div>'
-            +   '<div class="feat-meta">Class ' + to12h(feat.startTime) + ' · £10 · ' + feat.venue + '</div>'
             +   '<a href="' + feat.url + '" target="_blank" class="feat-btn">Book This Wednesday →</a>'
             + '</div>';
 
@@ -634,8 +633,7 @@
             html += '<ul class="upcoming-list">';
             rest.forEach(function (e) {
               html += '<li class="up-item">'
-                + '<span><span class="up-date">' + fmtShort(e._d) + '</span>'
-                + ' <span class="up-sub">· Class ' + to12h(e.startTime) + ' · £10</span></span>'
+                + '<span class="up-date">' + fmtShort(e._d) + '</span>'
                 + '<a class="up-book" href="' + e.url + '" target="_blank">Book →</a>'
                 + '</li>';
             });
