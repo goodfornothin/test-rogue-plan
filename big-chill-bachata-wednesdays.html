@@ -526,6 +526,60 @@
       nav.pastel-pink .nav-links { background: rgba(255, 182, 193, 0.97) !important; border-top-color: rgba(26,26,46,0.15) !important; }
       nav.pastel-blue  .nav-links { background: rgba(173, 216, 230, 0.97) !important; border-top-color: rgba(26,26,46,0.15) !important; }
     }
+
+
+    /* ── LIVE EVENTS WIDGET ── */
+    .events-section { background: var(--dark); padding: 0 1.2rem 1.5rem; margin-top: -1px; }
+    .events-inner { max-width: 520px; margin: 0 auto; }
+    .events-label {
+      text-align: center; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--pink);
+      margin-bottom: 1.2rem; padding-top: 1.2rem;
+    }
+    .feat-card {
+      background: rgba(243,95,150,0.12); border: 1.5px solid var(--pink);
+      border-radius: 1.2rem; padding: 1.6rem 1.4rem; text-align: center;
+      box-shadow: 0 10px 36px rgba(243,95,150,0.22); margin-bottom: 1rem;
+    }
+    .feat-tag {
+      display: inline-block; font-size: 0.65rem; font-weight: 800;
+      letter-spacing: 0.16em; text-transform: uppercase; color: #fff;
+      background: var(--pink); padding: 0.3rem 0.85rem; border-radius: 2rem; margin-bottom: 0.9rem;
+    }
+    .feat-date {
+      font-family: 'Playfair Display', serif; font-weight: 800;
+      font-size: clamp(1.6rem, 6.5vw, 2.2rem); color: #fff; line-height: 1.1; margin-bottom: 0.3rem;
+    }
+    .feat-meta { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 1.3rem; }
+    .feat-btn {
+      display: block; padding: 1rem 1.4rem; font-size: 1rem; font-weight: 700;
+      border-radius: 3rem; text-decoration: none; color: #fff; background: var(--pink);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .feat-btn:hover { background: var(--pink-dark); }
+    .feat-btn:active { transform: scale(0.98); }
+
+    .upcoming-heading {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(255,255,255,0.38);
+      margin-bottom: 0.5rem; padding-left: 0.2rem;
+    }
+    .upcoming-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+    .up-item {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 0.7rem 1rem;
+      background: rgba(243,95,150,0.08);
+      border: 1px solid rgba(243,95,150,0.35);
+      border-radius: 0.8rem;
+    }
+    .up-date { font-weight: 700; font-size: 0.92rem; color: #fff; }
+    .up-book {
+      flex-shrink: 0; font-size: 0.78rem; font-weight: 700; text-decoration: none;
+      color: var(--pink-light); border: 1px solid rgba(243,95,150,0.5);
+      padding: 0.3rem 0.8rem; border-radius: 2rem; transition: all 0.2s;
+    }
+    .up-book:hover { background: var(--pink); color: #fff; }
+    .events-updated { text-align: center; font-size: 0.7rem; color: rgba(255,255,255,0.3); margin-top: 1rem; }
   </style>
   <link rel="icon" href="images/Rogue Bachata Logo.svg" type="image/svg+xml">
   <link rel="icon" href="images/Rogue Bachata Logo _transparent_.png" type="image/png">
@@ -577,16 +631,24 @@
         </p>
 
         <div class="btn-group">
-          <a href="https://www.fatsoma.com/e/a4rbtiyp/rogue-bachata-wednesdays-keystone-crescent" target="_blank" class="btn-primary">
+          <a id="heroBookBtn" href="https://www.fatsoma.com/e/a4rbtiyp/rogue-bachata-wednesdays-keystone-crescent" target="_blank" class="btn-primary">
             🎉 Join for £10 →
           </a>
-          <a href="#contact" class="btn-secondary">
-            💬 Any questions?
+          <a href="#upcoming" class="btn-secondary">
+            📅 See dates
           </a>
         </div>
 
         <a href="#details" class="btn-ghost">Find out more <span>↓</span></a>
       </div>
+    </div>
+  </section>
+
+  <!-- ══ LIVE EVENTS (auto-updated from Fatsoma) ══ -->
+  <section class="events-section" id="upcoming">
+    <div class="events-inner">
+      <p class="events-label">Upcoming Wednesdays</p>
+      <div id="eventsWidget"><p style="text-align:center;color:rgba(255,255,255,0.5);font-size:0.9rem;">Loading dates…</p></div>
     </div>
   </section>
 
@@ -765,6 +827,73 @@
   <footer>
     <p>© 2026 <a href="index.html">Rogue Bachata</a>. Made with love in London.</p>
   </footer>
+
+  <!-- ══ EVENTS RENDERER (reads events.json the scraper writes) ══ -->
+  <script>
+    (function () {
+      var WIDGET = document.getElementById('eventsWidget');
+      var DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+      function fmtFull(d) { return DAYS[d.getDay()] + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear(); }
+      function fmtShort(d) { return DAYS[d.getDay()].slice(0,3) + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()]; }
+      function to12h(t) {
+        if (!t) return '';
+        var p = t.split(':'), h = +p[0], m = p[1];
+        var ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12;
+        return h + (m !== '00' ? ':' + m : '') + ' ' + ap;
+      }
+
+      fetch('events.json')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          var now = new Date();
+          var events = (data.events || [])
+            .map(function (e) { e._d = new Date(e.date + 'T' + (e.startTime || '19:30') + ':00'); return e; })
+            .filter(function (e) { return e._d >= new Date(now.getFullYear(), now.getMonth(), now.getDate()); })
+            .sort(function (a, b) { return a._d - b._d; });
+
+          if (!events.length) {
+            WIDGET.innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.6);">No upcoming dates listed right now. <a href="' + data.source + '" target="_blank" style="color:var(--pink-light);">See our Fatsoma →</a></p>';
+            return;
+          }
+
+          var feat = events[0];
+          var rest = events.slice(1);
+
+          var heroBtn = document.getElementById('heroBookBtn');
+          if (heroBtn) heroBtn.href = feat.url;
+
+          var html = ''
+            + '<div class="feat-card">'
+            +   '<span class="feat-tag">Next Wednesday</span>'
+            +   '<div class="feat-date">' + fmtFull(feat._d) + '</div>'
+            +   '<a href="' + feat.url + '" target="_blank" class="feat-btn">🎉 Book This Wednesday →</a>'
+            + '</div>';
+
+          if (rest.length) {
+            html += '<p class="upcoming-heading">Also coming up</p>';
+            html += '<ul class="upcoming-list">';
+            rest.forEach(function (e) {
+              html += '<li class="up-item">'
+                + '<span class="up-date">' + fmtShort(e._d) + '</span>'
+                + '<a class="up-book" href="' + e.url + '" target="_blank">Book →</a>'
+                + '</li>';
+            });
+            html += '</ul>';
+          }
+
+          if (data.lastUpdated) {
+            html += '<p class="events-updated">Auto-updated from Fatsoma · ' + new Date(data.lastUpdated).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }) + '</p>';
+          }
+
+          WIDGET.innerHTML = html;
+        })
+        .catch(function () {
+          WIDGET.innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.6);">Couldn\'t load dates. <a href="https://www.fatsoma.com/p/roguebachata" target="_blank" style="color:var(--pink-light);">Book on Fatsoma →</a></p>';
+        });
+    })();
+  </script>
 
   <script>
     const msgs = document.querySelectorAll('.rotating-msg');
