@@ -726,7 +726,7 @@
         Reserve your spot in the class — it fills up fast.<br>
         Or just show up for the free social — no booking needed.
       </p>
-      <a href="https://www.fatsoma.com/e/a4rbtiyp/rogue-bachata-wednesdays-keystone-crescent" target="_blank" class="btn-primary" style="display:inline-block; width:100%;">
+      <a id="detailsBookBtn" href="https://www.fatsoma.com/e/a4rbtiyp/rogue-bachata-wednesdays-keystone-crescent" target="_blank" class="btn-primary" style="display:inline-block; width:100%;">
         🎉 Book My £10 Class
       </a>
     </div>
@@ -863,6 +863,8 @@
 
           var heroBtn = document.getElementById('heroBookBtn');
           if (heroBtn) heroBtn.href = feat.url;
+          var detailsBtn = document.getElementById('detailsBookBtn');
+          if (detailsBtn) detailsBtn.href = feat.url;
 
           var html = ''
             + '<div class="feat-card">'
