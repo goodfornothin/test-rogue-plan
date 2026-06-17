@@ -1,14 +1,7 @@
 {
-  "lastUpdated": "2026-06-10T22:14:31Z",
+  "lastUpdated": "2026-06-17T22:11:37Z",
   "source": "https://www.fatsoma.com/p/roguebachata",
   "events": [
-    {
-      "date": "2026-06-10",
-      "startTime": "18:30",
-      "title": "Rogue Bachata Wednesdays! Keystone Crescent",
-      "venue": "Keystone Crescent, London",
-      "url": "https://www.fatsoma.com/e/rh75bi22/rogue-bachata-wednesdays-keystone-crescent"
-    },
     {
       "date": "2026-06-17",
       "startTime": "18:30",
@@ -22,6 +15,13 @@
       "title": "Rogue Bachata Wednesdays! Keystone Crescent",
       "venue": "Keystone Crescent, London",
       "url": "https://www.fatsoma.com/e/5mwqmtoy/rogue-bachata-wednesdays-keystone-crescent"
+    },
+    {
+      "date": "2026-07-01",
+      "startTime": "18:30",
+      "title": "Rogue Bachata Wednesdays! Keystone Crescent",
+      "venue": "Keystone Crescent, London",
+      "url": "https://www.fatsoma.com/e/v7mgo3sf/rogue-bachata-wednesdays-keystone-crescent"
     }
   ]
 }
