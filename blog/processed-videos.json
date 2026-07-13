@@ -1,6 +1,8 @@
 {
   "_comment": "Video IDs already turned into a blog post. The daily routine (scripts/check-youtube-videos.py) skips anything in this list. A video is only added here in the SAME commit that adds its blog post — never before, so a failed run always retries cleanly.",
   "processed_ids": [
-    "jsskOgGDF0Y"
+    "jsskOgGDF0Y",
+    "sk0yL-PaAdQ",
+    "ELb5CZW5ET0"
   ]
 }
