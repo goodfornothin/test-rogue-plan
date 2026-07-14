@@ -123,7 +123,7 @@
       background: rgba(255,255,255,0.03);
       border: 1.5px solid rgba(255,27,140,0.25);
       border-radius: 16px;
-      padding: 1.6rem 1.8rem;
+      overflow: hidden;
       transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
     }
     .post-card:hover {
@@ -131,6 +131,47 @@
       border-color: var(--neon-pink);
       box-shadow: 0 10px 32px rgba(255,27,140,0.18);
     }
+
+    .post-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+    }
+    .post-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.25s ease;
+    }
+    .post-card:hover .post-thumb img { transform: scale(1.05); }
+    .post-thumb::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(5,0,15,0.55) 0%, rgba(5,0,15,0.05) 45%, transparent 70%);
+    }
+    .play-badge {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: rgba(5,0,15,0.55);
+      border: 1.5px solid rgba(255,255,255,0.7);
+      backdrop-filter: blur(2px);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .play-badge svg { width: 18px; height: 18px; margin-left: 3px; fill: #fff; }
+    .post-card:hover .play-badge {
+      background: var(--neon-pink);
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+
+    .post-body { padding: 1.4rem 1.8rem 1.6rem; }
+
     .post-tag {
       display: inline-block;
       font-size: 0.65rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
@@ -196,24 +237,42 @@
   <main class="posts-grid">
 
     <a class="post-card" href="blog/what-is-rogue-bachata-style.html">
-      <span class="post-tag">Philosophy</span>
-      <h2>What Is "Rogue" Bachata Style? The Philosophy Behind Our Name</h2>
-      <p class="excerpt">Why we called it Rogue Bachata: social dance as real listening, not a rehearsed monologue. Oscar explains the philosophy behind the name and how it shapes our workshops, classes and parties.</p>
-      <span class="post-meta">13 July 2026 · 4 min read</span>
+      <div class="post-thumb">
+        <img src="https://i.ytimg.com/vi/sk0yL-PaAdQ/maxresdefault.jpg" alt="What Is &quot;Rogue&quot; Bachata Style? video thumbnail" loading="lazy">
+        <span class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      </div>
+      <div class="post-body">
+        <span class="post-tag">Philosophy</span>
+        <h2>What Is "Rogue" Bachata Style? The Philosophy Behind Our Name</h2>
+        <p class="excerpt">Why we called it Rogue Bachata: social dance as real listening, not a rehearsed monologue. Oscar explains the philosophy behind the name and how it shapes our workshops, classes and parties.</p>
+        <span class="post-meta">13 July 2026 · 4 min read</span>
+      </div>
     </a>
 
     <a class="post-card" href="blog/rolling-slow-soft-bachata-connection.html">
-      <span class="post-tag">Technique</span>
-      <h2>Rolling, Slow &amp; Soft: The 3 Principles Behind Real Bachata Connection</h2>
-      <p class="excerpt">Why rolling contact, dancing slow, and staying light are the three hardest — and most important — skills in bachata lead-follow connection. With the research behind why they work, from haptic communication studies to Tai Chi's "listening energy."</p>
-      <span class="post-meta">1 June 2026 · 5 min read</span>
+      <div class="post-thumb">
+        <img src="https://i.ytimg.com/vi/jsskOgGDF0Y/hqdefault.jpg" alt="Rolling, Slow &amp; Soft video thumbnail" loading="lazy">
+        <span class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      </div>
+      <div class="post-body">
+        <span class="post-tag">Technique</span>
+        <h2>Rolling, Slow &amp; Soft: The 3 Principles Behind Real Bachata Connection</h2>
+        <p class="excerpt">Why rolling contact, dancing slow, and staying light are the three hardest — and most important — skills in bachata lead-follow connection. With the research behind why they work, from haptic communication studies to Tai Chi's "listening energy."</p>
+        <span class="post-meta">1 June 2026 · 5 min read</span>
+      </div>
     </a>
 
     <a class="post-card" href="blog/bounce-circle-keep-your-spark.html">
-      <span class="post-tag">From the Floor</span>
-      <h2>The Bounce, the Circle &amp; Keeping Your Spark</h2>
-      <p class="excerpt">Three ideas from a Rogue Bachata Wednesday: leading opposition ("the bounce"), walking the circle as the simplest lead-follow drill, and why we never want a beginner's natural spark ironed out.</p>
-      <span class="post-meta">28 April 2026 · 4 min read</span>
+      <div class="post-thumb">
+        <img src="https://i.ytimg.com/vi/ELb5CZW5ET0/maxresdefault.jpg" alt="The Bounce, the Circle &amp; Keeping Your Spark video thumbnail" loading="lazy">
+        <span class="play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      </div>
+      <div class="post-body">
+        <span class="post-tag">From the Floor</span>
+        <h2>The Bounce, the Circle &amp; Keeping Your Spark</h2>
+        <p class="excerpt">Three ideas from a Rogue Bachata Wednesday: leading opposition ("the bounce"), walking the circle as the simplest lead-follow drill, and why we never want a beginner's natural spark ironed out.</p>
+        <span class="post-meta">28 April 2026 · 4 min read</span>
+      </div>
     </a>
 
   </main>
