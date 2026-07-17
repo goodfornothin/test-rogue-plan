@@ -50,12 +50,14 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --bg:              #FFF8F5;
-      --pastel-pink:     #FFB7C5;
+      --pastel-pink:     #CA97C1;
       --pastel-blue:     #87CEEB;
-      --pastel-pink-soft:#FFD3DC;
+      --pastel-pink-soft:#E9D5E6;
       --pastel-blue-soft:#B7DFEE;
       --dark-pink:       #B86F7E;
       --dark-blue:       #4A85A0;
+      --pink-deep:       #7A3D71;
+      --blue-deep:       #1A7499;
       --ink:             #2a1a2e;
       --ink-muted:       #5b4a63;
       --card-bg:         #FFFFFF;
@@ -107,7 +109,7 @@
       padding: 0.25rem 1.2rem;
       display: flex; justify-content: space-between; align-items: center;
       z-index: 100;
-      background: rgba(255, 182, 193, 0.92);
+      background: rgba(202, 151, 193, 0.92);
       backdrop-filter: blur(10px);
       height: 68px;
     }
@@ -115,7 +117,7 @@
     nav .nav-links { display: flex; align-items: center; }
     nav .nav-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); text-decoration: none; margin-left: 1.3rem; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.3s; white-space: nowrap; }
     nav .nav-links a:hover { color: #e94560; }
-    nav.pastel-pink { background: rgba(255, 182, 193, 0.92); }
+    nav.pastel-pink { background: rgba(202, 151, 193, 0.92); }
     nav.pastel-blue  { background: rgba(173, 216, 230, 0.92); }
     nav.pastel-pink .nav-logo { background-color: #6CA5BC; }
     nav.pastel-blue  .nav-logo { background-color: #CC929E; }
@@ -124,7 +126,7 @@
       nav .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; padding: 0.7rem 0; border-top: 1px solid rgba(42,26,46,0.1); }
       nav .nav-links.open { display: flex; }
       nav .nav-links a { margin: 0 1rem; padding: 0.5rem 0; }
-      nav.pastel-pink .nav-links { background: rgba(255,182,193,0.97); }
+      nav.pastel-pink .nav-links { background: rgba(202,151,193,0.97); }
       nav.pastel-blue  .nav-links { background: rgba(173,216,230,0.97); }
     }
 
@@ -190,7 +192,7 @@
       z-index: 1;
     }
     .panel-pink .hero-panel-overlay {
-      background: linear-gradient(180deg, rgba(30,10,20,0.52) 0%, rgba(255,183,197,0.42) 55%, rgba(30,10,20,0.68) 100%);
+      background: linear-gradient(180deg, rgba(30,10,20,0.52) 0%, rgba(202,151,193,0.42) 55%, rgba(30,10,20,0.68) 100%);
     }
     .panel-blue .hero-panel-overlay {
       background: linear-gradient(180deg, rgba(10,20,30,0.52) 0%, rgba(135,206,235,0.42) 55%, rgba(10,20,30,0.68) 100%);
@@ -490,7 +492,7 @@
       border-radius: 2rem;
       transition: color 0.18s ease, background-color 0.18s ease;
     }
-    .links-back:hover { color: var(--dark-pink); background: rgba(255,183,197,0.28); }
+    .links-back:hover { color: var(--dark-pink); background: rgba(202,151,193,0.28); }
     .links-hero-logo {
       width: 140px;
       aspect-ratio: 974 / 502;

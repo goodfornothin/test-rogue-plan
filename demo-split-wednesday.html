@@ -167,12 +167,14 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --bg:              #FFF8F5;
-      --pastel-pink:     #FFB7C5;
+      --pastel-pink:     #CA97C1;
       --pastel-blue:     #87CEEB;
-      --pastel-pink-soft:#FFD3DC;
+      --pastel-pink-soft:#E9D5E6;
       --pastel-blue-soft:#B7DFEE;
       --dark-pink:       #B86F7E;
       --dark-blue:       #4A85A0;
+      --pink-deep:       #7A3D71;
+      --blue-deep:       #1A7499;
       --ink:             #2a1a2e;
       --ink-muted:       #5b4a63;
       --card-bg:         #FFFFFF;
@@ -224,7 +226,7 @@
       padding: 0.25rem 1.2rem;
       display: flex; justify-content: space-between; align-items: center;
       z-index: 100;
-      background: rgba(255, 182, 193, 0.92);
+      background: rgba(202, 151, 193, 0.92);
       backdrop-filter: blur(10px);
       height: 68px;
     }
@@ -232,7 +234,7 @@
     nav .nav-links { display: flex; align-items: center; }
     nav .nav-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); text-decoration: none; margin-left: 1.3rem; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.3s; white-space: nowrap; }
     nav .nav-links a:hover { color: #e94560; }
-    nav.pastel-pink { background: rgba(255, 182, 193, 0.92); }
+    nav.pastel-pink { background: rgba(202, 151, 193, 0.92); }
     nav.pastel-blue  { background: rgba(173, 216, 230, 0.92); }
     nav.pastel-pink .nav-logo { background-color: #6CA5BC; }
     nav.pastel-blue  .nav-logo { background-color: #CC929E; }
@@ -241,111 +243,54 @@
       nav .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; padding: 0.7rem 0; border-top: 1px solid rgba(42,26,46,0.1); }
       nav .nav-links.open { display: flex; }
       nav .nav-links a { margin: 0 1rem; padding: 0.5rem 0; }
-      nav.pastel-pink .nav-links { background: rgba(255,182,193,0.97); }
+      nav.pastel-pink .nav-links { background: rgba(202,151,193,0.97); }
       nav.pastel-blue  .nav-links { background: rgba(173,216,230,0.97); }
     }
 
-    /* ── SPLIT-NIGHT HERO ── */
-    .split-hero { position: relative; padding-top: 68px; }
-
-    .hero-strip {
-      display: flex; align-items: center; justify-content: center; gap: 1rem;
-      padding: 1.1rem 1.5rem;
-      background: linear-gradient(90deg, var(--pastel-pink-soft) 0%, var(--pastel-blue-soft) 100%);
-      text-align: center;
-      flex-wrap: wrap;
-    }
-    .hero-strip-logo {
-      width: 64px; aspect-ratio: 974/502;
-      background-color: var(--ink);
-      -webkit-mask: url('images/Rogue Bachata Logo _transparent_.png') center / contain no-repeat;
-              mask: url('images/Rogue Bachata Logo _transparent_.png') center / contain no-repeat;
-      -webkit-mask-size: contain; mask-size: contain;
-      flex-shrink: 0;
-    }
-    .hero-strip-tagline {
-      font-family: 'Playfair Display', serif;
-      font-weight: 800;
-      font-size: clamp(0.95rem, 2.4vw, 1.25rem);
-      letter-spacing: 0.05em;
-      color: var(--ink);
-      margin: 0;
-    }
-    .hero-strip-tagline .dot { color: var(--dark-pink); padding: 0 0.15em; }
-
-    .hero-panels {
-      display: flex;
-      flex-direction: column;
-    }
+    /* ── EVENT HERO (distinct from homepage split-hero: video + solid info panel, not text-over-video) ── */
+    .event-hero { display: flex; flex-direction: column; padding-top: 68px; }
     @media (min-width: 880px) {
-      .hero-panels { flex-direction: row; min-height: 82vh; }
+      .event-hero { flex-direction: row; min-height: 82vh; }
     }
+    .event-hero-media { position: relative; min-height: 42vh; overflow: hidden; }
+    @media (min-width: 880px) {
+      .event-hero-media { flex: 1 1 56%; min-height: 82vh; }
+    }
+    .event-hero-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    .hero-panel {
+    .event-hero-panel {
       position: relative;
-      min-height: 62vh;
-      overflow: hidden;
+      color: #fff;
+      padding: 3rem 1.75rem 3.5rem;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 3.5rem 1.5rem;
     }
+    .event-hero-panel.tone-pink { background: var(--pink-deep); }
+    .event-hero-panel.tone-blue { background: var(--blue-deep); }
     @media (min-width: 880px) {
-      .hero-panel { flex: 1 1 50%; min-height: 82vh; }
+      .event-hero-panel { flex: 1 1 44%; padding: 4rem 3.5rem; }
     }
-
-    .hero-panel-video {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: 0;
-    }
-    .hero-panel-overlay {
-      position: absolute; inset: 0;
-      z-index: 1;
-    }
-    .panel-pink .hero-panel-overlay {
-      background: linear-gradient(180deg, rgba(30,10,20,0.52) 0%, rgba(255,183,197,0.42) 55%, rgba(30,10,20,0.68) 100%);
-    }
-    .panel-blue .hero-panel-overlay {
-      background: linear-gradient(180deg, rgba(10,20,30,0.52) 0%, rgba(135,206,235,0.42) 55%, rgba(10,20,30,0.68) 100%);
-    }
-
-    .hero-panel-content { position: relative; z-index: 2; max-width: 420px; }
-    .hero-panel-eyebrow {
+    .event-hero-crumb { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.03em; opacity: 0.85; margin-bottom: 1.8rem; }
+    .event-hero-crumb a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+    .event-hero-crumb a:hover { opacity: 0.75; }
+    .event-hero-eyebrow {
       display: inline-block;
       font-size: 0.72rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
-      color: #fff; opacity: 0.85; margin-bottom: 0.8rem;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      opacity: 0.85; margin-bottom: 0.8rem;
     }
-    .hero-panel-day {
+    .event-hero-day {
       font-family: 'Playfair Display', serif;
       font-weight: 900;
-      font-size: clamp(2.6rem, 9vw, 4.6rem);
+      font-size: clamp(2.8rem, 8vw, 4.4rem);
       line-height: 0.95;
-      color: #fff;
-      text-shadow: 0 4px 24px rgba(0,0,0,0.55);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
     }
-    .hero-panel-sub {
-      font-size: clamp(1rem, 2.4vw, 1.2rem);
-      font-weight: 600;
-      color: #fff;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.5);
-      margin-bottom: 0.9rem;
-    }
-    .hero-panel-meta {
-      font-size: 0.92rem;
-      font-weight: 500;
-      color: rgba(255,255,255,0.92);
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-      margin-bottom: 1.8rem;
-      line-height: 1.6;
-    }
-    .hero-panel-btn {
+    .event-hero-venue { font-size: clamp(1rem, 2.4vw, 1.2rem); font-weight: 600; opacity: 0.95; margin-bottom: 1rem; }
+    .event-hero-meta { font-size: 0.92rem; font-weight: 500; opacity: 0.9; margin-bottom: 1.8rem; line-height: 1.6; }
+    .event-hero-btn {
       display: inline-flex; align-items: center; justify-content: center;
+      align-self: flex-start;
       min-height: 48px;
       padding: 0.9rem 2rem;
       background: #fff;
@@ -358,9 +303,9 @@
       transition: all 0.22s ease;
       box-shadow: 0 8px 26px rgba(0,0,0,0.28);
     }
-    .panel-pink .hero-panel-btn:hover { background: var(--pastel-blue); border-color: var(--pastel-blue); color: var(--ink); }
-    .panel-blue .hero-panel-btn:hover { background: var(--pastel-pink); border-color: var(--pastel-pink); color: var(--ink); }
-    .hero-panel-btn:hover { transform: translateY(-2px); }
+    .event-hero-panel.tone-pink .event-hero-btn:hover { background: var(--pastel-blue); border-color: var(--pastel-blue); color: var(--ink); }
+    .event-hero-panel.tone-blue .event-hero-btn:hover { background: var(--pastel-pink); border-color: var(--pastel-pink); color: var(--ink); }
+    .event-hero-btn:hover { transform: translateY(-2px); }
 
     /* ── Shared section shells ── */
     main { position: relative; z-index: 1; }
@@ -571,7 +516,7 @@
         animation: none !important;
         transition: none !important;
       }
-      .card:hover, .post-card:hover, .contact-list a:hover, .hero-panel-btn:hover { transform: none; }
+      .card:hover, .post-card:hover, .contact-list a:hover, .event-hero-btn:hover { transform: none; }
     }
   </style>
 </head>
@@ -598,28 +543,21 @@
     </nav>
   </header>
 
-  <!-- ══ HERO (single panel, blue variant) ══ -->
-  <section class="split-hero" aria-labelledby="hero-h">
-    <div class="hero-strip">
-      <span class="hero-strip-logo" aria-hidden="true"></span>
-      <p class="hero-strip-tagline">Movement<span class="dot">·</span>Connection<span class="dot">·</span>Freedom</p>
+  <!-- ══ WEDNESDAY HERO ══ -->
+  <section class="event-hero" aria-labelledby="hero-h">
+    <div class="event-hero-media">
+      <video autoplay muted loop playsinline webkit-playsinline
+             poster="images/mondays-social-bg-poster.jpg" aria-hidden="true" data-hero-video>
+        <source src="videos/mondays-social-bg.mp4" type="video/mp4">
+      </video>
     </div>
-
-    <div class="hero-panels">
-      <article class="hero-panel panel-blue" style="flex: 1 1 100%;" aria-labelledby="hero-h">
-        <video class="hero-panel-video" autoplay muted loop playsinline webkit-playsinline
-               poster="images/mondays-social-bg-poster.jpg" aria-hidden="true" data-hero-video>
-          <source src="videos/mondays-social-bg.mp4" type="video/mp4">
-        </video>
-        <div class="hero-panel-overlay"></div>
-        <div class="hero-panel-content">
-          <span class="hero-panel-eyebrow">Every Wednesday</span>
-          <h1 id="hero-h" class="hero-panel-day">Wednesday</h1>
-          <p class="hero-panel-sub">Keystone Crescent · King's Cross</p>
-          <p class="hero-panel-meta">Class 7:30pm (£10) · Free social 8:30pm<br>No partner needed — welcoming for solo attendees</p>
-          <a href="https://www.fatsoma.com/e/a4rbtiyp/rogue-bachata-wednesdays-keystone-crescent" id="wednesdayBookBtn" class="hero-panel-btn" target="_blank" rel="noopener">Book Wednesday →</a>
-        </div>
-      </article>
+    <div class="event-hero-panel tone-blue">
+      <p class="event-hero-crumb"><a href="demo-split-home.html">Home</a> → Wednesday</p>
+      <span class="event-hero-eyebrow">Every Wednesday</span>
+      <h1 id="hero-h" class="event-hero-day">Wednesday</h1>
+      <p class="event-hero-venue">Keystone Crescent · King's Cross</p>
+      <p class="event-hero-meta">Class 7:30pm (£10) · Free social 8:30pm<br>No partner needed — welcoming for solo attendees</p>
+      <a href="https://www.fatsoma.com/e/a4rbtiyp/rogue-bachata-wednesdays-keystone-crescent" id="wednesdayBookBtn" class="event-hero-btn" target="_blank" rel="noopener">Book Wednesday →</a>
     </div>
   </section>
 
