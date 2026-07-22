@@ -103,8 +103,19 @@
     h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(1.9rem, 6vw, 2.9rem); line-height: 1.15; margin-bottom: 0.9rem; background: linear-gradient(90deg, var(--pastel-pink) 0%, var(--neon-cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .article-meta { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 2.2rem; letter-spacing: 0.02em; }
     .article p { margin-bottom: 1.3rem; color: rgba(255,255,255,0.88); font-size: 1.02rem; }
-    .qa { margin: 1.6rem 0 2rem; }
-    .q { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.08rem; color: var(--pastel-pink); margin-bottom: 0.5rem; }
+    .qa {
+      margin: 1.8rem 0 2.2rem;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 14px;
+      padding: 1.5rem 1.6rem 1.6rem;
+    }
+    .q { display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px dashed rgba(255,183,197,0.3); }
+    .q .qa-badge { flex-shrink: 0; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--neon-pink); color: #fff; font-family: 'Playfair Display', serif; font-weight: 800; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; margin-top: 0.05rem; }
+    .q .qa-text { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.08rem; color: var(--pastel-pink); line-height: 1.4; }
+    .qa .a { display: flex; gap: 0.75rem; align-items: flex-start; }
+    .qa .a .qa-badge { flex-shrink: 0; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--neon-cyan); color: #08020e; font-family: 'Playfair Display', serif; font-weight: 800; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; margin-top: 0.05rem; }
+    .qa .a p { margin-bottom: 0; }
     h2 { font-family: 'Playfair Display', serif; font-weight: 800; font-size: clamp(1.35rem, 4vw, 1.7rem); color: var(--pastel-pink); margin: 2.6rem 0 1rem; letter-spacing: 0.01em; }
     .research-box { background: rgba(0,224,255,0.06); border: 1px solid rgba(0,224,255,0.28); border-left: 3px solid var(--neon-cyan); border-radius: 10px; padding: 1.2rem 1.4rem; margin: 1.4rem 0 1.6rem; }
     .research-box .research-label { display: block; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pastel-blue); margin-bottom: 0.55rem; }
@@ -149,18 +160,18 @@
     <p>Our tagline is "Movement. Connection. Freedom." Easy to put on a poster, harder to explain — so we sat down for an interview to actually unpack it, question by question.</p>
 
     <div class="qa">
-      <p class="q">Those three words show up everywhere from a free Wednesday social to an advanced Rogue Resonance workshop. Do they mean the same thing at both ends?</p>
-      <p>At the heart of it is connection, in various forms — person to person, and dance connection built on technique. At a chill social you might have a beginner connecting with another beginner, or a beginner connecting with someone far more experienced. That's the core principle either way. Movement is simply the medium — dance is movement. And with connection, the goal is a platform where everyone can freely bring what they have to the table and let it stay organic. Freedom means removing a lot of the constraints. We have principles, not constraints. You come as you are, you experiment, nobody's shy to try — as long as you're considerate of the other person, physically and socially. There aren't constraints, but there are principles and philosophies.</p>
+      <div class="q"><span class="qa-badge">Q</span><span class="qa-text">Those three words show up everywhere from a free Wednesday social to an advanced Rogue Resonance workshop. Do they mean the same thing at both ends?</span></div>
+      <div class="a"><span class="qa-badge">A</span><p>At the heart of it is connection, in various forms — person to person, and dance connection built on technique. At a chill social you might have a beginner connecting with another beginner, or a beginner connecting with someone far more experienced. That's the core principle either way. Movement is simply the medium — dance is movement. And with connection, the goal is a platform where everyone can freely bring what they have to the table and let it stay organic. Freedom means removing a lot of the constraints. We have principles, not constraints. You come as you are, you experiment, nobody's shy to try — as long as you're considerate of the other person, physically and socially. There aren't constraints, but there are principles and philosophies.</p></div>
     </div>
 
     <div class="qa">
-      <p class="q">So what constraints are you actually pushing back against?</p>
-      <p>It's not a knock on traditional bachata — traditional bachata is great as it is, a social dance from the Dominican Republic, and we love it exactly the way it is. What we're bringing back to the table isn't really different — it's a return to what socialising and social dance actually mean. You come without an agenda, without a fixed set of steps. You listen to the music, feel the atmosphere, communicate with your partner, and build a real, spontaneous movement connection within bachata music. The constraint is when you arrive with two hundred steps or flashy moves you're determined to land — that's what we're not about. Plenty of people love that, and that's completely fine, they have a great time. It's just not what our platform is for. So removing constraints doesn't mean no framework — it means the framework is principles, not a set sequence of steps.</p>
+      <div class="q"><span class="qa-badge">Q</span><span class="qa-text">So what constraints are you actually pushing back against?</span></div>
+      <div class="a"><span class="qa-badge">A</span><p>It's not a knock on traditional bachata — traditional bachata is great as it is, a social dance from the Dominican Republic, and we love it exactly the way it is. What we're bringing back to the table isn't really different — it's a return to what socialising and social dance actually mean. You come without an agenda, without a fixed set of steps. You listen to the music, feel the atmosphere, communicate with your partner, and build a real, spontaneous movement connection within bachata music. The constraint is when you arrive with two hundred steps or flashy moves you're determined to land — that's what we're not about. Plenty of people love that, and that's completely fine, they have a great time. It's just not what our platform is for. So removing constraints doesn't mean no framework — it means the framework is principles, not a set sequence of steps.</p></div>
     </div>
 
     <div class="qa">
-      <p class="q">"Be spontaneous and listen" is a hard thing to actually teach someone in their first week. How do you do it?</p>
-      <p>It's often a product of the setting — classes and socials are separate, people hop between teachers, there's rarely time to sit with the basics, so by the time they reach a social they want steps to fall back on. Getting spontaneity out of that setup is a real challenge. We tackle it through exercises. In class, we set ground rules — a soft lead and follow, being considerate — and then give people room to bring their own movement within that, responding to what they actually feel in the music. We practise that in class so people arrive at the social with the confidence to do it there too. A simple example: step-tap, step-tap, side to side — that's it. You can do just that for a full minute at a social and still be genuinely connecting with your partner. If they're not into it and want something flashier, that's okay too — you might not get a second dance with them right then, and that's fine.</p>
+      <div class="q"><span class="qa-badge">Q</span><span class="qa-text">"Be spontaneous and listen" is a hard thing to actually teach someone in their first week. How do you do it?</span></div>
+      <div class="a"><span class="qa-badge">A</span><p>It's often a product of the setting — classes and socials are separate, people hop between teachers, there's rarely time to sit with the basics, so by the time they reach a social they want steps to fall back on. Getting spontaneity out of that setup is a real challenge. We tackle it through exercises. In class, we set ground rules — a soft lead and follow, being considerate — and then give people room to bring their own movement within that, responding to what they actually feel in the music. We practise that in class so people arrive at the social with the confidence to do it there too. A simple example: step-tap, step-tap, side to side — that's it. You can do just that for a full minute at a social and still be genuinely connecting with your partner. If they're not into it and want something flashier, that's okay too — you might not get a second dance with them right then, and that's fine.</p></div>
     </div>
 
     <div class="research-box">
@@ -169,8 +180,8 @@
     </div>
 
     <div class="qa">
-      <p class="q">You co-run this with Bo. How does that partnership shape the philosophy?</p>
-      <p>Bo comes from a contemporary dance background, and dancing with her was exciting from the very first few dances — every single one was different, and it still is. She's an excellent follower, and now she also leads and teaches leading herself. With Bo, real spontaneity is possible, which is the whole point: training the follower to stay open to that spontaneity rather than trying to predict it. That change doesn't come from telling someone "don't predict" — that's not something the thinking mind can just decide to do. It comes through exercises that build it into the muscle memory instead, or that interrupt the predicting pattern directly. Different people respond differently, but exercises work well for most people because they bypass the mind and go straight to the body.</p>
+      <div class="q"><span class="qa-badge">Q</span><span class="qa-text">You co-run this with Bo. How does that partnership shape the philosophy?</span></div>
+      <div class="a"><span class="qa-badge">A</span><p>Bo comes from a contemporary dance background, and dancing with her was exciting from the very first few dances — every single one was different, and it still is. She's an excellent follower, and now she also leads and teaches leading herself. With Bo, real spontaneity is possible, which is the whole point: training the follower to stay open to that spontaneity rather than trying to predict it. That change doesn't come from telling someone "don't predict" — that's not something the thinking mind can just decide to do. It comes through exercises that build it into the muscle memory instead, or that interrupt the predicting pattern directly. Different people respond differently, but exercises work well for most people because they bypass the mind and go straight to the body.</p></div>
     </div>
 
     <div class="research-box">
@@ -179,8 +190,8 @@
     </div>
 
     <div class="qa">
-      <p class="q">You've got free socials on Tuesday and Wednesday, classes, and Rogue Resonance workshops — how are those meant to connect?</p>
-      <p>Anyone interested in movement can do all three — beginner classes, workshops, and eventually teacher training. Teacher training now runs inside Rogue Resonance: it's a paid workshop, and from there some people get the opportunity to assist at classes, and later to teach — which is when it starts being paid work. And for advanced dancers, we actively encourage coming back to the open beginner classes. Being able to lead a beginner well is itself an advanced skill. If you're "advanced" but can't dance with a beginner, that's not actually advanced.</p>
+      <div class="q"><span class="qa-badge">Q</span><span class="qa-text">You've got free socials on Tuesday and Wednesday, classes, and Rogue Resonance workshops — how are those meant to connect?</span></div>
+      <div class="a"><span class="qa-badge">A</span><p>Anyone interested in movement can do all three — beginner classes, workshops, and eventually teacher training. Teacher training now runs inside Rogue Resonance: it's a paid workshop, and from there some people get the opportunity to assist at classes, and later to teach — which is when it starts being paid work. And for advanced dancers, we actively encourage coming back to the open beginner classes. Being able to lead a beginner well is itself an advanced skill. If you're "advanced" but can't dance with a beginner, that's not actually advanced.</p></div>
     </div>
 
     <p>There's no rush to any of this, and no chase for big numbers. We're building something real, grounded, and genuinely fun for everyone involved — slowly and surely. If any of this speaks to you, come find us, and we'll take it from there.</p>
