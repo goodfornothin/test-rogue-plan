@@ -953,5 +953,28 @@
   <!-- Full-site demo: hero CTAs link to the dedicated Tuesday/Wednesday demo pages,
        which each carry their own live events.json booking wiring. -->
 
+  <!-- ══ META (FACEBOOK) MESSENGER CUSTOMER CHAT WIDGET ══
+       DEMO PLACEHOLDER — not yet connected to a live Facebook Page.
+       To go live: 1) replace YOUR_PAGE_ID below with the Rogue Bachata Facebook Page ID
+       2) in Facebook Page Settings → Messenger Platform → Whitelisted Domains, add roguebachata.com -->
+  <div id="fb-root"></div>
+  <div id="fb-customer-chat" class="fb-customerchat"
+       data-page_id="YOUR_PAGE_ID"
+       data-attribution="biz_inbox"
+       data-theme_color="#FF1B8C"
+       data-greeting_dialog_display="show"></div>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({ xfbml: true, version: 'v20.0' });
+    };
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
 </body>
 </html>
