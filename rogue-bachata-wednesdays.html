@@ -472,6 +472,24 @@
     .faq-item[open] summary::after { transform: rotate(45deg); }
     .faq-item p { padding: 0 0 1rem; font-size: 0.93rem; color: var(--ink-muted); line-height: 1.65; }
 
+    /* ── Upcoming Wednesdays list ── */
+    .upcoming-dates-list { max-width: 560px; margin: 0 auto; display: grid; gap: 0.7rem; }
+    .upcoming-date-item {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      min-height: 56px;
+      padding: 0.9rem 1.3rem;
+      background: var(--card-bg);
+      border: 1.5px solid rgba(42,26,46,0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(42,26,46,0.06);
+    }
+    .upcoming-date-item .date-label { font-weight: 700; color: var(--ink); font-size: 0.96rem; }
+    .upcoming-date-item a {
+      display: inline-flex; align-items: center; min-height: 44px;
+      color: var(--dark-blue); font-weight: 700; font-size: 0.9rem; text-decoration: none; flex-shrink: 0;
+    }
+    .upcoming-date-item a:hover { text-decoration: underline; }
+
     /* ── Contact ── */
     .contact-list { list-style: none; margin: 0 auto; padding: 0; max-width: 560px; display: grid; gap: 0.7rem; }
     @media (min-width: 560px) { .contact-list { grid-template-columns: 1fr 1fr; } }
@@ -583,6 +601,16 @@
           <p class="desc">King's Cross, London N1 9DX — about a 2 minute walk from King's Cross / St Pancras stations.</p>
           <a class="offer-link" href="https://www.google.com/maps/search/?api=1&query=Keystone+Crescent+London+N1+9DX" target="_blank" rel="noopener">Get directions →</a>
         </article>
+      </div>
+    </section>
+
+    <!-- ══ MORE WEDNESDAYS ══ -->
+    <section class="section" id="more-wednesdays" aria-labelledby="more-wednesdays-h">
+      <span class="section-kicker">Plan ahead</span>
+      <h2 id="more-wednesdays-h">More Wednesdays Coming Up</h2>
+      <p class="lede">Same place, same time, every week — here are the next few dates if you'd rather book ahead.</p>
+      <div class="upcoming-dates-list" id="upcomingWednesdays">
+        <p class="lede">Loading dates…</p>
       </div>
     </section>
 
@@ -743,12 +771,35 @@
     })();
   </script>
 
-  <!-- Booking wiring: use the live events.json Wednesday date if available, else fall back to static Fatsoma URL -->
+  <!-- Booking wiring: use the live events.json Wednesday dates if available, else fall back to static Fatsoma URL.
+       The hero button always books the NEXT Wednesday; the "More Wednesdays" list below shows every
+       further date events.json knows about, so people can book ahead if they can't make the next one. -->
   <script>
     (function () {
       var FALLBACK_URL = 'https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent';
       var btn = document.getElementById('wednesdayBookBtn');
-      if (!btn) return;
+      var list = document.getElementById('upcomingWednesdays');
+
+      function renderMoreDates(events) {
+        if (!list) return;
+        var rest = events.slice(1); // everything after the one already featured in the hero
+        if (!rest.length) {
+          list.innerHTML = '<p class="lede">That\'s the only date on sale right now — check back soon for more.</p>';
+          return;
+        }
+        list.innerHTML = '';
+        rest.forEach(function (e) {
+          var label = e._d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+          var row = document.createElement('div');
+          row.className = 'upcoming-date-item';
+          row.innerHTML =
+            '<span class="date-label">' + label + '</span>' +
+            '<a href="' + (e.url || FALLBACK_URL) + '" target="_blank" rel="noopener">Book →</a>';
+          list.appendChild(row);
+        });
+      }
+
+      if (!btn && !list) return;
 
       fetch('events.json')
         .then(function (r) { return r.json(); })
@@ -760,18 +811,27 @@
             .filter(function (e) { return e._d.getDay() === 3 && e._d >= today; })
             .sort(function (a, b) { return a._d - b._d; });
 
-          if (events.length && events[0].url) {
-            btn.href = events[0].url;
-          } else {
-            btn.href = FALLBACK_URL;
+          if (btn) {
+            if (events.length && events[0].url) {
+              btn.href = events[0].url;
+            } else {
+              btn.href = FALLBACK_URL;
+            }
+            btn.target = '_blank';
+            btn.rel = 'noopener';
           }
-          btn.target = '_blank';
-          btn.rel = 'noopener';
+
+          renderMoreDates(events);
         })
         .catch(function () {
-          btn.href = FALLBACK_URL;
-          btn.target = '_blank';
-          btn.rel = 'noopener';
+          if (btn) {
+            btn.href = FALLBACK_URL;
+            btn.target = '_blank';
+            btn.rel = 'noopener';
+          }
+          if (list) {
+            list.innerHTML = '<p class="lede">Couldn\'t load more dates right now — <a href="https://www.fatsoma.com/p/roguebachata" target="_blank" rel="noopener">see them on Fatsoma →</a></p>';
+          }
         });
     })();
   </script>
