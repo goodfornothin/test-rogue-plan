@@ -473,23 +473,54 @@
     .faq-item[open] summary::after { transform: rotate(45deg); }
     .faq-item p { padding: 0 0 1rem; font-size: 0.93rem; color: var(--ink-muted); line-height: 1.65; }
 
-    /* ── Upcoming Wednesdays list ── */
-    .upcoming-dates-list { max-width: 560px; margin: 0 auto; display: grid; gap: 0.7rem; }
-    .upcoming-date-item {
-      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-      min-height: 56px;
-      padding: 0.9rem 1.3rem;
+    /* ── Live Events Widget: featured next date + compact pills for later dates ── */
+    .events-widget { max-width: 480px; margin: 0 auto; }
+    .feat-card {
       background: var(--card-bg);
       border: 1.5px solid rgba(42,26,46,0.1);
-      border-radius: 12px;
+      border-top: 4px solid var(--pastel-blue);
+      border-radius: 16px;
+      padding: 1.8rem 1.6rem;
+      text-align: center;
       box-shadow: 0 4px 18px rgba(42,26,46,0.06);
+      margin-bottom: 1.3rem;
     }
-    .upcoming-date-item .date-label { font-weight: 700; color: var(--ink); font-size: 0.96rem; }
-    .upcoming-date-item a {
-      display: inline-flex; align-items: center; min-height: 44px;
-      color: var(--dark-blue); font-weight: 700; font-size: 0.9rem; text-decoration: none; flex-shrink: 0;
+    .feat-tag {
+      display: inline-block; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
+      color: #fff; background: var(--dark-blue); padding: 0.3rem 0.85rem; border-radius: 2rem; margin-bottom: 0.9rem;
     }
-    .upcoming-date-item a:hover { text-decoration: underline; }
+    .feat-date {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: clamp(1.4rem, 5vw, 1.8rem); color: var(--ink); line-height: 1.2; margin-bottom: 1.2rem;
+    }
+    .feat-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 0.9rem 2rem;
+      background: var(--dark-blue); color: #fff; font-weight: 700; font-size: 0.92rem;
+      text-decoration: none; border-radius: 3rem; transition: all 0.2s ease;
+    }
+    .feat-btn:hover { background: var(--ink); }
+
+    .upcoming-heading {
+      font-size: 0.68rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink-muted); margin: 0 0 0.6rem; text-align: center;
+    }
+    .upcoming-list { list-style: none; margin: 0 0 0.6rem; padding: 0; display: grid; gap: 0.5rem; }
+    .up-item {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 0.7rem 1.1rem;
+      background: var(--card-bg);
+      border: 1.5px solid rgba(42,26,46,0.1);
+      border-radius: 10px;
+    }
+    .up-date { font-weight: 700; font-size: 0.88rem; color: var(--ink); }
+    .up-book {
+      flex-shrink: 0; display: inline-flex; align-items: center; min-height: 36px;
+      font-size: 0.8rem; font-weight: 700; text-decoration: none; color: var(--dark-blue);
+      border: 1.5px solid var(--pastel-blue); padding: 0.3rem 0.9rem; border-radius: 2rem; transition: all 0.2s;
+    }
+    .up-book:hover { background: var(--pastel-blue); color: var(--ink); }
+    .events-updated { text-align: center; font-size: 0.72rem; color: var(--ink-muted); margin-top: 0.8rem; }
 
     /* ── Contact ── */
     .contact-list { list-style: none; margin: 0 auto; padding: 0; max-width: 560px; display: grid; gap: 0.7rem; }
@@ -606,12 +637,11 @@
       </div>
     </section>
 
-    <!-- ══ MORE WEDNESDAYS ══ -->
-    <section class="section" id="more-wednesdays" aria-labelledby="more-wednesdays-h">
-      <span class="section-kicker">Plan ahead</span>
-      <h2 id="more-wednesdays-h">More Wednesdays Coming Up</h2>
-      <p class="lede">Same place, same time, every week — here are the next few dates if you'd rather book ahead.</p>
-      <div class="upcoming-dates-list" id="upcomingWednesdays">
+    <!-- ══ LIVE EVENTS WIDGET (auto-updated from Fatsoma) ══ -->
+    <section class="section" id="upcoming" aria-labelledby="upcoming-h">
+      <span class="section-kicker">Auto-updated from Fatsoma</span>
+      <h2 id="upcoming-h">Upcoming Wednesdays</h2>
+      <div class="events-widget" id="eventsWidget">
         <p class="lede">Loading dates…</p>
       </div>
     </section>
@@ -773,40 +803,24 @@
     })();
   </script>
 
-  <!-- Booking wiring: use the live events.json Wednesday dates if available, else fall back to static Fatsoma URL.
-       The hero button always books the NEXT Wednesday; the "More Wednesdays" list below shows every
-       further date events.json knows about, so people can book ahead if they can't make the next one. -->
+  <!-- ══ EVENTS RENDERER (reads events.json the scraper writes) ══
+       Featured card = the next Wednesday, with the date built right into it.
+       Compact pills below it = every later Wednesday, so people can book ahead easily.
+       Same structure as the widget this page used a few weeks ago, restyled for the current design. -->
   <script>
     (function () {
       var FALLBACK_URL = 'https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent';
       var btn = document.getElementById('wednesdayBookBtn');
-      var list = document.getElementById('upcomingWednesdays');
       var dateLabel = document.getElementById('wednesdayNextDate');
+      var WIDGET = document.getElementById('eventsWidget');
+      var DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-      function formatDate(d) {
-        return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
-      }
+      function fmtFull(d) { return DAYS[d.getDay()] + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear(); }
+      function fmtShort(d) { return DAYS[d.getDay()].slice(0, 3) + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()].slice(0, 3); }
+      function fmtDateLabel(d) { return d.getDate() + ' ' + MONTHS[d.getMonth()]; }
 
-      function renderMoreDates(events) {
-        if (!list) return;
-        var rest = events.slice(1); // everything after the one already featured in the hero
-        if (!rest.length) {
-          list.innerHTML = '<p class="lede">That\'s the only date on sale right now — check back soon for more.</p>';
-          return;
-        }
-        list.innerHTML = '';
-        rest.forEach(function (e) {
-          var label = 'Wednesday ' + formatDate(e._d);
-          var row = document.createElement('div');
-          row.className = 'upcoming-date-item';
-          row.innerHTML =
-            '<span class="date-label">' + label + '</span>' +
-            '<a href="' + (e.url || FALLBACK_URL) + '" target="_blank" rel="noopener">Book →</a>';
-          list.appendChild(row);
-        });
-      }
-
-      if (!btn && !list) return;
+      if (!btn && !WIDGET) return;
 
       fetch('events.json')
         .then(function (r) { return r.json(); })
@@ -818,35 +832,54 @@
             .filter(function (e) { return e._d.getDay() === 3 && e._d >= today; })
             .sort(function (a, b) { return a._d - b._d; });
 
-          if (btn) {
-            if (events.length && events[0].url) {
-              btn.href = events[0].url;
-            } else {
-              btn.href = FALLBACK_URL;
+          if (!events.length) {
+            if (btn) { btn.href = FALLBACK_URL; btn.target = '_blank'; btn.rel = 'noopener'; }
+            if (dateLabel) dateLabel.textContent = 'Check Fatsoma for the next date';
+            if (WIDGET) {
+              WIDGET.innerHTML = '<p class="lede">No upcoming dates listed right now. <a href="' + data.source + '" target="_blank" rel="noopener">See our Fatsoma →</a></p>';
             }
-            btn.target = '_blank';
-            btn.rel = 'noopener';
+            return;
           }
 
-          if (dateLabel) {
-            dateLabel.textContent = events.length
-              ? 'Next up: Wednesday ' + formatDate(events[0]._d)
-              : 'Check Fatsoma for the next date';
-          }
+          var feat = events[0];
+          var rest = events.slice(1);
 
-          renderMoreDates(events);
+          // Hero button and date always point at the nearest Wednesday.
+          if (btn) { btn.href = feat.url || FALLBACK_URL; btn.target = '_blank'; btn.rel = 'noopener'; }
+          if (dateLabel) dateLabel.textContent = 'Next up: Wednesday ' + fmtDateLabel(feat._d);
+
+          if (WIDGET) {
+            var html = ''
+              + '<div class="feat-card">'
+              +   '<span class="feat-tag">Next Wednesday</span>'
+              +   '<div class="feat-date">' + fmtFull(feat._d) + '</div>'
+              +   '<a href="' + (feat.url || FALLBACK_URL) + '" target="_blank" rel="noopener" class="feat-btn">Book This Wednesday — £10 →</a>'
+              + '</div>';
+
+            if (rest.length) {
+              html += '<p class="upcoming-heading">Also coming up</p>';
+              html += '<ul class="upcoming-list">';
+              rest.forEach(function (e) {
+                html += '<li class="up-item">'
+                  + '<span class="up-date">' + fmtShort(e._d) + '</span>'
+                  + '<a class="up-book" href="' + (e.url || FALLBACK_URL) + '" target="_blank" rel="noopener">Book →</a>'
+                  + '</li>';
+              });
+              html += '</ul>';
+            }
+
+            if (data.lastUpdated) {
+              html += '<p class="events-updated">Auto-updated from Fatsoma · ' + new Date(data.lastUpdated).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) + '</p>';
+            }
+
+            WIDGET.innerHTML = html;
+          }
         })
         .catch(function () {
-          if (dateLabel) {
-            dateLabel.textContent = 'Check Fatsoma for the next date';
-          }
-          if (btn) {
-            btn.href = FALLBACK_URL;
-            btn.target = '_blank';
-            btn.rel = 'noopener';
-          }
-          if (list) {
-            list.innerHTML = '<p class="lede">Couldn\'t load more dates right now — <a href="https://www.fatsoma.com/p/roguebachata" target="_blank" rel="noopener">see them on Fatsoma →</a></p>';
+          if (btn) { btn.href = FALLBACK_URL; btn.target = '_blank'; btn.rel = 'noopener'; }
+          if (dateLabel) dateLabel.textContent = 'Check Fatsoma for the next date';
+          if (WIDGET) {
+            WIDGET.innerHTML = '<p class="lede">Couldn\'t load dates. <a href="https://www.fatsoma.com/p/roguebachata" target="_blank" rel="noopener">Book on Fatsoma →</a></p>';
           }
         });
     })();
