@@ -310,6 +310,26 @@
     .event-hero-panel.tone-blue .event-hero-btn:hover { background: var(--pastel-pink); border-color: var(--pastel-pink); color: var(--ink); }
     .event-hero-btn:hover { transform: translateY(-2px); }
 
+    /* ── Other upcoming dates, right in the hero — no scrolling needed to see them ── */
+    .hero-more-dates { margin-top: 1.3rem; }
+    .hero-more-label {
+      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: #fff; opacity: 0.75; margin-bottom: 0.6rem;
+    }
+    .hero-date-pills { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+    .hero-date-pill {
+      display: inline-flex; align-items: center;
+      min-height: 36px;
+      padding: 0.35rem 0.95rem;
+      border: 1.5px solid rgba(255,255,255,0.55);
+      border-radius: 2rem;
+      color: #fff;
+      font-size: 0.8rem; font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .hero-date-pill:hover { background: #fff; color: var(--ink); border-color: #fff; }
+
     /* ── Shared section shells ── */
     main { position: relative; z-index: 1; }
     .section {
@@ -473,55 +493,6 @@
     .faq-item[open] summary::after { transform: rotate(45deg); }
     .faq-item p { padding: 0 0 1rem; font-size: 0.93rem; color: var(--ink-muted); line-height: 1.65; }
 
-    /* ── Live Events Widget: featured next date + compact pills for later dates ── */
-    .events-widget { max-width: 480px; margin: 0 auto; }
-    .feat-card {
-      background: var(--card-bg);
-      border: 1.5px solid rgba(42,26,46,0.1);
-      border-top: 4px solid var(--pastel-blue);
-      border-radius: 16px;
-      padding: 1.8rem 1.6rem;
-      text-align: center;
-      box-shadow: 0 4px 18px rgba(42,26,46,0.06);
-      margin-bottom: 1.3rem;
-    }
-    .feat-tag {
-      display: inline-block; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
-      color: #fff; background: var(--dark-blue); padding: 0.3rem 0.85rem; border-radius: 2rem; margin-bottom: 0.9rem;
-    }
-    .feat-date {
-      font-family: 'Playfair Display', serif; font-weight: 900;
-      font-size: clamp(1.4rem, 5vw, 1.8rem); color: var(--ink); line-height: 1.2; margin-bottom: 1.2rem;
-    }
-    .feat-btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      min-height: 48px; padding: 0.9rem 2rem;
-      background: var(--dark-blue); color: #fff; font-weight: 700; font-size: 0.92rem;
-      text-decoration: none; border-radius: 3rem; transition: all 0.2s ease;
-    }
-    .feat-btn:hover { background: var(--ink); }
-
-    .upcoming-heading {
-      font-size: 0.68rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--ink-muted); margin: 0 0 0.6rem; text-align: center;
-    }
-    .upcoming-list { list-style: none; margin: 0 0 0.6rem; padding: 0; display: grid; gap: 0.5rem; }
-    .up-item {
-      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-      padding: 0.7rem 1.1rem;
-      background: var(--card-bg);
-      border: 1.5px solid rgba(42,26,46,0.1);
-      border-radius: 10px;
-    }
-    .up-date { font-weight: 700; font-size: 0.88rem; color: var(--ink); }
-    .up-book {
-      flex-shrink: 0; display: inline-flex; align-items: center; min-height: 36px;
-      font-size: 0.8rem; font-weight: 700; text-decoration: none; color: var(--dark-blue);
-      border: 1.5px solid var(--pastel-blue); padding: 0.3rem 0.9rem; border-radius: 2rem; transition: all 0.2s;
-    }
-    .up-book:hover { background: var(--pastel-blue); color: var(--ink); }
-    .events-updated { text-align: center; font-size: 0.72rem; color: var(--ink-muted); margin-top: 0.8rem; }
-
     /* ── Contact ── */
     .contact-list { list-style: none; margin: 0 auto; padding: 0; max-width: 560px; display: grid; gap: 0.7rem; }
     @media (min-width: 560px) { .contact-list { grid-template-columns: 1fr 1fr; } }
@@ -606,6 +577,11 @@
       <p class="event-hero-venue">Keystone Crescent · King's Cross</p>
       <p class="event-hero-meta">Class 7:30pm (£10) · Free social 8:30pm<br>No partner needed — welcoming for solo attendees</p>
       <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" id="wednesdayBookBtn" class="event-hero-btn" target="_blank" rel="noopener">Book Wednesday →</a>
+
+      <div class="hero-more-dates" id="heroMoreDates" hidden>
+        <p class="hero-more-label">Can't make it? Book ahead</p>
+        <div class="hero-date-pills" id="heroDatePills"></div>
+      </div>
     </div>
   </section>
 
@@ -634,15 +610,6 @@
           <p class="desc">King's Cross, London N1 9DX — about a 2 minute walk from King's Cross / St Pancras stations.</p>
           <a class="offer-link" href="https://www.google.com/maps/search/?api=1&query=Keystone+Crescent+London+N1+9DX" target="_blank" rel="noopener">Get directions →</a>
         </article>
-      </div>
-    </section>
-
-    <!-- ══ LIVE EVENTS WIDGET (auto-updated from Fatsoma) ══ -->
-    <section class="section" id="upcoming" aria-labelledby="upcoming-h">
-      <span class="section-kicker">Auto-updated from Fatsoma</span>
-      <h2 id="upcoming-h">Upcoming Wednesdays</h2>
-      <div class="events-widget" id="eventsWidget">
-        <p class="lede">Loading dates…</p>
       </div>
     </section>
 
@@ -804,23 +771,23 @@
   </script>
 
   <!-- ══ EVENTS RENDERER (reads events.json the scraper writes) ══
-       Featured card = the next Wednesday, with the date built right into it.
-       Compact pills below it = every later Wednesday, so people can book ahead easily.
-       Same structure as the widget this page used a few weeks ago, restyled for the current design. -->
+       Everything lives in the hero, above the fold — no scrolling needed:
+       the big button + date always book the next Wednesday, and small pills
+       right below it let people book any later date instead. -->
   <script>
     (function () {
       var FALLBACK_URL = 'https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent';
       var btn = document.getElementById('wednesdayBookBtn');
       var dateLabel = document.getElementById('wednesdayNextDate');
-      var WIDGET = document.getElementById('eventsWidget');
-      var DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-      var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      var moreWrap = document.getElementById('heroMoreDates');
+      var pillsEl = document.getElementById('heroDatePills');
+      var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var MONTHS_FULL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-      function fmtFull(d) { return DAYS[d.getDay()] + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear(); }
-      function fmtShort(d) { return DAYS[d.getDay()].slice(0, 3) + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()].slice(0, 3); }
-      function fmtDateLabel(d) { return d.getDate() + ' ' + MONTHS[d.getMonth()]; }
+      function fmtShort(d) { return d.getDate() + ' ' + MONTHS[d.getMonth()]; }
+      function fmtFull(d) { return d.getDate() + ' ' + MONTHS_FULL[d.getMonth()]; }
 
-      if (!btn && !WIDGET) return;
+      if (!btn && !pillsEl) return;
 
       fetch('events.json')
         .then(function (r) { return r.json(); })
@@ -835,52 +802,32 @@
           if (!events.length) {
             if (btn) { btn.href = FALLBACK_URL; btn.target = '_blank'; btn.rel = 'noopener'; }
             if (dateLabel) dateLabel.textContent = 'Check Fatsoma for the next date';
-            if (WIDGET) {
-              WIDGET.innerHTML = '<p class="lede">No upcoming dates listed right now. <a href="' + data.source + '" target="_blank" rel="noopener">See our Fatsoma →</a></p>';
-            }
             return;
           }
 
           var feat = events[0];
           var rest = events.slice(1);
 
-          // Hero button and date always point at the nearest Wednesday.
           if (btn) { btn.href = feat.url || FALLBACK_URL; btn.target = '_blank'; btn.rel = 'noopener'; }
-          if (dateLabel) dateLabel.textContent = 'Next up: Wednesday ' + fmtDateLabel(feat._d);
+          if (dateLabel) dateLabel.textContent = 'Next up: Wednesday ' + fmtFull(feat._d);
 
-          if (WIDGET) {
-            var html = ''
-              + '<div class="feat-card">'
-              +   '<span class="feat-tag">Next Wednesday</span>'
-              +   '<div class="feat-date">' + fmtFull(feat._d) + '</div>'
-              +   '<a href="' + (feat.url || FALLBACK_URL) + '" target="_blank" rel="noopener" class="feat-btn">Book This Wednesday — £10 →</a>'
-              + '</div>';
-
-            if (rest.length) {
-              html += '<p class="upcoming-heading">Also coming up</p>';
-              html += '<ul class="upcoming-list">';
-              rest.forEach(function (e) {
-                html += '<li class="up-item">'
-                  + '<span class="up-date">' + fmtShort(e._d) + '</span>'
-                  + '<a class="up-book" href="' + (e.url || FALLBACK_URL) + '" target="_blank" rel="noopener">Book →</a>'
-                  + '</li>';
-              });
-              html += '</ul>';
-            }
-
-            if (data.lastUpdated) {
-              html += '<p class="events-updated">Auto-updated from Fatsoma · ' + new Date(data.lastUpdated).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) + '</p>';
-            }
-
-            WIDGET.innerHTML = html;
+          if (rest.length && moreWrap && pillsEl) {
+            pillsEl.innerHTML = '';
+            rest.forEach(function (e) {
+              var a = document.createElement('a');
+              a.className = 'hero-date-pill';
+              a.href = e.url || FALLBACK_URL;
+              a.target = '_blank';
+              a.rel = 'noopener';
+              a.textContent = fmtShort(e._d) + ' →';
+              pillsEl.appendChild(a);
+            });
+            moreWrap.hidden = false;
           }
         })
         .catch(function () {
           if (btn) { btn.href = FALLBACK_URL; btn.target = '_blank'; btn.rel = 'noopener'; }
           if (dateLabel) dateLabel.textContent = 'Check Fatsoma for the next date';
-          if (WIDGET) {
-            WIDGET.innerHTML = '<p class="lede">Couldn\'t load dates. <a href="https://www.fatsoma.com/p/roguebachata" target="_blank" rel="noopener">Book on Fatsoma →</a></p>';
-          }
         });
     })();
   </script>
