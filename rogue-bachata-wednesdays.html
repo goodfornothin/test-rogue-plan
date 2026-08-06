@@ -288,6 +288,7 @@
       line-height: 0.95;
       margin-bottom: 0.6rem;
     }
+    .event-hero-date { font-size: 1.05rem; font-weight: 700; opacity: 0.95; margin-bottom: 0.4rem; }
     .event-hero-venue { font-size: clamp(1rem, 2.4vw, 1.2rem); font-weight: 600; opacity: 0.95; margin-bottom: 1rem; }
     .event-hero-meta { font-size: 0.92rem; font-weight: 500; opacity: 0.9; margin-bottom: 1.8rem; line-height: 1.6; }
     .event-hero-btn {
@@ -570,6 +571,7 @@
       <p class="event-hero-crumb"><a href="index.html">Home</a> → Wednesday</p>
       <span class="event-hero-eyebrow">Every Wednesday</span>
       <h1 id="hero-h" class="event-hero-day">Wednesday</h1>
+      <p class="event-hero-date" id="wednesdayNextDate">Next date loading…</p>
       <p class="event-hero-venue">Keystone Crescent · King's Cross</p>
       <p class="event-hero-meta">Class 7:30pm (£10) · Free social 8:30pm<br>No partner needed — welcoming for solo attendees</p>
       <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" id="wednesdayBookBtn" class="event-hero-btn" target="_blank" rel="noopener">Book Wednesday →</a>
@@ -779,6 +781,11 @@
       var FALLBACK_URL = 'https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent';
       var btn = document.getElementById('wednesdayBookBtn');
       var list = document.getElementById('upcomingWednesdays');
+      var dateLabel = document.getElementById('wednesdayNextDate');
+
+      function formatDate(d) {
+        return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
+      }
 
       function renderMoreDates(events) {
         if (!list) return;
@@ -789,7 +796,7 @@
         }
         list.innerHTML = '';
         rest.forEach(function (e) {
-          var label = e._d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+          var label = 'Wednesday ' + formatDate(e._d);
           var row = document.createElement('div');
           row.className = 'upcoming-date-item';
           row.innerHTML =
@@ -821,9 +828,18 @@
             btn.rel = 'noopener';
           }
 
+          if (dateLabel) {
+            dateLabel.textContent = events.length
+              ? 'Next up: Wednesday ' + formatDate(events[0]._d)
+              : 'Check Fatsoma for the next date';
+          }
+
           renderMoreDates(events);
         })
         .catch(function () {
+          if (dateLabel) {
+            dateLabel.textContent = 'Check Fatsoma for the next date';
+          }
           if (btn) {
             btn.href = FALLBACK_URL;
             btn.target = '_blank';
