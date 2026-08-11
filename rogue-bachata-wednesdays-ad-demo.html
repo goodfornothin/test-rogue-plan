@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bachata Classes Wednesdays | Keystone Crescent King's Cross | Rogue Bachata</title>
+  <meta name="description" content="Bachata classes every Wednesday at Keystone Crescent, King's Cross. Class 7:30pm (£10), free social dancing from 8:30pm. No partner needed — safe to come alone, all levels welcome.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://roguebachata.com/rogue-bachata-wednesdays.html">
+
+  <meta property="og:title" content="Come As You Are. Leave Glowing. | Rogue Bachata Wednesdays">
+  <meta property="og:description" content="The Wednesday night bachata class women across London keep coming back to. No partner needed. No experience needed. Genuinely safe to come alone.">
+  <meta property="og:image" content="https://roguebachata.com/images/RogueParty.jpg">
+  <meta property="og:url" content="https://roguebachata.com/rogue-bachata-wednesdays.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="images/Rogue Bachata Logo.svg" type="image/svg+xml">
+  <link rel="icon" href="images/Rogue Bachata Logo _transparent_.png" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:              #FFF8F5;
+      --pastel-pink:     #FFB7C5;
+      --pastel-blue:     #87CEEB;
+      --pastel-pink-soft:#FFD3DC;
+      --pastel-blue-soft:#B7DFEE;
+      --dark-pink:       #B86F7E;
+      --dark-blue:       #4A85A0;
+      --pink-deep:       #7A3D71;
+      --blue-deep:       #1A7499;
+      --ink:             #2a1a2e;
+      --ink-muted:       #5b4a63;
+      --card-bg:         #FFFFFF;
+      --focus-cyan:      #00DFFF;
+      --gold:            #D9A94E;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100svh;
+      overflow-x: hidden;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--focus-cyan); outline-offset: 2px; border-radius: 4px; }
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 1000; background: var(--focus-cyan); color: #08020e; font-weight: 700; padding: 0.8rem 1.4rem; border-radius: 0 0 10px 0; text-decoration: none; }
+    .skip-link:focus { left: 0; }
+
+    /* ── Minimal ad-landing nav: logo + single CTA, nothing to wander off to ── */
+    .logo-mask {
+      display: inline-block;
+      background-color: #fff;
+      -webkit-mask: url('images/Rogue Bachata Logo _transparent_.png') center / contain no-repeat;
+              mask: url('images/Rogue Bachata Logo _transparent_.png') center / contain no-repeat;
+    }
+    .nav-logo { width: 168px; aspect-ratio: 974 / 502; -webkit-mask-size: 100% auto; mask-size: 100% auto; }
+    header nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      padding: 0.6rem 1.2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      z-index: 100;
+      background: rgba(122, 61, 113, 0.88);
+      backdrop-filter: blur(10px);
+      height: 62px;
+    }
+    nav .nav-cta {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 40px; padding: 0 1.2rem;
+      background: #fff; color: var(--pink-deep); font-weight: 700; font-size: 0.82rem;
+      border-radius: 2rem; text-decoration: none; white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+      transition: transform 0.18s ease;
+    }
+    nav .nav-cta:hover { transform: translateY(-1px); }
+
+    /* ── Sticky mobile book bar ── */
+    .sticky-cta {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+      background: var(--pink-deep);
+      padding: 0.65rem 1rem;
+      display: flex; justify-content: center;
+      box-shadow: 0 -6px 20px rgba(0,0,0,0.18);
+    }
+    .sticky-cta a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 100%; max-width: 420px; min-height: 46px;
+      background: #fff; color: var(--pink-deep); font-weight: 800; font-size: 0.92rem;
+      border-radius: 2rem; text-decoration: none;
+    }
+    @media (min-width: 880px) { .sticky-cta { display: none; } }
+    body { padding-bottom: 4.2rem; }
+    @media (min-width: 880px) { body { padding-bottom: 0; } }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      padding: 6.5rem 1.2rem 2.6rem;
+      overflow: hidden;
+    }
+    .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(45,15,45,0.35) 0%, rgba(35,10,40,0.35) 35%, rgba(20,5,30,0.82) 78%, rgba(15,4,24,0.94) 100%);
+      z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; width: 100%; max-width: 720px; margin: 0 auto; text-align: center; color: #fff; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--pastel-pink-soft); margin-bottom: 1.1rem;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after { content: ''; width: 22px; height: 1px; background: rgba(255,255,255,0.5); }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-style: italic;
+      font-size: clamp(2.4rem, 8vw, 4rem);
+      line-height: 1.08;
+      margin-bottom: 1.1rem;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.35);
+    }
+    .hero p.sub { font-size: clamp(1rem, 2.2vw, 1.18rem); max-width: 560px; margin: 0 auto 1.7rem; color: #f4e9f2; }
+    .hero-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      min-height: 54px; padding: 1rem 2.4rem;
+      background: linear-gradient(135deg, #FF8FAE, #FFB7C5);
+      color: #3a1230; font-weight: 800; font-size: 1.02rem;
+      border-radius: 3rem; text-decoration: none;
+      box-shadow: 0 10px 30px rgba(255, 143, 174, 0.4);
+      transition: transform 0.2s ease;
+    }
+    .hero-btn:hover { transform: translateY(-2px) scale(1.02); }
+    .hero-date { font-size: 0.86rem; font-weight: 600; color: #fff; opacity: 0.9; margin-top: 0.9rem; }
+    .hero-trust {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.2rem;
+      margin-top: 1.6rem; font-size: 0.8rem; font-weight: 600; color: #fff;
+    }
+    .hero-trust span { display: inline-flex; align-items: center; gap: 0.35rem; opacity: 0.95; }
+
+    /* ── Shared shells ── */
+    main { position: relative; z-index: 1; }
+    .section { max-width: 1080px; margin: 0 auto; padding: 4.2rem 1.5rem; }
+    .section-kicker { display: block; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dark-pink); margin-bottom: 0.6rem; text-align: center; }
+    .section h2 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(1.7rem, 5vw, 2.5rem); color: var(--ink); text-align: center; margin-bottom: 0.9rem; line-height: 1.15; }
+    .section .lede { max-width: 640px; margin: 0 auto 2.6rem; text-align: center; color: var(--ink-muted); font-size: 1.02rem; }
+
+    .card { background: var(--card-bg); border: 1.5px solid rgba(42,26,46,0.1); border-radius: 16px; padding: 1.6rem 1.5rem; box-shadow: 0 4px 18px rgba(42,26,46,0.06); transition: transform 0.18s ease, box-shadow 0.18s ease; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(42,26,46,0.12); }
+
+    /* ── "Is this you?" relatable section ── */
+    .relate-section { background: var(--pastel-pink-soft); }
+    .relate-grid { display: grid; gap: 1.1rem; }
+    @media (min-width: 680px) { .relate-grid { grid-template-columns: repeat(2, 1fr); } }
+    .relate-card { display: flex; gap: 0.9rem; align-items: flex-start; }
+    .relate-card .tick {
+      flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
+      background: var(--pink-deep); color: #fff; display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; font-weight: 800;
+    }
+    .relate-card p { font-size: 0.96rem; color: var(--ink); font-weight: 500; }
+    .relate-closer { text-align: center; margin-top: 2rem; font-family: 'Playfair Display', serif; font-weight: 800; font-style: italic; font-size: 1.3rem; color: var(--pink-deep); }
+
+    /* ── Timeline (how the night goes) ── */
+    .timeline { max-width: 720px; margin: 0 auto; display: grid; gap: 1.4rem; }
+    .timeline-step { display: grid; grid-template-columns: 64px 1fr; gap: 1.1rem; align-items: flex-start; }
+    .timeline-time {
+      display: flex; flex-direction: column; align-items: center;
+      background: var(--pastel-blue); color: var(--blue-deep); border-radius: 12px;
+      padding: 0.6rem 0.3rem; font-weight: 800; font-size: 0.8rem; line-height: 1.2; text-align: center;
+    }
+    .timeline-step:nth-child(even) .timeline-time { background: var(--pastel-pink); color: var(--pink-deep); }
+    .timeline-step h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 0.3rem; color: var(--ink); }
+    .timeline-step p { font-size: 0.92rem; color: var(--ink-muted); }
+
+    /* ── Gallery ── */
+    .gallery-grid { display: grid; gap: 0.8rem; grid-template-columns: repeat(2, 1fr); }
+    @media (min-width: 680px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+    .gallery-grid img { width: 100%; height: 220px; object-fit: cover; border-radius: 14px; display: block; box-shadow: 0 6px 20px rgba(42,26,46,0.14); }
+    .gallery-grid a:nth-child(1) img, .gallery-grid a:nth-child(4) img { object-position: top; }
+
+    /* ── Offer / detail cards ── */
+    .offer-grid { display: grid; gap: 1.3rem; }
+    @media (min-width: 680px) { .offer-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 980px) { .offer-grid { grid-template-columns: repeat(3, 1fr); } }
+    .offer-card.accent-pink { border-top: 4px solid var(--pastel-pink); }
+    .offer-card.accent-blue { border-top: 4px solid var(--pastel-blue); }
+    .offer-card .hook { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.7rem; }
+    .offer-card.accent-pink .hook { color: var(--dark-pink); }
+    .offer-card.accent-blue .hook { color: var(--dark-blue); }
+    .offer-card h3 { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 1.25rem; color: var(--ink); margin-bottom: 0.5rem; }
+    .offer-card p.desc { font-size: 0.92rem; color: var(--ink-muted); }
+
+    /* ── Testimonials ── */
+    .testimonial-grid { display: grid; gap: 1.3rem; }
+    @media (min-width: 760px) { .testimonial-grid { grid-template-columns: repeat(3, 1fr); } }
+    .testimonial-card .stars { color: var(--gold); font-size: 1.05rem; letter-spacing: 0.15em; margin-bottom: 0.7rem; }
+    .testimonial-card blockquote { font-size: 0.94rem; color: var(--ink); font-style: italic; margin-bottom: 0.5rem; }
+
+    /* ── Mid-page CTA band ── */
+    .cta-band { background: linear-gradient(135deg, var(--pink-deep), var(--blue-deep)); color: #fff; text-align: center; padding: 3.4rem 1.5rem; }
+    .cta-band h2 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 800; font-size: clamp(1.5rem, 4.5vw, 2.1rem); margin-bottom: 0.8rem; }
+    .cta-band p { max-width: 520px; margin: 0 auto 1.6rem; opacity: 0.92; font-size: 0.98rem; }
+    .cta-band .hero-btn { background: #fff; color: var(--pink-deep); box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 780px; margin: 0 auto; }
+    .faq-item { background: var(--card-bg); border: 1.5px solid rgba(42,26,46,0.1); border-left: 4px solid var(--pastel-pink); border-radius: 12px; padding: 0.4rem 1.25rem; margin-bottom: 0.75rem; }
+    .faq-item:nth-child(even) { border-left-color: var(--pastel-blue); }
+    .faq-item summary { cursor: pointer; font-weight: 700; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 44px; padding: 0.55rem 0; font-size: 0.98rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: var(--dark-blue); font-size: 1.35rem; font-weight: 300; transition: transform 0.2s; flex-shrink: 0; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item p { padding: 0 0 1rem; font-size: 0.93rem; color: var(--ink-muted); line-height: 1.65; }
+
+    /* ── Footer ── */
+    footer { position: relative; z-index: 1; text-align: center; padding: 2.2rem 1.5rem 2rem; background: var(--pastel-pink-soft); }
+    .footer-copy { font-size: 0.72rem; color: var(--ink-muted); }
+    .footer-copy a { color: var(--dark-pink); text-decoration: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .card:hover, .hero-btn:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header>
+    <nav aria-label="Main navigation">
+      <a href="index.html" class="logo-mask nav-logo" aria-label="Rogue Bachata home"></a>
+      <a href="#book" class="nav-cta">Reserve My Spot</a>
+    </nav>
+  </header>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero" aria-labelledby="hero-h">
+    <video autoplay muted loop playsinline webkit-playsinline poster="images/mondays-social-bg-poster.jpg" aria-hidden="true">
+      <source src="videos/mondays-social-bg.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">King's Cross · Every Wednesday</p>
+      <h1 id="hero-h">Come As You Are.<br>Leave Glowing.</h1>
+      <p class="sub">The Wednesday night bachata class women across London keep coming back to. No partner needed. No experience needed. Just an hour that's entirely yours.</p>
+      <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" id="wednesdayBookBtnHero" class="hero-btn" target="_blank" rel="noopener">Reserve My Spot — £10 →</a>
+      <p class="hero-date" id="wednesdayNextDate">Next class loading…</p>
+      <div class="hero-trust">
+        <span>💗 No partner needed</span>
+        <span>🌱 First-timers welcome</span>
+        <span>🔒 Safe to come solo</span>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+
+    <!-- ══ "IS THIS YOU?" ══ -->
+    <section class="section relate-section" aria-labelledby="relate-h">
+      <span class="section-kicker">Before you talk yourself out of it</span>
+      <h2 id="relate-h">You Don't Need to Have This Figured Out</h2>
+      <p class="lede">Every single person on that dance floor started exactly where you are right now — including the ones who look like naturals.</p>
+
+      <div class="relate-grid">
+        <div class="relate-card"><span class="tick">✓</span><p>You've always wanted to try dancing, but you've been waiting for "the right partner" to come with you.</p></div>
+        <div class="relate-card"><span class="tick">✓</span><p>You want a night out that's more than another round of drinks and small talk.</p></div>
+        <div class="relate-card"><span class="tick">✓</span><p>Walking into a room alone makes you a little nervous — but you're tired of that stopping you.</p></div>
+        <div class="relate-card"><span class="tick">✓</span><p>You want to feel more confident and more at home in your own body — not just watch other people have fun in theirs.</p></div>
+      </div>
+      <p class="relate-closer">Good news: Wednesday was built for exactly this.</p>
+    </section>
+
+    <!-- ══ HOW THE NIGHT GOES ══ -->
+    <section class="section" aria-labelledby="timeline-h">
+      <span class="section-kicker">No guesswork, no awkward standing around</span>
+      <h2 id="timeline-h">How Your Wednesday Goes</h2>
+      <p class="lede">You'll know exactly what to expect before you even walk in.</p>
+
+      <div class="timeline">
+        <div class="timeline-step">
+          <div class="timeline-time">7:15<br>PM</div>
+          <div><h3>You arrive, you're welcomed</h3><p>Someone greets you at the door the moment you walk in — solo arrivals are the norm here, not the exception.</p></div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-time">7:30<br>PM</div>
+          <div><h3>One hour, built from zero</h3><p>A friendly £10 class for every level. We rotate partners throughout, so you're never stuck standing with your hands not knowing what to do.</p></div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-time">8:30<br>PM</div>
+          <div><h3>The free social opens</h3><p>Put what you just learned straight to use, or simply enjoy the floor. No booking needed, no pressure to dance every song.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ GALLERY ══ -->
+    <section class="section" aria-labelledby="gallery-h">
+      <span class="section-kicker">This is the room you're walking into</span>
+      <h2 id="gallery-h">A Room That Actually Feels Like This</h2>
+      <p class="lede">Warm lighting, good music, and people genuinely glad you showed up.</p>
+      <div class="gallery-grid">
+        <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" target="_blank" rel="noopener"><img src="images/RogueParty.jpg" alt="Dancers smiling together on the social floor" loading="lazy"></a>
+        <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" target="_blank" rel="noopener"><img src="images/Oscar Bo Dream.png" alt="Bachata instructors dancing" loading="lazy"></a>
+        <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" target="_blank" rel="noopener"><img src="images/bachata-disco-ball-social.jpg" alt="Social dancing under the disco lights" loading="lazy"></a>
+        <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" target="_blank" rel="noopener"><img src="images/Boadicea and oscar Sensual Vibes.jpg" alt="Bachata partner dance moment" loading="lazy"></a>
+      </div>
+    </section>
+
+    <!-- ══ TESTIMONIALS ══ -->
+    <section class="section" aria-labelledby="testimonials-h">
+      <span class="section-kicker">What people say after their first Wednesday</span>
+      <h2 id="testimonials-h">From the Floor</h2>
+      <div class="testimonial-grid">
+        <article class="card testimonial-card">
+          <p class="stars" aria-label="5 out of 5 stars">★★★★★</p>
+          <blockquote>"I was apprehensive to go to my first bachata class, but the instructors and organizers made me feel at home the moment I entered."</blockquote>
+        </article>
+        <article class="card testimonial-card">
+          <p class="stars" aria-label="5 out of 5 stars">★★★★★</p>
+          <blockquote>"This was the friendliest bachata class and social I have come across, and I have tried many. I'm really looking forward to every Wednesday."</blockquote>
+        </article>
+        <article class="card testimonial-card">
+          <p class="stars" aria-label="5 out of 5 stars">★★★★★</p>
+          <blockquote>"The teachers spend the whole night dancing with every student, no matter their level — especially Bo, dancing with every beginner. That's a real privilege for anyone starting out."</blockquote>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ MID-PAGE CTA ══ -->
+    <section class="cta-band" id="book" aria-labelledby="cta-h">
+      <h2 id="cta-h">You've already thought about coming.</h2>
+      <p>That's usually the hardest part. The class is £10, the social after is free, and you can turn up completely alone — most people do. Come find out what all the glow is about.</p>
+      <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" id="wednesdayBookBtn" class="hero-btn" target="_blank" rel="noopener">Reserve My Spot — £10 →</a>
+    </section>
+
+    <!-- ══ DETAILS ══ -->
+    <section class="section" aria-labelledby="details-h">
+      <span class="section-kicker">The practical bit</span>
+      <h2 id="details-h">Everything You Need to Know</h2>
+      <div class="offer-grid">
+        <article class="card offer-card accent-blue">
+          <span class="hook">Class</span>
+          <h3>7:30pm · £10</h3>
+          <p class="desc">One hour, all levels, partners rotated throughout — beginners are never the only beginners in the room.</p>
+        </article>
+        <article class="card offer-card accent-pink">
+          <span class="hook">Free social</span>
+          <h3>From 8:30pm</h3>
+          <p class="desc">Stay as long as you like. No booking required for the social — just the class.</p>
+        </article>
+        <article class="card offer-card accent-blue">
+          <span class="hook">Venue</span>
+          <h3>Keystone Crescent</h3>
+          <p class="desc">King's Cross, N1 9DX — 2 minutes' walk from King's Cross / St Pancras stations.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ FAQ ══ -->
+    <section class="section" aria-labelledby="faq-h">
+      <span class="section-kicker">Still deciding?</span>
+      <h2 id="faq-h">Questions People Ask Before Their First Wednesday</h2>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>Is it actually okay to come completely alone?</summary>
+          <p>Yes — genuinely, most people do. You'll be welcomed the moment you walk in, paired up for the class, and it's one of the easiest ways to meet new people without needing to bring anyone with you.</p>
+        </details>
+        <details class="faq-item">
+          <summary>I've never danced before — will I be the only one?</summary>
+          <p>Never. Every class is built from the ground up for absolute beginners, and there's always someone else in the room having their first go, too.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need a partner?</summary>
+          <p>No. We rotate partners throughout the class, so you'll dance with several people by the end of the hour and never get stuck.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What's the vibe — is it a pickup scene?</summary>
+          <p>No. It's a class and social run around respect and connection, not a bar scene. Instructors are on the floor all night, and the focus is on learning and dancing well with each other.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What should I wear?</summary>
+          <p>Comfortable clothes you can move in. Smooth or leather-soled shoes work best — avoid thick rubber-soled trainers if you can.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How much does it cost, and do I need to book?</summary>
+          <p>The class is £10; the social after is free. Booking ahead is recommended since the class fills up, but walk-ins are welcome too.</p>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p class="footer-copy">© 2026 <a href="index.html">Rogue Bachata</a>. Made with love in London.</p>
+  </footer>
+
+  <!-- Sticky mobile CTA -->
+  <div class="sticky-cta">
+    <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" target="_blank" rel="noopener">Reserve My Spot — £10 →</a>
+  </div>
+
+  <!-- Hero video: reduced-motion + iOS autoplay retry -->
+  <script>
+    (function () {
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var vid = document.querySelector('.hero video');
+      if (!vid) return;
+      if (reduceMotion) { vid.removeAttribute('autoplay'); vid.pause(); return; }
+      var p = vid.play();
+      if (p !== undefined) {
+        p.catch(function () {
+          var resume = function () { vid.play(); document.removeEventListener('touchstart', resume); document.removeEventListener('click', resume); };
+          document.addEventListener('touchstart', resume, { passive: true });
+          document.addEventListener('click', resume, { passive: true });
+        });
+      }
+    })();
+  </script>
+
+  <!-- Next Wednesday date + booking links (reads events.json the scraper writes) -->
+  <script>
+    (function () {
+      var FALLBACK_URL = 'https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent';
+      var dateLabel = document.getElementById('wednesdayNextDate');
+      var MONTHS_FULL = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      function fmtFull(d) { return d.getDate() + ' ' + MONTHS_FULL[d.getMonth()]; }
+
+      fetch('events.json')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          var now = new Date();
+          var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          var events = (data.events || [])
+            .map(function (e) { e._d = new Date(e.date + 'T' + (e.startTime || '19:30') + ':00'); return e; })
+            .filter(function (e) { return e._d.getDay() === 3 && e._d >= today; })
+            .sort(function (a, b) { return a._d - b._d; });
+
+          if (!events.length) { if (dateLabel) dateLabel.textContent = 'Check availability for the next date'; return; }
+          var feat = events[0];
+          var url = feat.url || FALLBACK_URL;
+          if (dateLabel) dateLabel.textContent = 'Next class: Wednesday ' + fmtFull(feat._d);
+          ['wednesdayBookBtnHero', 'wednesdayBookBtn'].forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el) { el.href = url; el.target = '_blank'; el.rel = 'noopener'; }
+          });
+        })
+        .catch(function () { if (dateLabel) dateLabel.textContent = 'Check availability for the next date'; });
+    })();
+  </script>
+
+</body>
+</html>
