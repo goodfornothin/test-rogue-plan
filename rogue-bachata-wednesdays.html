@@ -655,5 +655,32 @@
     })();
   </script>
 
+  <!-- Facebook Pixel: conversion tracking on every "Reserve My Spot" click
+       (nav, hero, mid-page CTA band, sticky mobile bar) and on picking a
+       date from the dropdown. All these links open in a new tab, so the
+       event has time to fire before Fatsoma loads. -->
+  <script>
+    (function () {
+      function trackReserveClick() {
+        if (typeof fbq !== 'function') return;
+        fbq('track', 'Schedule', {
+          content_name: 'Rogue Bachata Wednesdays',
+          content_category: 'Dance Class Booking',
+          value: 10,
+          currency: 'GBP'
+        });
+      }
+      document.querySelectorAll('.nav-cta, .hero-btn, .sticky-cta a').forEach(function (el) {
+        el.addEventListener('click', trackReserveClick);
+      });
+      var select = document.getElementById('heroDateSelect');
+      if (select) {
+        select.addEventListener('change', function () {
+          if (select.value) trackReserveClick();
+        });
+      }
+    })();
+  </script>
+
 </body>
 </html>
