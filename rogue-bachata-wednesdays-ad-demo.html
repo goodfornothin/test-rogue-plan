@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://roguebachata.com/rogue-bachata-wednesdays.html">
 
   <meta property="og:title" content="Come As You Are. Leave Glowing. | Rogue Bachata Wednesdays">
-  <meta property="og:description" content="The Wednesday night bachata class women across London keep coming back to. No partner needed. No experience needed. Genuinely safe to come alone.">
+  <meta property="og:description" content="The Wednesday night bachata class people across London keep coming back to. No partner needed. No experience needed. Genuinely safe to come alone.">
   <meta property="og:image" content="https://roguebachata.com/images/RogueParty.jpg">
   <meta property="og:url" content="https://roguebachata.com/rogue-bachata-wednesdays.html">
   <meta property="og:type" content="website">
@@ -143,6 +143,26 @@
     }
     .hero-btn:hover { transform: translateY(-2px) scale(1.02); }
     .hero-date { font-size: 0.86rem; font-weight: 600; color: #fff; opacity: 0.9; margin-top: 0.9rem; }
+    .hero-more-dates { margin-top: 0.7rem; }
+    .hero-date-select {
+      appearance: none; -webkit-appearance: none;
+      display: inline-block;
+      min-height: 40px;
+      padding: 0.5rem 2.2rem 0.5rem 1.1rem;
+      background-color: rgba(255,255,255,0.14);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      background-size: 0.7rem;
+      border: 1.5px solid rgba(255,255,255,0.55);
+      border-radius: 2rem;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.82rem; font-weight: 600;
+      cursor: pointer;
+    }
+    .hero-date-select option { color: var(--ink); }
+    .hero-date-select:hover { background-color: rgba(255,255,255,0.24); }
     .hero-trust {
       display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.2rem;
       margin-top: 1.6rem; font-size: 0.8rem; font-weight: 600; color: #fff;
@@ -243,7 +263,7 @@
   <header>
     <nav aria-label="Main navigation">
       <a href="index.html" class="logo-mask nav-logo" aria-label="Rogue Bachata home"></a>
-      <a href="#book" class="nav-cta">Reserve My Spot</a>
+      <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" id="wednesdayBookBtnNav" class="nav-cta" target="_blank" rel="noopener">Reserve My Spot</a>
     </nav>
   </header>
 
@@ -256,9 +276,14 @@
     <div class="hero-content">
       <p class="hero-eyebrow">King's Cross · Every Wednesday</p>
       <h1 id="hero-h">Come As You Are.<br>Leave Glowing.</h1>
-      <p class="sub">The Wednesday night bachata class women across London keep coming back to. No partner needed. No experience needed. Just an hour that's entirely yours.</p>
+      <p class="sub">The Wednesday night bachata class people across London keep coming back to. No partner needed. No experience needed. Just an hour that's entirely yours.</p>
       <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" id="wednesdayBookBtnHero" class="hero-btn" target="_blank" rel="noopener">Reserve My Spot — £10 →</a>
       <p class="hero-date" id="wednesdayNextDate">Next class loading…</p>
+      <div class="hero-more-dates" id="heroMoreDates" hidden>
+        <select class="hero-date-select" id="heroDateSelect" aria-label="Book a different Wednesday">
+          <option value="">Can't make it? Pick another date ▾</option>
+        </select>
+      </div>
       <div class="hero-trust">
         <span>💗 No partner needed</span>
         <span>🌱 First-timers welcome</span>
@@ -430,13 +455,20 @@
     })();
   </script>
 
-  <!-- Next Wednesday date + booking links (reads events.json the scraper writes) -->
+  <!-- Next Wednesday date + booking links (reads events.json the scraper writes).
+       The big buttons (nav, hero, mid-page CTA, sticky bar) always go straight to
+       Fatsoma for the next Wednesday — clicking to book should never scroll down
+       the page. The hero dropdown is the one place later dates live. -->
   <script>
     (function () {
       var FALLBACK_URL = 'https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent';
       var dateLabel = document.getElementById('wednesdayNextDate');
+      var moreWrap = document.getElementById('heroMoreDates');
+      var select = document.getElementById('heroDateSelect');
       var MONTHS_FULL = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      var MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
       function fmtFull(d) { return d.getDate() + ' ' + MONTHS_FULL[d.getMonth()]; }
+      function fmtShort(d) { return d.getDate() + ' ' + MONTHS_SHORT[d.getMonth()]; }
 
       fetch('events.json')
         .then(function (r) { return r.json(); })
@@ -450,12 +482,27 @@
 
           if (!events.length) { if (dateLabel) dateLabel.textContent = 'Check availability for the next date'; return; }
           var feat = events[0];
+          var rest = events.slice(1);
           var url = feat.url || FALLBACK_URL;
           if (dateLabel) dateLabel.textContent = 'Next class: Wednesday ' + fmtFull(feat._d);
-          ['wednesdayBookBtnHero', 'wednesdayBookBtn'].forEach(function (id) {
+          ['wednesdayBookBtnHero', 'wednesdayBookBtn', 'wednesdayBookBtnNav'].forEach(function (id) {
             var el = document.getElementById(id);
             if (el) { el.href = url; el.target = '_blank'; el.rel = 'noopener'; }
           });
+
+          if (rest.length && moreWrap && select) {
+            rest.forEach(function (e) {
+              var opt = document.createElement('option');
+              opt.value = e.url || FALLBACK_URL;
+              opt.textContent = 'Wed ' + fmtShort(e._d);
+              select.appendChild(opt);
+            });
+            moreWrap.hidden = false;
+            select.addEventListener('change', function () {
+              if (select.value) window.open(select.value, '_blank', 'noopener');
+              select.selectedIndex = 0;
+            });
+          }
         })
         .catch(function () { if (dateLabel) dateLabel.textContent = 'Check availability for the next date'; });
     })();
