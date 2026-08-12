@@ -410,7 +410,7 @@
   <header>
     <nav aria-label="Main navigation">
       <a href="index.html" class="logo-mask nav-logo" aria-label="Rogue Bachata home"></a>
-      <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" id="wednesdayBookBtnNav" class="nav-cta" target="_blank" rel="noopener">Reserve My Spot</a>
+      <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" id="wednesdayBookBtnNav" class="nav-cta js-book-link" target="_blank" rel="noopener">Reserve My Spot</a>
     </nav>
   </header>
 
@@ -424,7 +424,7 @@
       <p class="hero-eyebrow">King's Cross · Every Wednesday</p>
       <h1 id="hero-h">Come As You Are.<br>Leave Glowing.</h1>
       <p class="sub">The Wednesday night bachata class people across London keep coming back to. No partner needed. No experience needed. Just an hour that's entirely yours.</p>
-      <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" id="wednesdayBookBtnHero" class="hero-btn" target="_blank" rel="noopener">Reserve My Spot — £10 →</a>
+      <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" id="wednesdayBookBtnHero" class="hero-btn js-book-link" target="_blank" rel="noopener">Reserve My Spot — £10 →</a>
       <p class="hero-date" id="wednesdayNextDate">Next class loading…</p>
       <div class="hero-more-dates" id="heroMoreDates" hidden>
         <select class="hero-date-select" id="heroDateSelect" aria-label="Book a different Wednesday">
@@ -484,10 +484,10 @@
       <h2 id="gallery-h">A Room That Actually Feels Like This</h2>
       <p class="lede">Warm lighting, good music, and people genuinely glad you showed up.</p>
       <div class="gallery-grid">
-        <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" target="_blank" rel="noopener"><img src="images/RogueParty.jpg" alt="Dancers smiling together on the social floor" loading="lazy"></a>
-        <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" target="_blank" rel="noopener"><img src="images/Oscar Bo Dream.png" alt="Bachata instructors dancing" loading="lazy"></a>
-        <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" target="_blank" rel="noopener"><img src="images/bachata-disco-ball-social.jpg" alt="Social dancing under the disco lights" loading="lazy"></a>
-        <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" target="_blank" rel="noopener"><img src="images/Boadicea and oscar Sensual Vibes.jpg" alt="Bachata partner dance moment" loading="lazy"></a>
+        <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" class="js-book-link" target="_blank" rel="noopener"><img src="images/RogueParty.jpg" alt="Dancers smiling together on the social floor" loading="lazy"></a>
+        <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" class="js-book-link" target="_blank" rel="noopener"><img src="images/Oscar Bo Dream.png" alt="Bachata instructors dancing" loading="lazy"></a>
+        <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" class="js-book-link" target="_blank" rel="noopener"><img src="images/bachata-disco-ball-social.jpg" alt="Social dancing under the disco lights" loading="lazy"></a>
+        <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" class="js-book-link" target="_blank" rel="noopener"><img src="images/Boadicea and oscar Sensual Vibes.jpg" alt="Bachata partner dance moment" loading="lazy"></a>
       </div>
     </section>
 
@@ -515,7 +515,7 @@
     <section class="cta-band" id="book" aria-labelledby="cta-h">
       <h2 id="cta-h">You've already thought about coming.</h2>
       <p>That's usually the hardest part. The class is £10, the social after is free, and you can turn up completely alone — most people do. Come find out what all the glow is about.</p>
-      <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" id="wednesdayBookBtn" class="hero-btn" target="_blank" rel="noopener">Reserve My Spot — £10 →</a>
+      <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" id="wednesdayBookBtn" class="hero-btn js-book-link" target="_blank" rel="noopener">Reserve My Spot — £10 →</a>
     </section>
 
     <!-- ══ DETAILS ══ -->
@@ -581,7 +581,7 @@
 
   <!-- Sticky mobile CTA -->
   <div class="sticky-cta">
-    <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" target="_blank" rel="noopener">Reserve My Spot — £10 →</a>
+    <a href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" class="js-book-link" target="_blank" rel="noopener">Reserve My Spot — £10 →</a>
   </div>
 
   <!-- Hero video: reduced-motion + iOS autoplay retry -->
@@ -632,9 +632,12 @@
           var rest = events.slice(1);
           var url = feat.url || FALLBACK_URL;
           if (dateLabel) dateLabel.textContent = 'Next class: Wednesday ' + fmtFull(feat._d);
-          ['wednesdayBookBtnHero', 'wednesdayBookBtn', 'wednesdayBookBtnNav'].forEach(function (id) {
-            var el = document.getElementById(id);
-            if (el) { el.href = url; el.target = '_blank'; el.rel = 'noopener'; }
+          // Every booking link on the page (nav, hero, mid-page CTA, sticky bar, gallery
+          // photos) shares this class, so nothing can be left pointing at a stale date —
+          // previously only 3 of the 8 links were wired by id, and the rest (gallery +
+          // sticky mobile bar) silently kept last week's Fatsoma URL forever.
+          document.querySelectorAll('.js-book-link').forEach(function (el) {
+            el.href = url; el.target = '_blank'; el.rel = 'noopener';
           });
 
           if (rest.length && moreWrap && select) {
