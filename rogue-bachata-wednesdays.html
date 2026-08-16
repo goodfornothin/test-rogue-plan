@@ -259,7 +259,7 @@
     }
     /* Vertical ad video: object-position keeps it framed sensibly on wide screens
        (the source is portrait, most action sits in the lower 3/4 of the clip). */
-    .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; z-index: 0; }
+    .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 72%; z-index: 0; }
     .hero-overlay {
       position: absolute; inset: 0;
       /* Kept light and even on purpose — legibility for OUR text comes from the
@@ -430,7 +430,7 @@
 
   <!-- ══ HERO ══ -->
   <section class="hero" aria-labelledby="hero-h">
-    <video autoplay muted loop playsinline webkit-playsinline aria-hidden="true">
+    <video autoplay muted loop playsinline webkit-playsinline poster="images/ad-video-1-poster.jpg" aria-hidden="true">
       <source src="videos/ad-video-1.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
