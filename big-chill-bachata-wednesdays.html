@@ -79,7 +79,7 @@
           "name": "Bachata Beginners Class",
           "price": "10",
           "priceCurrency": "GBP",
-          "url": "https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent",
+          "url": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-k17k",
           "availability": "https://schema.org/InStock"
         },
         {
@@ -650,7 +650,7 @@
         </p>
 
         <div class="btn-group">
-          <a id="heroBookBtn" href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" target="_blank" class="btn-primary">
+          <a id="heroBookBtn" href="https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-k17k" target="_blank" class="btn-primary">
             🎉 Join for £10 →
           </a>
           <a href="#upcoming" class="btn-secondary">
@@ -745,7 +745,7 @@
         Reserve your spot in the class — it fills up fast.<br>
         Or just show up for the free social — no booking needed.
       </p>
-      <a id="detailsBookBtn" href="https://www.fatsoma.com/e/naf9q4je/rogue-bachata-wednesdays-keystone-crescent" target="_blank" class="btn-primary" style="display:inline-block; width:100%;">
+      <a id="detailsBookBtn" href="https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-k17k" target="_blank" class="btn-primary" style="display:inline-block; width:100%;">
         🎉 Book My £10 Class
       </a>
     </div>
@@ -873,7 +873,7 @@
             .sort(function (a, b) { return a._d - b._d; });
 
           if (!events.length) {
-            WIDGET.innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.6);">No upcoming dates listed right now. <a href="' + data.source + '" target="_blank" style="color:var(--pink-light);">See our Fatsoma →</a></p>';
+            WIDGET.innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.6);">No upcoming dates listed right now. <a href="' + (data.source || 'https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-k17k') + '" target="_blank" style="color:var(--pink-light);">Book next Wednesday →</a></p>';
             return;
           }
 
@@ -905,13 +905,13 @@
           }
 
           if (data.lastUpdated) {
-            html += '<p class="events-updated">Auto-updated from Fatsoma · ' + new Date(data.lastUpdated).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }) + '</p>';
+            html += '<p class="events-updated">Updated · ' + new Date(data.lastUpdated).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }) + '</p>';
           }
 
           WIDGET.innerHTML = html;
         })
         .catch(function () {
-          WIDGET.innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.6);">Couldn\'t load dates. <a href="https://www.fatsoma.com/p/roguebachata" target="_blank" style="color:var(--pink-light);">Book on Fatsoma →</a></p>';
+          WIDGET.innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.6);">Couldn\'t load dates. <a href="https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-k17k" target="_blank" style="color:var(--pink-light);">Book next Wednesday →</a></p>';
         });
     })();
   </script>

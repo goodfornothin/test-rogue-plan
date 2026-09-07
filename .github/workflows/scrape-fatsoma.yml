@@ -35,6 +35,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to events.json — nothing to commit"
           else
-            git commit -m "chore: update events.json from Fatsoma [skip ci]"
+            git commit -m "chore: update events.json (aalaap Wednesday URLs) [skip ci]"
             git push
           fi

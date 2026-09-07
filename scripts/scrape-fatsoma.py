@@ -6,13 +6,25 @@ and writes events.json for the website widget to consume.
 
 import json
 import re
-import sys
 from datetime import datetime, timezone, date
 from urllib.request import Request, urlopen
 from urllib.error import URLError
 
 FATSOMA_PROFILE = "https://www.fatsoma.com/p/roguebachata"
 OUTPUT_FILE = "events.json"
+
+# Canonical Wednesday ticket URLs. The weekly scrape may still discover
+# dates from Fatsoma, but booking links for these dates always come from aalaap
+# so the live site is never overwritten back to fatsoma.com.
+WEDNESDAY_AALAAP_URLS = {
+    "2026-09-09": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-k17k",
+    "2026-09-16": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-hy6c",
+    "2026-09-23": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-6n7k",
+    "2026-09-30": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-ekhg",
+    "2026-10-07": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-pst3",
+    "2026-10-14": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-copy-ez3e",
+    "2026-10-21": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-vbdn",
+}
 
 HEADERS = {
     "User-Agent": (
@@ -40,7 +52,7 @@ def fetch_page(url):
             return resp.read().decode("utf-8", errors="replace")
     except URLError as e:
         print(f"ERROR fetching {url}: {e}", file=sys.stderr)
-        sys.exit(1)
+        return None
 
 
 def parse_events(html):
@@ -125,9 +137,8 @@ def extract_from_jsonld(html, event_id):
 def scrape_event_page(url):
     """Fetch an individual event page and extract structured data."""
     print(f"  Fetching event page: {url}", file=sys.stderr)
-    try:
-        html = fetch_page(url)
-    except SystemExit:
+    html = fetch_page(url)
+    if not html:
         return None
 
     # Try JSON-LD first
@@ -203,6 +214,71 @@ def parse_schema_event(item):
     return result if result.get("date") else None
 
 
+def load_existing_events():
+    try:
+        with open(OUTPUT_FILE, encoding="utf-8") as f:
+            return json.load(f).get("events", [])
+    except (OSError, json.JSONDecodeError):
+        return []
+
+
+def apply_aalaap_booking_urls(events):
+    """Force known Wednesday dates onto aalaap ticket URLs.
+
+    Also keeps any aalaap.app links already in events.json, and fills in
+    mapped upcoming dates even if the Fatsoma scrape missed them.
+    """
+    today = date.today().isoformat()
+    by_date = {}
+
+    for ev in load_existing_events():
+        url = ev.get("url", "")
+        if ev.get("date") and "aalaap.app" in url:
+            by_date[ev["date"]] = ev
+
+    for ev in events:
+        event_date = ev.get("date")
+        if not event_date:
+            continue
+        mapped = WEDNESDAY_AALAAP_URLS.get(event_date)
+        if mapped:
+            ev = dict(ev)
+            ev["url"] = mapped
+        elif event_date in by_date and "aalaap.app" in by_date[event_date].get("url", ""):
+            ev = dict(ev)
+            ev["url"] = by_date[event_date]["url"]
+        by_date[event_date] = ev
+
+    for event_date, url in WEDNESDAY_AALAAP_URLS.items():
+        if event_date < today:
+            continue
+        if event_date in by_date:
+            by_date[event_date]["url"] = url
+        else:
+            by_date[event_date] = {
+                "date": event_date,
+                "startTime": "19:30",
+                "title": "Rogue Bachata Wednesdays! Keystone Crescent",
+                "venue": "Keystone Crescent, King's Cross",
+                "url": url,
+            }
+
+    merged = [ev for ev in by_date.values() if ev.get("date", "") >= today]
+    merged.sort(key=lambda e: e["date"])
+    return merged
+
+
+def next_aalaap_source(events):
+    for ev in events:
+        url = ev.get("url", "")
+        if "aalaap.app" in url:
+            return url
+    return WEDNESDAY_AALAAP_URLS.get(
+        min((d for d in WEDNESDAY_AALAAP_URLS if d >= date.today().isoformat()), default=""),
+        "https://aalaap.app",
+    )
+
+
 def extract_date_from_html(html):
     """Try to parse a date from common patterns in the page text."""
     # "3 June 2026" or "3rd June 2026"
@@ -229,14 +305,20 @@ def extract_date_from_html(html):
 def main():
     print(f"Fetching {FATSOMA_PROFILE} …", file=sys.stderr)
     html = fetch_page(FATSOMA_PROFILE)
-    print(f"  Got {len(html):,} bytes", file=sys.stderr)
+    events = []
+    if html:
+        print(f"  Got {len(html):,} bytes", file=sys.stderr)
+        events = parse_events(html)
+        print(f"  Found {len(events)} upcoming event(s) on Fatsoma", file=sys.stderr)
+    else:
+        print("  Fatsoma scrape failed — keeping aalaap Wednesday URLs", file=sys.stderr)
 
-    events = parse_events(html)
-    print(f"  Found {len(events)} upcoming event(s)", file=sys.stderr)
+    events = apply_aalaap_booking_urls(events)
+    print(f"  Writing {len(events)} upcoming event(s) with aalaap Wednesday booking URLs", file=sys.stderr)
 
     payload = {
         "lastUpdated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "source": FATSOMA_PROFILE,
+        "source": next_aalaap_source(events),
         "events": events,
     }
 
