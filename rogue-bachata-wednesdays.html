@@ -22,12 +22,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wednesday Dance Classes at King's Cross | Bachata for Beginners | Rogue Bachata</title>
-  <meta name="description" content="Bachata classes every Wednesday at Keystone Crescent, King's Cross. Class 7:30pm (£10), free social dancing from 8:30pm. No partner needed — safe to come alone, all levels welcome.">
+  <meta name="description" content="Tonight only (9 Sept 2026): Wednesday class at Coffee Origin, 225 Blackstock Road N5 2LL. Class 7:30pm (£10), free social after. Future Wednesdays stay at Keystone Crescent, King's Cross.">
   <link rel="canonical" href="https://roguebachata.com/rogue-bachata-wednesdays.html">
 
   <meta property="og:title" content="Wednesday Dance Classes at King's Cross | Rogue Bachata">
   <meta property="og:description" content="The Wednesday night bachata class people across London keep coming back to. No partner needed. No experience needed. Genuinely safe to come alone.">
-  <meta property="og:image" content="https://roguebachata.com/images/RogueParty.jpg">
+  <meta property="og:image" content="https://roguebachata.com/images/coffee-origin-shopfront.jpg">
   <meta property="og:url" content="https://roguebachata.com/rogue-bachata-wednesdays.html">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -78,6 +78,18 @@
               "postalCode": "N1 9DX",
               "addressCountry": "GB"
             }
+          },
+          {
+            "@type": "Place",
+            "@id": "https://roguebachata.com/#coffeeorigin",
+            "name": "Coffee Origin",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "225 Blackstock Road",
+              "addressLocality": "London",
+              "postalCode": "N5 2LL",
+              "addressCountry": "GB"
+            }
           }
         ]
       },
@@ -109,8 +121,40 @@
         "eventStatus": "https://schema.org/EventScheduled"
       },
       {
+        "@type": "Event",
+        "name": "Rogue Bachata Wednesdays — one-off at Coffee Origin",
+        "description": "This occasion only, Wednesday 9 September 2026: the King's Cross Wednesday class is at Coffee Origin, 225 Blackstock Road, London N5 2LL. Class 7:30pm (£10), free social after. Future Wednesdays return to Keystone Crescent Members Club, King's Cross.",
+        "url": "https://roguebachata.com/rogue-bachata-wednesdays.html",
+        "startDate": "2026-09-09T19:30:00+01:00",
+        "endDate": "2026-09-09T23:00:00+01:00",
+        "image": [
+          "https://roguebachata.com/images/coffee-origin-shopfront.jpg",
+          "https://roguebachata.com/images/coffee-origin-interior.jpg"
+        ],
+        "location": { "@id": "https://roguebachata.com/#coffeeorigin" },
+        "organizer": { "@id": "https://roguebachata.com/#org" },
+        "offers": {
+          "@type": "Offer",
+          "name": "Bachata class (free social after)",
+          "price": "10",
+          "priceCurrency": "GBP",
+          "url": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-k17k",
+          "availability": "https://schema.org/InStock"
+        },
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled"
+      },
+      {
         "@type": "FAQPage",
         "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Where is tonight's class?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "This occasion only — Wednesday 9 September 2026 — we are at Coffee Origin, 225 Blackstock Road, London N5 2LL, near Finsbury Park station. Future Wednesdays stay at Keystone Crescent Members Club, King's Cross."
+            }
+          },
           {
             "@type": "Question",
             "name": "Is it actually okay to come completely alone?",
@@ -330,6 +374,113 @@
     }
     .hero-trust span { display: inline-flex; align-items: center; gap: 0.35rem; opacity: 0.95; }
 
+    /* ── Tonight-only venue change (9 Sept 2026) ── */
+    .venue-change-banner {
+      margin-top: 62px;
+      background: #16352c;
+      color: #fff;
+      padding: 0.9rem 1.15rem 1.05rem;
+      border-bottom: 3px solid #d9a94e;
+    }
+    .venue-change-banner-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .venue-change-banner-photos {
+      display: flex;
+      gap: 0.45rem;
+      flex-shrink: 0;
+    }
+    .venue-change-banner-photos img {
+      width: 128px;
+      height: 86px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+      border: 1px solid rgba(255,255,255,0.28);
+    }
+    .venue-change-banner-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #f5c97a;
+      margin-bottom: 0.2rem;
+    }
+    .venue-change-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: clamp(1.05rem, 2.6vw, 1.4rem);
+      line-height: 1.2;
+      margin-bottom: 0.28rem;
+      text-align: left;
+    }
+    .venue-change-banner p {
+      font-size: 0.88rem;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.92);
+    }
+    @media (max-width: 780px) {
+      .venue-change-banner-inner { flex-direction: column; align-items: stretch; gap: 0.7rem; }
+      .venue-change-banner-photos img { flex: 1; width: auto; min-width: 0; height: 92px; }
+    }
+
+    .venue-tonight {
+      background: #fff8f0;
+    }
+    .venue-tonight .lede { max-width: 720px; }
+    .venue-tonight-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin: 0 auto 1.8rem;
+      max-width: 860px;
+    }
+    .venue-tonight-photos img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+      box-shadow: 0 8px 22px rgba(42,26,46,0.14);
+    }
+    .venue-tonight-copy {
+      max-width: 760px;
+      margin: 0 auto 1.6rem;
+      font-size: 1.02rem;
+      color: var(--ink);
+    }
+    .venue-tonight-copy p { margin-bottom: 0.85rem; }
+    .directions-card {
+      max-width: 760px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1.5px solid rgba(42,26,46,0.1);
+      border-left: 5px solid #16352c;
+      border-radius: 14px;
+      padding: 1.4rem 1.5rem;
+      box-shadow: 0 4px 18px rgba(42,26,46,0.06);
+    }
+    .directions-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.7rem;
+    }
+    .directions-card ul { padding-left: 1.15rem; }
+    .directions-card li { margin-bottom: 0.55rem; font-size: 0.95rem; color: var(--ink); }
+    .directions-card a { color: var(--pink-deep); font-weight: 700; }
+    .venue-return-note {
+      max-width: 760px;
+      margin: 1.3rem auto 0;
+      text-align: center;
+      font-weight: 600;
+      color: var(--ink-muted);
+      font-size: 0.95rem;
+    }
+
     /* Scroll cue: on short mobile viewports (especially in-app browsers like
        Facebook's, which eat extra chrome) the hero card can fill the whole
        visible screen, so it isn't obvious there's more below it. */
@@ -453,6 +604,20 @@
     </nav>
   </header>
 
+  <aside class="venue-change-banner" aria-label="Tonight's venue change">
+    <div class="venue-change-banner-inner">
+      <div class="venue-change-banner-photos">
+        <img src="images/coffee-origin-shopfront.jpg" alt="Coffee Origin shopfront on Blackstock Road — green Roastery Cafe awning, number 225" width="256" height="172">
+        <img src="images/coffee-origin-interior.jpg" alt="Inside Coffee Origin — wooden tables, coffee roaster and a warm cafe interior" width="256" height="172">
+      </div>
+      <div>
+        <p class="venue-change-banner-tag">For this occasion only · 9 September 2026</p>
+        <h2>Tonight we are at Coffee Origin — not Keystone Crescent</h2>
+        <p>225 Blackstock Road, London N5 2LL. Class still 7:30pm, free social after, same £10 ticket. Future Wednesdays stay at Keystone Crescent Members Club, King's Cross.</p>
+      </div>
+    </div>
+  </aside>
+
   <!-- ══ HERO ══ -->
   <section class="hero" aria-labelledby="hero-h">
     <video autoplay muted loop playsinline webkit-playsinline poster="images/ad-video-1-poster.jpg" aria-hidden="true">
@@ -460,9 +625,9 @@
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-eyebrow">King's Cross · Every Wednesday</p>
+      <p class="hero-eyebrow">King's Cross series · Tonight at Coffee Origin</p>
       <h1 id="hero-h">Wednesday Dance Classes at King's Cross</h1>
-      <p class="sub">Beginner bachata — 7:30pm, £10, free social after. No partner needed. No experience needed. Just turn up.</p>
+      <p class="sub">Tonight only — Wednesday 9 September 2026 — we are at Coffee Origin, 225 Blackstock Road. Beginner bachata at 7:30pm, £10, free social after. Future Wednesdays return to Keystone Crescent.</p>
       <a href="https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-k17k" id="wednesdayBookBtnHero" class="hero-btn js-book-link" target="_blank" rel="noopener">Reserve My Spot — £10 →</a>
       <p class="hero-date" id="wednesdayNextDate">Next class loading…</p>
       <div class="hero-more-dates" id="heroMoreDates" hidden>
@@ -483,6 +648,34 @@
   </section>
 
   <main id="main">
+
+    <!-- ══ TONIGHT'S VENUE ══ -->
+    <section class="section venue-tonight" id="tonight-venue" aria-labelledby="tonight-venue-h">
+      <span class="section-kicker">For this occasion only</span>
+      <h2 id="tonight-venue-h">Tonight: Coffee Origin, 9 September 2026</h2>
+      <p class="lede">A very special one-off at a specialist Ethiopian coffee family business — then we go back to Keystone Crescent next week.</p>
+
+      <div class="venue-tonight-photos">
+        <img src="images/coffee-origin-shopfront.jpg" alt="Coffee Origin Roastery Cafe shopfront at 225 Blackstock Road, with a dark green awning" width="800" height="480">
+        <img src="images/coffee-origin-interior.jpg" alt="The interior of Coffee Origin, with wooden tables, plants and the coffee roaster" width="800" height="480">
+      </div>
+
+      <div class="venue-tonight-copy">
+        <p>Tonight is a very special one-off at Coffee Origin, a specialist Ethiopian coffee family business. We love working with family businesses, the same way we work with Cafe Sol and Keystone Crescent. Meron runs Coffee Origin, and we are delighted to be with her tonight.</p>
+        <p>The class is still <strong>7:30pm</strong>, with a <strong>free social after</strong>. Same ticket price — £10. The King's Cross Wednesday series continues; it is only the venue for this occasion that has moved.</p>
+      </div>
+
+      <div class="directions-card">
+        <h3>How to find us tonight</h3>
+        <ul>
+          <li><strong>Address:</strong> Coffee Origin, 225 Blackstock Road, London N5 2LL. <a href="https://www.google.com/maps/search/?api=1&amp;query=Coffee+Origin+225+Blackstock+Road+London+N5+2LL" target="_blank" rel="noopener">Open in Google Maps</a></li>
+          <li><strong>Nearest station:</strong> Finsbury Park (Victoria, Piccadilly, National Rail). Walk south down Blackstock Road about 8–10 minutes. Coffee Origin is on the left, green awning, number 225.</li>
+          <li><strong>Also nearby:</strong> Arsenal (Piccadilly), then walk along Blackstock Road.</li>
+          <li><strong>From King's Cross:</strong> Victoria line north to Finsbury Park, then the walk above. Buses 4, 19 and 236 stop on Blackstock Road.</li>
+        </ul>
+      </div>
+      <p class="venue-return-note">From 16 September, Wednesdays return to Keystone Crescent Members Club, King's Cross, N1 9DX.</p>
+    </section>
 
     <!-- ══ "IS THIS YOU?" ══ -->
     <section class="section relate-section" aria-labelledby="relate-h">
@@ -577,9 +770,9 @@
           <p class="desc">Stay as long as you like. No booking required for the social — just the class.</p>
         </article>
         <article class="card offer-card accent-blue">
-          <span class="hook">Venue</span>
-          <h3>Keystone Crescent</h3>
-          <p class="desc">King's Cross, N1 9DX — 2 minutes' walk from King's Cross / St Pancras stations.</p>
+          <span class="hook">Tonight only</span>
+          <h3>Coffee Origin</h3>
+          <p class="desc">225 Blackstock Road, London N5 2LL — 8–10 minutes' walk south from Finsbury Park. Future Wednesdays stay at Keystone Crescent, King's Cross.</p>
         </article>
       </div>
     </section>
@@ -590,6 +783,10 @@
       <h2 id="faq-h">Questions People Ask Before Their First Wednesday</h2>
       <div class="faq-list">
         <details class="faq-item" open>
+          <summary>Where is tonight's class — is it still at Keystone Crescent?</summary>
+          <p><strong>Not tonight.</strong> This occasion only — Wednesday 9 September 2026 — we are at Coffee Origin, 225 Blackstock Road, London N5 2LL. Nearest station is Finsbury Park; walk south down Blackstock Road about 8–10 minutes, green awning, number 225. Future Wednesdays stay at Keystone Crescent Members Club, King's Cross.</p>
+        </details>
+        <details class="faq-item">
           <summary>Is it actually okay to come completely alone?</summary>
           <p>Yes — genuinely, most people do. You'll be welcomed the moment you walk in, paired up for the class, and it's one of the easiest ways to meet new people without needing to bring anyone with you.</p>
         </details>
@@ -674,7 +871,11 @@
           var feat = events[0];
           var rest = events.slice(1);
           var url = feat.url || FALLBACK_URL;
-          if (dateLabel) dateLabel.textContent = 'Next class: Wednesday ' + fmtFull(feat._d);
+          if (dateLabel) {
+            var venueNote = feat.venue ? ' · ' + feat.venue : '';
+            var when = (feat.date === '2026-09-09') ? 'Tonight, Wednesday ' + fmtFull(feat._d) : 'Next class: Wednesday ' + fmtFull(feat._d);
+            dateLabel.textContent = when + venueNote;
+          }
           // Every booking link on the page (nav, hero, mid-page CTA, sticky bar, gallery
           // photos) shares this class, so nothing can be left pointing at a stale date —
           // previously only 3 of the 8 links were wired by id, and the rest (gallery +
