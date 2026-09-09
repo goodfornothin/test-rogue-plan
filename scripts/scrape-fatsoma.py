@@ -6,7 +6,8 @@ and writes events.json for the website widget to consume.
 
 import json
 import re
-from datetime import datetime, timezone, date
+from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 from urllib.request import Request, urlopen
 from urllib.error import URLError
 
@@ -16,8 +17,11 @@ OUTPUT_FILE = "events.json"
 # Canonical Wednesday ticket URLs. The weekly scrape may still discover
 # dates from Fatsoma, but booking links for these dates always come from aalaap
 # so the live site is never overwritten back to fatsoma.com.
+def london_today_iso():
+    return datetime.now(ZoneInfo("Europe/London")).date().isoformat()
+
+
 WEDNESDAY_AALAAP_URLS = {
-    "2026-09-09": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-k17k",
     "2026-09-16": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-hy6c",
     "2026-09-23": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-6n7k",
     "2026-09-30": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-ekhg",
@@ -61,7 +65,7 @@ def parse_events(html):
     Fatsoma renders event links as <a href="/e/{id}/{slug}"> anchors.
     We also try to pull date/time/title from nearby elements.
     """
-    today = date.today().isoformat()
+    today = london_today_iso()
     events = []
 
     # Find all /e/{id}/{slug} hrefs
@@ -228,25 +232,28 @@ def apply_aalaap_booking_urls(events):
     Also keeps any aalaap.app links already in events.json, and fills in
     mapped upcoming dates even if the Fatsoma scrape missed them.
     """
-    today = date.today().isoformat()
+    today = london_today_iso()
     by_date = {}
 
     for ev in load_existing_events():
         url = ev.get("url", "")
         if ev.get("date") and "aalaap.app" in url:
             by_date[ev["date"]] = ev
+            # Keep optional one-off venueNotice so a later scrape cannot drop it.
 
     for ev in events:
         event_date = ev.get("date")
         if not event_date:
             continue
+        existing = by_date.get(event_date) or {}
         mapped = WEDNESDAY_AALAAP_URLS.get(event_date)
+        ev = dict(ev)
         if mapped:
-            ev = dict(ev)
             ev["url"] = mapped
-        elif event_date in by_date and "aalaap.app" in by_date[event_date].get("url", ""):
-            ev = dict(ev)
-            ev["url"] = by_date[event_date]["url"]
+        elif "aalaap.app" in existing.get("url", ""):
+            ev["url"] = existing["url"]
+        if existing.get("venueNotice") and not ev.get("venueNotice"):
+            ev["venueNotice"] = existing["venueNotice"]
         by_date[event_date] = ev
 
     for event_date, url in WEDNESDAY_AALAAP_URLS.items():
@@ -263,7 +270,16 @@ def apply_aalaap_booking_urls(events):
                 "url": url,
             }
 
-    merged = [ev for ev in by_date.values() if ev.get("date", "") >= today]
+    merged = []
+    for ev in by_date.values():
+        if ev.get("date", "") < today:
+            continue
+        notice = ev.get("venueNotice") or {}
+        end = notice.get("endDate") or notice.get("expires") or ev.get("date", "")
+        if notice and end < today:
+            ev = dict(ev)
+            ev.pop("venueNotice", None)
+        merged.append(ev)
     merged.sort(key=lambda e: e["date"])
     return merged
 
@@ -274,7 +290,7 @@ def next_aalaap_source(events):
         if "aalaap.app" in url:
             return url
     return WEDNESDAY_AALAAP_URLS.get(
-        min((d for d in WEDNESDAY_AALAAP_URLS if d >= date.today().isoformat()), default=""),
+        min((d for d in WEDNESDAY_AALAAP_URLS if d >= london_today_iso()), default=""),
         "https://aalaap.app",
     )
 
