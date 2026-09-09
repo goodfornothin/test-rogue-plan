@@ -1,22 +1,6 @@
 {
   "siteName": "Rogue Bachata",
   "tagline": "Movement. Connection. Freedom.",
-  "tonightVenueChange": {
-    "date": "2026-09-09",
-    "displayDate": "Wednesday, 9 September 2026",
-    "series": "Rogue Bachata Wednesdays @King's Cross",
-    "venue": "Coffee Origin",
-    "host": "Meron",
-    "address": "225 Blackstock Road, London N5 2LL",
-    "mapsLink": "https://www.google.com/maps/search/?api=1&query=Coffee+Origin+225+Blackstock+Road+London+N5+2LL",
-    "nearestStation": "Arsenal station (Piccadilly line) is close. Exit and walk along Blackstock Road to Coffee Origin, 225 Blackstock Road, N5 2LL. Green awning. About 8–10 minutes. Finsbury Park (Victoria, Piccadilly, National Rail) is the other main option: walk south down Blackstock Road about 8–10 minutes, on the left, number 225.",
-    "alsoNearby": "Arsenal (Piccadilly) is a first-class option, not a footnote — about 8–10 minutes along Blackstock Road.",
-    "fromKingsCross": "Victoria line north to Finsbury Park, then the walk above. Buses 4, 19 and 236 stop on Blackstock Road.",
-    "time": "Class still 7:30pm, free social after. Same ticket price.",
-    "photos": [],
-    "landingPage": "https://roguebachata.com/rogue-bachata-wednesdays.html",
-    "note": "FOR THIS OCCASION ONLY (9 September 2026). Future Wednesdays stay at Keystone Crescent Members Club, King's Cross."
-  },
   "offerings": [
     {
       "id": "rogue-resonance-workshops",
@@ -151,7 +135,7 @@
       "address": "Keystone Crescent, King’s Cross, London N1 9DX",
       "mapsLink": "https://www.google.com/maps/search/?api=1&query=Keystone+Crescent+Kings+Cross+London+N1+9DX",
       "instagram": "https://www.instagram.com/roguebachata/",
-      "bookingLink": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-k17k",
+      "bookingLink": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-hy6c",
       "landingPage": "rogue-bachata-wednesdays.html",
       "classPrice": "£10",
       "socialPrice": "Free"
@@ -168,7 +152,7 @@
       "address": "Keystone Crescent, King's Cross, London N1 9DX",
       "mapsLink": "https://www.google.com/maps/search/?api=1&query=Keystone+Crescent+Kings+Cross+London+N1+9DX",
       "instagram": "https://www.instagram.com/roguebachata/",
-      "bookingLink": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-k17k",
+      "bookingLink": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-hy6c",
       "landingPage": "rogue-bachata-wednesdays.html",
       "classPrice": "£10",
       "socialPrice": "Free"
@@ -192,21 +176,21 @@
   ],
   "upcomingEvents": [
     {
-      "event": "Rogue Bachata Wednesdays @King's Cross — Tonight at Coffee Origin (9 Sept only)",
+      "event": "Rogue Bachata Wednesdays @King's Cross — Every Wednesday",
       "offeringId": "rogue-bachata-classes",
-      "eventId": "rogue-bachata-wednesdays-coffee-origin-9-sep-2026",
-      "date": "Wednesday, 9 September 2026",
+      "eventId": "rogue-bachata-wednesdays-keystone-crescent",
+      "date": "Wednesday, 16 September 2026",
       "time": "7:30 pm – Beginners Bachata class (£10), 8:30 pm – Free social dancing",
-      "venue": "Coffee Origin, 225 Blackstock Road",
-      "address": "225 Blackstock Road, London N5 2LL",
-      "mapsLink": "https://www.google.com/maps/search/?api=1&query=Coffee+Origin+225+Blackstock+Road+London+N5+2LL",
+      "venue": "Keystone Crescent, King's Cross",
+      "address": "Keystone Crescent, King's Cross, London N1 9DX",
+      "mapsLink": "https://www.google.com/maps/search/?api=1&query=Keystone+Crescent+Kings+Cross+London+N1+9DX",
       "instagram": "https://www.instagram.com/roguebachata/",
-      "description": "FOR THIS OCCASION ONLY (9 September 2026). The King's Cross Wednesday class is at Coffee Origin, a specialist Ethiopian coffee family business run by Meron. Class 7:30pm (£10), free social after. Future Wednesdays stay at Keystone Crescent Members Club, King's Cross.",
-      "photo": "",
+      "description": "Rogue Bachata Wednesdays at Keystone Crescent, King's Cross: every Wednesday. Bachata class at 7:30 pm (£10), followed by free social dancing from 8:30 pm. No partner needed.",
+      "photo": "images/Rogue Bachata Wednesdays Keystone.png",
       "status": "upcoming",
       "landingPage": "rogue-bachata-wednesdays.html",
-      "registrationLink": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-k17k",
-      "contactInfo": "Class: £10. Social dancing from 8:30 pm: FREE. Tonight only at Coffee Origin."
+      "registrationLink": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-hy6c",
+      "contactInfo": "Class: £10. Social dancing from 8:30 pm: FREE."
     },
     {
       "event": "Café Sol Salsa Bachata Night",
