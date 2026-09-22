@@ -36,6 +36,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://roguebachata.com/private-lessons.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://roguebachata.com/performances.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -79,6 +84,18 @@
     <loc>https://roguebachata.com/blog.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://roguebachata.com/blog/foam-board-couple-balance-drill.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://roguebachata.com/blog/ground-breathe-twist-lift-connection-drill.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://roguebachata.com/blog/rolling-slow-soft-bachata-connection.html</loc>
