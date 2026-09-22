@@ -11,4 +11,4 @@ Rogue Bachata is a movement practice that brings opera stage presence to the dan
 ## Contact
 
 Oscar Castellino  
-Email: voice@oscarcastellino.com
+Email: roguebachata@gmail.com

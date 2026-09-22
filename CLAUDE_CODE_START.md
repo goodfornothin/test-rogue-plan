@@ -35,7 +35,7 @@ Replaced static hero with a 5-slide auto-advancing carousel:
 
 ### Privacy
 - **Never show "Castellino"** visibly (use only "Oscar" or "Boadicea & Oscar")
-- Email: voice@oscarcastellino.com (obfuscate with `atob()` or mailto)
+- Email: roguebachata@gmail.com (mailto links; visible contact text OK)
 
 ### YouTube Playlists (these have been swapped before!)
 - workshops = `PLLp_C8UrgAs9AuU4po1pGhsv_C_hPLmFQ`
@@ -110,5 +110,5 @@ git add -A && git commit -m "update: description" && git push origin main
 
 ---
 
-**Contact:** Oscar (voice@oscarcastellino.com)  
+**Contact:** Rogue Bachata (roguebachata@gmail.com)  
 **Last Updated:** 18 February 2026
