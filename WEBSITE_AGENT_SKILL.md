@@ -49,7 +49,7 @@ You NEVER make design decisions alone. When in doubt, ask your supervisors first
 ### 1. PRIVACY — CRITICAL
 - **NEVER display the surname "Castellino" visibly** on the site
 - Only use "Oscar" or "Boadicea & Oscar" as names
-- The email `voice@oscarcastellino.com` is OK in mailto links and obfuscated JS, NOT as visible text
+- Site contact email is `roguebachata@gmail.com` (mailto + visible text). Do not use personal Oscar emails as Rogue contact.
 - **Verify before every commit:**
   ```bash
   grep -ri "castellino" index.html data.json | grep -v "mailto:" | grep -v "voice@oscarcastellino" | grep -v "atob" && echo "PRIVACY ISSUE - ABORT" || echo "Privacy OK"
