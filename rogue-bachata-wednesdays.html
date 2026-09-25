@@ -168,7 +168,7 @@
             "name": "How much does it cost, and do I need to book?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The two sessions are £10; the social from 9pm is free. Booking ahead is recommended since it fills up, but walk-ins are welcome too."
+              "text": "Book ahead — that's the normal way to come. The two sessions are £10 and the social from 9pm is free. Checkout may add a small Aalaap booking fee, so the card total is about £11. A walk-in is only a backup if there is still space on the night."
             }
           }
         ]
@@ -231,6 +231,20 @@
       backdrop-filter: blur(10px);
       height: 62px;
     }
+    .nav-price-note {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      margin: 0;
+      padding: 0.2rem 1rem 0.4rem;
+      text-align: center;
+      background: rgba(122, 61, 113, 0.92);
+      font-size: 0.68rem;
+      font-weight: 500;
+      line-height: 1.35;
+      color: rgba(255,255,255,0.94);
+    }
     nav .nav-cta {
       display: inline-flex; align-items: center; justify-content: center;
       min-height: 40px; padding: 0 1.2rem;
@@ -241,12 +255,29 @@
     }
     nav .nav-cta:hover { transform: translateY(-1px); }
 
+    .price-note {
+      font-size: 0.78rem;
+      font-weight: 500;
+      line-height: 1.45;
+      margin: 0.55rem auto 0;
+      max-width: 34rem;
+    }
+    .hero .price-note { color: rgba(255,255,255,0.9); }
+    .hero-solo {
+      margin: 0.55rem auto 0;
+      max-width: 28rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: #fff;
+    }
+
     /* ── Sticky mobile book bar ── */
     .sticky-cta {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
       background: var(--pink-deep);
-      padding: 0.65rem 1rem;
-      display: flex; justify-content: center;
+      padding: 0.5rem 1rem 0.45rem;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
       box-shadow: 0 -6px 20px rgba(0,0,0,0.18);
     }
     .sticky-cta a {
@@ -255,8 +286,15 @@
       background: #fff; color: var(--pink-deep); font-weight: 800; font-size: 0.92rem;
       border-radius: 2rem; text-decoration: none;
     }
+    .sticky-cta .price-note {
+      color: rgba(255,255,255,0.92);
+      font-size: 0.68rem;
+      margin: 0.28rem 0 0;
+      max-width: 420px;
+      text-align: center;
+    }
     @media (min-width: 880px) { .sticky-cta { display: none; } }
-    body { padding-bottom: 4.2rem; }
+    body { padding-bottom: 5.8rem; }
     @media (min-width: 880px) { body { padding-bottom: 0; } }
 
     /* ── HERO ── */
@@ -265,7 +303,7 @@
       min-height: 100svh;
       display: flex;
       align-items: flex-start;
-      padding: 6rem 1.2rem 2.6rem;
+      padding: 7.6rem 1.2rem 2.6rem;
       overflow: hidden;
       background: linear-gradient(160deg, var(--pink-deep, #7A3D71) 0%, #2a1030 100%); /* shows instantly, before the video has a frame to paint */
     }
@@ -341,11 +379,19 @@
       margin-top: 1.1rem; font-size: 0.8rem; font-weight: 600; color: #fff;
     }
     .hero-trust span { display: inline-flex; align-items: center; gap: 0.35rem; opacity: 0.95; }
+    @media (max-width: 420px) {
+      .hero { padding: 6.85rem 1rem 1.5rem; }
+      .hero-eyebrow { margin-bottom: 0.55rem; }
+      .hero h1 { font-size: 1.5rem; margin-bottom: 0.45rem; }
+      .hero p.sub { font-size: 0.92rem; margin-bottom: 0.7rem; }
+      .hero-btn { min-height: 48px; padding: 0.7rem 1.15rem; font-size: 0.95rem; white-space: nowrap; }
+      .price-note { font-size: 0.74rem; }
+    }
 
     /* ── One-off venue notice (injected from events.json, auto-hides after endDate) ── */
     .venue-alert,
     .venue-change-banner {
-      margin-top: 62px;
+      margin-top: 6.4rem;
       background: #16352c;
       color: #fff;
       padding: 0.9rem 1.15rem 1.05rem;
@@ -597,6 +643,14 @@
     .cta-band h2 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 800; font-size: clamp(1.5rem, 4.5vw, 2.1rem); margin-bottom: 0.8rem; }
     .cta-band p { max-width: 520px; margin: 0 auto 1.6rem; opacity: 0.92; font-size: 0.98rem; }
     .cta-band .hero-btn { background: #fff; color: var(--pink-deep); box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+    .cta-band p.price-note {
+      margin: 0.75rem auto 0;
+      max-width: 36rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      line-height: 1.45;
+      opacity: 0.92;
+    }
 
     /* ── FAQ ── */
     .faq-list { max-width: 780px; margin: 0 auto; }
@@ -627,7 +681,8 @@
   <header>
     <nav aria-label="Main navigation">
       <a href="index.html" class="logo-mask nav-logo" aria-label="Rogue Bachata home"></a>
-      <a href="https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-hy6c" id="wednesdayBookBtnNav" class="nav-cta js-book-link" target="_blank" rel="noopener">Reserve My Spot</a>
+      <a href="https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-hy6c" id="wednesdayBookBtnNav" class="nav-cta js-book-link" target="_blank" rel="noopener" aria-describedby="navPriceNote">Book — £10</a>
+      <p class="nav-price-note" id="navPriceNote">Class is £10. Checkout may add a small Aalaap booking fee, so the card total is about £11.</p>
     </nav>
   </header>
 
@@ -642,9 +697,11 @@
     <div class="hero-content">
       <p class="hero-eyebrow">King's Cross · Every Wednesday</p>
       <h1 id="hero-h">Wednesday Dance Classes at King's Cross</h1>
-      <p class="sub">Movement 7:30. Partnerwork 8:20. Social 9:00. £10. All levels. Just turn up.</p>
-      <a href="https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-hy6c" id="wednesdayBookBtnHero" class="hero-btn js-book-link" target="_blank" rel="noopener">Reserve My Spot — £10 →</a>
-      <p class="hero-date" id="wednesdayNextDate">Next class loading…</p>
+      <p class="sub">Movement 7:30. Partnerwork 8:20. Social 9:00. £10 class — book ahead. All levels. Beginners and solo dancers welcome.</p>
+      <a href="https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-hy6c" id="wednesdayBookBtnHero" class="hero-btn js-book-link" target="_blank" rel="noopener" aria-describedby="heroPriceNote">Book Wednesday — £10</a>
+      <p class="price-note" id="heroPriceNote">Class is £10. Checkout may add a small Aalaap booking fee, so the card total is about £11.</p>
+      <p class="hero-solo">Most people come alone — a first night here is completely normal.</p>
+      <p class="hero-date" id="wednesdayNextDate">Next class: Wednesday 30 Sep 2026 · Keystone Crescent, King's Cross</p>
       <div class="hero-more-dates" id="heroMoreDates" hidden>
         <select class="hero-date-select" id="heroDateSelect" aria-label="Book a different Wednesday">
           <option value="">Can't make it? Pick another date ▾</option>
@@ -759,9 +816,10 @@
 
     <!-- ══ MID-PAGE CTA ══ -->
     <section class="cta-band" id="book" aria-labelledby="cta-h">
-      <h2 id="cta-h">You've already thought about coming.</h2>
-      <p>That's usually the hardest part. Two sessions for £10, free social from 9pm, and you can turn up completely alone. Most people do.</p>
-      <a href="https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-hy6c" id="wednesdayBookBtn" class="hero-btn js-book-link" target="_blank" rel="noopener">Reserve My Spot — £10 →</a>
+      <h2 id="cta-h">Book your Wednesday.</h2>
+      <p>Two sessions, then a free social from 9pm. Most people come on their own — book ahead and your place is saved.</p>
+      <a href="https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-hy6c" id="wednesdayBookBtn" class="hero-btn js-book-link" target="_blank" rel="noopener" aria-describedby="midPriceNote">Book Wednesday — £10</a>
+      <p class="price-note" id="midPriceNote">Class is £10. Checkout may add a small Aalaap booking fee, so the card total is about £11.</p>
     </section>
 
     <!-- ══ DETAILS ══ -->
@@ -823,7 +881,7 @@
         </details>
         <details class="faq-item">
           <summary>How much does it cost, and do I need to book?</summary>
-          <p>The two sessions are £10; the social from 9pm is free. Booking ahead is recommended since it fills up, but walk-ins are welcome too.</p>
+          <p>Book ahead — that's the normal way to come. The two sessions are £10 and the social from 9pm is free. Checkout may add a small Aalaap booking fee, so the card total is about £11. A walk-in is only a backup if there is still space on the night.</p>
         </details>
       </div>
     </section>
@@ -836,7 +894,8 @@
 
   <!-- Sticky mobile CTA -->
   <div class="sticky-cta">
-    <a href="https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-hy6c" class="js-book-link" target="_blank" rel="noopener">Reserve My Spot — £10 →</a>
+    <a href="https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-hy6c" class="js-book-link" target="_blank" rel="noopener" aria-describedby="stickyPriceNote">Book Wednesday — £10</a>
+    <p class="price-note" id="stickyPriceNote">Class is £10. Checkout may add a small Aalaap booking fee, so the card total is about £11.</p>
   </div>
 
   <!-- Hero video: reduced-motion + iOS autoplay retry -->
@@ -918,20 +977,29 @@
             });
           }
         })
-        .catch(function () { if (dateLabel) dateLabel.textContent = 'Check availability for the next date'; });
+        .catch(function () {
+          /* Keep the static next-date already in the HTML if events.json is slow or unavailable. */
+        });
     })();
   </script>
 
-  <!-- Facebook Pixel: conversion tracking on every "Reserve My Spot" click
+  <!-- Facebook Pixel: Schedule + InitiateCheckout on every book click
        (nav, hero, mid-page CTA band, sticky mobile bar) and on picking a
-       date from the dropdown. All these links open in a new tab, so the
-       event has time to fire before the ticket page loads. -->
+       date from the dropdown. Purchase is not fired here — that belongs on
+       paid success in Aalaap. Links open in a new tab, so both events have
+       time to fire before the ticket page loads. -->
   <script>
     (function () {
       function trackReserveClick() {
         if (typeof fbq !== 'function') return;
         fbq('track', 'Schedule', {
           content_name: 'Rogue Bachata Wednesdays',
+          content_category: 'Dance Class Booking',
+          value: 10,
+          currency: 'GBP'
+        });
+        fbq('track', 'InitiateCheckout', {
+          content_name: 'Wednesday Bachata Class',
           content_category: 'Dance Class Booking',
           value: 10,
           currency: 'GBP'
