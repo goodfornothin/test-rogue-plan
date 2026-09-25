@@ -13,6 +13,7 @@ Make changes, then: git add . && git commit -m 'message' && git push
 - data.json — events, offerings, site data (siteName, rogueParties, upcomingEvents)
 - big-chill-bachata-mondays.html — Monday classes page
 - rogue-resonance.html — Rogue Resonance event page
+- derogue/ — deRogue sister brand site (connection workshops): index.html, assets/ (logo PNGs, recoloured by CSS mask), social/ (post graphics, templates.html, render.mjs, CAPTIONS.md)
 - sensual-couples.html — couples page
 - images/ — event photos and artwork
 
