@@ -35,11 +35,11 @@ We work on
 · Listen: lead asks, follow answers, both hear
 · Pause: what to do when the connection drops
 
-Wednesday 30 September · 7:30–9 pm (with a 5-minute drinks break)
+Wednesday 30 September · 7:30–9 pm (with a 5-minute practice & drinks break)
 Keystone Crescent, King's Cross, N1 9DX
 £10 + booking fee · all levels · any dance style · no partner needed
 
-Same room as Rogue Bachata Wednesdays.
+Followed by a social until late.
 Reserve: link in bio / DM us
 
 #deRogue #partnerdance #connection #leadandfollow #kingscross #londondance #bachatalondon
