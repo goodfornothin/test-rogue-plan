@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>deRogue</title>
+<meta name="description" content="deRogue — partner connection workshops in London. Lead, follow and connection for any partner dance. First workshop: Wednesday 30 September, Keystone Crescent, King's Cross.">
+<meta property="og:title" content="deRogue — the art of connection">
+<meta property="og:description" content="Lead–follow connection workshops for any partner dance. First workshop Wed 30 Sep · Keystone Crescent, King's Cross · 7:30–9 pm · £10.">
+<meta property="og:image" content="https://roguebachata.com/derogue/social/derogue-workshop-01-square-ink.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,900;1,9..144,300&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Theme tokens. Ink = the logo as drawn. Night = inverted. Saffron = robe & marigold. */
+  :root {
+    --paper: #fbfaf7;
+    --paper-2: #f1efe9;
+    --ink: #111110;
+    --ink-soft: #55534e;
+    --rule: #d9d6cd;
+    --logo: #111110;
+    --accent: #111110;
+    --on-accent: #fbfaf7;
+    --display: "Fraunces", "Iowan Old Style", Georgia, serif;
+    --body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]):not([data-look]) {
+      --paper: #0e0e0d; --paper-2: #1a1a18; --ink: #efece4; --ink-soft: #a7a397;
+      --rule: #34332f; --logo: #efece4; --accent: #efece4; --on-accent: #0e0e0d;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]:not([data-look]),
+  :root[data-look="night"] {
+    --paper: #0e0e0d; --paper-2: #1a1a18; --ink: #efece4; --ink-soft: #a7a397;
+    --rule: #34332f; --logo: #efece4; --accent: #efece4; --on-accent: #0e0e0d;
+    color-scheme: dark;
+  }
+  :root[data-look="ink"] {
+    --paper: #fbfaf7; --paper-2: #f1efe9; --ink: #111110; --ink-soft: #55534e;
+    --rule: #d9d6cd; --logo: #111110; --accent: #111110; --on-accent: #fbfaf7;
+    color-scheme: light;
+  }
+  :root[data-look="saffron"] {
+    --paper: #4a1512; --paper-2: #5b1d18; --ink: #f6e7cf; --ink-soft: #d9b98f;
+    --rule: #7a3226; --logo: #f2a33a; --accent: #f2a33a; --on-accent: #3a100d;
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font: 400 1.0625rem/1.65 var(--body);
+    padding-inline: clamp(16px, 4vw, 48px);
+    transition: background-color .5s ease, color .5s ease;
+  }
+  img { max-width: 100%; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .wrap { max-width: 1120px; margin-inline: auto; }
+
+  /* Logo recolouring: the PNG is used as a mask, the theme paints it. */
+  .logo-mark, .logo-word {
+    display: block; background-color: var(--logo);
+    -webkit-mask: var(--src) center / contain no-repeat;
+            mask: var(--src) center / contain no-repeat;
+    transition: background-color .5s ease;
+  }
+  .logo-mark { --src: url("assets/derogue-mark.png"); aspect-ratio: 1011 / 1105; }
+  .logo-word { --src: url("assets/derogue-wordmark.png"); aspect-ratio: 821 / 192; }
+
+  /* Header */
+  header.top {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+    background: var(--paper); border-bottom: 1px solid var(--rule);
+    margin-inline: calc(-1 * clamp(16px, 4vw, 48px));
+    padding: 12px clamp(16px, 4vw, 48px);
+    transition: background-color .5s ease, border-color .5s ease;
+  }
+  .top .wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-right: auto; }
+  .brand .logo-mark { width: 34px; }
+  .brand .logo-word { width: 104px; }
+  nav.links { display: flex; gap: 22px; font-size: .9rem; }
+  nav.links a { text-decoration: none; color: var(--ink-soft); }
+  nav.links a:hover { color: var(--ink); }
+  .looks { display: flex; gap: 6px; align-items: center; }
+  .looks span { font: 500 .7rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); margin-right: 4px; }
+  .looks button {
+    width: 26px; height: 26px; border-radius: 50%; cursor: pointer; padding: 0;
+    border: 1px solid var(--rule); background: var(--sw);
+    box-shadow: inset 0 0 0 5px var(--sw-ring);
+  }
+  .looks button[aria-pressed="true"] { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .looks [data-set="ink"] { --sw: #111110; --sw-ring: #fbfaf7; }
+  .looks [data-set="night"] { --sw: #efece4; --sw-ring: #0e0e0d; }
+  .looks [data-set="saffron"] { --sw: #f2a33a; --sw-ring: #4a1512; }
+  @media (max-width: 720px) { nav.links { display: none; } }
+
+  /* Hero */
+  .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(24px, 5vw, 72px); align-items: center; padding-block: clamp(40px, 7vw, 96px) clamp(40px, 6vw, 80px); }
+  .hero .logo-mark { width: 100%; max-width: 520px; justify-self: center; animation: sway 9s ease-in-out infinite; transform-origin: 50% 90%; }
+  @keyframes sway { 0%,100% { transform: rotate(-1.2deg); } 50% { transform: rotate(1.2deg); } }
+  .eyebrow { font: 500 .75rem/1.2 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+  h1 { font-size: clamp(2.6rem, 6.4vw, 5.2rem); line-height: .98; font-weight: 300; letter-spacing: -.02em; font-variation-settings: "opsz" 144; }
+  h1 b { font-weight: 900; }
+  .lede { font-size: clamp(1.1rem, 1.6vw, 1.3rem); color: var(--ink-soft); max-width: 34ch; margin: 22px 0 0; }
+  .triad { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; font: 500 .8rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+  .triad i { font-style: normal; color: var(--ink-soft); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer;
+    background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent);
+    font: 600 .95rem/1 var(--body); padding: 15px 22px; border-radius: 999px;
+    transition: transform .2s ease, background-color .5s ease, color .5s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.ghost { background: transparent; color: var(--ink); border-color: var(--rule); }
+  .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+  @media (max-width: 820px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero .logo-mark { max-width: 300px; order: -1; }
+  }
+
+  section { padding-block: clamp(56px, 8vw, 104px); border-top: 1px solid var(--rule); }
+  .sec-head { display: grid; grid-template-columns: 220px 1fr; gap: 24px; margin-bottom: 44px; }
+  .sec-head h2 { font-size: clamp(2rem, 4vw, 3.1rem); font-weight: 300; line-height: 1.05; letter-spacing: -.015em; }
+  .sec-head h2 b { font-weight: 900; }
+  .sec-head p { color: var(--ink-soft); max-width: 60ch; margin: 16px 0 0; }
+  @media (max-width: 820px) { .sec-head { grid-template-columns: 1fr; gap: 10px; } }
+
+  /* Workshop ticket */
+  .ticket {
+    display: grid; grid-template-columns: 1.3fr 1fr; background: var(--paper-2);
+    border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;
+    transition: background-color .5s ease;
+  }
+  .ticket .main { padding: clamp(24px, 4vw, 44px); display: grid; gap: 18px; align-content: start; }
+  .ticket .num { font: 900 clamp(4rem, 10vw, 7.5rem)/.8 var(--display); letter-spacing: -.04em; color: var(--logo); }
+  .ticket h3 { font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 400; line-height: 1.1; }
+  .ticket h3 em { font-style: italic; font-weight: 300; }
+  .ticket p { margin: 0; color: var(--ink-soft); max-width: 52ch; }
+  .ticket ul { margin: 0; padding-left: 1.1em; color: var(--ink-soft); display: grid; gap: 4px; }
+  .stub { border-left: 1px dashed var(--rule); padding: clamp(24px, 4vw, 44px); display: grid; gap: 0; align-content: start; }
+  .stub dl { margin: 0 0 24px; display: grid; }
+  .stub .row { display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding-block: 11px; border-bottom: 1px solid var(--rule); }
+  .stub dt { font: 500 .72rem/1.6 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+  .stub dd { margin: 0; font-variant-numeric: tabular-nums; }
+  .stub dd small { display: block; color: var(--ink-soft); font-size: .85rem; }
+  .copyline { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 14px; font-size: .88rem; color: var(--ink-soft); }
+  .copyline code { font-family: var(--mono); color: var(--ink); user-select: all; }
+  .copyline button { font: 500 .75rem/1 var(--mono); background: none; border: 1px solid var(--rule); color: var(--ink); padding: 6px 10px; border-radius: 99px; cursor: pointer; }
+  @media (max-width: 820px) { .ticket { grid-template-columns: 1fr; } .stub { border-left: 0; border-top: 1px dashed var(--rule); } }
+
+  /* Philosophy */
+  .manifesto { font: 300 clamp(1.5rem, 3vw, 2.35rem)/1.3 var(--display); letter-spacing: -.01em; max-width: 30ch; margin: 0; }
+  .manifesto b { font-weight: 900; }
+  .phil { display: grid; grid-template-columns: 220px 1fr; gap: 24px; }
+  .phil .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+  .phil .cols h3 { font-size: 1.35rem; font-weight: 900; margin-bottom: 8px; }
+  .phil .cols p { margin: 0; color: var(--ink-soft); }
+  @media (max-width: 820px) { .phil { grid-template-columns: 1fr; } .phil .cols { grid-template-columns: 1fr; gap: 24px; } }
+
+  /* Practice */
+  .practice { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--rule); }
+  .practice article { padding: 28px 28px 32px 0; border-bottom: 1px solid var(--rule); display: grid; gap: 8px; align-content: start; }
+  .practice article:nth-child(even) { padding-left: 28px; border-left: 1px solid var(--rule); }
+  .practice h3 { font-size: 1.5rem; font-weight: 400; }
+  .practice p { margin: 0; color: var(--ink-soft); max-width: 46ch; }
+  .practice .tag { font: 500 .7rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+  @media (max-width: 720px) { .practice { grid-template-columns: 1fr; } .practice article:nth-child(even) { padding-left: 0; border-left: 0; } }
+
+  /* Principles */
+  .principles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .principles li { background: var(--paper); padding: 26px 24px 30px; display: grid; gap: 10px; align-content: start; transition: background-color .5s ease; }
+  .principles .k { font: 500 .72rem/1 var(--mono); color: var(--ink-soft); letter-spacing: .1em; }
+  .principles h3 { font-size: 1.3rem; font-weight: 400; }
+  .principles p { margin: 0; color: var(--ink-soft); font-size: .98rem; }
+  @media (max-width: 900px) { .principles { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .principles { grid-template-columns: 1fr; } }
+
+  /* Dances */
+  .dances { display: flex; flex-wrap: wrap; gap: 10px 14px; font: 300 clamp(1.4rem, 3vw, 2.2rem)/1.2 var(--display); }
+  .dances span:not(:last-child)::after { content: " /"; color: var(--rule); }
+  .dances .lab { font-weight: 900; }
+
+  /* Teachers */
+  .teachers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .teachers h3 { font-size: 1.6rem; font-weight: 900; margin-bottom: 8px; }
+  .teachers p { margin: 0; color: var(--ink-soft); max-width: 52ch; }
+  @media (max-width: 720px) { .teachers { grid-template-columns: 1fr; } }
+
+  footer { border-top: 1px solid var(--rule); padding-block: 48px 64px; display: grid; gap: 24px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: end; justify-content: space-between; }
+  footer .logo-word { width: 180px; }
+  footer p { margin: 0; color: var(--ink-soft); font-size: .9rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero .logo-mark { animation: none; }
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="deRogue home">
+      <span class="logo-mark" role="img" aria-label=""></span>
+      <span class="logo-word" role="img" aria-label="deRogue"></span>
+    </a>
+    <nav class="links" aria-label="Sections">
+      <a href="#workshop">Workshop</a>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#practice">Practice</a>
+      <a href="#principles">Principles</a>
+    </nav>
+    <div class="looks" role="group" aria-label="Colour theme">
+      <span>Theme</span>
+      <button type="button" id="look-ink" data-set="ink" aria-pressed="false" title="Ink: black on paper"></button>
+      <button type="button" id="look-night" data-set="night" aria-pressed="false" title="Night: bone on black"></button>
+      <button type="button" id="look-saffron" data-set="saffron" aria-pressed="false" title="Saffron: marigold on robe"></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Partner connection workshops · London</p>
+      <h1>The art of <b>connection.</b></h1>
+      <p class="lede">deRogue teaches the part of partner dance that steps can't: how two bodies listen, lead, follow and move as one. For dancers of any style, and for people who have never danced.</p>
+      <div class="triad" aria-label="Ground, Listen, Release">
+        <span>Ground</span><i>·</i><span>Listen</span><i>·</i><span>Release</span>
+      </div>
+      <div class="ctas">
+        <a class="btn" href="#workshop">First workshop · Wed 30 Sep</a>
+        <a class="btn ghost" href="#philosophy">Our philosophy</a>
+      </div>
+    </div>
+    <span class="logo-mark" role="img" aria-label="The deRogue mark: two dancers arcing through a ring"></span>
+  </div>
+
+  <section id="workshop" aria-labelledby="ws-h">
+    <div class="sec-head">
+      <p class="eyebrow">Now booking</p>
+      <div>
+        <h2 id="ws-h">Our <b>first</b> workshop.</h2>
+        <p>Ninety focused minutes on the single thing every partner dance depends on. Same room as Rogue Bachata Wednesdays, followed by a social until late.</p>
+      </div>
+    </div>
+
+    <div class="ticket">
+      <div class="main">
+        <div class="num" aria-hidden="true">01</div>
+        <h3>The Listening Frame <em>— connection before steps</em></h3>
+        <p>Most partner dancing breaks down in the frame: arms that push, bodies that brace, signals that arrive late. We strip the steps away and work on the channel itself, so a lead can be felt and a follow can answer.</p>
+        <ul>
+          <li>Grounding: finding your own axis before you offer it to someone else</li>
+          <li>Tone: how much tension a frame needs to carry a signal, and no more</li>
+          <li>Listening: follows reading intention, leads reading the reply</li>
+          <li>Pause and redirect: what to do when the connection drops</li>
+        </ul>
+        <p>We use bachata's slow tempo and close embrace as the lab. What you learn works in salsa, kizomba, zouk, tango, swing and ballroom.</p>
+      </div>
+      <div class="stub">
+        <dl>
+          <div class="row"><dt>Date</dt><dd><time datetime="2026-09-30">Wednesday 30 September 2026</time></dd></div>
+          <div class="row"><dt>Time</dt><dd><time datetime="2026-09-30T19:30">7:30</time>–<time datetime="2026-09-30T21:00">9:00 pm</time><small>Includes a 5-minute practice &amp; drinks break</small></dd></div>
+          <div class="row"><dt>After</dt><dd>Social until late</dd></div>
+          <div class="row"><dt>Venue</dt><dd>Keystone Crescent<small>King's Cross, London N1 9DX</small></dd></div>
+          <div class="row"><dt>Price</dt><dd>£10 + booking fee</dd></div>
+          <div class="row"><dt>Who</dt><dd>All levels, any dance style<small>No partner needed. We rotate.</small></dd></div>
+        </dl>
+        <div class="ctas" style="margin-top:0">
+          <a class="btn js-book" href="mailto:roguebachata@gmail.com?subject=deRogue%20Workshop%2001%20%E2%80%94%20Wed%2030%20Sep">Reserve a place</a>
+          <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Keystone+Crescent+Kings+Cross+London+N1+9DX" target="_blank" rel="noopener">Map</a>
+        </div>
+        <div class="copyline">
+          <span>Or email</span><code id="email">roguebachata@gmail.com</code>
+          <button type="button" id="copy-email">Copy</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="philosophy" aria-labelledby="ph-h">
+    <div class="phil">
+      <p class="eyebrow">Philosophy</p>
+      <div>
+        <h2 id="ph-h" class="manifesto">Two dancers. <b>One body.</b> One centre of gravity, one shared axis.</h2>
+        <div class="cols">
+          <div>
+            <h3>Ground</h3>
+            <p>Connection starts alone. A dancer who owns their balance can offer a clear signal and receive one without collapsing into their partner.</p>
+          </div>
+          <div>
+            <h3>Listen</h3>
+            <p>Lead is a question; follow is an answer; both are listening. We train the conversation, not the choreography.</p>
+          </div>
+          <div>
+            <h3>Release</h3>
+            <p>When two people trust the channel, they can let go of control. That is where freedom in partner dance actually lives.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="practice" aria-labelledby="pr-h">
+    <div class="sec-head">
+      <p class="eyebrow">The practice</p>
+      <div>
+        <h2 id="pr-h">What we <b>work on.</b></h2>
+        <p>Four strands that run through every workshop. Each session goes deep on one of them.</p>
+      </div>
+    </div>
+    <div class="practice">
+      <article>
+        <span class="tag">Connection</span>
+        <h3>Partner connection</h3>
+        <p>Frame, tone, embrace and breath. How contact carries information, and how to keep it alive through turns, separations and close work.</p>
+      </article>
+      <article>
+        <span class="tag">Lead &amp; follow</span>
+        <h3>Independent lead and follow</h3>
+        <p>Leading through the body rather than the arms. Following as active interpretation rather than waiting. Both roles taught to everyone.</p>
+      </article>
+      <article>
+        <span class="tag">Body</span>
+        <h3>Dance fitness</h3>
+        <p>Mobility, core, balance and elastic strength for partnering: the conditioning that makes a dip safe and a spiral effortless.</p>
+      </article>
+      <article>
+        <span class="tag">Depth</span>
+        <h3>Deep-dive workshops</h3>
+        <p>Themed series that stay with one idea for several weeks: weight sharing, counterbalance, musical dialogue, stillness.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="principles" aria-labelledby="pp-h">
+    <div class="sec-head">
+      <p class="eyebrow">Six principles</p>
+      <div>
+        <h2 id="pp-h">The <b>principles</b> we teach from.</h2>
+        <p>Developed on the social floor with Rogue Bachata, and written for any partner dance.</p>
+      </div>
+    </div>
+    <ol class="principles">
+      <li><span class="k">I</span><h3>Body, Bond, Beyond</h3><p>Ground in yourself, listen to your partner, expand into the space.</p></li>
+      <li><span class="k">II</span><h3>Legato</h3><p>Your centre of gravity travels on a continuous, unbroken path.</p></li>
+      <li><span class="k">III</span><h3>Pause, Presence, Pivot</h3><p>Stop the movement, find each other, then redirect together.</p></li>
+      <li><span class="k">IV</span><h3>Bounce and Roll</h3><p>When bodies meet, rebound elastically or redirect.</p></li>
+      <li><span class="k">V</span><h3>Humility</h3><p>When connection is lost, surrender your movement and find your partner before continuing.</p></li>
+      <li><span class="k">VI</span><h3>Lazy, in time</h3><p>Relaxed, almost lazy, yet exactly on the music. A paradox shared by good dancing and good music.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="ds-h">
+    <div class="sec-head">
+      <p class="eyebrow">For any partner dance</p>
+      <div>
+        <h2 id="ds-h">Bachata is the lab. <b>Your dance</b> is the point.</h2>
+        <p>We borrow bachata's close embrace and slow, clear pulse to make connection easy to feel. Then you take it home to whatever you dance.</p>
+      </div>
+    </div>
+    <p class="dances">
+      <span class="lab">Bachata</span><span>Salsa</span><span>Kizomba</span><span>Zouk</span><span>Tango</span><span>West Coast Swing</span><span>Lindy Hop</span><span>Ballroom</span><span>Contact improvisation</span>
+    </p>
+  </section>
+
+  <section aria-labelledby="tc-h">
+    <div class="sec-head">
+      <p class="eyebrow">Teachers</p>
+      <div><h2 id="tc-h">Who <b>teaches.</b></h2></div>
+    </div>
+    <div class="teachers">
+      <div>
+        <h3>Oscar</h3>
+        <p>A performer at the highest levels of theatre with more than 20 years on the social dance floor. Oscar brings stage presence and body awareness into partner work, and founded Rogue Bachata.</p>
+      </div>
+      <div>
+        <h3>Boadicea</h3>
+        <p>Oscar's dance partner, with experience across several dance styles. Together they are known on the London social floor for their connection and musicality, and deRogue is how they teach it.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <span class="logo-word" role="img" aria-label="deRogue"></span>
+      <p style="margin-top:12px">Partner connection workshops · London</p>
+    </div>
+    <p>A sister project of <a href="https://roguebachata.com/" target="_blank" rel="noopener">Rogue Bachata</a> · roguebachata@gmail.com</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var buttons = document.querySelectorAll(".looks button");
+    function current() {
+      var set = root.getAttribute("data-look");
+      if (set) return set;
+      var dark = root.getAttribute("data-theme") === "dark" ||
+        (root.getAttribute("data-theme") !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      return dark ? "night" : "ink";
+    }
+    function paint() {
+      var c = current();
+      buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.set === c)); });
+    }
+    function apply(look, save) {
+      if (look) root.setAttribute("data-look", look); else root.removeAttribute("data-look");
+      if (save) { try { localStorage.setItem("derogue-look", look); } catch (e) {} }
+      paint();
+    }
+    var stored = null;
+    try { stored = localStorage.getItem("derogue-look"); } catch (e) {}
+    apply(stored, false);
+    buttons.forEach(function (b) { b.addEventListener("click", function () { apply(b.dataset.set, true); }); });
+    try { window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paint); } catch (e) {}
+
+    var copyBtn = document.getElementById("copy-email");
+    copyBtn.addEventListener("click", function () {
+      var text = document.getElementById("email").textContent;
+      function done() { copyBtn.textContent = "Copied"; setTimeout(function () { copyBtn.textContent = "Copy"; }, 1600); }
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(document.getElementById("email"));
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        copyBtn.textContent = "Selected";
+      }
+      try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+    });
+  })();
+</script>
+</body>
+</html>

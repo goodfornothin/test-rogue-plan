@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>deRogue social templates</title>
+<!-- Source for the PNGs in this folder. Render with: node derogue/social/render.mjs -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,900;1,9..144,300&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  body { margin: 0; background: #777; display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; }
+  .card { position: relative; overflow: hidden; font-family: "Hanken Grotesk", Arial, sans-serif; display: flex; flex-direction: column; }
+  .sq { width: 1080px; height: 1080px; padding: 84px; }
+  .st { width: 1080px; height: 1920px; padding: 120px 96px; }
+  .ink { --bg: #fbfaf7; --fg: #111110; --soft: #6a675f; --logo: #111110; --rule: #d9d6cd; }
+  .night { --bg: #0e0e0d; --fg: #efece4; --soft: #a7a397; --logo: #efece4; --rule: #34332f; }
+  .saffron { --bg: #4a1512; --fg: #f6e7cf; --soft: #d9b98f; --logo: #f2a33a; --rule: #7a3226; }
+  .card { background: var(--bg); color: var(--fg); }
+  .mark, .word { background: var(--logo); -webkit-mask: var(--src) center / contain no-repeat; mask: var(--src) center / contain no-repeat; }
+  .mark { --src: url("../assets/derogue-mark.png"); aspect-ratio: 1011/1105; }
+  .word { --src: url("../assets/derogue-wordmark.png"); aspect-ratio: 821/192; }
+  .eyebrow { font: 500 26px/1.2 "IBM Plex Mono", monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); }
+  .disp { font-family: "Fraunces", Georgia, serif; font-variation-settings: "opsz" 144; letter-spacing: -.02em; margin: 0; }
+  .disp b { font-weight: 900; }
+  .rule { height: 1px; background: var(--rule); }
+  .triad { font: 500 28px/1 "IBM Plex Mono", monospace; letter-spacing: .16em; text-transform: uppercase; display: flex; gap: 22px; }
+  .triad i { font-style: normal; color: var(--soft); }
+  .facts { display: grid; grid-template-columns: 170px 1fr; font-size: 34px; line-height: 1.25; }
+  .facts > * { padding-block: 18px; border-bottom: 1px solid var(--rule); }
+  .facts dt { font: 500 22px/1.9 "IBM Plex Mono", monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); }
+  .facts dd { margin: 0; }
+  .facts small { display: block; font-size: 24px; color: var(--soft); }
+  .num { font: 900 260px/.78 "Fraunces", serif; letter-spacing: -.05em; color: var(--logo); }
+</style>
+</head>
+<body>
+
+<!-- 1. Brand launch, square, Ink -->
+<div class="card sq ink" id="derogue-launch-square-ink" style="align-items:center; justify-content:space-between; text-align:center">
+  <p class="eyebrow" style="margin:0">Introducing</p>
+  <div class="mark" style="width:520px"></div>
+  <div class="word" style="width:420px"></div>
+  <p class="disp" style="font-size:56px; font-weight:300; margin:0">The art of <b>connection.</b></p>
+</div>
+
+<!-- 2. Brand launch, square, Saffron -->
+<div class="card sq saffron" id="derogue-launch-square-saffron" style="justify-content:space-between">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start">
+    <div class="word" style="width:300px"></div>
+    <p class="eyebrow" style="margin:0; text-align:right">Partner connection<br>workshops · London</p>
+  </div>
+  <div style="display:grid; grid-template-columns: 1fr 440px; gap:40px; align-items:end">
+    <p class="disp" style="font-size:92px; line-height:1; font-weight:300">One body. One centre. <b>One axis.</b></p>
+    <div class="mark" style="width:440px"></div>
+  </div>
+  <div class="triad"><span>Ground</span><i>·</i><span>Listen</span><i>·</i><span>Release</span></div>
+</div>
+
+<!-- 3. Brand launch, story, Night -->
+<div class="card st night" id="derogue-launch-story-night" style="justify-content:space-between; align-items:center; text-align:center">
+  <p class="eyebrow" style="margin:0">New in London</p>
+  <div style="display:grid; gap:56px; justify-items:center">
+    <div class="mark" style="width:700px"></div>
+    <div class="word" style="width:560px"></div>
+  </div>
+  <div style="display:grid; gap:36px; justify-items:center">
+    <p class="disp" style="font-size:66px; line-height:1.1; font-weight:300">Lead. Follow. <b>Connect.</b><br>For any partner dance.</p>
+    <div class="triad"><span>Ground</span><i>·</i><span>Listen</span><i>·</i><span>Release</span></div>
+  </div>
+</div>
+
+<!-- 4. Workshop 01, square, Ink -->
+<div class="card sq ink" id="derogue-workshop-01-square-ink" style="justify-content:space-between">
+  <div style="display:flex; justify-content:space-between; align-items:center">
+    <div style="display:flex; gap:18px; align-items:center"><div class="mark" style="width:74px"></div><div class="word" style="width:230px"></div></div>
+    <p class="eyebrow" style="margin:0">First workshop</p>
+  </div>
+  <div style="display:grid; grid-template-columns:auto 1fr; gap:44px; align-items:end">
+    <div class="num">01</div>
+    <p class="disp" style="font-size:78px; line-height:1; font-weight:400">The Listening <b>Frame</b></p>
+  </div>
+  <dl class="facts" style="margin:0">
+    <dt>When</dt><dd>Wednesday 30 September<small>7:30–9 pm · practice &amp; drinks break · social until late</small></dd>
+    <dt>Where</dt><dd>Keystone Crescent<small>King's Cross, N1 9DX</small></dd>
+    <dt>Price</dt><dd>£10 + booking fee<small>All levels · any dance style · no partner needed</small></dd>
+  </dl>
+</div>
+
+<!-- 5. Workshop 01, square, Saffron -->
+<div class="card sq saffron" id="derogue-workshop-01-square-saffron" style="justify-content:space-between">
+  <div style="display:flex; justify-content:space-between; align-items:center">
+    <div class="word" style="width:260px"></div>
+    <p class="eyebrow" style="margin:0">Wed 30 Sep · Keystone</p>
+  </div>
+  <div style="display:grid; grid-template-columns: 1fr 380px; gap:30px; align-items:center">
+    <div style="display:grid; gap:26px">
+      <p class="eyebrow" style="margin:0">Workshop 01</p>
+      <p class="disp" style="font-size:96px; line-height:.98; font-weight:300">Connection <b>before steps.</b></p>
+    </div>
+    <div class="mark" style="width:380px"></div>
+  </div>
+  <div style="display:flex; justify-content:space-between; font:500 30px/1 'IBM Plex Mono',monospace; letter-spacing:.06em; border-top:1px solid var(--rule); padding-top:30px">
+    <span>7:30–9 pm</span><span>£10 + fee</span><span>Social till late</span>
+  </div>
+</div>
+
+<!-- 6. Workshop 01, story, Night -->
+<div class="card st night" id="derogue-workshop-01-story-night" style="justify-content:space-between">
+  <div style="display:flex; justify-content:space-between; align-items:center">
+    <div style="display:flex; gap:20px; align-items:center"><div class="mark" style="width:90px"></div><div class="word" style="width:270px"></div></div>
+    <p class="eyebrow" style="margin:0">First workshop</p>
+  </div>
+  <div style="display:grid; gap:40px">
+    <div class="num" style="font-size:420px">01</div>
+    <p class="disp" style="font-size:110px; line-height:.98; font-weight:300">The Listening <b>Frame.</b></p>
+    <p style="font-size:38px; line-height:1.4; color:var(--soft); margin:0; max-width:24ch">Ninety minutes on the thing every partner dance depends on. Bachata is the lab. Your dance is the point.</p>
+  </div>
+  <dl class="facts" style="margin:0; font-size:40px; grid-template-columns: 200px 1fr">
+    <dt>When</dt><dd>Wednesday 30 September<small>7:30–9 pm · practice &amp; drinks break<br>Followed by a social until late</small></dd>
+    <dt>Where</dt><dd>Keystone Crescent<small>King's Cross, London N1 9DX</small></dd>
+    <dt>Price</dt><dd>£10 + booking fee<small>No partner needed</small></dd>
+  </dl>
+</div>
+
+<!-- 7. Workshop 01, story, Ink (what you'll work on) -->
+<div class="card st ink" id="derogue-workshop-01-story-ink" style="justify-content:space-between">
+  <div style="display:grid; gap:40px; justify-items:start">
+    <div class="word" style="width:360px"></div>
+    <p class="eyebrow" style="margin:0">Workshop 01 · Wed 30 Sep · 7:30 pm</p>
+  </div>
+  <div style="display:grid; gap:0">
+    <p class="disp" style="font-size:88px; line-height:1; font-weight:300; margin-bottom:60px">In 90 minutes <b>we work on:</b></p>
+    <div class="rule"></div>
+    <p class="disp" style="font-size:56px; font-weight:900; margin:34px 0 8px">Ground</p><p style="font-size:34px; color:var(--soft); margin:0 0 34px">Your own axis before you share it</p>
+    <div class="rule"></div>
+    <p class="disp" style="font-size:56px; font-weight:900; margin:34px 0 8px">Tone</p><p style="font-size:34px; color:var(--soft); margin:0 0 34px">A frame that carries the signal, no more</p>
+    <div class="rule"></div>
+    <p class="disp" style="font-size:56px; font-weight:900; margin:34px 0 8px">Listen</p><p style="font-size:34px; color:var(--soft); margin:0 0 34px">Lead asks, follow answers, both hear</p>
+    <div class="rule"></div>
+    <p class="disp" style="font-size:56px; font-weight:900; margin:34px 0 8px">Pause</p><p style="font-size:34px; color:var(--soft); margin:0 0 34px">What to do when the connection drops</p>
+    <div class="rule"></div>
+  </div>
+  <div style="display:flex; justify-content:space-between; align-items:end">
+    <p style="font-size:34px; line-height:1.35; margin:0">Keystone Crescent, King's Cross<br><span style="color:var(--soft)">7:30–9 pm · social until late · £10 + fee</span></p>
+    <div class="mark" style="width:200px"></div>
+  </div>
+</div>
+
+</body>
+</html>
