@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
 """
-Scrapes upcoming events from the Rogue Bachata Fatsoma profile page
-and writes events.json for the website widget to consume.
+Refresh events.json for the website.
+
+Fatsoma is a date-discovery source only. Wednesday class tickets are booked
+on Aalaap. This script may read the Fatsoma profile to notice new dates, but
+it never writes a fatsoma.com (or other non-Aalaap) URL for a Wednesday.
+Known Wednesday URLs live in WEDNESDAY_AALAAP_URLS. An unmapped Wednesday is
+left out rather than published with a Fatsoma link.
 """
 
 import json
 import re
-from datetime import datetime, timezone
+import sys
+from datetime import date, datetime, timezone
 from zoneinfo import ZoneInfo
 from urllib.request import Request, urlopen
 from urllib.error import URLError
@@ -14,9 +20,8 @@ from urllib.error import URLError
 FATSOMA_PROFILE = "https://www.fatsoma.com/p/roguebachata"
 OUTPUT_FILE = "events.json"
 
-# Canonical Wednesday ticket URLs. The weekly scrape may still discover
-# dates from Fatsoma, but booking links for these dates always come from aalaap
-# so the live site is never overwritten back to fatsoma.com.
+# Canonical Wednesday ticket URLs. Booking links for these dates always come
+# from Aalaap, even when Fatsoma still lists the same night.
 def london_today_iso():
     return datetime.now(ZoneInfo("Europe/London")).date().isoformat()
 
@@ -185,17 +190,40 @@ def scrape_event_page(url):
     return result if result.get("date") else None
 
 
+def london_start(start):
+    """Calendar date and clock time in Europe/London.
+
+    Fatsoma JSON-LD uses UTC (…T18:30:00.000Z) for a 19:30 BST class.
+    Slicing the timestamp would publish 18:30.
+    """
+    if not start:
+        return None
+    if "T" not in start:
+        return {"date": start[:10]}
+    try:
+        dt = datetime.fromisoformat(start.replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=ZoneInfo("Europe/London"))
+        local = dt.astimezone(ZoneInfo("Europe/London"))
+        return {"date": local.date().isoformat(), "startTime": local.strftime("%H:%M")}
+    except ValueError:
+        parsed = {"date": start[:10]}
+        if len(start) >= 16:
+            parsed["startTime"] = start[11:16]
+        return parsed
+
+
 def parse_schema_event(item):
     """Convert a JSON-LD Event object to our event dict shape."""
     result = {}
 
     start = item.get("startDate", "")
     if start:
-        # startDate can be "2026-06-03T19:30:00+01:00" or "2026-06-03"
-        result["date"] = start[:10]
-        if "T" in start:
-            time_part = start[11:16]
-            result["startTime"] = time_part
+        parsed = london_start(start) or {}
+        if parsed.get("date"):
+            result["date"] = parsed["date"]
+        if parsed.get("startTime"):
+            result["startTime"] = parsed["startTime"]
 
     name = item.get("name", "")
     if name:
@@ -218,6 +246,30 @@ def parse_schema_event(item):
     return result if result.get("date") else None
 
 
+def is_wednesday(iso_date):
+    try:
+        return date.fromisoformat(iso_date).weekday() == 2
+    except ValueError:
+        return False
+
+
+def wednesday_booking_url(event_date, candidate_url="", existing_url=""):
+    """Aalaap ticket URL for a Wednesday, or None when it must not be published.
+
+    Other nights keep their candidate URL. A Wednesday never keeps a
+    non-Aalaap URL, including Fatsoma.
+    """
+    mapped = WEDNESDAY_AALAAP_URLS.get(event_date)
+    if mapped:
+        return mapped
+    for url in (existing_url, candidate_url):
+        if url and "aalaap.app" in url:
+            return url
+    if is_wednesday(event_date):
+        return None
+    return candidate_url or None
+
+
 def load_existing_events():
     try:
         with open(OUTPUT_FILE, encoding="utf-8") as f:
@@ -227,10 +279,10 @@ def load_existing_events():
 
 
 def apply_aalaap_booking_urls(events):
-    """Force known Wednesday dates onto aalaap ticket URLs.
+    """Force Wednesday dates onto Aalaap ticket URLs.
 
-    Also keeps any aalaap.app links already in events.json, and fills in
-    mapped upcoming dates even if the Fatsoma scrape missed them.
+    Keeps Aalaap links already in events.json, fills mapped upcoming dates
+    even if Fatsoma missed them, and drops a Wednesday that has no Aalaap URL.
     """
     today = london_today_iso()
     by_date = {}
@@ -246,14 +298,23 @@ def apply_aalaap_booking_urls(events):
         if not event_date:
             continue
         existing = by_date.get(event_date) or {}
-        mapped = WEDNESDAY_AALAAP_URLS.get(event_date)
+        booking = wednesday_booking_url(event_date, ev.get("url", ""), existing.get("url", ""))
+        if not booking:
+            print(
+                f"SKIP {event_date}: Wednesday has no Aalaap booking URL",
+                file=sys.stderr,
+            )
+            continue
         ev = dict(ev)
-        if mapped:
-            ev["url"] = mapped
-        elif "aalaap.app" in existing.get("url", ""):
-            ev["url"] = existing["url"]
-        if existing.get("venueNotice") and not ev.get("venueNotice"):
-            ev["venueNotice"] = existing["venueNotice"]
+        ev["url"] = booking
+        # Keep the display copy already published for this date. Fatsoma's
+        # title/venue strings are not the booking source of truth.
+        if existing:
+            for key in ("startTime", "title", "venue"):
+                if existing.get(key):
+                    ev[key] = existing[key]
+            if existing.get("venueNotice") and not ev.get("venueNotice"):
+                ev["venueNotice"] = existing["venueNotice"]
         by_date[event_date] = ev
 
     for event_date, url in WEDNESDAY_AALAAP_URLS.items():
@@ -273,6 +334,13 @@ def apply_aalaap_booking_urls(events):
     merged = []
     for ev in by_date.values():
         if ev.get("date", "") < today:
+            continue
+        url = ev.get("url", "")
+        if is_wednesday(ev.get("date", "")) and "aalaap.app" not in url:
+            print(
+                f"SKIP {ev.get('date')}: refusing non-Aalaap Wednesday URL",
+                file=sys.stderr,
+            )
             continue
         notice = ev.get("venueNotice") or {}
         end = notice.get("endDate") or notice.get("expires") or ev.get("date", "")

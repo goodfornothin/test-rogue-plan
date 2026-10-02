@@ -1,5 +1,9 @@
 name: Scrape Fatsoma Events
 
+# Fatsoma is date discovery only. scripts/scrape-fatsoma.py writes
+# events.json with Aalaap booking URLs for Wednesday classes and will not
+# publish a fatsoma.com link for a Wednesday night.
+
 on:
   schedule:
     # Every Wednesday at 22:30 BST = 21:30 UTC (summer) / 22:30 UTC (winter)
