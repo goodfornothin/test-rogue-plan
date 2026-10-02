@@ -13,7 +13,6 @@ Make changes, then: git add . && git commit -m 'message' && git push
 - data.json — events, offerings, site data (siteName, rogueParties, upcomingEvents)
 - big-chill-bachata-mondays.html — Monday classes page
 - rogue-resonance.html — Rogue Resonance event page
-- derogue/ — deRogue sister brand site (connection workshops): index.html, assets/ (logo PNGs, recoloured by CSS mask), social/ (post graphics, templates.html, render.mjs, CAPTIONS.md)
 - sensual-couples.html — couples page
 - images/ — event photos and artwork
 
@@ -34,3 +33,4 @@ Always confirm what was done after completing a task.
 
 ## Memory log
 - March 2026: Telegram bot (RogueBachata_bot) connected for remote editing
+- September 2026: the mirrored sister-brand folder was removed from this repo. Do not add it back. The sister brand is a separate site.
