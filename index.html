@@ -75,7 +75,7 @@
           {
             "@type": "Place",
             "@id": "https://roguebachata.com/#keystone",
-            "name": "Keystone Crescent",
+            "name": "Keystone Crescent Members Club",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "Keystone Crescent, King's Cross",
@@ -116,7 +116,7 @@
       {
         "@type": "Event",
         "name": "Rogue Bachata Wednesdays at Keystone Crescent, King's Cross",
-        "description": "Weekly bachata night every Wednesday at Keystone Crescent, King's Cross: Movement for Bachata at 7:30pm, Bachata Partnerwork at 8:20pm (£10), then free social from 9pm. All levels, no partner needed.",
+        "description": "Every Wednesday at Keystone Crescent Members Club, King's Cross N1 9DX. Open Level Bachata Class, for people with 0 to 1 year experience in Bachata, and the deRogue connection workshop, for dancers of any background, experienced bachata dancers, and people passionate about movement and connection. Both run at the same time, 7:30–8:45pm. Free social 9pm–late. £10. No partner needed.",
         "url": "https://roguebachata.com/rogue-bachata-wednesdays.html",
         "startDate": "2026-07-22T19:30:00+01:00",
         "eventSchedule": {
@@ -131,7 +131,7 @@
         "organizer": { "@id": "https://roguebachata.com/#org" },
         "offers": {
           "@type": "Offer",
-          "name": "Movement for Bachata + Bachata Partnerwork",
+          "name": "Open Level Bachata Class or deRogue connection workshop",
           "price": "10",
           "priceCurrency": "GBP",
           "url": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-pst3",
@@ -164,7 +164,7 @@
             "name": "What's the vibe like for total beginners?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Warm and no-judgment. You will never be the only beginner in the room — every class is full of first-timers, and the whole hour is built from zero in a welcoming, relaxed atmosphere."
+              "text": "Warm and no-judgment. You will never be the only beginner in the room. The Open Level Bachata Class is for people with 0 to 1 year experience in Bachata."
             }
           },
           {
@@ -172,7 +172,7 @@
             "name": "How much does it cost?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "£10 for the class on both nights. Tuesdays in Clapham: class 7:30pm, free social from 8:30pm. Wednesdays in King's Cross: Movement for Bachata at 7:30pm, Partnerwork at 8:20pm, free social from 9pm."
+              "text": "£10 for the class on both nights. Tuesdays in Clapham: class 7:30pm, free social from 8:30pm. Wednesdays in King's Cross: Open Level Bachata Class and the deRogue connection workshop, both 7:30–8:45pm, then a free social from 9pm."
             }
           },
           {
@@ -180,7 +180,7 @@
             "name": "Where are Tuesday and Wednesday nights held?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Tuesdays are at Cafe Sol, 56 Clapham High Street, London SW4 7UL. Wednesdays are at Keystone Crescent, King's Cross, London N1 9DX."
+              "text": "Tuesdays are at Cafe Sol, 56 Clapham High Street, London SW4 7UL. Wednesdays are at Keystone Crescent Members Club, King's Cross N1 9DX."
             }
           },
           {
@@ -296,6 +296,11 @@
     }
 
     /* ── One-off venue notice (injected from events.json, auto-hides after endDate) ── */
+    .this-wednesday[hidden] { display: none !important; }
+    .this-wednesday { text-align: center; }
+    .this-wed-poster { max-width: 420px; margin: 0.6rem auto 0; }
+    .this-wed-poster img { width: 100%; height: auto; display: block; border-radius: 16px; }
+
     .venue-alert[hidden] { display: none !important; }
     .venue-alert {
       background: #16352c;
@@ -760,13 +765,15 @@
         <div class="hero-panel-content">
           <span class="hero-panel-eyebrow">Every Wednesday</span>
           <h2 id="panel-wed-h" class="hero-panel-day">Wednesday</h2>
-          <p class="hero-panel-sub">Keystone Crescent · King's Cross</p>
-          <p class="hero-panel-meta">Movement 7:30 · Partnerwork 8:20 · Social 9:00<br>£10 · All levels — no partner needed</p>
+          <p class="hero-panel-sub">Keystone Crescent Members Club · King's Cross</p>
+          <p class="hero-panel-meta">7:30–8:45pm · Open Level &amp; deRogue workshop<br>Free social 9pm–late · £10</p>
           <a href="rogue-bachata-wednesdays.html" id="wednesdayBookBtn" class="hero-panel-btn">Book Wednesday →</a>
         </div>
       </article>
     </div>
   </section>
+
+  <section class="section this-wednesday" id="thisWednesdayPoster" hidden></section>
 
   <main id="main">
 
@@ -780,7 +787,7 @@
         <article class="card offer-card accent-pink">
           <span class="hook">The easiest way in</span>
           <h3>Weekly Classes</h3>
-          <p class="desc">Beginner-friendly bachata every Tuesday in Clapham, and all-levels Movement + Partnerwork every Wednesday in King's Cross — safe to come alone, and a great way to meet new friends on the floor.</p>
+          <p class="desc">Beginner-friendly bachata every Tuesday in Clapham. Every Wednesday in King's Cross, an Open Level Bachata Class and the deRogue connection workshop run at the same time, 7:30–8:45pm, then a free social from 9 — safe to come alone.</p>
           <p class="price">£10 per class · free social after</p>
           <a class="offer-link" href="#tuesday">See both nights →</a>
         </article>
@@ -946,15 +953,15 @@
         </details>
         <details class="faq-item">
           <summary>What's the vibe like for total beginners?</summary>
-          <p>Warm and no-judgment. You will never be the only beginner in the room — every class is full of first-timers, and the whole hour is built from zero in a welcoming, relaxed atmosphere.</p>
+          <p>Warm and no-judgment. You will never be the only beginner in the room. The Open Level Bachata Class is for people with 0 to 1 year experience in Bachata.</p>
         </details>
         <details class="faq-item">
           <summary>How much does it cost?</summary>
-          <p>£10 for the class on both nights. Tuesdays in Clapham: class 7:30pm, free social from 8:30pm. Wednesdays in King's Cross: Movement for Bachata at 7:30pm, Partnerwork at 8:20pm, free social from 9pm.</p>
+          <p>£10 for the class on both nights. Tuesdays in Clapham: class 7:30pm, free social from 8:30pm. Wednesdays in King's Cross: Open Level Bachata Class and the deRogue connection workshop, both 7:30–8:45pm, then a free social from 9pm.</p>
         </details>
         <details class="faq-item">
           <summary>Where are Tuesday and Wednesday nights held?</summary>
-          <p>Tuesdays are at Cafe Sol, 56 Clapham High Street, London SW4 7UL. Wednesdays are at Keystone Crescent, King's Cross, London N1 9DX.</p>
+          <p>Tuesdays are at Cafe Sol, 56 Clapham High Street, London SW4 7UL. Wednesdays are at Keystone Crescent Members Club, King's Cross N1 9DX.</p>
         </details>
         <details class="faq-item">
           <summary>What should I wear?</summary>
@@ -1072,6 +1079,7 @@
           var upcoming = RogueEvents.upcomingEvents(data.events);
           var feat = upcoming[0];
           RogueEvents.applyBookLinks(feat ? feat.url : RogueEvents.FALLBACK_URL);
+          RogueEvents.renderFeaturedPoster(document.getElementById('thisWednesdayPoster'), feat);
           RogueEvents.renderVenueNotice(
             document.getElementById('venueNoticeMount'),
             RogueEvents.activeVenueNotice(data.events)

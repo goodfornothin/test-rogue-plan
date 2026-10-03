@@ -185,7 +185,7 @@ def scrape_event_page(url):
 
     venue_m = re.search(r'Keystone Crescent', html)
     if venue_m:
-        result["venue"] = "Keystone Crescent, King's Cross"
+        result["venue"] = "Keystone Crescent Members Club, King's Cross N1 9DX"
 
     return result if result.get("date") else None
 
@@ -310,9 +310,12 @@ def apply_aalaap_booking_urls(events):
         # Keep the display copy already published for this date. Fatsoma's
         # title/venue strings are not the booking source of truth.
         if existing:
-            for key in ("startTime", "title", "venue"):
+            for key in ("startTime", "title", "venue", "image"):
                 if existing.get(key):
                     ev[key] = existing[key]
+            # A date-specific poster stays on that date. Never copy it onto another night.
+            if ev.get("image") and "wednesday-7-october-2026" in str(ev.get("image")) and event_date != "2026-10-07":
+                ev.pop("image", None)
             if existing.get("venueNotice") and not ev.get("venueNotice"):
                 ev["venueNotice"] = existing["venueNotice"]
         by_date[event_date] = ev
@@ -327,7 +330,7 @@ def apply_aalaap_booking_urls(events):
                 "date": event_date,
                 "startTime": "19:30",
                 "title": "Rogue Bachata Wednesdays! Keystone Crescent",
-                "venue": "Keystone Crescent, King's Cross",
+                "venue": "Keystone Crescent Members Club, King's Cross N1 9DX",
                 "url": url,
             }
 

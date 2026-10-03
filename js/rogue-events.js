@@ -107,14 +107,130 @@
     });
   }
 
+  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var PUBLIC_VENUE = "Keystone Crescent Members Club, King's Cross N1 9DX";
+  var OCT7_POSTER = 'wednesday-7-october-2026';
+
+  function formatLongDate(iso) {
+    var parts = (iso || '').split('-');
+    if (parts.length < 3) return iso || '';
+    return String(+parts[2]) + ' ' + MONTHS[+parts[1] - 1] + ' ' + parts[0];
+  }
+
+  /* The 7 October 2026 artwork stays on that night only. */
+  function posterSrc(event) {
+    if (!event || !event.image) return '';
+    var src = String(event.image);
+    if (src.indexOf(OCT7_POSTER) !== -1 && event.date !== '2026-10-07') return '';
+    return src;
+  }
+
+  function appendStructure(parent) {
+    var p = document.createElement('p');
+    p.className = 'wed-night-structure';
+    p.appendChild(document.createTextNode('Rogue Bachata Open Level Bachata Class, for people with 0 to 1 year experience in Bachata, and the '));
+    var link = document.createElement('a');
+    link.href = 'https://derogue.art';
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = 'deRogue connection workshop';
+    p.appendChild(link);
+    p.appendChild(document.createTextNode(', for dancers of any background, experienced bachata dancers, and people passionate about movement and connection. Both run at the same time, 7:30–8:45pm. Free social 9pm–late.'));
+    parent.appendChild(p);
+  }
+
+  function renderWednesdayNights(mount, events) {
+    if (!mount) return;
+    var upcoming = upcomingEvents(events);
+    mount.innerHTML = '';
+    if (!upcoming.length) {
+      mount.hidden = true;
+      return;
+    }
+    upcoming.forEach(function (ev) {
+      var article = document.createElement('article');
+      article.className = 'card wed-night';
+      var heading = document.createElement('h3');
+      heading.textContent = 'Wednesday ' + formatLongDate(ev.date);
+      article.appendChild(heading);
+
+      var venue = document.createElement('p');
+      venue.className = 'wed-night-venue';
+      venue.textContent = ev.venue || PUBLIC_VENUE;
+      article.appendChild(venue);
+
+      var src = posterSrc(ev);
+      if (src) {
+        var img = document.createElement('img');
+        img.className = 'wed-night-poster';
+        img.alt = 'Official poster for Wednesday ' + formatLongDate(ev.date);
+        img.addEventListener('error', function () { img.remove(); });
+        img.src = src;
+        article.appendChild(img);
+      }
+
+      appendStructure(article);
+
+      if (ev.url) {
+        var book = document.createElement('a');
+        book.className = 'wed-night-book';
+        book.href = ev.url;
+        book.target = '_blank';
+        book.rel = 'noopener';
+        book.textContent = 'Book ' + formatLongDate(ev.date);
+        article.appendChild(book);
+      }
+      mount.appendChild(article);
+    });
+    mount.hidden = false;
+  }
+
+  function renderFeaturedPoster(mount, event) {
+    if (!mount) return;
+    var src = posterSrc(event);
+    mount.innerHTML = '';
+    if (!src) {
+      mount.hidden = true;
+      return;
+    }
+    var kicker = document.createElement('span');
+    kicker.className = 'section-kicker';
+    kicker.textContent = 'This Wednesday';
+    mount.appendChild(kicker);
+
+    var heading = document.createElement('h2');
+    heading.textContent = 'Wednesday ' + formatLongDate(event.date);
+    mount.appendChild(heading);
+
+    var figure = document.createElement('figure');
+    figure.className = 'this-wed-poster';
+    var img = document.createElement('img');
+    img.alt = 'Official poster for Wednesday ' + formatLongDate(event.date);
+    img.addEventListener('error', function () { figure.remove(); });
+    img.src = src;
+    figure.appendChild(img);
+    mount.appendChild(figure);
+
+    var venue = document.createElement('p');
+    venue.className = 'lede';
+    venue.textContent = event.venue || PUBLIC_VENUE;
+    mount.appendChild(venue);
+    mount.hidden = false;
+  }
+
   global.RogueEvents = {
     TZ: TZ,
     FALLBACK_URL: FALLBACK_URL,
+    PUBLIC_VENUE: PUBLIC_VENUE,
     londonTodayISO: londonTodayISO,
     upcomingEvents: upcomingEvents,
     featuredEvent: featuredEvent,
     activeVenueNotice: activeVenueNotice,
     renderVenueNotice: renderVenueNotice,
-    applyBookLinks: applyBookLinks
+    applyBookLinks: applyBookLinks,
+    formatLongDate: formatLongDate,
+    posterSrc: posterSrc,
+    renderWednesdayNights: renderWednesdayNights,
+    renderFeaturedPoster: renderFeaturedPoster
   };
 })(window);
