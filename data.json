@@ -50,30 +50,57 @@
   ],
   "principles": [
     {
-      "name": "Rogue Body, Bond, Beyond",
+      "name": "deRogue Body, Bond, Beyond",
+      "numeral": "I",
       "description": "Ground in yourself, listen to your partner, expand into the space"
     },
     {
-      "name": "Rogue Legato",
+      "name": "deRogue Legato",
+      "numeral": "II",
       "description": "Your center of gravity travels on a continuous, unbroken path"
     },
     {
-      "name": "Rogue Pause, Presence, Pivot",
+      "name": "deRogue Pause, Presence, Pivot",
+      "numeral": "III",
       "description": "Stop the movement, find each other, then redirect together"
     },
     {
-      "name": "Rogue Bounce and Roll",
+      "name": "deRogue Bounce and Roll",
+      "numeral": "IV",
       "description": "When bodies meet, rebound elastically or redirect"
     },
     {
-      "name": "Rogue Humility",
+      "name": "deRogue Humility",
+      "numeral": "V",
       "description": "Surrender your movement when connection is lost; seek the partner before continuing"
     },
     {
-      "name": "Rogue Lazy",
+      "name": "deRogue Lazy, in time",
+      "numeral": "VI",
       "description": "Relaxed and lazy, yet in time—a paradox found in both music and dance"
+    },
+    {
+      "name": "deRogue Listening",
+      "numeral": "VII",
+      "description": "Listen to your partner instead of performing at them. It's really just connection."
+    },
+    {
+      "name": "deRogue Contact Immersion",
+      "numeral": "VIII",
+      "description": "Stay in the contact long enough to feel your partner, instead of passing through it."
+    },
+    {
+      "name": "deRogue Couple Balance",
+      "numeral": "IX",
+      "description": "It's not about independent balance, it's about couple balance."
+    },
+    {
+      "name": "deRogue Freedom Pathways",
+      "numeral": "X",
+      "description": "Pathways you can travel freely with a partner, instead of a fixed set of steps."
     }
   ],
+  "conceptsUrl": "https://derogue.art#principles",
   "youtubePlaylists": {
     "bigchillmondays": {
       "id": "PLLp_C8UrgAs-5NbNAbpETbA24wlrwE_Ed",
