@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>deRogue Instagram stories</title>
+<!-- Source for derogue/social/stories/*.png. Render with: node derogue/social/render.mjs stories -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wght@8..144,200;8..144,300;8..144,400;8..144,800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  body { margin: 0; background: #777; display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; }
+  .s {
+    position: relative; overflow: hidden; width: 1080px; height: 1920px; box-sizing: border-box;
+    padding: 230px 110px 320px 190px; /* top/bottom kept clear of Instagram's own UI */
+    display: flex; flex-direction: column; background: var(--bg); color: var(--fg);
+    font-family: "Roboto Serif", Georgia, serif;
+  }
+  .ink   { --bg: #f8f8f6; --fg: #0c0c0c; --soft: #6b6b68; --hair: #0c0c0c; }
+  .night { --bg: #0c0c0c; --fg: #f3f3ef; --soft: #9a9a95; --hair: #f3f3ef; }
+
+  /* The axis: one hairline down every story, with the centre of gravity as a dot. */
+  .axis { position: absolute; left: 118px; top: 230px; bottom: 320px; width: 1px; background: var(--hair); opacity: .35; }
+  .axis i { position: absolute; left: -9px; width: 19px; height: 19px; border-radius: 50%; background: var(--fg); top: var(--c, 50%); transform: translateY(-50%); }
+  .s.centred { padding-left: 110px; align-items: center; text-align: center; }
+  .s.centred .axis { left: 50%; }
+
+  .logo { background: var(--fg); -webkit-mask: var(--src) center / contain no-repeat; mask: var(--src) center / contain no-repeat; }
+  .mark { --src: url("../assets/final/derogue-mark-outline.png"); aspect-ratio: 2003 / 2188; }
+  .solid { --src: url("../assets/final/derogue-mark-solid.png"); aspect-ratio: 1660 / 1788; }
+  .name { --src: url("../assets/final/derogue-name.png"); aspect-ratio: 1566 / 382; }
+  .tag  { --src: url("../assets/final/derogue-tagline.png"); aspect-ratio: 1468 / 135; }
+  .lockup { --src: url("../assets/final/derogue-logo-outline.png"); aspect-ratio: 2003 / 2650; }
+
+  .label { font: 500 24px/1.3 "IBM Plex Mono", monospace; letter-spacing: .2em; text-transform: uppercase; color: var(--soft); margin: 0; }
+  .foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .foot .name { width: 210px; }
+  .foot span { font: 400 24px/1 "IBM Plex Mono", monospace; letter-spacing: .12em; color: var(--soft); }
+  .s.centred .foot { width: 100%; }
+
+  h1, h2, p { margin: 0; text-wrap: balance; }
+  .big { font-weight: 200; font-size: 112px; line-height: 1.04; letter-spacing: -.02em; }
+  .big b { font-weight: 800; }
+  .mid { font-weight: 300; font-size: 64px; line-height: 1.18; letter-spacing: -.01em; }
+  .mid b { font-weight: 800; }
+  .body { font-weight: 300; font-size: 40px; line-height: 1.5; color: var(--soft); max-width: 22ch; }
+  .body b { color: var(--fg); font-weight: 400; }
+  .roman { font-weight: 200; font-size: 300px; line-height: .8; letter-spacing: -.03em; }
+  .cue { border-top: 1px solid color-mix(in srgb, var(--fg) 30%, transparent); padding-top: 34px; display: grid; gap: 14px; }
+  .cue p:last-child { font-weight: 300; font-size: 42px; line-height: 1.45; }
+  .steps { display: grid; gap: 54px; }
+  .steps div { display: grid; gap: 10px; }
+  .steps .mid { font-size: 56px; }
+  .gap-s { height: 40px; } .gap-m { height: 90px; } .gap-l { height: 160px; } .grow { flex: 1; }
+  .sticker { flex: 1; } /* empty room for a poll / question / slider sticker */
+</style>
+</head>
+<body>
+
+<!-- 01 · Cover -->
+<section class="s night centred" id="story-01-cover">
+  <div class="axis" style="top:230px; bottom:auto; height:120px"></div>
+  <div class="gap-s"></div>
+  <div class="logo mark" style="width:520px"></div>
+  <div class="gap-m"></div>
+  <div class="logo name" style="width:480px"></div>
+  <div class="gap-s"></div>
+  <div class="logo tag" style="width:400px"></div>
+  <div class="grow"></div>
+  <p class="mid" style="font-size:52px">Two bodies.<br>One centre.<br><b>One axis.</b></p>
+  <div class="gap-m"></div>
+  <p class="label">derogue.art</p>
+</section>
+
+<!-- 02 · Manifesto -->
+<section class="s ink" id="story-02-manifesto">
+  <div class="axis" style="--c:36.5%"><i></i></div>
+  <p class="label">deRogue · the idea</p>
+  <div class="grow"></div>
+  <p class="big">Two bodies.</p>
+  <div class="gap-l"></div>
+  <p class="big"><b>One centre.</b></p>
+  <div class="gap-l"></div>
+  <p class="big">One axis.</p>
+  <div class="grow"></div>
+  <p class="body">Partner dance begins when two people stop balancing alone and start balancing together.</p>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>derogue.art</span></div>
+</section>
+
+<!-- 03 · Practice: find your axis -->
+<section class="s night" id="story-03-practice-axis">
+  <div class="axis" style="--c:22%"><i></i></div>
+  <p class="label">Practice · 30 seconds · alone</p>
+  <div class="gap-m"></div>
+  <p class="big">Before you dance, <b>stand.</b></p>
+  <div class="grow"></div>
+  <div class="steps">
+    <div><p class="label">Ground</p><p class="mid">Feel the whole foot on the floor.</p></div>
+    <div><p class="label">Breathe</p><p class="mid">Breathe out. Let the weight drop.</p></div>
+    <div><p class="label">Axis</p><p class="mid">Find the line from crown to floor. Stay on it.</p></div>
+  </div>
+  <div class="grow"></div>
+  <div class="foot"><div class="logo name"></div><span>1 / 2</span></div>
+</section>
+
+<!-- 04 · Practice: share it -->
+<section class="s ink" id="story-04-practice-share">
+  <div class="axis" style="--c:22%"><i></i></div>
+  <p class="label">Practice · 1 minute · with a partner</p>
+  <div class="gap-m"></div>
+  <p class="big">Now <b>share it.</b></p>
+  <div class="grow"></div>
+  <div class="steps">
+    <div><p class="label">Face</p><p class="mid">Stand facing each other, palms lightly together.</p></div>
+    <div><p class="label">Close</p><p class="mid">Close your eyes. Shift your weight slowly.</p></div>
+    <div><p class="label">Find</p><p class="mid">Stop where neither of you leads. <b>That is the centre.</b></p></div>
+  </div>
+  <div class="grow"></div>
+  <div class="foot"><div class="logo name"></div><span>2 / 2</span></div>
+</section>
+
+<!-- 05–10 · The six principles -->
+<section class="s night" id="story-05-principle-1">
+  <div class="axis" style="--c:16%"><i></i></div>
+  <p class="label">Six principles</p>
+  <div class="gap-m"></div>
+  <p class="roman">I</p>
+  <div class="gap-m"></div>
+  <p class="mid">Body, Bond, <b>Beyond</b></p>
+  <div class="gap-s"></div>
+  <p class="body">Ground in yourself. Listen to your partner. Expand into the space.</p>
+  <div class="grow"></div>
+  <div class="cue"><p class="label">Practise</p><p>Dance one song in three parts: only you, only them, only the room.</p></div>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>I / VI</span></div>
+</section>
+
+<section class="s ink" id="story-06-principle-2">
+  <div class="axis" style="--c:16%"><i></i></div>
+  <p class="label">Six principles</p>
+  <div class="gap-m"></div>
+  <p class="roman">II</p>
+  <div class="gap-m"></div>
+  <p class="mid"><b>Legato</b></p>
+  <div class="gap-s"></div>
+  <p class="body">Your centre of gravity travels on one continuous, unbroken path.</p>
+  <div class="grow"></div>
+  <div class="cue"><p class="label">Practise</p><p>Walk your basic as if carrying a full glass of water on your head.</p></div>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>II / VI</span></div>
+</section>
+
+<section class="s night" id="story-07-principle-3">
+  <div class="axis" style="--c:16%"><i></i></div>
+  <p class="label">Six principles</p>
+  <div class="gap-m"></div>
+  <p class="roman">III</p>
+  <div class="gap-m"></div>
+  <p class="mid">Pause, Presence, <b>Pivot</b></p>
+  <div class="gap-s"></div>
+  <p class="body">Stop the movement. Find each other. Then redirect together.</p>
+  <div class="grow"></div>
+  <div class="cue"><p class="label">Practise</p><p>Once every song, stop completely. Wait until you both feel ready. Then move.</p></div>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>III / VI</span></div>
+</section>
+
+<section class="s ink" id="story-08-principle-4">
+  <div class="axis" style="--c:16%"><i></i></div>
+  <p class="label">Six principles</p>
+  <div class="gap-m"></div>
+  <p class="roman">IV</p>
+  <div class="gap-m"></div>
+  <p class="mid">Bounce and <b>Roll</b></p>
+  <div class="gap-s"></div>
+  <p class="body">When bodies meet, rebound elastically or redirect.</p>
+  <div class="grow"></div>
+  <div class="cue"><p class="label">Practise</p><p>Let contact be soft enough to give, and firm enough to answer.</p></div>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>IV / VI</span></div>
+</section>
+
+<section class="s night" id="story-09-principle-5">
+  <div class="axis" style="--c:16%"><i></i></div>
+  <p class="label">Six principles</p>
+  <div class="gap-m"></div>
+  <p class="roman">V</p>
+  <div class="gap-m"></div>
+  <p class="mid"><b>Humility</b></p>
+  <div class="gap-s"></div>
+  <p class="body">When the connection is lost, surrender your movement. Find your partner before you continue.</p>
+  <div class="grow"></div>
+  <div class="cue"><p class="label">Practise</p><p>Lost? Do less. Return to the basic until you find each other again.</p></div>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>V / VI</span></div>
+</section>
+
+<section class="s ink" id="story-10-principle-6">
+  <div class="axis" style="--c:16%"><i></i></div>
+  <p class="label">Six principles</p>
+  <div class="gap-m"></div>
+  <p class="roman">VI</p>
+  <div class="gap-m"></div>
+  <p class="mid">Lazy, <b>in time</b></p>
+  <div class="gap-s"></div>
+  <p class="body">Relaxed, almost lazy, yet exactly on the music.</p>
+  <div class="grow"></div>
+  <div class="cue"><p class="label">Practise</p><p>Arrive on every beat with the least effort you can.</p></div>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>VI / VI</span></div>
+</section>
+
+<!-- 11 · Myth / truth -->
+<section class="s night" id="story-11-myth">
+  <div class="axis" style="--c:50%"><i></i></div>
+  <p class="label">Myth</p>
+  <div class="gap-s"></div>
+  <p class="mid" style="color:var(--soft)">A strong frame needs strong arms.</p>
+  <div class="grow"></div>
+  <p class="label">Truth</p>
+  <div class="gap-s"></div>
+  <p class="big">A clear frame needs a <b>quiet body.</b></p>
+  <div class="gap-m"></div>
+  <p class="body">Tone, not tension. The signal travels from centre to centre. The arms only carry it.</p>
+  <div class="grow"></div>
+  <div class="foot"><div class="logo name"></div><span>derogue.art</span></div>
+</section>
+
+<!-- 12 · Poll -->
+<section class="s ink" id="story-12-poll">
+  <div class="axis" style="--c:20%"><i></i></div>
+  <p class="label">Tell us</p>
+  <div class="gap-m"></div>
+  <p class="big">Who starts the <b>movement?</b></p>
+  <div class="sticker"></div>
+  <p class="body">Answer tomorrow.</p>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>derogue.art</span></div>
+</section>
+
+<!-- 13 · Poll answer -->
+<section class="s night" id="story-13-answer">
+  <div class="axis" style="--c:34%"><i></i></div>
+  <p class="label">Yesterday's question</p>
+  <div class="gap-s"></div>
+  <p class="mid" style="color:var(--soft)">Who starts the movement?</p>
+  <div class="gap-l"></div>
+  <p class="big"><b>The centre does.</b></p>
+  <div class="grow"></div>
+  <div class="steps">
+    <div><p class="label">The lead</p><p class="mid">proposes from the centre.</p></div>
+    <div><p class="label">The follow</p><p class="mid">answers from the centre.</p></div>
+    <div><p class="label">The arms</p><p class="mid">only carry the message.</p></div>
+  </div>
+  <div class="grow"></div>
+  <div class="foot"><div class="logo name"></div><span>derogue.art</span></div>
+</section>
+
+<!-- 14 · Question box -->
+<section class="s ink" id="story-14-question">
+  <div class="axis" style="--c:20%"><i></i></div>
+  <p class="label">Ask us anything</p>
+  <div class="gap-m"></div>
+  <p class="big">When the connection drops, what do you <b>do first?</b></p>
+  <div class="sticker"></div>
+  <p class="body">We answer the best ones in a short video.</p>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>derogue.art</span></div>
+</section>
+
+<!-- 15 · Slider -->
+<section class="s night" id="story-15-slider">
+  <div class="axis" style="--c:20%"><i></i></div>
+  <p class="label">Be honest</p>
+  <div class="gap-m"></div>
+  <p class="big">How <b>grounded</b> do you feel on the dance floor?</p>
+  <div class="sticker"></div>
+  <p class="body">Floating at one end. Rooted at the other.</p>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>derogue.art</span></div>
+</section>
+
+<!-- 16 · Close / invitation -->
+<section class="s ink centred" id="story-16-invite">
+  <div class="axis" style="top:230px; bottom:auto; height:120px"></div>
+  <div class="gap-s"></div>
+  <div class="logo lockup" style="width:500px"></div>
+  <div class="gap-m"></div>
+  <p class="mid" style="font-size:52px">Partner connection workshops.<br>London.</p>
+  <div class="gap-m"></div>
+  <p class="body" style="max-width:none">For any partner dance. No partner needed.</p>
+  <div class="grow"></div>
+  <p class="label">Next dates soon · derogue.art</p>
+</section>
+
+</body>
+</html>
