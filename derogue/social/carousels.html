@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>deRogue Instagram carousels</title>
+<!-- Source for derogue/social/carousels/day-N/slide-M.jpg. Render with: node derogue/social/render.mjs carousels -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wght@8..144,200;8..144,300;8..144,400;8..144,800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  body { margin: 0; background: #777; display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; }
+  .c {
+    position: relative; overflow: hidden; width: 1080px; height: 1350px; box-sizing: border-box;
+    padding: 120px 100px 110px 180px;
+    display: flex; flex-direction: column; background: var(--bg); color: var(--fg);
+    font-family: "Roboto Serif", Georgia, serif;
+  }
+  /* Pure neutrals only: these slides must stay strictly black and white. */
+  .ink   { --bg: #f7f7f7; --fg: #0d0d0d; --soft: #666666; --hair: #0d0d0d; --rule: #c4c4c4; }
+  .night { --bg: #0d0d0d; --fg: #f2f2f2; --soft: #9c9c9c; --hair: #f2f2f2; --rule: #3a3a3a; }
+
+  /* The axis: one hairline down every slide, with the centre of gravity as a dot. */
+  .axis { position: absolute; left: 112px; top: 120px; bottom: 110px; width: 1px; background: var(--hair); opacity: .35; }
+  .axis i { position: absolute; left: -9px; width: 19px; height: 19px; border-radius: 50%; background: var(--fg); top: var(--c, 50%); transform: translateY(-50%); }
+  .c.centred { padding-left: 100px; align-items: center; text-align: center; }
+  .c.centred .axis { left: 50%; bottom: auto; height: 70px; }
+
+  .logo { background: var(--fg); -webkit-mask: var(--src) center / contain no-repeat; mask: var(--src) center / contain no-repeat; }
+  .mark { --src: url("../assets/final/derogue-mark-outline.png"); aspect-ratio: 2003 / 2188; }
+  .name { --src: url("../assets/final/derogue-name.png"); aspect-ratio: 1566 / 382; }
+  .tag  { --src: url("../assets/final/derogue-tagline.png"); aspect-ratio: 1468 / 135; }
+  .lockup { --src: url("../assets/final/derogue-logo-outline.png"); aspect-ratio: 2003 / 2650; }
+
+  .label { font: 500 22px/1.3 "IBM Plex Mono", monospace; letter-spacing: .2em; text-transform: uppercase; color: var(--soft); margin: 0; }
+  .foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 100%; }
+  .foot .name { width: 190px; }
+  .foot span { font: 400 22px/1 "IBM Plex Mono", monospace; letter-spacing: .14em; color: var(--soft); }
+
+  h1, h2, p { margin: 0; text-wrap: balance; }
+  .big { font-weight: 200; font-size: 96px; line-height: 1.04; letter-spacing: -.02em; }
+  .big b { font-weight: 800; }
+  .mid { font-weight: 300; font-size: 56px; line-height: 1.16; letter-spacing: -.01em; }
+  .mid b { font-weight: 800; }
+  .body { font-weight: 300; font-size: 36px; line-height: 1.5; color: var(--soft); max-width: 30ch; }
+  .roman { font-weight: 200; font-size: 230px; line-height: .8; letter-spacing: -.03em; }
+  .cue { border-top: 1px solid var(--rule); padding-top: 28px; display: grid; gap: 12px; }
+  .cue p:last-child { font-weight: 300; font-size: 40px; line-height: 1.4; }
+  .steps { display: grid; gap: 40px; }
+  .steps div { display: grid; gap: 8px; }
+  .steps .mid { font-size: 48px; }
+  .list { display: grid; gap: 22px; border-top: 1px solid var(--rule); padding-top: 30px; }
+  .list p { display: grid; grid-template-columns: 90px 1fr; align-items: baseline; font-weight: 300; font-size: 44px; line-height: 1.2; }
+  .list p span { font: 500 24px/1 "IBM Plex Mono", monospace; letter-spacing: .12em; color: var(--soft); }
+  .details { display: grid; gap: 14px; font-weight: 300; font-size: 36px; line-height: 1.35; }
+  .details .soft { color: var(--soft); }
+  .gap-s { height: 28px; flex: none; } .gap-m { height: 60px; flex: none; } .gap-l { height: 100px; flex: none; } .grow { flex: 1; }
+</style>
+</head>
+<body>
+
+<!-- ========== DAY 1 · The idea + finding your axis ========== -->
+<section class="c night centred" id="day-1-slide-1">
+  <div class="axis"></div>
+  <div class="gap-m"></div>
+  <div class="logo mark" style="width:390px"></div>
+  <div class="gap-m"></div>
+  <div class="logo name" style="width:380px"></div>
+  <div class="gap-s"></div>
+  <div class="logo tag" style="width:320px"></div>
+  <div class="grow"></div>
+  <p class="mid" style="font-size:50px">Two bodies.<br>One centre.<br><b>One axis.</b></p>
+  <div class="grow"></div>
+  <div class="foot"><span>derogue.art</span><span>Swipe →</span></div>
+</section>
+
+<section class="c ink" id="day-1-slide-2">
+  <div class="axis" style="--c:39.5%"><i></i></div>
+  <p class="label">The idea</p>
+  <div class="grow"></div>
+  <p class="big">Two bodies.</p>
+  <div class="gap-l"></div>
+  <p class="big"><b>One centre.</b></p>
+  <div class="gap-l"></div>
+  <p class="big">One axis.</p>
+  <div class="grow"></div>
+  <p class="body">Partner dance begins when two people stop balancing alone and start balancing together.</p>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>2 / 4</span></div>
+</section>
+
+<section class="c night" id="day-1-slide-3">
+  <div class="axis" style="--c:15%"><i></i></div>
+  <p class="label">Practice · 30 seconds · alone</p>
+  <div class="gap-m"></div>
+  <p class="big">Before you dance, <b>stand.</b></p>
+  <div class="grow"></div>
+  <div class="steps">
+    <div><p class="label">Ground</p><p class="mid">Feel the whole foot on the floor.</p></div>
+    <div><p class="label">Breathe</p><p class="mid">Breathe out. Let the weight drop.</p></div>
+    <div><p class="label">Axis</p><p class="mid">Find the line from crown to floor. Stay on it.</p></div>
+  </div>
+  <div class="grow"></div>
+  <div class="foot"><div class="logo name"></div><span>3 / 4</span></div>
+</section>
+
+<section class="c ink" id="day-1-slide-4">
+  <div class="axis" style="--c:15%"><i></i></div>
+  <p class="label">Practice · 1 minute · with a partner</p>
+  <div class="gap-m"></div>
+  <p class="big">Now <b>share it.</b></p>
+  <div class="grow"></div>
+  <div class="steps">
+    <div><p class="label">Face</p><p class="mid">Stand facing each other, palms lightly together.</p></div>
+    <div><p class="label">Close</p><p class="mid">Close your eyes. Shift your weight slowly.</p></div>
+    <div><p class="label">Find</p><p class="mid">Stop where neither of you leads. <b>That is the centre.</b></p></div>
+  </div>
+  <div class="grow"></div>
+  <div class="foot"><div class="logo name"></div><span>Save · 4 / 4</span></div>
+</section>
+
+<!-- ========== DAY 2 · Principles I–III ========== -->
+<section class="c ink" id="day-2-slide-1">
+  <div class="axis" style="--c:15%"><i></i></div>
+  <p class="label">Six principles · Part one</p>
+  <div class="gap-m"></div>
+  <p class="big">Improve your <b>bachata</b> from the centre.</p>
+  <div class="gap-m"></div>
+  <p class="body">Lead–follow for Bachata, built on one idea: two bodies, one centre, one axis.</p>
+  <div class="grow"></div>
+  <div class="list">
+    <p><span>I</span>Body, Bond, Beyond</p>
+    <p><span>II</span>Legato</p>
+    <p><span>III</span>Pause, Presence, Pivot</p>
+  </div>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>Swipe →</span></div>
+</section>
+
+<section class="c night" id="day-2-slide-2">
+  <div class="axis" style="--c:16%"><i></i></div>
+  <p class="label">Six principles</p>
+  <div class="gap-m"></div>
+  <p class="roman">I</p>
+  <div class="gap-m"></div>
+  <p class="mid">Body, Bond, <b>Beyond</b></p>
+  <div class="gap-s"></div>
+  <p class="body">Ground in yourself. Listen to your partner. Expand into the space.</p>
+  <div class="grow"></div>
+  <div class="cue"><p class="label">Practise</p><p>Dance one song in three parts: only you, only them, only the room.</p></div>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>2 / 4</span></div>
+</section>
+
+<section class="c ink" id="day-2-slide-3">
+  <div class="axis" style="--c:16%"><i></i></div>
+  <p class="label">Six principles</p>
+  <div class="gap-m"></div>
+  <p class="roman">II</p>
+  <div class="gap-m"></div>
+  <p class="mid"><b>Legato</b></p>
+  <div class="gap-s"></div>
+  <p class="body">Your centre of gravity travels on one continuous, unbroken path.</p>
+  <div class="grow"></div>
+  <div class="cue"><p class="label">Practise</p><p>Walk your basic as if carrying a full glass of water on your head.</p></div>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>3 / 4</span></div>
+</section>
+
+<section class="c night" id="day-2-slide-4">
+  <div class="axis" style="--c:16%"><i></i></div>
+  <p class="label">Six principles</p>
+  <div class="gap-m"></div>
+  <p class="roman">III</p>
+  <div class="gap-m"></div>
+  <p class="mid">Pause, Presence, <b>Pivot</b></p>
+  <div class="gap-s"></div>
+  <p class="body">Stop the movement. Find each other. Then redirect together.</p>
+  <div class="grow"></div>
+  <div class="cue"><p class="label">Practise</p><p>Once every song, stop completely. Wait until you both feel ready. Then move.</p></div>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>4 / 4</span></div>
+</section>
+
+<!-- ========== DAY 3 · Principles IV–VI + myth vs truth ========== -->
+<section class="c ink" id="day-3-slide-1">
+  <div class="axis" style="--c:16%"><i></i></div>
+  <p class="label">Six principles · Part two</p>
+  <div class="gap-m"></div>
+  <p class="roman">IV</p>
+  <div class="gap-m"></div>
+  <p class="mid">Bounce and <b>Roll</b></p>
+  <div class="gap-s"></div>
+  <p class="body">When bodies meet, rebound elastically or redirect.</p>
+  <div class="grow"></div>
+  <div class="cue"><p class="label">Practise</p><p>Let contact be soft enough to give, and firm enough to answer.</p></div>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>Swipe →</span></div>
+</section>
+
+<section class="c night" id="day-3-slide-2">
+  <div class="axis" style="--c:16%"><i></i></div>
+  <p class="label">Six principles</p>
+  <div class="gap-m"></div>
+  <p class="roman">V</p>
+  <div class="gap-m"></div>
+  <p class="mid"><b>Humility</b></p>
+  <div class="gap-s"></div>
+  <p class="body">When the connection is lost, surrender your movement. Find your partner before you continue.</p>
+  <div class="grow"></div>
+  <div class="cue"><p class="label">Practise</p><p>Lost? Do less. Return to the basic until you find each other again.</p></div>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>2 / 4</span></div>
+</section>
+
+<section class="c ink" id="day-3-slide-3">
+  <div class="axis" style="--c:16%"><i></i></div>
+  <p class="label">Six principles</p>
+  <div class="gap-m"></div>
+  <p class="roman">VI</p>
+  <div class="gap-m"></div>
+  <p class="mid">Lazy, <b>in time</b></p>
+  <div class="gap-s"></div>
+  <p class="body">Relaxed, almost lazy, yet exactly on the music.</p>
+  <div class="grow"></div>
+  <div class="cue"><p class="label">Practise</p><p>Arrive on every beat with the least effort you can.</p></div>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>3 / 4</span></div>
+</section>
+
+<section class="c night" id="day-3-slide-4">
+  <div class="axis" style="--c:52%"><i></i></div>
+  <p class="label">Myth</p>
+  <div class="gap-s"></div>
+  <p class="mid" style="color:var(--soft)">A strong frame needs strong arms.</p>
+  <div class="grow"></div>
+  <p class="label">Truth</p>
+  <div class="gap-s"></div>
+  <p class="big">A clear frame needs a <b>quiet body.</b></p>
+  <div class="gap-m"></div>
+  <p class="body">Tone, not tension. The signal travels from centre to centre. The arms only carry it.</p>
+  <div class="grow"></div>
+  <div class="foot"><div class="logo name"></div><span>4 / 4</span></div>
+</section>
+
+<!-- ========== DAY 4 · Lead / follow + the Wednesday workshop ========== -->
+<section class="c ink" id="day-4-slide-1">
+  <div class="axis" style="--c:16%"><i></i></div>
+  <p class="label">Lead &amp; follow</p>
+  <div class="gap-m"></div>
+  <p class="big">Who starts the <b>movement?</b></p>
+  <div class="grow"></div>
+  <div class="list">
+    <p><span>A</span>The lead</p>
+    <p><span>B</span>The follow</p>
+    <p><span>C</span>Neither</p>
+  </div>
+  <div class="gap-m"></div>
+  <div class="foot"><div class="logo name"></div><span>Swipe for the answer →</span></div>
+</section>
+
+<section class="c night" id="day-4-slide-2">
+  <div class="axis" style="--c:12%"><i></i></div>
+  <p class="label">The answer</p>
+  <div class="gap-m"></div>
+  <p class="big"><b>The centre does.</b></p>
+  <div class="grow"></div>
+  <div class="steps">
+    <div><p class="label">The lead</p><p class="mid">proposes from the centre.</p></div>
+    <div><p class="label">The follow</p><p class="mid">answers from the centre.</p></div>
+    <div><p class="label">The arms</p><p class="mid">only carry the message.</p></div>
+  </div>
+  <div class="grow"></div>
+  <div class="foot"><div class="logo name"></div><span>2 / 4</span></div>
+</section>
+
+<section class="c ink" id="day-4-slide-3">
+  <div class="axis" style="--c:15%"><i></i></div>
+  <p class="label">Lead–follow for Bachata</p>
+  <div class="gap-m"></div>
+  <p class="big">Want to improve your <b>bachata?</b></p>
+  <div class="grow"></div>
+  <div class="steps">
+    <div><p class="label">Your axis</p><p class="mid">Stand on your own line.</p></div>
+    <div><p class="label">Their axis</p><p class="mid">Feel theirs without leaning on it.</p></div>
+    <div><p class="label">The centre</p><p class="mid">Move from the point you share.</p></div>
+  </div>
+  <div class="grow"></div>
+  <div class="foot"><div class="logo name"></div><span>3 / 4</span></div>
+</section>
+
+<section class="c night centred" id="day-4-slide-4">
+  <div class="axis"></div>
+  <div class="gap-m"></div>
+  <div class="logo lockup" style="width:350px"></div>
+  <div class="gap-m"></div>
+  <p class="label">Join us</p>
+  <div class="gap-s"></div>
+  <p class="mid">The Wednesday <b>workshop</b></p>
+  <div class="gap-m"></div>
+  <div class="details">
+    <p>7:30–8:45 pm · Keystone Crescent, King's Cross</p>
+    <p class="soft">£10 + booking fee · no partner needed</p>
+    <p class="soft">Free bachata social from 9 pm</p>
+  </div>
+  <div class="grow"></div>
+  <p class="label" style="color:var(--fg)">Book at derogue.art</p>
+</section>
+
+</body>
+</html>

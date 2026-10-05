@@ -6,23 +6,23 @@
 <title>deRogue</title>
 <meta name="description" content="deRogue — partner connection workshops in London. Lead, follow and connection for any partner dance. First workshop: Wednesday 30 September, Keystone Crescent, King's Cross.">
 <meta property="og:title" content="deRogue — the art of connection">
-<meta property="og:description" content="Lead–follow connection workshops for any partner dance. First workshop Wed 30 Sep · Keystone Crescent, King's Cross · 7:30–9 pm · £10.">
+<meta property="og:description" content="Lead–follow connection workshops for any partner dance. First workshop Wed 30 Sep · Keystone Crescent, King's Cross · 7:30–8:45 pm · £10.">
 <meta property="og:image" content="https://roguebachata.com/derogue/social/derogue-workshop-01-square-ink.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,900;1,9..144,300&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-  /* Theme tokens. Ink = the logo as drawn. Night = inverted. Saffron = robe & marigold. */
+  /* Theme tokens, black and white only. Ink = the logo as drawn. Night = inverted. */
   :root {
-    --paper: #fbfaf7;
-    --paper-2: #f1efe9;
-    --ink: #111110;
-    --ink-soft: #55534e;
-    --rule: #d9d6cd;
-    --logo: #111110;
-    --accent: #111110;
-    --on-accent: #fbfaf7;
+    --paper: #f7f7f7;
+    --paper-2: #ececec;
+    --ink: #111111;
+    --ink-soft: #555555;
+    --rule: #d6d6d6;
+    --logo: #111111;
+    --accent: #111111;
+    --on-accent: #f7f7f7;
     --display: "Fraunces", "Iowan Old Style", Georgia, serif;
     --body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
     --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
@@ -30,26 +30,21 @@
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]):not([data-look]) {
-      --paper: #0e0e0d; --paper-2: #1a1a18; --ink: #efece4; --ink-soft: #a7a397;
-      --rule: #34332f; --logo: #efece4; --accent: #efece4; --on-accent: #0e0e0d;
+      --paper: #0d0d0d; --paper-2: #1a1a1a; --ink: #efefef; --ink-soft: #a3a3a3;
+      --rule: #333333; --logo: #efefef; --accent: #efefef; --on-accent: #0d0d0d;
       color-scheme: dark;
     }
   }
   :root[data-theme="dark"]:not([data-look]),
   :root[data-look="night"] {
-    --paper: #0e0e0d; --paper-2: #1a1a18; --ink: #efece4; --ink-soft: #a7a397;
-    --rule: #34332f; --logo: #efece4; --accent: #efece4; --on-accent: #0e0e0d;
+    --paper: #0d0d0d; --paper-2: #1a1a1a; --ink: #efefef; --ink-soft: #a3a3a3;
+    --rule: #333333; --logo: #efefef; --accent: #efefef; --on-accent: #0d0d0d;
     color-scheme: dark;
   }
   :root[data-look="ink"] {
-    --paper: #fbfaf7; --paper-2: #f1efe9; --ink: #111110; --ink-soft: #55534e;
-    --rule: #d9d6cd; --logo: #111110; --accent: #111110; --on-accent: #fbfaf7;
+    --paper: #f7f7f7; --paper-2: #ececec; --ink: #111111; --ink-soft: #555555;
+    --rule: #d6d6d6; --logo: #111111; --accent: #111111; --on-accent: #f7f7f7;
     color-scheme: light;
-  }
-  :root[data-look="saffron"] {
-    --paper: #4a1512; --paper-2: #5b1d18; --ink: #f6e7cf; --ink-soft: #d9b98f;
-    --rule: #7a3226; --logo: #f2a33a; --accent: #f2a33a; --on-accent: #3a100d;
-    color-scheme: dark;
   }
 
   *, *::before, *::after { box-sizing: border-box; }
@@ -98,9 +93,8 @@
     box-shadow: inset 0 0 0 5px var(--sw-ring);
   }
   .looks button[aria-pressed="true"] { outline: 2px solid var(--ink); outline-offset: 2px; }
-  .looks [data-set="ink"] { --sw: #111110; --sw-ring: #fbfaf7; }
-  .looks [data-set="night"] { --sw: #efece4; --sw-ring: #0e0e0d; }
-  .looks [data-set="saffron"] { --sw: #f2a33a; --sw-ring: #4a1512; }
+  .looks [data-set="ink"] { --sw: #111111; --sw-ring: #f7f7f7; }
+  .looks [data-set="night"] { --sw: #efefef; --sw-ring: #0d0d0d; }
   @media (max-width: 720px) { nav.links { display: none; } }
 
   /* Hero */
@@ -232,7 +226,6 @@
       <span>Theme</span>
       <button type="button" id="look-ink" data-set="ink" aria-pressed="false" title="Ink: black on paper"></button>
       <button type="button" id="look-night" data-set="night" aria-pressed="false" title="Night: bone on black"></button>
-      <button type="button" id="look-saffron" data-set="saffron" aria-pressed="false" title="Saffron: marigold on robe"></button>
     </div>
   </div>
 </header>
@@ -260,7 +253,7 @@
       <p class="eyebrow">Now booking</p>
       <div>
         <h2 id="ws-h">Our <b>first</b> workshop.</h2>
-        <p>Ninety focused minutes on the single thing every partner dance depends on. Same room as Rogue Bachata Wednesdays, followed by a social until late.</p>
+        <p>A focused evening session on the single thing every partner dance depends on. Same room as Rogue Bachata Wednesdays, followed by a free bachata social from 9 pm.</p>
       </div>
     </div>
 
@@ -280,8 +273,8 @@
       <div class="stub">
         <dl>
           <div class="row"><dt>Date</dt><dd><time datetime="2026-09-30">Wednesday 30 September 2026</time></dd></div>
-          <div class="row"><dt>Time</dt><dd><time datetime="2026-09-30T19:30">7:30</time>–<time datetime="2026-09-30T21:00">9:00 pm</time><small>Includes a 5-minute practice &amp; drinks break</small></dd></div>
-          <div class="row"><dt>After</dt><dd>Social until late</dd></div>
+          <div class="row"><dt>Time</dt><dd><time datetime="2026-09-30T19:30">7:30</time>–<time datetime="2026-09-30T20:45">8:45 pm</time><small>Includes a 5-minute practice &amp; drinks break</small></dd></div>
+          <div class="row"><dt>After</dt><dd>Free bachata social from 9 pm</dd></div>
           <div class="row"><dt>Venue</dt><dd>Keystone Crescent<small>King's Cross, London N1 9DX</small></dd></div>
           <div class="row"><dt>Price</dt><dd>£10 + booking fee</dd></div>
           <div class="row"><dt>Who</dt><dd>All levels, any dance style<small>No partner needed. We rotate.</small></dd></div>
@@ -441,6 +434,7 @@
     }
     var stored = null;
     try { stored = localStorage.getItem("derogue-look"); } catch (e) {}
+    if (stored !== "ink" && stored !== "night") stored = null;
     apply(stored, false);
     buttons.forEach(function (b) { b.addEventListener("click", function () { apply(b.dataset.set, true); }); });
     try { window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paint); } catch (e) {}

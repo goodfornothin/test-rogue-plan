@@ -20,14 +20,14 @@ From the people behind Rogue Bachata. First workshop announced this week.
 #deRogue #partnerdance #connection #leadandfollow #londondance #bachatalondon #dancelondon
 ```
 
-## Workshop 01 (Wed 30 Sep, 7:30–9 pm, Keystone Crescent)
+## Workshop 01 (Wed 30 Sep, 7:30–8:45 pm, Keystone Crescent)
 
 Images: derogue-workshop-01-square-ink.png, derogue-workshop-01-square-saffron.png, derogue-workshop-01-story-night.png, derogue-workshop-01-story-ink.png
 
 ```
 deRogue Workshop 01 · The Listening Frame
 
-Ninety minutes on the thing every partner dance depends on: connection before steps.
+One evening on the thing every partner dance depends on: connection before steps.
 
 We work on
 · Ground: your own axis before you share it
@@ -35,7 +35,7 @@ We work on
 · Listen: lead asks, follow answers, both hear
 · Pause: what to do when the connection drops
 
-Wednesday 30 September · 7:30–9 pm (with a 5-minute practice & drinks break)
+Wednesday 30 September · 7:30–8:45 pm (with a 5-minute practice & drinks break)
 Keystone Crescent, King's Cross, N1 9DX
 £10 + booking fee · all levels · no partner needed
 
