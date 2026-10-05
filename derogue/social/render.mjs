@@ -17,6 +17,8 @@ await page.route(/fonts\.(googleapis|gstatic)\.com/, async (route) => {
 });
 await page.goto(`http://localhost:8765/derogue/social/${which}.html`, { waitUntil: "networkidle" });
 await page.evaluate(() => document.fonts.ready);
+// Stories are animated: show their settled end state in the still PNGs.
+if (which === "stories") await page.evaluate(() => document.getAnimations().forEach((a) => { a.pause(); a.currentTime = 7600; }));
 console.log("fonts:", await page.evaluate(() => [...new Set([...document.fonts].filter(f => f.status === "loaded").map(f => f.family))].join(", ")));
 for (const id of await page.$$eval(selector, els => els.map(e => e.id))) {
   await page.locator("#" + id).screenshot({ path: `${outDir}/${id}.png` });

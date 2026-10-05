@@ -1,7 +1,12 @@
 # deRogue Instagram stories
 
-16 black-and-white stories (1080×1920), rendered from `../stories.html`
-(`NODE_USE_ENV_PROXY=1 node derogue/social/render.mjs stories`).
+16 black-and-white stories (1080×1920), rendered from `../stories.html`.
+
+- **Animated** (8 s MP4, post these): `video/*.mp4`, made with
+  `FFMPEG=/path/to/ffmpeg NODE_USE_ENV_PROXY=1 node derogue/social/render-video.mjs`
+- **Still** (final frame, PNG): `*.png`, made with `NODE_USE_ENV_PROXY=1 node derogue/social/render.mjs stories`
+
+Both need `python3 -m http.server 8765` running at the repo root.
 The text is kept clear of the top 230px and bottom 320px, where Instagram puts its own buttons.
 
 ## The set

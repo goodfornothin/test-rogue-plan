@@ -17,8 +17,11 @@
   .night { --bg: #0c0c0c; --fg: #f3f3ef; --soft: #9a9a95; --hair: #f3f3ef; }
 
   /* The axis: one hairline down every story, with the centre of gravity as a dot. */
-  .axis { position: absolute; left: 118px; top: 230px; bottom: 320px; width: 1px; background: var(--hair); opacity: .35; }
-  .axis i { position: absolute; left: -9px; width: 19px; height: 19px; border-radius: 50%; background: var(--fg); top: var(--c, 50%); transform: translateY(-50%); }
+  .axis { position: absolute; left: 118px; top: 230px; bottom: 320px; width: 1px; }
+  .axis .line { position: absolute; inset: 0; background: var(--hair); opacity: .35; transform-origin: 50% 0; }
+  .axis i, .axis .twin, .axis .ripple { position: absolute; left: -9px; width: 19px; height: 19px; border-radius: 50%; top: var(--c, 50%); transform: translateY(-50%); }
+  .axis i, .axis .twin { background: var(--fg); }
+  .axis .ripple { border: 1.5px solid var(--fg); box-sizing: border-box; opacity: 0; }
   .s.centred { padding-left: 110px; align-items: center; text-align: center; }
   .s.centred .axis { left: 50%; }
 
@@ -70,7 +73,7 @@
 </section>
 
 <!-- 02 · Manifesto -->
-<section class="s ink" id="story-02-manifesto">
+<section class="s ink" id="story-02-manifesto" data-twins>
   <div class="axis" style="--c:36.5%"><i></i></div>
   <p class="label">deRogue · the idea</p>
   <div class="grow"></div>
@@ -286,10 +289,69 @@
   <div class="gap-m"></div>
   <p class="mid" style="font-size:52px">Partner connection workshops.<br>London.</p>
   <div class="gap-m"></div>
-  <p class="body" style="max-width:none">For any partner dance. No partner needed.</p>
+  <p class="body" style="max-width:none">Lead–follow for Bachata. No partner needed.</p>
   <div class="grow"></div>
   <p class="label">Next dates soon · derogue.art</p>
 </section>
 
+
+<script>
+  // Calm motion for the stories. Every animation is a Web Animation so the renderer
+  // can pause and seek them frame by frame (see render.mjs). Story length: 8 s.
+  const ease = "cubic-bezier(.45,0,.15,1)";
+  document.querySelectorAll(".s").forEach((story) => {
+    const axis = story.querySelector(".axis");
+    const twins = story.hasAttribute("data-twins");
+    if (axis) {
+      const line = document.createElement("b"); line.className = "line"; axis.prepend(line);
+      line.animate([{ transform: "scaleY(0)" }, { transform: "scaleY(1)" }], { duration: 1800, easing: ease, fill: "both" });
+      const dot = axis.querySelector("i");
+      if (dot) {
+        const appear = twins ? 3300 : 1500;
+        dot.animate([{ opacity: 0, transform: "translateY(-50%) scale(.2)" }, { opacity: 1, transform: "translateY(-50%) scale(1)" }],
+          { duration: 700, delay: appear, easing: ease, fill: "both" });
+        dot.animate([{ scale: 1 }, { scale: 1.28 }, { scale: 1 }], { duration: 4200, delay: appear + 700, iterations: Infinity, easing: "ease-in-out" });
+        const ripple = document.createElement("span"); ripple.className = "ripple"; axis.append(ripple);
+        ripple.animate([{ opacity: .55, transform: "translateY(-50%) scale(1)" }, { opacity: 0, transform: "translateY(-50%) scale(7)" }],
+          { duration: 4200, delay: appear + 900, iterations: Infinity, easing: "cubic-bezier(.2,.6,.3,1)" });
+        if (twins) {
+          // Two bodies circle the axis and settle into one centre.
+          [1, -1].forEach((side) => {
+            const t = document.createElement("span"); t.className = "twin"; axis.append(t);
+            const frames = [];
+            for (let k = 0; k <= 24; k++) {
+              const p = k / 24, r = 64 * (1 - p) ** 1.4, a = side * (Math.PI * 3 * p) + (side < 0 ? Math.PI : 0);
+              frames.push({ transform: `translate(${(r * Math.cos(a)).toFixed(1)}px, calc(-50% + ${(r * Math.sin(a) * 1.8).toFixed(1)}px))`, opacity: p > .96 ? 0 : 1, offset: p });
+            }
+            t.animate(frames, { duration: 2600, delay: 900, easing: "cubic-bezier(.3,0,.25,1)", fill: "both" });
+            t.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 500, delay: 700, fill: "backwards" });
+          });
+        }
+      }
+    }
+    // Content eases in, one element after another.
+    const items = [...story.children].filter((el) =>
+      !el.matches(".axis, .grow, .sticker, [class^='gap-']"));
+    let delay = twins ? 1000 : 900;
+    items.forEach((el) => {
+      if (el.matches(".mark, .lockup")) {
+        el.animate([{ clipPath: "inset(100% 0 0 0)", opacity: .2 }, { clipPath: "inset(0 0 0 0)", opacity: 1 }], { duration: 2600, delay, easing: ease, fill: "both" });
+        el.animate([{ rotate: "-1.2deg" }, { rotate: "1.2deg" }, { rotate: "-1.2deg" }], { duration: 8000, iterations: Infinity, easing: "ease-in-out" });
+        el.style.transformOrigin = "50% 90%";
+        delay += 1400; return;
+      }
+      if (el.matches(".roman")) {
+        el.animate([{ opacity: 0, letterSpacing: ".35em", filter: "blur(10px)" }, { opacity: 1, letterSpacing: "-.03em", filter: "blur(0)" }], { duration: 1800, delay, easing: ease, fill: "both" });
+        delay += 700; return;
+      }
+      el.animate([{ opacity: 0, transform: "translateY(28px)", filter: "blur(8px)" }, { opacity: 1, transform: "none", filter: "blur(0)" }],
+        { duration: 1200, delay, easing: ease, fill: "both" });
+      delay += el.matches(".big") ? 520 : 320;
+    });
+  });
+  window.storyDuration = 8000;
+  // When rendering video, hold everything at the start so frames never come from a live clock.
+  if (location.search.includes("render")) document.getAnimations().forEach((a) => { a.pause(); a.currentTime = 0; });
+</script>
 </body>
 </html>

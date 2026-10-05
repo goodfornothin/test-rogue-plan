@@ -11,7 +11,7 @@ Introducing deRogue.
 
 A new home for the part of partner dance that steps can't teach: how two bodies listen, lead, follow and move as one.
 
-Connection workshops for any partner dance. Bachata, salsa, kizomba, zouk, tango, swing, ballroom, or none at all. We use bachata as the lab. Your dance is the point.
+Lead–follow for Bachata. If you want to improve your bachata, start with the basic principles of partner dance.
 
 Ground · Listen · Release
 
@@ -37,7 +37,7 @@ We work on
 
 Wednesday 30 September · 7:30–9 pm (with a 5-minute practice & drinks break)
 Keystone Crescent, King's Cross, N1 9DX
-£10 + booking fee · all levels · any dance style · no partner needed
+£10 + booking fee · all levels · no partner needed
 
 Followed by a social until late.
 Reserve: link in bio / DM us
