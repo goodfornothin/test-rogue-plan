@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>deRogue logo animations</title>
+<!--
+  Four logo animations, chosen with ?a=legato | two-bodies | breath | ground-listen-release
+  The stage fills the window, so the same file renders square (1080×1080) and story (1080×1920).
+  Render to MP4 with: node derogue/social/render-logo.mjs
+-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wght@8..144,200;8..144,300;8..144,800&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  html, body { margin: 0; height: 100%; }
+  .ink   { --bg: #f7f7f7; --fg: #0d0d0d; --soft: #6b6b6b; }
+  .night { --bg: #0d0d0d; --fg: #f2f2f2; --soft: #9c9c9c; }
+  .stage {
+    position: relative; width: 100vw; height: 100vh; overflow: hidden;
+    background: var(--bg); color: var(--fg);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: "Roboto Serif", Georgia, serif;
+  }
+  .lockup { display: flex; flex-direction: column; align-items: center; }
+  .mark-wrap { position: relative; width: 46vmin; aspect-ratio: 2003 / 2188; }
+  .mark-wrap > * { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .logo { background: var(--fg); -webkit-mask: var(--src) center / contain no-repeat; mask: var(--src) center / contain no-repeat; }
+  .mark  { --src: url("../assets/final/derogue-mark-outline.png"); }
+  .solid { --src: url("../assets/final/derogue-mark-solid.png"); inset: 1.5% 2.5% 2.5% 2.5% !important; width: auto !important; height: auto !important; }
+  .name  { --src: url("../assets/final/derogue-name.png"); width: 42vmin; aspect-ratio: 1566 / 382; }
+  .tag   { --src: url("../assets/final/derogue-tagline.png"); width: 34vmin; aspect-ratio: 1468 / 135; }
+  .text-cell { display: grid; justify-items: center; margin-top: 4.2vmin; }
+  .text-cell > * { grid-area: 1 / 1; }
+  .words { display: grid; justify-items: center; gap: 1.8vmin; }
+  svg.draw { overflow: visible; }
+  svg.draw path { stroke: var(--fg); stroke-width: 7; stroke-linejoin: round; stroke-linecap: round; }
+  .axis { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--fg); opacity: .28; transform-origin: 50% 0; }
+  .dot, .ring { position: absolute; left: 50%; width: 2vmin; height: 2vmin; margin: -1vmin 0 0 -1vmin; border-radius: 50%; }
+  .dot { background: var(--fg); }
+  .ring { border: 1.5px solid var(--fg); box-sizing: border-box; opacity: 0; }
+  .caption { font: 500 3.1vmin/1 "IBM Plex Mono", monospace; letter-spacing: .3em; text-transform: uppercase; color: var(--fg); opacity: 0; }
+  .word { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); text-align: center;
+          font-weight: 200; font-size: 13vmin; letter-spacing: -.02em; opacity: 0; }
+  .word b { font-weight: 800; }
+</style>
+</head>
+<body>
+<div class="stage" id="stage"></div>
+
+<script>
+  // Every animation is a Web Animation, so the renderer can pause and seek it frame by frame.
+  const params = new URLSearchParams(location.search);
+  const which = params.get("a") || "legato";
+  const stage = document.getElementById("stage");
+  const ease = "cubic-bezier(.45,0,.15,1)";
+  const soft = "cubic-bezier(.3,0,.2,1)";
+  const el = (cls, parent = stage, tag = "div") => { const e = document.createElement(tag); e.className = cls; parent.append(e); return e; };
+  const anim = (node, frames, opts) => node.animate(frames, { fill: "both", easing: ease, ...opts });
+  const fadeUp = (node, delay, duration = 1400) =>
+    anim(node, [{ opacity: 0, transform: "translateY(2.4vmin)", filter: "blur(6px)" }, { opacity: 1, transform: "none", filter: "blur(0)" }], { delay, duration });
+  const sway = (node, delay) =>
+    node.animate([{ rotate: "0deg" }, { rotate: "-.9deg" }, { rotate: ".9deg" }, { rotate: "0deg" }], { delay, duration: 9000, iterations: Infinity, easing: "ease-in-out" });
+
+  function lockup() {
+    const box = el("lockup");
+    const wrap = el("mark-wrap", box);
+    wrap.style.transformOrigin = "50% 92%";
+    const cell = el("text-cell", box);
+    const words = el("words", cell);
+    const name = el("logo name", words), tag = el("logo tag", words);
+    return { box, wrap, cell, name, tag };
+  }
+
+  const builders = {
+    // 1 · Legato: the line never breaks. The figures draw themselves in one continuous movement.
+    async legato() {
+      stage.classList.add("ink");
+      const { wrap, name, tag } = lockup();
+      const svgText = await (await fetch("../assets/final/derogue-mark-outline-paths.svg")).text();
+      wrap.insertAdjacentHTML("beforeend", svgText);
+      const svg = wrap.querySelector("svg"); svg.classList.add("draw");
+      const mark = el("logo mark", wrap);
+      svg.querySelectorAll("path").forEach((p, i) => {
+        const len = p.getTotalLength();
+        p.style.strokeDasharray = `${len} ${len}`;
+        anim(p, [{ strokeDashoffset: len }, { strokeDashoffset: 0 }], { delay: 300 + i * 90, duration: 4200, easing: "cubic-bezier(.5,0,.25,1)" });
+      });
+      anim(mark, [{ opacity: 0 }, { opacity: 1 }], { delay: 4000, duration: 1000 });
+      anim(svg, [{ opacity: 1 }, { opacity: 0 }], { delay: 4400, duration: 800 });
+      anim(name, [{ clipPath: "inset(0 100% 0 0)", opacity: .3 }, { clipPath: "inset(0 0 0 0)", opacity: 1 }], { delay: 4600, duration: 1500 });
+      fadeUp(tag, 5600);
+      sway(wrap, 6000);
+      return 9000;
+    },
+
+    // 2 · Two bodies, one centre, one axis: two figures drift in from either side and become one.
+    async ["two-bodies"]() {
+      stage.classList.add("night");
+      const axis = el("axis");
+      const { wrap, cell, name, tag } = lockup();
+      const left = el("logo mark", wrap), right = el("logo mark", wrap), mark = el("logo mark", wrap);
+      const dot = el("dot", wrap); dot.style.top = "50%";
+      anim(axis, [{ transform: "scaleY(0)", opacity: .28 }, { transform: "scaleY(1)", opacity: .28, offset: .45 }, { transform: "scaleY(1)", opacity: 0 }], { delay: 200, duration: 5200 });
+      [[left, -1], [right, 1]].forEach(([m, side]) => {
+        anim(m, [
+          { opacity: 0, transform: `translateX(${side * 30}vmin)`, filter: "blur(10px)" },
+          { opacity: .55, transform: `translateX(${side * 14}vmin)`, filter: "blur(4px)", offset: .4 },
+          { opacity: .55, transform: "translateX(0)", filter: "blur(0)", offset: .9 },
+          { opacity: 0, transform: "translateX(0)", filter: "blur(0)" }], { delay: 300, duration: 3900, easing: soft });
+      });
+      anim(dot, [{ opacity: 0, transform: "scale(.2)" }, { opacity: 1, transform: "scale(1)", offset: .35 }, { opacity: 1, transform: "scale(1)", offset: .7 }, { opacity: 0, transform: "scale(3)" }], { delay: 2900, duration: 1600 });
+      anim(mark, [{ opacity: 0, filter: "blur(4px)" }, { opacity: 1, filter: "blur(0)" }], { delay: 3500, duration: 1300 });
+      ["Two bodies", "One centre", "One axis"].forEach((t, i) => {
+        const c = el("caption", cell); c.textContent = t;
+        anim(c, [{ opacity: 0, filter: "blur(4px)" }, { opacity: 1, filter: "blur(0)", offset: .3 }, { opacity: 1, filter: "blur(0)", offset: .7 }, { opacity: 0, filter: "blur(4px)" }], { delay: 500 + i * 1300, duration: 1500, easing: "ease-in-out" });
+      });
+      fadeUp(name, 4900); fadeUp(tag, 5600);
+      sway(wrap, 6000);
+      return 9000;
+    },
+
+    // 3 · Breath: find the axis, find the centre, breathe, and the dancers open out from that point.
+    async breath() {
+      stage.classList.add("night");
+      const axis = el("axis");
+      const { wrap, name, tag } = lockup();
+      const mark = el("logo solid", wrap);
+      const dot = el("dot", wrap); dot.style.top = "50%";
+      anim(axis, [{ transform: "scaleY(0)" }, { transform: "scaleY(1)" }], { duration: 1800 });
+      anim(axis, [{ opacity: .28 }, { opacity: .1 }], { delay: 4200, duration: 1500 });
+      anim(dot, [{ opacity: 0, transform: "scale(.2)" }, { opacity: 1, transform: "scale(1)" }], { delay: 1300, duration: 700 });
+      [1800, 2800, 3800].forEach((d) => {
+        const r = el("ring", wrap); r.style.top = "50%";
+        r.animate([{ opacity: .6, transform: "scale(1)" }, { opacity: 0, transform: "scale(26)" }], { delay: d, duration: 2600, fill: "both", easing: "cubic-bezier(.2,.6,.3,1)" });
+      });
+      anim(mark, [{ clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(75% at 50% 50%)" }], { delay: 2500, duration: 2600, easing: "cubic-bezier(.55,0,.2,1)" });
+      anim(dot, [{ opacity: 1 }, { opacity: 0 }], { delay: 4300, duration: 600, fill: "forwards" });
+      fadeUp(name, 4700); fadeUp(tag, 5400);
+      wrap.animate([{ scale: 1 }, { scale: 1.015 }, { scale: 1 }], { delay: 5200, duration: 5000, iterations: Infinity, easing: "ease-in-out" });
+      return 9000;
+    },
+
+    // 4 · Ground. Listen. Release. — then the logo arrives, unhurried.
+    async ["ground-listen-release"]() {
+      stage.classList.add("ink");
+      const { wrap, name, tag } = lockup();
+      const mark = el("logo mark", wrap);
+      const words = [["Ground.", { transform: "translateY(-50%) translateY(3vmin)" }], ["Listen.", { transform: "translateY(-50%) scale(.96)" }], ["<b>Release.</b>", { transform: "translateY(-50%) translateY(0)" }]];
+      words.forEach(([html, from], i) => {
+        const w = el("word"); w.innerHTML = html;
+        const out = i === 2 ? { opacity: 0, transform: "translateY(-50%) translateY(-6vmin)", filter: "blur(12px)" }
+                            : { opacity: 0, transform: "translateY(-50%)", filter: "blur(8px)" };
+        anim(w, [{ opacity: 0, filter: "blur(8px)", ...from }, { opacity: 1, transform: "translateY(-50%)", filter: "blur(0)", offset: .35 },
+                 { opacity: 1, transform: "translateY(-50%)", filter: "blur(0)", offset: .72 }, out], { delay: 300 + i * 1750, duration: 2100, easing: "ease-in-out" });
+      });
+      anim(mark, [{ opacity: 0, transform: "scale(1.05)", filter: "blur(10px)" }, { opacity: 1, transform: "scale(1)", filter: "blur(0)" }], { delay: 5600, duration: 1800 });
+      fadeUp(name, 6600); fadeUp(tag, 7200);
+      sway(wrap, 7600);
+      return 10000;
+    },
+  };
+
+  window.animReady = (async () => {
+    await document.fonts.ready;
+    window.animDuration = await builders[which]();
+    if (params.has("render")) document.getAnimations().forEach((a) => { a.pause(); a.currentTime = 0; });
+    return window.animDuration;
+  })();
+</script>
+</body>
+</html>
