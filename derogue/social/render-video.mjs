@@ -2,6 +2,7 @@
 //   python3 -m http.server 8765        (from the repo root, in another shell)
 //   FFMPEG=/path/to/ffmpeg NODE_USE_ENV_PROXY=1 node derogue/social/render-video.mjs [story-id ...]
 // Animations are paused and seeked frame by frame, so the output is smooth whatever the machine speed.
+// Output is converted to greyscale so the videos stay strictly black and white.
 import { chromium } from "playwright";
 import { mkdirSync, rmSync } from "node:fs";
 import { execFileSync } from "node:child_process";
@@ -31,7 +32,7 @@ async function renderStory(browser, id) {
   }
   await page.close();
   execFileSync(ffmpeg, ["-y", "-loglevel", "error", "-framerate", String(FPS), "-i", `${dir}/%04d.jpg`,
-    "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "17", "-preset", "slow", "-movflags", "+faststart", `${outDir}/${id}.mp4`]);
+    "-vf", "format=gray,format=yuv420p", "-c:v", "libx264", "-crf", "17", "-preset", "slow", "-movflags", "+faststart", `${outDir}/${id}.mp4`]);
   rmSync(dir, { recursive: true, force: true });
   console.log("wrote", id);
 }
