@@ -22,8 +22,31 @@ OUTPUT_FILE = "events.json"
 
 # Canonical Wednesday ticket URLs. Booking links for these dates always come
 # from Aalaap, even when Fatsoma still lists the same night.
+def london_now():
+    return datetime.now(ZoneInfo("Europe/London"))
+
+
 def london_today_iso():
-    return datetime.now(ZoneInfo("Europe/London")).date().isoformat()
+    return london_now().date().isoformat()
+
+
+def is_still_upcoming(iso_date, now=None):
+    """Whether this night should still be published as upcoming.
+
+    The class runs 7:30–8:45pm. From 21:00 Europe/London that calendar
+    day has finished, so the weekly scrape (21:30 UTC, after 21:00 in
+    both BST and GMT) does not put the finished Wednesday back.
+    """
+    now = now or london_now()
+    try:
+        day = date.fromisoformat(iso_date)
+    except ValueError:
+        return False
+    if day > now.date():
+        return True
+    if day < now.date():
+        return False
+    return (now.hour, now.minute) < (21, 0)
 
 
 WEDNESDAY_AALAAP_URLS = {
@@ -321,7 +344,7 @@ def apply_aalaap_booking_urls(events):
         by_date[event_date] = ev
 
     for event_date, url in WEDNESDAY_AALAAP_URLS.items():
-        if event_date < today:
+        if not is_still_upcoming(event_date):
             continue
         if event_date in by_date:
             by_date[event_date]["url"] = url
@@ -336,7 +359,7 @@ def apply_aalaap_booking_urls(events):
 
     merged = []
     for ev in by_date.values():
-        if ev.get("date", "") < today:
+        if not is_still_upcoming(ev.get("date", "")):
             continue
         url = ev.get("url", "")
         if is_wednesday(ev.get("date", "")) and "aalaap.app" not in url:
@@ -361,7 +384,7 @@ def next_aalaap_source(events):
         if "aalaap.app" in url:
             return url
     return WEDNESDAY_AALAAP_URLS.get(
-        min((d for d in WEDNESDAY_AALAAP_URLS if d >= london_today_iso()), default=""),
+        min((d for d in WEDNESDAY_AALAAP_URLS if is_still_upcoming(d)), default=""),
         "https://aalaap.app",
     )
 
