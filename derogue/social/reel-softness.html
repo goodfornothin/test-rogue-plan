@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>deRogue reel · Cherish the connection</title>
+<!--
+  30-second reel for the softness workshop, Wed 7 Oct 2026. 1080×1920.
+  Pure black (#000) background with white only, so it can be laid over video with a Screen/Lighten blend.
+  Everything is drawn from one clock: window.renderAt(seconds). Open the page to preview it looping;
+  render to MP4 with: node derogue/social/render-reel.mjs
+-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wght@8..144,200;8..144,300;8..144,800&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  html, body { margin: 0; background: #000; }
+  .stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #000; color: #fff; font-family: "Roboto Serif", Georgia, serif; }
+  canvas { position: absolute; inset: 0; }
+  .el { position: absolute; left: 110px; right: 110px; margin: 0; text-align: center; opacity: 0; will-change: opacity, transform, filter; }
+  .label { font: 500 26px/1.3 "IBM Plex Mono", monospace; letter-spacing: .3em; text-transform: uppercase; color: rgba(255,255,255,.72); }
+  .huge { font-weight: 200; font-size: 128px; line-height: 1.02; letter-spacing: -.025em; }
+  .huge b, .big b, .mid b { font-weight: 800; }
+  .big { font-weight: 200; font-size: 100px; line-height: 1.05; letter-spacing: -.02em; }
+  .mid { font-weight: 300; font-size: 58px; line-height: 1.2; letter-spacing: -.01em; }
+  .line { font-weight: 300; font-size: 44px; line-height: 1.4; color: rgba(255,255,255,.82); }
+  .logo { background: #fff; -webkit-mask: var(--src) center / contain no-repeat; mask: var(--src) center / contain no-repeat; position: absolute; opacity: 0; }
+  .mark { --src: url("../assets/final/derogue-mark-outline.png"); aspect-ratio: 2003 / 2188; }
+  .name { --src: url("../assets/final/derogue-name.png"); aspect-ratio: 1566 / 382; }
+  .tag  { --src: url("../assets/final/derogue-tagline.png"); aspect-ratio: 1468 / 135; }
+  svg.draw { position: absolute; overflow: visible; }
+  svg.draw path { stroke: #fff; stroke-width: 7; stroke-linejoin: round; stroke-linecap: round; fill: none; }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <canvas id="cv" width="1080" height="1920"></canvas>
+
+  <!-- 0 · Hook: on screen from the very first frame -->
+  <p class="el label" data-t="0 3.0" style="top:470px">deRogue · Workshop tonight</p>
+  <p class="el huge" data-t="0 3.0" style="top:540px">Cherish the <b>connection.</b></p>
+
+  <!-- 1 · Tonight's theme -->
+  <p class="el label" data-t="3.2 6.0" style="top:500px">Tonight</p>
+  <p class="el big" data-t="3.35 6.0" style="top:570px">Softness in the <b>connection.</b></p>
+
+  <!-- 2 · Find -->
+  <p class="el label" data-t="6.2 10.2" style="top:300px">Tracking</p>
+  <p class="el huge" data-t="6.3 10.2" style="top:360px"><b>Find.</b></p>
+  <p class="el line" data-t="6.6 10.2" style="top:530px">Feel where they are.<br>Their movement. Their balance.</p>
+
+  <!-- 3 · Embrace -->
+  <p class="el label" data-t="10.4 14.2" style="top:300px">Collection</p>
+  <p class="el huge" data-t="10.5 14.2" style="top:360px"><b>Embrace.</b></p>
+  <p class="el line" data-t="10.8 14.2" style="top:530px">Meet them.<br>Follow them for a moment.</p>
+
+  <!-- 4 · Unfold -->
+  <p class="el label" data-t="14.4 18.9" style="top:300px">The journey</p>
+  <p class="el huge" data-t="14.5 18.9" style="top:360px"><b>Unfold.</b></p>
+  <p class="el line" data-t="14.8 18.9" style="top:530px">Then travel somewhere new,<br>together.</p>
+
+  <!-- 5 · Cherish, over the dancers -->
+  <p class="el big" data-t="19.1 22.3" style="top:430px">Cherish the <b>connection.</b></p>
+
+  <!-- 6 · Who it's for -->
+  <p class="el label" data-t="22.5 26.0" style="top:560px">For</p>
+  <p class="el mid" data-t="22.7 26.0" style="top:640px">Experienced <b>bachata</b> dancers</p>
+  <p class="el mid" data-t="23.3 26.0" style="top:800px">Experienced dancers<br>from <b>any style</b></p>
+  <p class="el mid" data-t="23.9 26.0" style="top:1030px">Anyone passionate about<br><b>movement &amp; connection</b></p>
+
+  <!-- 7 · Tonight's details + logo -->
+  <p class="el label" data-t="26.5 99" style="top:860px">Tonight · Wed 7 Oct</p>
+  <p class="el mid" data-t="26.7 99" style="top:925px">7:30–8:45 pm</p>
+  <p class="el line" data-t="26.9 99" style="top:1005px">Keystone Crescent, King's Cross<br>£10 + booking fee<br>Free bachata social from 9 pm</p>
+  <p class="el label" data-t="27.4 99" style="top:1230px; color:#fff">Book at derogue.art</p>
+</div>
+
+<script>
+  const D = 30;                       // seconds
+  const W = 1080, H = 1920, CX = 540, CY = 1080, R = 310;
+  const stage = document.getElementById("stage");
+  const cv = document.getElementById("cv"), ctx = cv.getContext("2d");
+  const clamp = (x) => Math.max(0, Math.min(1, x));
+  const ease = (x) => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  const smooth = (a, b, t) => ease((t - a) / (b - a));
+  const lerp = (a, b, k) => a + (b - a) * k;
+  const FADE = .7;
+
+  // Text: each element fades/settles in at its first time and out at its second.
+  // An element starting at 0 is fully visible on the first frame.
+  const els = [...document.querySelectorAll(".el")].map((node) => {
+    const [a, b] = node.dataset.t.split(" ").map(Number);
+    return { node, a, b };
+  });
+  function textAt(t) {
+    for (const { node, a, b } of els) {
+      const inK = a === 0 ? 1 : smooth(a, a + FADE, t);
+      const outK = 1 - smooth(b, b + .55, t);
+      const k = Math.min(inK, outK);
+      node.style.opacity = k.toFixed(3);
+      node.style.transform = `translateY(${((1 - inK) * 22 - (1 - outK) * 14).toFixed(1)}px)`;
+      node.style.filter = k > .995 ? "none" : `blur(${((1 - k) * 8).toFixed(1)}px)`;
+    }
+  }
+
+  // Logo pieces.
+  const logo = (cls, x, y, w) => { const e = document.createElement("div"); e.className = "logo " + cls; Object.assign(e.style, { left: x + "px", top: y + "px", width: w + "px" }); stage.append(e); return e; };
+  const MW = 500, MH = MW * 2188 / 2003;
+  const bigMark = logo("mark", CX - MW / 2, CY - MH / 2 + 10, MW);
+  const smallMark = logo("mark", CX - 140, 300, 280);
+  const name = logo("name", CX - 200, 630, 400);
+  const tag = logo("tag", CX - 160, 742, 320);
+  let svg, paths = [];
+
+  // The follower wanders softly; the leader tracks it from behind, joins, and together they unfold a circle.
+  const fpos = (t) => [CX + 270 * Math.sin(.55 * t) + 40 * Math.sin(1.7 * t + .4),
+                       CY + 150 * Math.sin(.83 * t + .9) + 30 * Math.cos(1.3 * t)];
+  const vel = (t) => { const a = fpos(t - .02), b = fpos(t + .02); const dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1; return [dx / l, dy / l]; };
+  const T_LEAVE = 14.8, T_CIRCLE = 15.2, T_CLOSED = 17.4;
+  const p0 = fpos(T_LEAVE); const r0 = Math.hypot(p0[0] - CX, p0[1] - CY), th0 = Math.atan2(p0[1] - CY, p0[0] - CX);
+  function pairCentre(t) {                       // where the two travel once they leave together
+    const old = fpos(t);
+    const k = smooth(T_CIRCLE, T_CLOSED, t);
+    const r = lerp(r0, R, smooth(T_LEAVE, T_CIRCLE + .8, t));
+    const th = th0 + 2 * Math.PI * k + .35 * smooth(T_LEAVE, T_CIRCLE, t);
+    const circ = [CX + r * Math.cos(th), CY + r * Math.sin(th)];
+    const s = smooth(T_LEAVE, T_LEAVE + .6, t);
+    return [lerp(old[0], circ[0], s), lerp(old[1], circ[1], s)];
+  }
+  function follower(t) { return t < T_LEAVE ? fpos(t) : pairCentre(t); }
+  function leader(t) {
+    const before = leaderOnPath(t);
+    if (t < T_LEAVE) return before;
+    // Together: the leader rides just inside the follower, side by side around the new circle.
+    const c = pairCentre(t), dx = CX - c[0], dy = CY - c[1], l = Math.hypot(dx, dy) || 1;
+    const after = [c[0] + dx / l * 26, c[1] + dy / l * 26];
+    const s = smooth(T_LEAVE, T_LEAVE + .6, t);
+    return [lerp(before[0], after[0], s), lerp(before[1], after[1], s)];
+  }
+  function leaderOnPath(t) {
+    const lag = t < 10.4 ? lerp(1.5, .4, smooth(6.4, 10.4, t)) : lerp(.4, .06, smooth(10.4, 11.4, t));
+    const base = fpos(t - lag), n = vel(t - lag);
+    const off = 26 * smooth(10.4, 11.6, t);
+    return [base[0] - n[1] * off, base[1] + n[0] * off];
+  }
+
+  function trail(fn, from, to, alphaHead, width, fadeTail = true) {
+    if (to <= from) return;
+    const steps = Math.max(2, Math.round((to - from) * 60));
+    for (let i = 1; i <= steps; i++) {
+      const ta = from + (to - from) * (i - 1) / steps, tb = from + (to - from) * i / steps;
+      const a = fn(ta), b = fn(tb);
+      ctx.strokeStyle = `rgba(255,255,255,${(fadeTail ? alphaHead * (i / steps) : alphaHead).toFixed(3)})`;
+      ctx.lineWidth = width; ctx.lineCap = "round";
+      ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+    }
+  }
+  function dot(p, r, alpha, hollow = false) {
+    ctx.globalAlpha = alpha; ctx.beginPath(); ctx.arc(p[0], p[1], r, 0, Math.PI * 2);
+    if (hollow) { ctx.lineWidth = 3; ctx.strokeStyle = "#fff"; ctx.stroke(); } else { ctx.fillStyle = "#fff"; ctx.fill(); }
+    ctx.globalAlpha = 1;
+  }
+
+  function graphicsAt(t) {
+    ctx.clearRect(0, 0, W, H);
+    const dotsAlpha = 1 - smooth(17.2, 17.9, t);
+    if (dotsAlpha > 0) {
+      // Follower: soft trail and a solid dot, there from the first frame.
+      if (t < T_LEAVE + .8) trail(fpos, Math.max(0, t - 2.4), Math.min(t, T_LEAVE), .55 * (1 - smooth(T_LEAVE, T_LEAVE + .8, t)), 2.5);
+      // Leader: a hollow ring that listens, tracking the same path from behind.
+      const la = smooth(6.4, 7.1, t) * dotsAlpha;
+      if (la > 0 && t < T_LEAVE + .8) trail(leader, Math.max(6.4, t - 1.6), Math.min(t, T_LEAVE), .4 * la * (1 - smooth(T_LEAVE, T_LEAVE + .8, t)), 2);
+      // Embrace: a soft halo around the two, breathing.
+      const halo = smooth(10.9, 11.8, t) * (1 - smooth(14.6, 15.4, t));
+      if (halo > 0) {
+        const f = follower(t), l = leader(t), m = [(f[0] + l[0]) / 2, (f[1] + l[1]) / 2];
+        const br = 62 + 6 * Math.sin((t - 10.9) * 2.2);
+        ctx.globalAlpha = .45 * halo; ctx.lineWidth = 1.5; ctx.strokeStyle = "#fff";
+        ctx.beginPath(); ctx.arc(m[0], m[1], br, 0, Math.PI * 2); ctx.stroke();
+        ctx.globalAlpha = .08 * halo; ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(m[0], m[1], br, 0, Math.PI * 2); ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+      dot(follower(t), 12, dotsAlpha);
+      if (la > 0) {
+        const filled = smooth(11.0, 11.8, t);
+        dot(leader(t), 12, la * (1 - filled), true);
+        dot(leader(t), 12, la * filled);
+      }
+    }
+    // Unfold: the line they draw together stays, closing into a circle, then gives way to the dancers.
+    const ringAlpha = 1 - smooth(18.0, 19.0, t);
+    if (t > T_LEAVE && ringAlpha > 0) trail(pairCentre, T_LEAVE, Math.min(t, T_CLOSED + .2), .9 * ringAlpha, 3, false);
+  }
+
+  function logoAt(t) {
+    // The dancers draw themselves inside the circle, then settle as the filled-line logo.
+    const drawStart = 16.9;
+    paths.forEach((p, i) => {
+      const k = ease((t - drawStart - i * .07) / 2.6);
+      p.style.strokeDashoffset = (p._len * (1 - k)).toFixed(1);
+    });
+    const markIn = smooth(19.0, 19.8, t), markOut = 1 - smooth(22.3, 22.9, t);
+    svg.style.opacity = (t < drawStart ? 0 : 1 - smooth(19.4, 20.0, t)) * markOut;
+    bigMark.style.opacity = (markIn * markOut).toFixed(3);
+    const sway = Math.sin((t - 19) * .7) * .8 * markIn;
+    bigMark.style.transform = svg.style.transform = `rotate(${sway.toFixed(2)}deg)`;
+    // Final lockup.
+    const a = smooth(26.0, 26.8, t), b = smooth(26.25, 27.05, t), c = smooth(26.4, 27.2, t);
+    smallMark.style.opacity = a; smallMark.style.transform = `translateY(${(1 - a) * 18}px) rotate(${(Math.sin((t - 26) * .7) * .8 * a).toFixed(2)}deg)`;
+    name.style.opacity = b; name.style.transform = `translateY(${(1 - b) * 18}px)`;
+    tag.style.opacity = c; tag.style.transform = `translateY(${(1 - c) * 18}px)`;
+  }
+
+  window.renderAt = (t) => { textAt(t); graphicsAt(t); logoAt(t); };
+  window.reelDuration = D;
+  window.reelReady = (async () => {
+    const svgText = await (await fetch("../assets/final/derogue-mark-outline-paths.svg")).text();
+    stage.insertAdjacentHTML("beforeend", svgText);
+    svg = stage.querySelector("svg"); svg.classList.add("draw");
+    Object.assign(svg.style, { left: bigMark.style.left, top: bigMark.style.top, width: MW + "px", height: MH + "px", transformOrigin: "50% 90%" });
+    bigMark.style.transformOrigin = "50% 90%"; smallMark.style.transformOrigin = "50% 90%";
+    paths = [...svg.querySelectorAll("path")];
+    paths.forEach((p) => { p._len = p.getTotalLength(); p.style.strokeDasharray = `${p._len} ${p._len}`; });
+    await document.fonts.ready;
+    window.renderAt(0);
+    if (!new URLSearchParams(location.search).has("render")) {
+      const start = performance.now();
+      const loop = (now) => { window.renderAt(((now - start) / 1000) % D); requestAnimationFrame(loop); };
+      requestAnimationFrame(loop);
+    }
+    return D;
+  })();
+</script>
+</body>
+</html>
