@@ -131,7 +131,7 @@
     /* Angy Pérez is the guest on 14 Oct 2026 only. Later Wednesdays keep the same night shape without naming that guest. */
     var angyNight = event && event.date === '2026-10-14';
     var klass = angyNight
-      ? 'Rogue Bachata Open Level Bachata Class with Kieran'
+      ? 'Rogue Bachata Open Level Bachata Class with Zach'
       : 'Rogue Bachata Open Level Bachata Class';
     var workshop = angyNight
       ? 'Wed 14 Oct: the Connection Workshop with Angy Pérez, international Bachata connection teacher'
