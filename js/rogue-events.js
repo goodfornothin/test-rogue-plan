@@ -125,17 +125,18 @@
     return src;
   }
 
-  function appendStructure(parent) {
+  function appendStructure(parent, event) {
     var p = document.createElement('p');
     p.className = 'wed-night-structure';
-    p.appendChild(document.createTextNode('Rogue Bachata Open Level Bachata Class, for people with 0 to 1 year experience in Bachata, and the '));
-    var link = document.createElement('a');
-    link.href = 'https://derogue.art';
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.textContent = 'deRogue connection workshop';
-    p.appendChild(link);
-    p.appendChild(document.createTextNode(', for dancers of any background, experienced bachata dancers, and people passionate about movement and connection. Both run at the same time, 7:30–8:45pm. Free social 9pm–late.'));
+    /* Angy Pérez is the guest on 14 Oct 2026 only. Later Wednesdays keep the same night shape without naming that guest. */
+    var angyNight = event && event.date === '2026-10-14';
+    var klass = angyNight
+      ? 'Rogue Bachata Open Level Bachata Class with Kieran'
+      : 'Rogue Bachata Open Level Bachata Class';
+    var workshop = angyNight
+      ? 'Wed 14 Oct: the Connection Workshop with Angy Pérez, international Bachata connection teacher'
+      : 'a connection workshop';
+    p.textContent = klass + ', for people with 0 to 1 year experience in Bachata, and ' + workshop + ', for dancers of any background, experienced bachata dancers, and people passionate about movement and connection. Both run at the same time, 7:30–8:45pm. Free social 9pm–late.';
     parent.appendChild(p);
   }
 
@@ -169,7 +170,7 @@
         article.appendChild(img);
       }
 
-      appendStructure(article);
+      appendStructure(article, ev);
 
       if (ev.url) {
         var book = document.createElement('a');
