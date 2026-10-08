@@ -640,7 +640,7 @@
       box-shadow: 0 16px 44px rgba(122, 61, 113, 0.32);
     }
     .night-feature-banner { display: block; width: 100%; height: auto; }
-    .night-feature-body { display: grid; gap: 1.4rem; padding: 1.4rem 1.3rem 1.5rem; }
+    .night-feature-body { padding: 1.4rem 1.3rem 1.5rem; }
     .night-feature-tag {
       display: inline-block;
       margin-bottom: 0.85rem;
@@ -691,7 +691,6 @@
       transition: transform 0.2s ease;
     }
     .night-feature-book:hover { transform: translateY(-2px); }
-    .night-feature-poster img { display: block; width: 100%; height: auto; border-radius: 12px; }
 
     /* The next Wednesday's feature card sits above the hero, under the fixed nav + price note. */
     .wed-top-feature[hidden] { display: none !important; }
@@ -700,14 +699,9 @@
       background: linear-gradient(160deg, var(--pink-deep, #7A3D71) 0%, #2a1030 100%);
     }
     .venue-change-banner:not([hidden]) + .wed-top-feature { padding-top: 1.2rem; }
-    .wed-top-feature .night-feature { max-width: 1000px; margin: 0 auto; }
-    /* Wide screens: banner over the details on the left, poster on the right. */
+    .wed-top-feature .night-feature { max-width: 760px; margin: 0 auto; }
     @media (min-width: 880px) {
-      .wed-top-feature .night-feature { display: grid; grid-template-columns: 1fr 340px; column-gap: 2.4rem; align-items: start; padding: 2rem 2.2rem 2.2rem; }
-      .wed-top-feature .night-feature-body { display: contents; }
-      .wed-top-feature .night-feature-banner { grid-column: 1; grid-row: 1; border-radius: 14px; margin-bottom: 1.6rem; }
-      .wed-top-feature .night-feature-copy { grid-column: 1; grid-row: 2; }
-      .wed-top-feature .night-feature-poster { grid-column: 2; grid-row: 1 / span 2; }
+      .wed-top-feature .night-feature-body { padding: 2rem 2.4rem 2.3rem; }
       .wed-top-feature .night-feature-headline { font-size: 2rem; }
     }
     .wed-top-feature:not([hidden]) + .hero { padding-top: 2.6rem; }

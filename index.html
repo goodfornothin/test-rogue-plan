@@ -306,7 +306,7 @@
     [data-show-until][hidden], [data-show-from][hidden] { display: none !important; }
     .night-feature {
       text-align: left;
-      max-width: 1000px;
+      max-width: 760px;
       margin: 0.4rem auto 0;
       background: #150a14;
       color: #fff;
@@ -316,15 +316,8 @@
       box-shadow: 0 16px 44px rgba(122, 61, 113, 0.35);
     }
     .night-feature-banner { display: block; width: 100%; height: auto; }
-    .night-feature-body { display: grid; gap: 1.6rem; padding: 1.5rem 1.3rem 1.6rem; }
-    /* Wide screens: banner over the details on the left, poster on the right. */
-    @media (min-width: 880px) {
-      .night-feature { display: grid; grid-template-columns: 1fr 340px; column-gap: 2.4rem; align-items: start; padding: 2rem 2.2rem 2.2rem; }
-      .night-feature-body { display: contents; }
-      .night-feature-banner { grid-column: 1; grid-row: 1; border-radius: 14px; margin-bottom: 1.6rem; }
-      .night-feature-copy { grid-column: 1; grid-row: 2; }
-      .night-feature-poster { grid-column: 2; grid-row: 1 / span 2; }
-    }
+    .night-feature-body { padding: 1.5rem 1.3rem 1.6rem; }
+    @media (min-width: 880px) { .night-feature-body { padding: 2rem 2.4rem 2.3rem; } }
     .night-feature-tag {
       display: inline-block;
       margin-bottom: 0.85rem;
@@ -375,7 +368,6 @@
       transition: transform 0.2s ease;
     }
     .night-feature-book:hover { transform: translateY(-2px); }
-    .night-feature-poster img { display: block; width: 100%; height: auto; border-radius: 14px; }
 
     .venue-alert[hidden] { display: none !important; }
     .venue-alert {

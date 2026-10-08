@@ -17,10 +17,10 @@
  *   }
  * The notice is injected only while London date <= endDate (defaults to event date).
  *
- * Optional one-night feature (poster + text-free wide banner + the night's copy):
+ * Optional one-night feature (text-free wide banner + the night's copy; the card
+ * is built from the data, so it does not repeat a poster):
  *   {
  *     "date": "2026-10-14",
- *     "image": "images/wednesday-14-october-2026.jpg",
  *     "banner": "images/wednesday-14-october-2026-banner.png",
  *     "feature": {
  *       "tag": "Wednesday 14 October",
@@ -231,19 +231,6 @@
       copy.appendChild(book);
     }
     body.appendChild(copy);
-
-    var poster = posterSrc(event);
-    if (poster) {
-      var figure = document.createElement('figure');
-      figure.className = 'night-feature-poster';
-      var posterImg = document.createElement('img');
-      posterImg.alt = 'Official poster for Wednesday ' + formatLongDate(event.date);
-      posterImg.addEventListener('error', function () { figure.remove(); });
-      posterImg.src = poster;
-      figure.appendChild(posterImg);
-      body.appendChild(figure);
-    }
-
     card.appendChild(body);
     return card;
   }
