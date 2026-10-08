@@ -693,6 +693,20 @@
     .night-feature-book:hover { transform: translateY(-2px); }
     .night-feature-poster img { display: block; width: 100%; height: auto; border-radius: 12px; }
 
+    /* The next Wednesday's feature card sits above the hero, under the fixed nav + price note. */
+    .wed-top-feature[hidden] { display: none !important; }
+    .wed-top-feature {
+      padding: 7.6rem 1rem 1.8rem;
+      background: linear-gradient(160deg, var(--pink-deep, #7A3D71) 0%, #2a1030 100%);
+    }
+    .venue-change-banner:not([hidden]) + .wed-top-feature { padding-top: 1.2rem; }
+    .wed-top-feature .night-feature { max-width: 1000px; margin: 0 auto; }
+    @media (min-width: 880px) {
+      .wed-top-feature .night-feature-body { grid-template-columns: 1fr 340px; align-items: start; gap: 2.4rem; padding: 2rem 2.2rem 2.2rem; }
+      .wed-top-feature .night-feature-headline { font-size: 2rem; }
+    }
+    .wed-top-feature:not([hidden]) + .hero { padding-top: 2.6rem; }
+
     /* ── Gallery ── */
     .gallery-grid { display: grid; gap: 0.8rem; grid-template-columns: repeat(2, 1fr); }
     @media (min-width: 680px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
@@ -765,6 +779,7 @@
   </header>
 
   <aside id="venueNoticeMount" class="venue-alert venue-change-banner" hidden aria-label="Venue notice"></aside>
+  <div id="thisWednesdayTop" class="wed-top-feature" hidden></div>
 
   <!-- ══ HERO ══ -->
   <section class="hero" aria-labelledby="hero-h">
@@ -1047,7 +1062,8 @@
           var feat = events[0];
           var rest = events.slice(1);
           var url = feat.url || FALLBACK_URL;
-          RogueEvents.renderWednesdayNights(document.getElementById('wednesdayNights'), data.events);
+          RogueEvents.renderFeaturedPoster(document.getElementById('thisWednesdayTop'), feat.feature ? feat : null);
+          RogueEvents.renderWednesdayNights(document.getElementById('wednesdayNights'), data.events, { shownAbove: feat });
           if (dateLabel) {
             dateLabel.textContent = 'Next class: Wednesday ' + fmtFull(feat.date) + (feat.venue ? ' · ' + feat.venue : '');
           }

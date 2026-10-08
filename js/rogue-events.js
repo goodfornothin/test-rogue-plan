@@ -23,14 +23,14 @@
  *     "image": "images/wednesday-14-october-2026.jpg",
  *     "banner": "images/wednesday-14-october-2026-banner.png",
  *     "feature": {
- *       "tag": "Wed 14 Oct · One night only",
+ *       "tag": "Wednesday 14 October",
  *       "headline": "…", "lede": "…", "bannerAlt": "…",
  *       "schedule": [{ "time": "7:30–8:45pm", "title": "…", "teacher": "…", "role": "…", "text": "…", "lead": true }],
  *       "note": "…", "price": "£10 + booking fee"
  *     }
  *   }
- * It shows on the homepage (while it is the next Wednesday) and as that night's
- * card on the Wednesday page, and goes once the date has passed.
+ * While it is the next Wednesday it shows at the top of the homepage and the
+ * Wednesday page, and goes once the date has passed.
  * Artwork named wednesday-<day>-<month>-<year> only ever shows on that date.
  *
  * Static copy for one night: data-show-until="YYYY-MM-DD" hides after that
@@ -262,17 +262,16 @@
     p.className = 'wed-night-structure';
     /* Angy Pérez is the guest on 14 Oct 2026 only. Later Wednesdays keep the same night shape without naming that guest. */
     var angyNight = event && event.date === '2026-10-14';
-    var klass = angyNight
-      ? 'Rogue Bachata Open Level Bachata Class with Zach'
-      : 'Rogue Bachata Open Level Bachata Class';
-    var workshop = angyNight
-      ? 'Wed 14 Oct: the Connection Workshop with Angy Pérez, international Bachata connection teacher'
-      : 'a connection workshop';
-    p.textContent = klass + ', for people with 0 to 1 year experience in Bachata, and ' + workshop + ', for dancers of any background, experienced bachata dancers, and people passionate about movement and connection. Both run at the same time, 7:30–8:45pm. Free social 9pm–late.';
+    p.textContent = angyNight
+      ? 'The Connection Workshop with Angy Pérez, international Bachata connection teacher, for dancers of any background, experienced bachata dancers, and people passionate about movement and connection, and the Rogue Bachata Open Level Bachata Class with Zach, for people with 0 to 1 year experience in Bachata. Both run at the same time, 7:30–8:45pm. Free social 9pm–late.'
+      : 'Rogue Bachata Open Level Bachata Class, for people with 0 to 1 year experience in Bachata, and a connection workshop, for dancers of any background, experienced bachata dancers, and people passionate about movement and connection. Both run at the same time, 7:30–8:45pm. Free social 9pm–late.';
     parent.appendChild(p);
   }
 
-  function renderWednesdayNights(mount, events) {
+  /* opts.shownAbove: the event whose feature card is already at the top of the
+     page, so its list entry is a plain booking card without the artwork. */
+  function renderWednesdayNights(mount, events, opts) {
+    var shownAbove = opts && opts.shownAbove;
     if (!mount) return;
     var upcoming = upcomingEvents(events);
     mount.innerHTML = '';
@@ -281,7 +280,8 @@
       return;
     }
     upcoming.forEach(function (ev) {
-      if (ev.feature) {
+      var above = !!(shownAbove && shownAbove.feature && shownAbove.date === ev.date);
+      if (ev.feature && !above) {
         mount.appendChild(buildNightFeature(ev));
         return;
       }
@@ -296,7 +296,7 @@
       venue.textContent = ev.venue || PUBLIC_VENUE;
       article.appendChild(venue);
 
-      var src = posterSrc(ev);
+      var src = above ? '' : posterSrc(ev);
       if (src) {
         var img = document.createElement('img');
         img.className = 'wed-night-poster';
@@ -330,6 +330,13 @@
       mount.hidden = true;
       return;
     }
+    /* A feature card carries its own date, so it goes in without the section heading. */
+    if (event.feature) {
+      mount.appendChild(buildNightFeature(event));
+      mount.hidden = false;
+      return;
+    }
+
     var kicker = document.createElement('span');
     kicker.className = 'section-kicker';
     kicker.textContent = 'This Wednesday';
@@ -338,12 +345,6 @@
     var heading = document.createElement('h2');
     heading.textContent = 'Wednesday ' + formatLongDate(event.date);
     mount.appendChild(heading);
-
-    if (event.feature) {
-      mount.appendChild(buildNightFeature(event));
-      mount.hidden = false;
-      return;
-    }
 
     var figure = document.createElement('figure');
     figure.className = 'this-wed-poster';

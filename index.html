@@ -300,6 +300,7 @@
     .this-wednesday { text-align: center; }
     .this-wed-poster { max-width: 420px; margin: 0.6rem auto 0; }
     .this-wed-poster img { width: 100%; height: auto; display: block; border-radius: 16px; }
+    .split-hero > .this-wednesday { padding: 1.4rem 1rem 1.8rem; }
 
     /* ── One-night feature card (events.json "feature"; gone once the date has passed) ── */
     [data-show-until][hidden], [data-show-from][hidden] { display: none !important; }
@@ -804,6 +805,7 @@
   <!-- ══ SPLIT-NIGHT HERO ══ -->
   <section class="split-hero" aria-labelledby="hero-h">
     <aside id="venueNoticeMount" class="venue-alert" hidden aria-label="Venue notice"></aside>
+    <div class="section this-wednesday" id="thisWednesdayPoster" hidden></div>
     <div class="hero-strip">
       <h1 id="hero-h" class="hero-strip-tagline">Movement<span class="dot">·</span>Connection<span class="dot">·</span>Freedom</h1>
     </div>
@@ -843,8 +845,6 @@
       </article>
     </div>
   </section>
-
-  <section class="section this-wednesday" id="thisWednesdayPoster" hidden></section>
 
   <main id="main">
 
