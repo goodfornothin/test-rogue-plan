@@ -629,6 +629,70 @@
       text-decoration: none; border-radius: 3rem;
     }
 
+    /* ── One-night feature card (events.json "feature"; gone once the date has passed) ── */
+    [data-show-until][hidden], [data-show-from][hidden] { display: none !important; }
+    .night-feature {
+      background: #150a14;
+      color: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1.5px solid rgba(255, 79, 163, 0.45);
+      box-shadow: 0 16px 44px rgba(122, 61, 113, 0.32);
+    }
+    .night-feature-banner { display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover; }
+    .night-feature-body { display: grid; gap: 1.4rem; padding: 1.4rem 1.3rem 1.5rem; }
+    .night-feature-tag {
+      display: inline-block;
+      margin-bottom: 0.85rem;
+      padding: 0.3rem 0.95rem;
+      border-radius: 2rem;
+      background: #d6247a;
+      color: #fff;
+      font-weight: 800; font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase;
+      box-shadow: 0 0 18px rgba(255, 79, 163, 0.5);
+    }
+    .night-feature-headline { font-weight: 800; font-size: 1.45rem; line-height: 1.15; text-transform: uppercase; margin-bottom: 0.45rem; }
+    .night-feature-lede { color: #ff8cc6; font-size: 0.88rem; font-weight: 600; margin-bottom: 1.1rem; }
+    .night-feature-schedule { list-style: none; display: grid; gap: 0.6rem; margin-bottom: 1rem; }
+    .night-feature-schedule li {
+      display: grid; grid-template-columns: 6.4rem 1fr; gap: 0.8rem;
+      padding: 0.75rem 0.95rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    @media (max-width: 480px) { .night-feature-schedule li { grid-template-columns: 1fr; gap: 0.1rem; } }
+    .night-feature-time { font-weight: 800; font-size: 0.85rem; color: #ff8cc6; white-space: nowrap; }
+    .night-feature-what strong { display: block; font-size: 0.97rem; }
+    .night-feature-for { display: block; font-size: 0.86rem; line-height: 1.5; color: rgba(255, 255, 255, 0.8); }
+    /* Classes with a named teacher, billed like the poster: headliner first and biggest. */
+    .night-feature-schedule li.night-feature-class { grid-template-columns: 1fr; gap: 0.45rem; padding: 1rem 1.1rem 1.1rem; border-color: rgba(255, 79, 163, 0.4); }
+    .night-feature-class .night-feature-time { justify-self: start; padding: 0.12rem 0.75rem; border-radius: 2rem; background: #d6247a; color: #fff; font-size: 0.8rem; }
+    .night-feature-class .night-feature-what strong { font-size: 1.25rem; font-weight: 800; line-height: 1.15; text-transform: uppercase; color: #ff6fb5; }
+    .night-feature-teacher { display: block; margin: 0.1rem 0 0.35rem; font-size: 1.1rem; font-weight: 700; }
+    .night-feature-teacher em { font-style: normal; color: #ff6fb5; }
+    .night-feature-role { display: block; margin-bottom: 0.3rem; font-size: 0.82rem; font-weight: 600; color: #ff8cc6; }
+    .night-feature-class.is-lead { background: rgba(255, 255, 255, 0.09); border-color: rgba(255, 79, 163, 0.65); box-shadow: 0 0 22px rgba(255, 79, 163, 0.18); }
+    .night-feature-class.is-lead .night-feature-time { background: #fff; color: #150a14; }
+    .night-feature-class.is-lead .night-feature-what strong { font-size: 1.5rem; color: #fff; }
+    .night-feature-class.is-lead .night-feature-teacher { font-size: 1.3rem; }
+    .night-feature-note { font-size: 0.88rem; color: rgba(255, 255, 255, 0.82); margin-bottom: 0.35rem; }
+    .night-feature-meta { font-size: 0.88rem; font-weight: 600; margin-bottom: 1.2rem; }
+    .night-feature-book {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px;
+      padding: 0.85rem 1.9rem;
+      border-radius: 3rem;
+      background: #d6247a;
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 0 22px rgba(255, 79, 163, 0.45);
+      transition: transform 0.2s ease;
+    }
+    .night-feature-book:hover { transform: translateY(-2px); }
+    .night-feature-poster img { display: block; width: 100%; height: auto; border-radius: 12px; }
+
     /* ── Gallery ── */
     .gallery-grid { display: grid; gap: 0.8rem; grid-template-columns: repeat(2, 1fr); }
     @media (min-width: 680px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
@@ -711,7 +775,7 @@
     <div class="hero-content">
       <p class="hero-eyebrow">King's Cross · Every Wednesday</p>
       <h1 id="hero-h">Wednesday Dance Classes at King's Cross</h1>
-      <p class="sub">Wed 14 Oct: Open Level class with Zach and the Connection Workshop with Angy Pérez, international Bachata connection teacher, same time, 7:30–8:45pm. Free social 9pm–late. £10 — book ahead.</p>
+      <p class="sub"><span data-show-until="2026-10-14">Wed 14 Oct: the Connection Workshop with Angy Pérez, international Bachata connection teacher, and the Open Level class with Zach,</span><span data-show-from="2026-10-15" hidden>Open Level class and a connection workshop,</span> same time, 7:30–8:45pm. Free social 9pm–late. £10 — book ahead.</p>
       <a href="https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-copy-ez3e" id="wednesdayBookBtnHero" class="hero-btn js-book-link" target="_blank" rel="noopener" aria-describedby="heroPriceNote">Book Wednesday — £10</a>
       <p class="price-note" id="heroPriceNote">Class is £10. Checkout may add a small Aalaap booking fee, so the card total is about £11.</p>
       <p class="hero-solo">Most people come alone — a first night here is completely normal.</p>
@@ -764,20 +828,28 @@
         <p class="evening-motto">7:30–8:45pm, then a free social from 9</p>
 
         <ol class="night-flow">
-          <li class="act-card act-pink">
-            <time datetime="19:30">7:30</time>
-            <div>
-              <h3>Open Level Bachata Class</h3>
-              <p class="act-meta">Rogue Bachata · with Zach · 7:30–8:45pm</p>
-              <p>For people with 0 to 1 year experience in Bachata.</p>
-            </div>
-          </li>
-          <li class="act-card act-blue">
+          <li class="act-card act-blue" data-show-until="2026-10-14">
             <time datetime="19:30">7:30</time>
             <div>
               <h3>Connection Workshop with Angy Pérez</h3>
               <p class="act-meta">Wed 14 Oct · 7:30–8:45pm</p>
               <p>Angy Pérez is a Peruvian international guest teacher. The workshop looks at Bachata Sensual and Fusion technique, musicality, gentle lead and follow, and conscious connection. Her line is "Connect, Dance, Heal". For dancers of any background, experienced bachata dancers, and people passionate about movement and connection.</p>
+            </div>
+          </li>
+          <li class="act-card act-pink">
+            <time datetime="19:30">7:30</time>
+            <div>
+              <h3>Open Level Bachata Class<span data-show-until="2026-10-14"> with Zach</span></h3>
+              <p class="act-meta"><span data-show-until="2026-10-14">Same time · </span>Rogue Bachata · 7:30–8:45pm</p>
+              <p>For people with 0 to 1 year experience in Bachata.</p>
+            </div>
+          </li>
+          <li class="act-card act-blue" data-show-from="2026-10-15" hidden>
+            <time datetime="19:30">7:30</time>
+            <div>
+              <h3>Connection workshop</h3>
+              <p class="act-meta">Same time · 7:30–8:45pm</p>
+              <p>For dancers of any background, experienced bachata dancers, and people passionate about movement and connection.</p>
             </div>
           </li>
           <li class="act-card act-pink">
@@ -829,7 +901,7 @@
     <!-- ══ MID-PAGE CTA ══ -->
     <section class="cta-band" id="book" aria-labelledby="cta-h">
       <h2 id="cta-h">Book your Wednesday.</h2>
-      <p>Wed 14 Oct: Open Level class with Zach and the Connection Workshop with Angy Pérez, international Bachata connection teacher, run at the same time, 7:30–8:45pm. Free social 9pm–late. Most people come on their own — book ahead and your place is saved.</p>
+      <p><span data-show-until="2026-10-14">Wed 14 Oct: the Connection Workshop with Angy Pérez, international Bachata connection teacher, and the Open Level class with Zach</span><span data-show-from="2026-10-15" hidden>Open Level class and a connection workshop</span> run at the same time, 7:30–8:45pm. Free social 9pm–late. Most people come on their own — book ahead and your place is saved.</p>
       <a href="https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-copy-ez3e" id="wednesdayBookBtn" class="hero-btn js-book-link" target="_blank" rel="noopener" aria-describedby="midPriceNote">Book Wednesday — £10</a>
       <p class="price-note" id="midPriceNote">Class is £10. Checkout may add a small Aalaap booking fee, so the card total is about £11.</p>
     </section>
@@ -839,15 +911,20 @@
       <span class="section-kicker">The practical bit</span>
       <h2 id="details-h">Everything You Need to Know</h2>
       <div class="offer-grid">
-        <article class="card offer-card accent-pink">
-          <span class="hook">Rogue Bachata</span>
-          <h3>Open Level Bachata Class</h3>
-          <p class="desc">7:30–8:45pm with Zach. For people with 0 to 1 year experience in Bachata.</p>
-        </article>
-        <article class="card offer-card accent-blue">
-          <span class="hook">Same time</span>
+        <article class="card offer-card accent-blue" data-show-until="2026-10-14">
+          <span class="hook">Guest teacher</span>
           <h3>Connection Workshop with Angy Pérez</h3>
           <p class="desc">Wed 14 Oct, 7:30–8:45pm. Angy Pérez, international Bachata connection teacher. Bachata Sensual and Fusion technique, musicality, gentle lead and follow, and conscious connection. Her line is "Connect, Dance, Heal". For dancers of any background, experienced bachata dancers, and people passionate about movement and connection.</p>
+        </article>
+        <article class="card offer-card accent-pink">
+          <span class="hook">Rogue Bachata<span data-show-until="2026-10-14"> · Same time</span></span>
+          <h3>Open Level Bachata Class<span data-show-until="2026-10-14"> with Zach</span></h3>
+          <p class="desc">7:30–8:45pm. For people with 0 to 1 year experience in Bachata.</p>
+        </article>
+        <article class="card offer-card accent-blue" data-show-from="2026-10-15" hidden>
+          <span class="hook">Same time</span>
+          <h3>Connection workshop</h3>
+          <p class="desc">7:30–8:45pm. For dancers of any background, experienced bachata dancers, and people passionate about movement and connection.</p>
         </article>
         <article class="card offer-card accent-pink">
           <span class="hook">Free social</span>
@@ -869,7 +946,7 @@
       <div class="faq-list">
         <details class="faq-item" open>
           <summary>What's the Wednesday format?</summary>
-          <p>Two things run at the same time, 7:30–8:45pm, at Keystone Crescent Members Club, King's Cross N1 9DX. Rogue Bachata Open Level Bachata Class with Zach is for people with 0 to 1 year experience in Bachata. Wed 14 Oct: the Connection Workshop with Angy Pérez, international Bachata connection teacher, is for dancers of any background, experienced bachata dancers, and people passionate about movement and connection. Free social 9pm–late.</p>
+          <p>Two things run at the same time, 7:30–8:45pm, at Keystone Crescent Members Club, King's Cross N1 9DX. <span data-show-until="2026-10-14">Wed 14 Oct: the Connection Workshop with Angy Pérez, international Bachata connection teacher, is for dancers of any background, experienced bachata dancers, and people passionate about movement and connection. The Rogue Bachata Open Level Bachata Class with Zach is for people with 0 to 1 year experience in Bachata.</span><span data-show-from="2026-10-15" hidden>Rogue Bachata Open Level Bachata Class is for people with 0 to 1 year experience in Bachata. The connection workshop is for dancers of any background, experienced bachata dancers, and people passionate about movement and connection.</span> Free social 9pm–late.</p>
         </details>
         <details class="faq-item">
           <summary>Is it actually okay to come completely alone?</summary>
@@ -877,7 +954,7 @@
         </details>
         <details class="faq-item">
           <summary>I've never danced before — will I be the only one?</summary>
-          <p>The Open Level Bachata Class with Zach is for people with 0 to 1 year experience in Bachata. Wed 14 Oct: the Connection Workshop with Angy Pérez, international Bachata connection teacher, running at the same time, is for dancers of any background, experienced bachata dancers, and people passionate about movement and connection.</p>
+          <p>The Open Level Bachata Class<span data-show-until="2026-10-14"> with Zach</span> is for people with 0 to 1 year experience in Bachata. <span data-show-until="2026-10-14">Wed 14 Oct: the Connection Workshop with Angy Pérez, international Bachata connection teacher,</span><span data-show-from="2026-10-15" hidden>The connection workshop,</span> running at the same time, is for dancers of any background, experienced bachata dancers, and people passionate about movement and connection.</p>
         </details>
         <details class="faq-item">
           <summary>Do I need a partner?</summary>
