@@ -295,6 +295,66 @@
       nav.pastel-blue  .nav-links { background: rgba(173,216,230,0.97); }
     }
 
+    /* One-off 14 Oct 2026 feature. Hidden until the inline script shows it,
+       and only while now is before 15 Oct 2026 00:00 Europe/London. */
+    .oct14-feature[hidden] { display: none !important; }
+    .oct14-feature {
+      margin-top: 68px;
+      padding: 1.2rem 1.15rem 1.45rem;
+      background: #fff;
+      border-bottom: 4px solid var(--pastel-pink);
+    }
+    .oct14-feature-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.1rem;
+    }
+    .oct14-feature img {
+      width: min(100%, 460px);
+      height: auto;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 10px 28px rgba(42, 26, 46, 0.16);
+    }
+    .oct14-feature-copy { max-width: 36rem; text-align: center; }
+    .oct14-feature h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: clamp(1.35rem, 2.7vw, 1.9rem);
+      line-height: 1.18;
+      color: var(--ink);
+      margin: 0 0 0.55rem;
+    }
+    .oct14-feature p {
+      margin: 0 0 1rem;
+      color: var(--ink);
+      font-size: 0.98rem;
+      line-height: 1.45;
+    }
+    .oct14-book {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0.72rem 1.7rem;
+      background: var(--pink-deep);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border-radius: 3rem;
+    }
+    .oct14-book:hover { background: #5e2d58; }
+    @media (min-width: 880px) {
+      .oct14-feature-inner { flex-direction: row; align-items: center; justify-content: center; gap: 2rem; }
+      .oct14-feature img { width: 440px; flex: 0 0 auto; }
+      .oct14-feature-copy { text-align: left; flex: 1; min-width: 0; }
+    }
+    .oct14-feature:not([hidden]) + .split-hero { padding-top: 0; }
+
     /* ── One-off venue notice (injected from events.json, auto-hides after endDate) ── */
     .this-wednesday[hidden] { display: none !important; }
     .this-wednesday { text-align: center; }
@@ -730,6 +790,24 @@
       </div>
     </nav>
   </header>
+
+  <!-- One-off. Stays hidden after 14 Oct 2026 with no redeploy. -->
+  <section class="oct14-feature" id="oct14Feature" hidden aria-labelledby="oct14FeatureHeading">
+    <div class="oct14-feature-inner">
+      <img src="images/poster-14oct-2026.jpg" width="1414" height="2000" alt="Rogue Bachata poster for Wednesday 14 October 2026 at Keystone Crescent Members Club, King's Cross N1 9DX: Connection Workshop with Angy Pérez, international Bachata connection teacher, and Open Level Bachata Class with Zach for people with 0 to 1 year of experience. Both 7:30–8:45pm, then a free social from 9pm until late. £10 plus booking fee.">
+      <div class="oct14-feature-copy">
+        <h2 id="oct14FeatureHeading">This Wednesday: Connection Workshop with Angy Pérez + Open Level class with Zach</h2>
+        <p>Wed 14 Oct · Keystone Crescent, King's Cross N1 9DX · 7:30–8:45pm, free social 9pm–late · £10 + booking fee</p>
+        <a class="oct14-book" href="https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-copy-ez3e" target="_blank" rel="noopener">Book</a>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var feature = document.getElementById('oct14Feature');
+        if (feature && Date.now() < Date.parse('2026-10-14T23:00:00Z')) feature.hidden = false;
+      })();
+    </script>
+  </section>
 
   <!-- ══ SPLIT-NIGHT HERO ══ -->
   <section class="split-hero" aria-labelledby="hero-h">

@@ -619,7 +619,8 @@
     .wed-nights { display: grid; gap: 1.2rem; max-width: 520px; margin: 0 auto; }
     .wed-night h3 { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 1.35rem; margin-bottom: 0.3rem; }
     .wed-night-venue { color: var(--ink-muted); font-size: 0.92rem; margin-bottom: 0.75rem; }
-    .wed-night-poster { width: 100%; height: auto; display: block; border-radius: 12px; margin: 0.2rem 0 0.9rem; }
+    #oct14Night[hidden] { display: none !important; }
+    .wed-night-poster { width: min(100%, 460px); height: auto; display: block; border-radius: 12px; margin: 0.2rem auto 0.9rem; }
     .wed-night-structure { font-size: 0.92rem; color: var(--ink-muted); margin-bottom: 0.9rem; }
     .wed-night-structure a { color: var(--blue-deep); }
     .wed-night-book {
@@ -738,7 +739,21 @@
     <section class="section wed-nights-section" aria-labelledby="nights-h">
       <span class="section-kicker">Coming Wednesdays</span>
       <h2 id="nights-h">Book a Wednesday</h2>
-      <div id="wednesdayNights" class="wed-nights"></div>
+      <div id="wednesdayNights" class="wed-nights">
+        <article class="card wed-night" id="oct14Night" hidden>
+          <h3>Wednesday 14 October 2026</h3>
+          <p class="wed-night-venue">Keystone Crescent Members Club, King's Cross N1 9DX</p>
+          <img class="wed-night-poster" src="images/poster-14oct-2026.jpg" width="1414" height="2000" alt="Rogue Bachata poster for Wednesday 14 October 2026 at Keystone Crescent Members Club, King's Cross N1 9DX: Connection Workshop with Angy Pérez, international Bachata connection teacher, and Open Level Bachata Class with Zach for people with 0 to 1 year of experience. Both 7:30–8:45pm, then a free social from 9pm until late. £10 plus booking fee.">
+          <p class="wed-night-structure">Rogue Bachata Open Level Bachata Class with Zach, for people with 0 to 1 year experience in Bachata, and the Connection Workshop with Angy Pérez, international Bachata connection teacher, for dancers of any background, experienced bachata dancers, and people passionate about movement and connection. Both run at the same time, 7:30–8:45pm. Free social 9pm–late.</p>
+          <a class="wed-night-book" href="https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-copy-ez3e" target="_blank" rel="noopener">Book 14 October 2026</a>
+          <script>
+            (function () {
+              var night = document.getElementById('oct14Night');
+              if (night && Date.now() < Date.parse('2026-10-14T23:00:00Z')) night.hidden = false;
+            })();
+          </script>
+        </article>
+      </div>
     </section>
 
     <!-- ══ "IS THIS YOU?" ══ -->

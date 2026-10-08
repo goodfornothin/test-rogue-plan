@@ -142,13 +142,19 @@
 
   function renderWednesdayNights(mount, events) {
     if (!mount) return;
+    /* Keep the static 14 Oct card when its own script has shown it, so the
+       poster is not wiped and the same night is not listed twice. */
+    var keep = mount.querySelector('#oct14Night');
+    var keepVisible = !!(keep && !keep.hidden);
     var upcoming = upcomingEvents(events);
     mount.innerHTML = '';
-    if (!upcoming.length) {
+    if (keepVisible) mount.appendChild(keep);
+    if (!upcoming.length && !keepVisible) {
       mount.hidden = true;
       return;
     }
     upcoming.forEach(function (ev) {
+      if (keepVisible && ev.date === '2026-10-14') return;
       var article = document.createElement('article');
       article.className = 'card wed-night';
       var heading = document.createElement('h3');
