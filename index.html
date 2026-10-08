@@ -343,6 +343,17 @@
     .night-feature-time { font-weight: 800; font-size: 0.85rem; color: #ff8cc6; white-space: nowrap; }
     .night-feature-what strong { display: block; font-size: 0.97rem; }
     .night-feature-for { display: block; font-size: 0.86rem; line-height: 1.5; color: rgba(255, 255, 255, 0.8); }
+    /* Classes with a named teacher, billed like the poster: headliner first and biggest. */
+    .night-feature-schedule li.night-feature-class { grid-template-columns: 1fr; gap: 0.45rem; padding: 1rem 1.1rem 1.1rem; border-color: rgba(255, 79, 163, 0.4); }
+    .night-feature-class .night-feature-time { justify-self: start; padding: 0.12rem 0.75rem; border-radius: 2rem; background: #d6247a; color: #fff; font-size: 0.8rem; }
+    .night-feature-class .night-feature-what strong { font-size: 1.3rem; font-weight: 800; line-height: 1.15; text-transform: uppercase; color: #ff6fb5; }
+    .night-feature-teacher { display: block; margin: 0.1rem 0 0.35rem; font-size: 1.15rem; font-weight: 700; }
+    .night-feature-teacher em { font-style: normal; color: #ff6fb5; }
+    .night-feature-role { display: block; margin-bottom: 0.3rem; font-size: 0.82rem; font-weight: 600; color: #ff8cc6; }
+    .night-feature-class.is-lead { background: rgba(255, 255, 255, 0.09); border-color: rgba(255, 79, 163, 0.65); box-shadow: 0 0 22px rgba(255, 79, 163, 0.18); }
+    .night-feature-class.is-lead .night-feature-time { background: #fff; color: #150a14; }
+    .night-feature-class.is-lead .night-feature-what strong { font-size: 1.6rem; color: #fff; }
+    .night-feature-class.is-lead .night-feature-teacher { font-size: 1.35rem; }
     .night-feature-note { font-size: 0.88rem; color: rgba(255, 255, 255, 0.82); margin-bottom: 0.35rem; }
     .night-feature-meta { font-size: 0.88rem; font-weight: 600; margin-bottom: 1.3rem; }
     .night-feature-book {
@@ -825,7 +836,7 @@
           <span class="hero-panel-eyebrow">Every Wednesday</span>
           <h2 id="panel-wed-h" class="hero-panel-day">Wednesday</h2>
           <p class="hero-panel-sub">Keystone Crescent Members Club · King's Cross</p>
-          <p class="hero-panel-meta" data-show-until="2026-10-14">Next class: Wednesday 14 October 2026<br>7:30–8:45pm · Open Level class with Zach &amp; Connection Workshop with Angy Pérez<br>Free social 9pm–late · £10</p>
+          <p class="hero-panel-meta" data-show-until="2026-10-14">Next class: Wednesday 14 October 2026<br>7:30–8:45pm · Connection Workshop with Angy Pérez &amp; Open Level class with Zach<br>Free social 9pm–late · £10</p>
           <p class="hero-panel-meta" data-show-from="2026-10-15" hidden>7:30–8:45pm · Open Level class &amp; connection workshop<br>Free social 9pm–late · £10</p>
           <a href="rogue-bachata-wednesdays.html" id="wednesdayBookBtn" class="hero-panel-btn">Book Wednesday →</a>
         </div>
@@ -847,7 +858,7 @@
         <article class="card offer-card accent-pink">
           <span class="hook">The easiest way in</span>
           <h3>Weekly Classes</h3>
-          <p class="desc">Beginner-friendly bachata every Tuesday in Clapham. Every Wednesday in King's Cross, an Open Level Bachata Class and a connection workshop run at the same time, 7:30–8:45pm, then a free social from 9 — safe to come alone.<span data-show-until="2026-10-14"> Wed 14 Oct: Open Level class with Zach and the Connection Workshop with Angy Pérez, international Bachata connection teacher.</span></p>
+          <p class="desc">Beginner-friendly bachata every Tuesday in Clapham. Every Wednesday in King's Cross, an Open Level Bachata Class and a connection workshop run at the same time, 7:30–8:45pm, then a free social from 9 — safe to come alone.<span data-show-until="2026-10-14"> Wed 14 Oct: the Connection Workshop with Angy Pérez, international Bachata connection teacher, and the Open Level class with Zach.</span></p>
           <p class="price">£10 per class · free social after</p>
           <a class="offer-link" href="#tuesday">See both nights →</a>
         </article>
@@ -1017,7 +1028,7 @@
         </details>
         <details class="faq-item">
           <summary>How much does it cost?</summary>
-          <p>£10 for the class on both nights. Tuesdays in Clapham: class 7:30pm, free social from 8:30pm. Wednesdays in King's Cross<span data-show-until="2026-10-14">, Wed 14 Oct: Open Level Bachata Class with Zach and the Connection Workshop with Angy Pérez, international Bachata connection teacher,</span><span data-show-from="2026-10-15" hidden>: Open Level Bachata Class and a connection workshop,</span> both 7:30–8:45pm, then a free social from 9pm.</p>
+          <p>£10 for the class on both nights. Tuesdays in Clapham: class 7:30pm, free social from 8:30pm. Wednesdays in King's Cross<span data-show-until="2026-10-14">, Wed 14 Oct: the Connection Workshop with Angy Pérez, international Bachata connection teacher, and the Open Level Bachata Class with Zach,</span><span data-show-from="2026-10-15" hidden>: Open Level Bachata Class and a connection workshop,</span> both 7:30–8:45pm, then a free social from 9pm.</p>
         </details>
         <details class="faq-item">
           <summary>Where are Tuesday and Wednesday nights held?</summary>

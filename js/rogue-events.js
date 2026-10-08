@@ -25,7 +25,7 @@
  *     "feature": {
  *       "tag": "Wed 14 Oct · One night only",
  *       "headline": "…", "lede": "…", "bannerAlt": "…",
- *       "schedule": [{ "time": "7:30–8:45pm", "title": "…", "text": "…" }],
+ *       "schedule": [{ "time": "7:30–8:45pm", "title": "…", "teacher": "…", "role": "…", "text": "…", "lead": true }],
  *       "note": "…", "price": "£10 + booking fee"
  *     }
  *   }
@@ -197,10 +197,20 @@
       list.className = 'night-feature-schedule';
       f.schedule.forEach(function (item) {
         var li = document.createElement('li');
+        /* A class with a named teacher gets poster-style billing; "lead" marks the headliner. */
+        if (item.teacher) li.className = 'night-feature-class' + (item.lead ? ' is-lead' : '');
         addText(li, 'span', 'night-feature-time', item.time);
         var what = document.createElement('span');
         what.className = 'night-feature-what';
         addText(what, 'strong', '', item.title);
+        if (item.teacher) {
+          var teacher = document.createElement('span');
+          teacher.className = 'night-feature-teacher';
+          teacher.appendChild(document.createTextNode('with '));
+          addText(teacher, 'em', '', item.teacher);
+          what.appendChild(teacher);
+        }
+        addText(what, 'span', 'night-feature-role', item.role);
         addText(what, 'span', 'night-feature-for', item.text);
         li.appendChild(what);
         list.appendChild(li);

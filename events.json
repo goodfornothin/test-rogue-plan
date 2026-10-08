@@ -12,18 +12,22 @@
       "banner": "images/wednesday-14-october-2026-banner.png",
       "feature": {
         "tag": "Wed 14 Oct · One night only",
-        "headline": "Guest teacher Angy Pérez",
-        "lede": "International Bachata connection teacher from Peru · Connect, Dance, Heal",
+        "headline": "Angy Pérez & Zach",
+        "lede": "Two classes at the same time, 7:30–8:45pm. Book the one you want.",
         "bannerAlt": "Angy Pérez and Zach, this Wednesday's teachers, with the Rogue Bachata logo",
         "schedule": [
           {
             "time": "7:30–8:45pm",
-            "title": "Connection Workshop with Angy Pérez",
-            "text": "For dancers of any background, experienced bachata dancers, and people passionate about movement and connection."
+            "title": "Connection Workshop",
+            "teacher": "Angy Pérez",
+            "role": "International Bachata connection teacher from Peru · Connect, Dance, Heal",
+            "text": "For dancers of any background, experienced bachata dancers, and people passionate about movement and connection.",
+            "lead": true
           },
           {
             "time": "7:30–8:45pm",
-            "title": "Open Level Bachata Class with Zach",
+            "title": "Open Level Bachata Class",
+            "teacher": "Zach",
             "text": "For people with 0 to 1 year experience in bachata."
           },
           {
@@ -31,7 +35,6 @@
             "title": "Free social"
           }
         ],
-        "note": "The workshop and the class run at the same time, so book the one you want.",
         "price": "£10 + booking fee"
       }
     },
