@@ -17,8 +17,11 @@
  *   }
  * The notice is injected only while London date <= endDate (defaults to event date).
  *
- * Optional one-night feature (text-free wide banner + the night's copy; the card
- * is built from the data, so it does not repeat a poster):
+ * Optional one-night feature (text-free wide banner + the night's copy).
+ * The 14 Oct 2026 card also includes images/poster-14oct-2026.jpg under the
+ * Book button (beside the copy on wide screens). The card is only built while
+ * that night is still upcoming in Europe/London, so it is gone from
+ * 2026-10-14T23:00:00Z (15 Oct 2026 00:00 London) with no redeploy:
  *   {
  *     "date": "2026-10-14",
  *     "banner": "images/wednesday-14-october-2026-banner.png",
@@ -231,6 +234,24 @@
       copy.appendChild(book);
     }
     body.appendChild(copy);
+
+    /* Oscar's final poster. Under the Book button; beside the copy on desktop. */
+    if (event.date === '2026-10-14') {
+      var figure = document.createElement('figure');
+      figure.className = 'night-feature-poster';
+      var posterImg = document.createElement('img');
+      posterImg.src = 'images/poster-14oct-2026.jpg';
+      posterImg.width = 1414;
+      posterImg.height = 2000;
+      posterImg.alt = 'Poster for Rogue Bachata on Wednesday 14 October 2026 at Keystone Crescent Members Club, King\'s Cross N1 9DX: Connection Workshop with Angy Pérez and Open Level Bachata Class with Zach, 7:30–8:45pm, then a free social from 9pm until late. £10 plus booking fee.';
+      posterImg.addEventListener('error', function () { figure.remove(); });
+      var caption = document.createElement('figcaption');
+      caption.textContent = 'Poster';
+      figure.appendChild(posterImg);
+      figure.appendChild(caption);
+      body.appendChild(figure);
+    }
+
     card.appendChild(body);
     return card;
   }
