@@ -329,6 +329,7 @@
       box-shadow: 0 0 18px rgba(255, 79, 163, 0.5);
     }
     .night-feature-headline { font-weight: 800; font-size: clamp(1.45rem, 4vw, 2rem); line-height: 1.15; text-transform: uppercase; margin-bottom: 0.45rem; }
+    #thisWednesdayPoster .night-feature-headline { text-transform: none; font-size: clamp(1.25rem, 2.6vw, 1.7rem); }
     .night-feature-lede { color: #ff8cc6; font-size: 0.88rem; font-weight: 600; margin-bottom: 1.2rem; }
     .night-feature-schedule { list-style: none; display: grid; gap: 0.65rem; margin-bottom: 1.1rem; }
     .night-feature-schedule li {
@@ -368,6 +369,29 @@
       transition: transform 0.2s ease;
     }
     .night-feature-book:hover { transform: translateY(-2px); }
+    .night-feature-poster { margin: 1.15rem 0 0; text-align: center; }
+    .night-feature-poster img {
+      width: min(100%, 440px);
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 12px;
+    }
+    .night-feature-poster figcaption {
+      margin-top: 0.45rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.72);
+    }
+    @media (min-width: 1000px) {
+      .night-feature { max-width: 1040px; }
+      .night-feature-body { display: flex; align-items: center; gap: 1.5rem; }
+      .night-feature-copy { flex: 1 1 auto; min-width: 0; }
+      .night-feature-poster { flex: 0 0 440px; width: 440px; margin: 0; }
+      .night-feature-poster img { width: 440px; }
+    }
 
     .venue-alert[hidden] { display: none !important; }
     .venue-alert {
@@ -1148,6 +1172,10 @@
           var feat = upcoming[0];
           RogueEvents.applyBookLinks(feat ? feat.url : RogueEvents.FALLBACK_URL);
           RogueEvents.renderFeaturedPoster(document.getElementById('thisWednesdayPoster'), feat);
+          var oct14Headline = document.querySelector('#thisWednesdayPoster .night-feature-headline');
+          if (oct14Headline) {
+            oct14Headline.textContent = 'Wed 14 Oct: Connection Workshop with Angy Pérez + Open Level class with Zach';
+          }
           RogueEvents.renderVenueNotice(
             document.getElementById('venueNoticeMount'),
             RogueEvents.activeVenueNotice(data.events)
