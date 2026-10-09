@@ -27,7 +27,7 @@
  *     "banner": "images/wednesday-14-october-2026-banner.png",
  *     "feature": {
  *       "tag": "Wednesday 14 October",
- *       "headline": "…", "lede": "…", "bannerAlt": "…",
+ *       "headline": "…", "with": "With Angy Pérez, Boadicea and Zach", "lede": "…", "bannerAlt": "…",
  *       "schedule": [{ "time": "7:30–8:45pm", "title": "…", "teacher": "…", "role": "…", "text": "…", "lead": true }],
  *       "note": "…", "price": "£10 + booking fee"
  *     }
@@ -193,6 +193,7 @@
     copy.className = 'night-feature-copy';
     addText(copy, 'p', 'night-feature-tag', f.tag || 'Wednesday ' + formatLongDate(event.date));
     addText(copy, 'h3', 'night-feature-headline', f.headline);
+    addText(copy, 'p', 'night-feature-with', f.with);
     addText(copy, 'p', 'night-feature-lede', f.lede);
 
     if (f.schedule && f.schedule.length) {
@@ -243,7 +244,7 @@
       posterImg.src = 'images/poster-14oct-2026.jpg';
       posterImg.width = 1414;
       posterImg.height = 2000;
-      posterImg.alt = 'Poster for Rogue Bachata on Wednesday 14 October 2026 at Keystone Crescent Members Club, King\'s Cross N1 9DX: Connection Workshop with Angy Pérez and Open Level Bachata Class with Zach, 7:30–8:45pm, then a free social from 9pm until late. £10 plus booking fee.';
+      posterImg.alt = 'Poster for Rogue Bachata on Wednesday 14 October 2026 at Keystone Crescent Members Club, King\'s Cross N1 9DX. With Angy Pérez, Boadicea and Zach. Connection Workshop with Angy Pérez and Open Level Bachata Class with Zach, 7:30–8:45pm, then a free social from 9pm until late. £10 plus booking fee.';
       posterImg.addEventListener('error', function () { figure.remove(); });
       var caption = document.createElement('figcaption');
       caption.textContent = 'Poster';
@@ -271,7 +272,7 @@
     /* Angy Pérez is the guest on 14 Oct 2026 only. Later Wednesdays keep the same night shape without naming that guest. */
     var angyNight = event && event.date === '2026-10-14';
     p.textContent = angyNight
-      ? 'The Connection Workshop with Angy Pérez, international Bachata connection teacher, for dancers of any background, experienced bachata dancers, and people passionate about movement and connection, and the Rogue Bachata Open Level Bachata Class with Zach, for people with 0 to 1 year experience in Bachata. Both run at the same time, 7:30–8:45pm. Free social 9pm–late.'
+      ? 'With Angy Pérez, Boadicea and Zach. The Connection Workshop with Angy Pérez, international Bachata connection teacher, for dancers of any background, experienced bachata dancers, and people passionate about movement and connection, and the Rogue Bachata Open Level Bachata Class with Zach, for people with 0 to 1 year experience in Bachata. Both run at the same time, 7:30–8:45pm. Free social 9pm–late.'
       : 'Rogue Bachata Open Level Bachata Class, for people with 0 to 1 year experience in Bachata, and a connection workshop, for dancers of any background, experienced bachata dancers, and people passionate about movement and connection. Both run at the same time, 7:30–8:45pm. Free social 9pm–late.';
     parent.appendChild(p);
   }
