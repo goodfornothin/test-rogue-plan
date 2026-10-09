@@ -293,6 +293,17 @@ def wednesday_booking_url(event_date, candidate_url="", existing_url=""):
     return candidate_url or None
 
 
+DATED_ART = re.compile(r"wednesday-(\d{1,2})-([a-z]+)-(\d{4})", re.IGNORECASE)
+
+
+def art_date(path):
+    """ISO date named in artwork like images/wednesday-14-october-2026.jpg, else ''."""
+    m = DATED_ART.search(str(path or ""))
+    if not m or m.group(2)[:3].lower() not in MONTHS:
+        return ""
+    return f"{m.group(3)}-{MONTHS[m.group(2)[:3].lower()]}-{m.group(1).zfill(2)}"
+
+
 def load_existing_events():
     try:
         with open(OUTPUT_FILE, encoding="utf-8") as f:
@@ -333,12 +344,14 @@ def apply_aalaap_booking_urls(events):
         # Keep the display copy already published for this date. Fatsoma's
         # title/venue strings are not the booking source of truth.
         if existing:
-            for key in ("startTime", "title", "venue", "image"):
+            for key in ("startTime", "title", "venue", "image", "banner", "feature"):
                 if existing.get(key):
                     ev[key] = existing[key]
-            # A date-specific poster stays on that date. Never copy it onto another night.
-            if ev.get("image") and "wednesday-7-october-2026" in str(ev.get("image")) and event_date != "2026-10-07":
-                ev.pop("image", None)
+            # A date-specific poster or banner stays on that date. Never copy it onto another night.
+            for key in ("image", "banner"):
+                dated = art_date(ev.get(key))
+                if dated and dated != event_date:
+                    ev.pop(key, None)
             if existing.get("venueNotice") and not ev.get("venueNotice"):
                 ev["venueNotice"] = existing["venueNotice"]
         by_date[event_date] = ev

@@ -295,71 +295,80 @@
       nav.pastel-blue  .nav-links { background: rgba(173,216,230,0.97); }
     }
 
-    /* One-off 14 Oct 2026 feature. Hidden until the inline script shows it,
-       and only while now is before 15 Oct 2026 00:00 Europe/London. */
-    .oct14-feature[hidden] { display: none !important; }
-    .oct14-feature {
-      margin-top: 68px;
-      padding: 1.2rem 1.15rem 1.45rem;
-      background: #fff;
-      border-bottom: 4px solid var(--pastel-pink);
-    }
-    .oct14-feature-inner {
-      max-width: 980px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.1rem;
-    }
-    .oct14-feature img {
-      width: min(100%, 460px);
-      height: auto;
-      display: block;
-      border-radius: 16px;
-      box-shadow: 0 10px 28px rgba(42, 26, 46, 0.16);
-    }
-    .oct14-feature-copy { max-width: 36rem; text-align: center; }
-    .oct14-feature h2 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 800;
-      font-size: clamp(1.35rem, 2.7vw, 1.9rem);
-      line-height: 1.18;
-      color: var(--ink);
-      margin: 0 0 0.55rem;
-    }
-    .oct14-feature p {
-      margin: 0 0 1rem;
-      color: var(--ink);
-      font-size: 0.98rem;
-      line-height: 1.45;
-    }
-    .oct14-book {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0.72rem 1.7rem;
-      background: var(--pink-deep);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.95rem;
-      text-decoration: none;
-      border-radius: 3rem;
-    }
-    .oct14-book:hover { background: #5e2d58; }
-    @media (min-width: 880px) {
-      .oct14-feature-inner { flex-direction: row; align-items: center; justify-content: center; gap: 2rem; }
-      .oct14-feature img { width: 440px; flex: 0 0 auto; }
-      .oct14-feature-copy { text-align: left; flex: 1; min-width: 0; }
-    }
-    .oct14-feature:not([hidden]) + .split-hero { padding-top: 0; }
-
     /* ── One-off venue notice (injected from events.json, auto-hides after endDate) ── */
     .this-wednesday[hidden] { display: none !important; }
     .this-wednesday { text-align: center; }
     .this-wed-poster { max-width: 420px; margin: 0.6rem auto 0; }
     .this-wed-poster img { width: 100%; height: auto; display: block; border-radius: 16px; }
+    .split-hero > .this-wednesday { padding: 1.4rem 1rem 1.8rem; }
+
+    /* ── One-night feature card (events.json "feature"; gone once the date has passed) ── */
+    [data-show-until][hidden], [data-show-from][hidden] { display: none !important; }
+    .night-feature {
+      text-align: left;
+      max-width: 760px;
+      margin: 0.4rem auto 0;
+      background: #150a14;
+      color: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1.5px solid rgba(255, 79, 163, 0.45);
+      box-shadow: 0 16px 44px rgba(122, 61, 113, 0.35);
+    }
+    .night-feature-banner { display: block; width: 100%; height: auto; }
+    .night-feature-body { padding: 1.5rem 1.3rem 1.6rem; }
+    @media (min-width: 880px) { .night-feature-body { padding: 2rem 2.4rem 2.3rem; } }
+    .night-feature-tag {
+      display: inline-block;
+      margin-bottom: 0.85rem;
+      padding: 0.3rem 0.95rem;
+      border-radius: 2rem;
+      background: #d6247a;
+      color: #fff;
+      font-weight: 800; font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase;
+      box-shadow: 0 0 18px rgba(255, 79, 163, 0.5);
+    }
+    .night-feature-headline { font-weight: 800; font-size: clamp(1.45rem, 4vw, 2rem); line-height: 1.15; text-transform: uppercase; margin-bottom: 0.45rem; }
+    #thisWednesdayPoster .night-feature-headline { text-transform: none; font-size: clamp(1.25rem, 2.6vw, 1.7rem); }
+    .night-feature-lede { color: #ff8cc6; font-size: 0.88rem; font-weight: 600; margin-bottom: 1.2rem; }
+    .night-feature-schedule { list-style: none; display: grid; gap: 0.65rem; margin-bottom: 1.1rem; }
+    .night-feature-schedule li {
+      display: grid; grid-template-columns: 6.4rem 1fr; gap: 0.8rem;
+      padding: 0.75rem 0.95rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    @media (max-width: 480px) { .night-feature-schedule li { grid-template-columns: 1fr; gap: 0.1rem; } }
+    .night-feature-time { font-weight: 800; font-size: 0.85rem; color: #ff8cc6; white-space: nowrap; }
+    .night-feature-what strong { display: block; font-size: 0.97rem; }
+    .night-feature-for { display: block; font-size: 0.86rem; line-height: 1.5; color: rgba(255, 255, 255, 0.8); }
+    /* Classes with a named teacher, billed like the poster: headliner first and biggest. */
+    .night-feature-schedule li.night-feature-class { grid-template-columns: 1fr; gap: 0.45rem; padding: 1rem 1.1rem 1.1rem; border-color: rgba(255, 79, 163, 0.4); }
+    .night-feature-class .night-feature-time { justify-self: start; padding: 0.12rem 0.75rem; border-radius: 2rem; background: #d6247a; color: #fff; font-size: 0.8rem; }
+    .night-feature-class .night-feature-what strong { font-size: 1.3rem; font-weight: 800; line-height: 1.15; text-transform: uppercase; color: #ff6fb5; }
+    .night-feature-teacher { display: block; margin: 0.1rem 0 0.35rem; font-size: 1.15rem; font-weight: 700; }
+    .night-feature-teacher em { font-style: normal; color: #ff6fb5; }
+    .night-feature-role { display: block; margin-bottom: 0.3rem; font-size: 0.82rem; font-weight: 600; color: #ff8cc6; }
+    .night-feature-class.is-lead { background: rgba(255, 255, 255, 0.09); border-color: rgba(255, 79, 163, 0.65); box-shadow: 0 0 22px rgba(255, 79, 163, 0.18); }
+    .night-feature-class.is-lead .night-feature-time { background: #fff; color: #150a14; }
+    .night-feature-class.is-lead .night-feature-what strong { font-size: 1.6rem; color: #fff; }
+    .night-feature-class.is-lead .night-feature-teacher { font-size: 1.35rem; }
+    .night-feature-note { font-size: 0.88rem; color: rgba(255, 255, 255, 0.82); margin-bottom: 0.35rem; }
+    .night-feature-meta { font-size: 0.88rem; font-weight: 600; margin-bottom: 1.3rem; }
+    .night-feature-book {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px;
+      padding: 0.85rem 1.9rem;
+      border-radius: 3rem;
+      background: #d6247a;
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 0 22px rgba(255, 79, 163, 0.45);
+      transition: transform 0.2s ease;
+    }
+    .night-feature-book:hover { transform: translateY(-2px); }
 
     .venue-alert[hidden] { display: none !important; }
     .venue-alert {
@@ -791,27 +800,10 @@
     </nav>
   </header>
 
-  <!-- One-off. Stays hidden after 14 Oct 2026 with no redeploy. -->
-  <section class="oct14-feature" id="oct14Feature" hidden aria-labelledby="oct14FeatureHeading">
-    <div class="oct14-feature-inner">
-      <img src="images/poster-14oct-2026.jpg" width="1414" height="2000" alt="Rogue Bachata poster for Wednesday 14 October 2026 at Keystone Crescent Members Club, King's Cross N1 9DX: Connection Workshop with Angy Pérez, international Bachata connection teacher, and Open Level Bachata Class with Zach for people with 0 to 1 year of experience. Both 7:30–8:45pm, then a free social from 9pm until late. £10 plus booking fee.">
-      <div class="oct14-feature-copy">
-        <h2 id="oct14FeatureHeading">This Wednesday: Connection Workshop with Angy Pérez + Open Level class with Zach</h2>
-        <p>Wed 14 Oct · Keystone Crescent, King's Cross N1 9DX · 7:30–8:45pm, free social 9pm–late · £10 + booking fee</p>
-        <a class="oct14-book" href="https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-copy-ez3e" target="_blank" rel="noopener">Book</a>
-      </div>
-    </div>
-    <script>
-      (function () {
-        var feature = document.getElementById('oct14Feature');
-        if (feature && Date.now() < Date.parse('2026-10-14T23:00:00Z')) feature.hidden = false;
-      })();
-    </script>
-  </section>
-
   <!-- ══ SPLIT-NIGHT HERO ══ -->
   <section class="split-hero" aria-labelledby="hero-h">
     <aside id="venueNoticeMount" class="venue-alert" hidden aria-label="Venue notice"></aside>
+    <div class="section this-wednesday" id="thisWednesdayPoster" hidden></div>
     <div class="hero-strip">
       <h1 id="hero-h" class="hero-strip-tagline">Movement<span class="dot">·</span>Connection<span class="dot">·</span>Freedom</h1>
     </div>
@@ -844,14 +836,13 @@
           <span class="hero-panel-eyebrow">Every Wednesday</span>
           <h2 id="panel-wed-h" class="hero-panel-day">Wednesday</h2>
           <p class="hero-panel-sub">Keystone Crescent Members Club · King's Cross</p>
-          <p class="hero-panel-meta">Next class: Wednesday 14 October 2026<br>7:30–8:45pm · Open Level class with Zach &amp; Connection Workshop with Angy Pérez<br>Free social 9pm–late · £10</p>
+          <p class="hero-panel-meta" data-show-until="2026-10-14">Next class: Wednesday 14 October 2026<br>7:30–8:45pm · Connection Workshop with Angy Pérez &amp; Open Level class with Zach<br>Free social 9pm–late · £10</p>
+          <p class="hero-panel-meta" data-show-from="2026-10-15" hidden>7:30–8:45pm · Open Level class &amp; connection workshop<br>Free social 9pm–late · £10</p>
           <a href="rogue-bachata-wednesdays.html" id="wednesdayBookBtn" class="hero-panel-btn">Book Wednesday →</a>
         </div>
       </article>
     </div>
   </section>
-
-  <section class="section this-wednesday" id="thisWednesdayPoster" hidden></section>
 
   <main id="main">
 
@@ -865,7 +856,7 @@
         <article class="card offer-card accent-pink">
           <span class="hook">The easiest way in</span>
           <h3>Weekly Classes</h3>
-          <p class="desc">Beginner-friendly bachata every Tuesday in Clapham. Every Wednesday in King's Cross, an Open Level Bachata Class and a connection workshop run at the same time, 7:30–8:45pm, then a free social from 9 — safe to come alone. Wed 14 Oct: Open Level class with Zach and the Connection Workshop with Angy Pérez, international Bachata connection teacher.</p>
+          <p class="desc">Beginner-friendly bachata every Tuesday in Clapham. Every Wednesday in King's Cross, an Open Level Bachata Class and a connection workshop run at the same time, 7:30–8:45pm, then a free social from 9 — safe to come alone.<span data-show-until="2026-10-14"> Wed 14 Oct: the Connection Workshop with Angy Pérez, international Bachata connection teacher, and the Open Level class with Zach.</span></p>
           <p class="price">£10 per class · free social after</p>
           <a class="offer-link" href="#tuesday">See both nights →</a>
         </article>
@@ -1035,7 +1026,7 @@
         </details>
         <details class="faq-item">
           <summary>How much does it cost?</summary>
-          <p>£10 for the class on both nights. Tuesdays in Clapham: class 7:30pm, free social from 8:30pm. Wednesdays in King's Cross, Wed 14 Oct: Open Level Bachata Class with Zach and the Connection Workshop with Angy Pérez, international Bachata connection teacher, both 7:30–8:45pm, then a free social from 9pm.</p>
+          <p>£10 for the class on both nights. Tuesdays in Clapham: class 7:30pm, free social from 8:30pm. Wednesdays in King's Cross<span data-show-until="2026-10-14">, Wed 14 Oct: the Connection Workshop with Angy Pérez, international Bachata connection teacher, and the Open Level Bachata Class with Zach,</span><span data-show-from="2026-10-15" hidden>: Open Level Bachata Class and a connection workshop,</span> both 7:30–8:45pm, then a free social from 9pm.</p>
         </details>
         <details class="faq-item">
           <summary>Where are Tuesday and Wednesday nights held?</summary>
@@ -1158,6 +1149,10 @@
           var feat = upcoming[0];
           RogueEvents.applyBookLinks(feat ? feat.url : RogueEvents.FALLBACK_URL);
           RogueEvents.renderFeaturedPoster(document.getElementById('thisWednesdayPoster'), feat);
+          var oct14Headline = document.querySelector('#thisWednesdayPoster .night-feature-headline');
+          if (oct14Headline) {
+            oct14Headline.textContent = 'Wed 14 Oct: Connection Workshop with Angy Pérez + Open Level class with Zach';
+          }
           RogueEvents.renderVenueNotice(
             document.getElementById('venueNoticeMount'),
             RogueEvents.activeVenueNotice(data.events)
