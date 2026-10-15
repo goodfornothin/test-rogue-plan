@@ -41,7 +41,7 @@
  */
 (function (global) {
   var TZ = 'Europe/London';
-  var FALLBACK_URL = 'https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-copy-ez3e';
+  var FALLBACK_URL = 'https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-vbdn';
 
   function londonTodayISO() {
     return new Intl.DateTimeFormat('en-CA', {
