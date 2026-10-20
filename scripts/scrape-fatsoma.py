@@ -344,11 +344,11 @@ def apply_aalaap_booking_urls(events):
         # Keep the display copy already published for this date. Fatsoma's
         # title/venue strings are not the booking source of truth.
         if existing:
-            for key in ("startTime", "title", "venue", "image", "banner", "feature"):
+            for key in ("startTime", "title", "venue", "image", "banner", "feature", "poster", "posterAlt", "posterWidth", "posterHeight"):
                 if existing.get(key):
                     ev[key] = existing[key]
             # A date-specific poster or banner stays on that date. Never copy it onto another night.
-            for key in ("image", "banner"):
+            for key in ("image", "banner", "poster"):
                 dated = art_date(ev.get(key))
                 if dated and dated != event_date:
                     ev.pop(key, None)
