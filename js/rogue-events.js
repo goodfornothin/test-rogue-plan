@@ -18,16 +18,16 @@
  * The notice is injected only while London date <= endDate (defaults to event date).
  *
  * Optional one-night feature (text-free wide banner + the night's copy).
- * The 14 Oct 2026 card also includes images/poster-14oct-2026.jpg under the
- * Book button (beside the copy on wide screens). The card is only built while
- * that night is still upcoming in Europe/London, so it is gone from
- * 2026-10-14T23:00:00Z (15 Oct 2026 00:00 London) with no redeploy:
+ * An optional "poster" (+ "posterAlt") shows under the Book button (beside the
+ * copy on wide screens). The card is only built while that night is still
+ * upcoming in Europe/London, so it is gone from 00:00 London the next day
+ * with no redeploy:
  *   {
- *     "date": "2026-10-14",
- *     "banner": "images/wednesday-14-october-2026-banner.png",
+ *     "date": "2026-10-21",
+ *     "poster": "images/wednesday-21-october-2026-poster.jpg", "posterAlt": "…",
  *     "feature": {
- *       "tag": "Wednesday 14 October",
- *       "headline": "…", "with": "With Angy Pérez, Boadicea and Zach", "lede": "…", "bannerAlt": "…",
+ *       "tag": "Wednesday 21 October",
+ *       "headline": "…", "with": "…", "lede": "…", "bannerAlt": "…",
  *       "schedule": [{ "time": "7:30–8:45pm", "title": "…", "teacher": "…", "role": "…", "text": "…", "lead": true }],
  *       "note": "…", "price": "£10 + booking fee"
  *     }
@@ -236,15 +236,16 @@
     }
     body.appendChild(copy);
 
-    /* Oscar's final poster. Under the Book button; beside the copy on desktop. */
-    if (event.date === '2026-10-14') {
+    /* Oscar's final poster for that night. Under the Book button; beside the copy on desktop. */
+    var poster = artSrc(event, 'poster');
+    if (poster) {
       var figure = document.createElement('figure');
       figure.className = 'night-feature-poster';
       var posterImg = document.createElement('img');
-      posterImg.src = 'images/poster-14oct-2026.jpg';
-      posterImg.width = 1414;
-      posterImg.height = 2000;
-      posterImg.alt = 'Poster for Rogue Bachata on Wednesday 14 October 2026 at Keystone Crescent Members Club, King\'s Cross N1 9DX. With Angy Pérez, Boadicea and Zach. Connection Workshop with Angy Pérez and Open Level Bachata Class with Zach, 7:30–8:45pm, then a free social from 9pm until late. £10 plus booking fee.';
+      posterImg.src = poster;
+      if (event.posterWidth) posterImg.width = event.posterWidth;
+      if (event.posterHeight) posterImg.height = event.posterHeight;
+      posterImg.alt = event.posterAlt || ('Poster for Rogue Bachata on Wednesday ' + formatLongDate(event.date));
       posterImg.addEventListener('error', function () { figure.remove(); });
       var caption = document.createElement('figcaption');
       caption.textContent = 'Poster';
@@ -269,11 +270,7 @@
   function appendStructure(parent, event) {
     var p = document.createElement('p');
     p.className = 'wed-night-structure';
-    /* Angy Pérez is the guest on 14 Oct 2026 only. Later Wednesdays keep the same night shape without naming that guest. */
-    var angyNight = event && event.date === '2026-10-14';
-    p.textContent = angyNight
-      ? 'With Angy Pérez, Boadicea and Zach. The Connection Workshop with Angy Pérez, international Bachata connection teacher, for dancers of any background, experienced bachata dancers, and people passionate about movement and connection, and the Rogue Bachata Open Level Bachata Class with Zach, for people with 0 to 1 year experience in Bachata. Both run at the same time, 7:30–8:45pm. Free social 9pm–late.'
-      : 'Rogue Bachata Open Level Bachata Class, for people with 0 to 1 year experience in Bachata, and a connection workshop, for dancers of any background, experienced bachata dancers, and people passionate about movement and connection. Both run at the same time, 7:30–8:45pm. Free social 9pm–late.';
+    p.textContent = 'Rogue Bachata Open Level Bachata Class, for people with 0 to 1 year experience in Bachata, and a connection workshop, for dancers of any background, experienced bachata dancers, and people passionate about movement and connection. Both run at the same time, 7:30–8:45pm. Free social 9pm–late.';
     parent.appendChild(p);
   }
 
