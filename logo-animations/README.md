@@ -1,12 +1,14 @@
-# Rogue Bachata logo loops
+# Logo loops
 
-Three looping animations of the Rogue Bachata RB logo in hot pink and electric blue, made to sit on top of dark club footage.
+Looping logo animations made to sit on top of dark club footage: three of the Rogue Bachata RB logo in hot pink and electric blue, and one of the Café Sol sun in yellow neon.
 
 | File | Look |
 |---|---|
 | `RogueBachata_Logo_Loop_v1_Neon_1080x1920_60s_black.mp4` | Neon-tube RB with pink/blue colour rolling across it. Sparks race round the tubes, letters flicker now and then, and a chrome shine sweeps across every 10s. |
 | `RogueBachata_Logo_Loop_v2_Lightshow_1080x1920_60s_black.mp4` | Liquid pink/cyan fill with god-rays bursting from behind the logo and rising glitter. Club lasers run through four 15s scenes: fan, scissors, corner beams and a spinning sunburst. |
 | `RogueBachata_Logo_Loop_v3_Duet_1080x1920_60s_black.mp4` | A pink partner and a blue partner orbit each other like a bachata turn. Every 7.5s they snap together into a white-hot hit with shockwave rings and a quick glitch. |
+
+| `CafeSol_Logo_Neon_Loop_1080x1920_60s_black.mp4` | Café Sol sun logo as warm yellow neon tubes. A bright wave chases round the rays and a soft corona turns behind the sun. CAFÉ SOL lights up letter by letter every 15s, with the odd neon flicker. Star sparkles pop on the tubes and gold glitter orbits the sun. |
 
 - 1080×1920 (9:16), 30 fps, H.264 MP4, exactly 60 s.
 - **Seamless loop:** the last frame flows straight into the first, so you can repeat the clip back-to-back for as long as you need.
@@ -23,3 +25,5 @@ python3 render_logo_loops.py v1 --preview 0 12.5   # PNG stills at given seconds
 ```
 
 The source art is `images/Rogue Bachata Logo _transparent_.png`.
+
+The Café Sol loop is made by `python3 render_cafe_sol_neon.py` (stills with `--preview 0 7.5`) from `images/cafe-sol-logo.jpg`.
