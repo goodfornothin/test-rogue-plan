@@ -56,7 +56,32 @@ WEDNESDAY_AALAAP_URLS = {
     "2026-10-07": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-pst3",
     "2026-10-14": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-copy-ez3e",
     "2026-10-21": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-vbdn",
+    # From 28 Oct: two parallel classes (Beginner-friendly Open Level / Intermediate).
+    "2026-10-28": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-sih2",
+    "2026-11-04": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-fan7",
+    "2026-11-11": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-2nuo",
+    "2026-11-18": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-l43q",
+    "2026-11-25": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-83zq",
+    "2026-12-02": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-3a9v",
+    "2026-12-09": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-ny93",
+    # Add each new Aalaap date here. When the list runs out, the weekly job
+    # fails loudly instead of emptying events.json.
 }
+
+# Live pages that hard-code the next Wednesday's Aalaap link (buttons and
+# no-JS fallbacks). Each week a finished Wednesday's link in these files is
+# swapped for the next upcoming one from WEDNESDAY_AALAAP_URLS.
+STATIC_LINK_FILES = [
+    "index.html",
+    "rogue-bachata-wednesdays.html",
+    "big-chill-bachata-wednesdays.html",
+    "try-bachata.html",
+    "join-free.html",
+    "faq.html",
+    "cafe-sol-event.html",
+    "data.json",
+    "js/rogue-events.js",
+]
 
 HEADERS = {
     "User-Agent": (
@@ -365,7 +390,7 @@ def apply_aalaap_booking_urls(events):
             by_date[event_date] = {
                 "date": event_date,
                 "startTime": "19:30",
-                "title": "Rogue Bachata Wednesdays! Keystone Crescent",
+                "title": "Rogue Bachata Wednesdays",
                 "venue": "Keystone Crescent Members Club, King's Cross N1 9DX",
                 "url": url,
             }
@@ -400,6 +425,36 @@ def next_aalaap_source(events):
         min((d for d in WEDNESDAY_AALAAP_URLS if is_still_upcoming(d)), default=""),
         "https://aalaap.app",
     )
+
+
+def roll_static_links():
+    """Swap finished Wednesdays' Aalaap links for the next upcoming one.
+
+    Only exact URLs from WEDNESDAY_AALAAP_URLS are touched, and only in
+    STATIC_LINK_FILES. Returns the list of files changed.
+    """
+    upcoming = sorted(d for d in WEDNESDAY_AALAAP_URLS if is_still_upcoming(d))
+    if not upcoming:
+        return []
+    next_url = WEDNESDAY_AALAAP_URLS[upcoming[0]]
+    past_urls = [u for d, u in WEDNESDAY_AALAAP_URLS.items() if d not in upcoming]
+    changed = []
+    for path in STATIC_LINK_FILES:
+        try:
+            with open(path, encoding="utf-8") as f:
+                text = f.read()
+        except OSError:
+            continue
+        new_text = text
+        for url in past_urls:
+            new_text = new_text.replace(url, next_url)
+        if new_text != text:
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(new_text)
+            changed.append(path)
+    if changed:
+        print(f"  Rolled booking links to {next_url} in: {', '.join(changed)}", file=sys.stderr)
+    return changed
 
 
 def extract_date_from_html(html):
@@ -439,6 +494,25 @@ def main():
     events = apply_aalaap_booking_urls(events)
     print(f"  Writing {len(events)} upcoming event(s) with aalaap Wednesday booking URLs", file=sys.stderr)
 
+    if not events:
+        # Do not wipe the site. Keep events.json as it is and fail the job so
+        # GitHub flags it: WEDNESDAY_AALAAP_URLS needs the next dates.
+        print(
+            "ERROR: no upcoming Wednesday with an Aalaap URL. "
+            "Add the next dates to WEDNESDAY_AALAAP_URLS. events.json left unchanged.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    remaining = [d for d in WEDNESDAY_AALAAP_URLS if is_still_upcoming(d)]
+    if len(remaining) <= 1:
+        print(
+            f"WARNING: only {len(remaining)} mapped Wednesday left. Add more Aalaap dates soon.",
+            file=sys.stderr,
+        )
+
+    roll_static_links()
+
     payload = {
         "lastUpdated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "source": next_aalaap_source(events),
@@ -450,13 +524,6 @@ def main():
         f.write("\n")
 
     print(f"Written {OUTPUT_FILE}", file=sys.stderr)
-
-    if not events:
-        print(
-            "WARNING: no upcoming events found — check scraper or Fatsoma page structure",
-            file=sys.stderr,
-        )
-        # Exit 0 so the workflow still commits (empty list is valid)
 
 
 if __name__ == "__main__":
