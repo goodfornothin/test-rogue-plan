@@ -1,5 +1,78 @@
 {
-  "lastUpdated": "2026-10-22T00:05:26Z",
-  "source": "https://aalaap.app",
-  "events": []
+  "lastUpdated": "2026-10-22T14:12:13Z",
+  "source": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-sih2",
+  "events": [
+    {
+      "date": "2026-10-28",
+      "startTime": "19:30",
+      "title": "Rogue Bachata Wednesdays",
+      "venue": "Keystone Crescent Members Club, King's Cross N1 9DX",
+      "url": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-sih2",
+      "feature": {
+        "tag": "Wednesday 28 October",
+        "headline": "Two Rogue Bachata classes at the same time",
+        "lede": "7:30–8:45pm. Pick one. No partner needed.",
+        "schedule": [
+          {
+            "time": "7:30–8:45pm",
+            "title": "Beginner-friendly Open Level Bachata Class",
+            "text": "For people with 0 to 1 year experience in Bachata."
+          },
+          {
+            "time": "7:30–8:45pm",
+            "title": "Intermediate Bachata Class",
+            "text": "For dancers with some bachata experience."
+          },
+          {
+            "time": "9pm–late",
+            "title": "Free social"
+          }
+        ],
+        "note": "9 Caledonian Road, N1 9DX, 2 minutes from King's Cross St Pancras. The entry is the plain door at No. 9.",
+        "price": "£10 + booking fee"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "startTime": "19:30",
+      "title": "Rogue Bachata Wednesdays",
+      "venue": "Keystone Crescent Members Club, King's Cross N1 9DX",
+      "url": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-fan7"
+    },
+    {
+      "date": "2026-11-11",
+      "startTime": "19:30",
+      "title": "Rogue Bachata Wednesdays",
+      "venue": "Keystone Crescent Members Club, King's Cross N1 9DX",
+      "url": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-2nuo"
+    },
+    {
+      "date": "2026-11-18",
+      "startTime": "19:30",
+      "title": "Rogue Bachata Wednesdays",
+      "venue": "Keystone Crescent Members Club, King's Cross N1 9DX",
+      "url": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-l43q"
+    },
+    {
+      "date": "2026-11-25",
+      "startTime": "19:30",
+      "title": "Rogue Bachata Wednesdays",
+      "venue": "Keystone Crescent Members Club, King's Cross N1 9DX",
+      "url": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-83zq"
+    },
+    {
+      "date": "2026-12-02",
+      "startTime": "19:30",
+      "title": "Rogue Bachata Wednesdays",
+      "venue": "Keystone Crescent Members Club, King's Cross N1 9DX",
+      "url": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-3a9v"
+    },
+    {
+      "date": "2026-12-09",
+      "startTime": "19:30",
+      "title": "Rogue Bachata Wednesdays",
+      "venue": "Keystone Crescent Members Club, King's Cross N1 9DX",
+      "url": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-ny93"
+    }
+  ]
 }

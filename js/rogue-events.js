@@ -41,7 +41,7 @@
  */
 (function (global) {
   var TZ = 'Europe/London';
-  var FALLBACK_URL = 'https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-vbdn';
+  var FALLBACK_URL = 'https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-sih2';
 
   function londonTodayISO() {
     return new Intl.DateTimeFormat('en-CA', {
@@ -270,7 +270,7 @@
   function appendStructure(parent, event) {
     var p = document.createElement('p');
     p.className = 'wed-night-structure';
-    p.textContent = 'Rogue Bachata Open Level Bachata Class, for people with 0 to 1 year experience in Bachata, and a connection workshop, for dancers of any background, experienced bachata dancers, and people passionate about movement and connection. Both run at the same time, 7:30–8:45pm. Free social 9pm–late.';
+    p.textContent = 'Two Rogue Bachata classes run at the same time, 7:30–8:45pm. Pick one: the Beginner-friendly Open Level Bachata Class, for people with 0 to 1 year experience in Bachata, or the Intermediate Bachata Class, for dancers with some bachata experience. Free social 9pm–late.';
     parent.appendChild(p);
   }
 
