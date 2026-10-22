@@ -1,41 +1,5 @@
 {
-  "lastUpdated": "2026-10-15T00:00:09Z",
-  "source": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-vbdn",
-  "events": [
-    {
-      "date": "2026-10-21",
-      "startTime": "19:30",
-      "title": "Rogue Bachata Wednesdays",
-      "venue": "Keystone Crescent Members Club, King's Cross N1 9DX",
-      "url": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-vbdn",
-      "poster": "images/wednesday-21-october-2026-poster.jpg",
-      "posterWidth": 1414,
-      "posterHeight": 2000,
-      "posterAlt": "Poster for Wednesday 21 October 2026 at Keystone Crescent Members Club, King's Cross N1 9DX: deRogue connection workshop for dancers of any background, experienced bachata dancers and people passionate about movement and connection, and the Open Level Bachata Class with Zach, beginner friendly, for people with 0 to 1 year experience in bachata, both 7:30–8:45pm. Free social 9pm until late. £10 plus booking fee.",
-      "feature": {
-        "tag": "Wednesday 21 October",
-        "headline": "deRogue connection workshop & Open Level Bachata Class with Zach",
-        "lede": "Two things at the same time, 7:30–8:45pm. Book the one you want.",
-        "schedule": [
-          {
-            "time": "7:30–8:45pm",
-            "title": "deRogue connection workshop",
-            "role": "We train the conversation, not the choreography. Connection comes before steps, and mistakes can make art.",
-            "text": "For dancers of any background, experienced bachata dancers, and people passionate about movement and connection."
-          },
-          {
-            "time": "7:30–8:45pm",
-            "title": "Open Level Bachata Class",
-            "teacher": "Zach",
-            "text": "Beginner friendly. For people with 0 to 1 year experience in bachata."
-          },
-          {
-            "time": "9pm–late",
-            "title": "Free social"
-          }
-        ],
-        "price": "£10 + booking fee"
-      }
-    }
-  ]
+  "lastUpdated": "2026-10-22T00:05:26Z",
+  "source": "https://aalaap.app",
+  "events": []
 }
