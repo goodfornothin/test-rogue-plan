@@ -301,6 +301,18 @@ def is_wednesday(iso_date):
         return False
 
 
+# Rogue Tuesdays are closed for the winter and return in January 2027.
+# Never publish a Tuesday date before this day, even if Fatsoma lists one.
+TUESDAYS_CLOSED_UNTIL = "2027-01-01"
+
+
+def tuesday_closed(iso_date):
+    try:
+        return date.fromisoformat(iso_date).weekday() == 1 and iso_date < TUESDAYS_CLOSED_UNTIL
+    except ValueError:
+        return False
+
+
 def wednesday_booking_url(event_date, candidate_url="", existing_url=""):
     """Aalaap ticket URL for a Wednesday, or None when it must not be published.
 
@@ -355,6 +367,9 @@ def apply_aalaap_booking_urls(events):
     for ev in events:
         event_date = ev.get("date")
         if not event_date:
+            continue
+        if tuesday_closed(event_date):
+            print(f"SKIP {event_date}: Rogue Tuesdays closed for the winter", file=sys.stderr)
             continue
         existing = by_date.get(event_date) or {}
         booking = wednesday_booking_url(event_date, ev.get("url", ""), existing.get("url", ""))

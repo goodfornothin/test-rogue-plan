@@ -74,33 +74,6 @@
         ]
       },
       {
-        "@type": "Event",
-        "name": "Rogue Bachata Tuesdays at Cafe Sol, Clapham",
-        "description": "Weekly bachata class every Tuesday at Cafe Sol, Clapham: class 7:30pm (£10), free social dancing from 8:30pm. No partner needed, beginners and solo attendees welcome.",
-        "url": "https://roguebachata.com/cafe-sol-event.html",
-        "startDate": "2026-07-21T19:30:00+01:00",
-        "eventSchedule": {
-          "@type": "Schedule",
-          "repeatFrequency": "P1W",
-          "byDay": "https://schema.org/Tuesday",
-          "startTime": "19:30",
-          "endTime": "23:00",
-          "scheduleTimezone": "Europe/London"
-        },
-        "location": { "@id": "https://roguebachata.com/#cafesol" },
-        "organizer": { "@id": "https://roguebachata.com/#org" },
-        "offers": {
-          "@type": "Offer",
-          "name": "Bachata class (free social after)",
-          "price": "10",
-          "priceCurrency": "GBP",
-          "url": "https://web.dojo.app/create_booking/vendor/Qeii9WSzh79oz8lryUUAjw1enE2Ndb1Sk-yeWmx_pHQ_restaurant",
-          "availability": "https://schema.org/InStock"
-        },
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled"
-      },
-      {
         "@type": "FAQPage",
         "mainEntity": [
           {
@@ -562,7 +535,7 @@
       <h1 id="hero-h" class="event-hero-day">Tuesday</h1>
       <p class="event-hero-venue">Cafe Sol · Clapham</p>
       <p class="event-hero-meta">Class 7:30pm (£10) · Free social from 8:30pm<br>No partner needed — safe to come alone</p>
-      <a href="https://web.dojo.app/create_booking/vendor/Qeii9WSzh79oz8lryUUAjw1enE2Ndb1Sk-yeWmx_pHQ_restaurant" id="tuesdayBookBtn" class="event-hero-btn" target="_blank" rel="noopener">Book My Class — £10 →</a>
+      <p class="tuesday-closed" role="note" style="display:block;margin:12px 0;padding:10px 14px;background:#fff;color:#c62828;border:2px solid #c62828;border-radius:10px;font-weight:700;font-size:1rem;line-height:1.4;text-align:left;max-width:100%;box-sizing:border-box;font-size:1.1rem;">Rogue Tuesdays are currently closed for the winter and will return in January 2027.</p>
     </div>
   </section>
 
@@ -573,6 +546,7 @@
       <span class="section-kicker">Everything you need to know</span>
       <h2 id="details-h">Tuesday Night at Cafe Sol</h2>
       <p class="lede">A fun, friendly hour of bachata followed by a free social — no partner, no experience, and no pressure. Just show up.</p>
+      <p class="tuesday-closed" role="note" style="display:block;margin:12px 0;padding:10px 14px;background:#fff;color:#c62828;border:2px solid #c62828;border-radius:10px;font-weight:700;font-size:1rem;line-height:1.4;text-align:left;max-width:100%;box-sizing:border-box;">Rogue Tuesdays are currently closed for the winter and will return in January 2027.</p>
 
       <div class="offer-grid">
         <article class="card offer-card accent-pink">
@@ -603,9 +577,7 @@
       <span class="section-kicker">Reserve your spot</span>
       <h2 id="book-h">Book My Class — £10</h2>
       <p class="lede">Reserve your spot in the class online, or just pay at the door before 7:30pm. Only joining the free social afterwards? No booking needed at all — just come along.</p>
-      <p style="text-align:center;">
-        <a href="https://web.dojo.app/create_booking/vendor/Qeii9WSzh79oz8lryUUAjw1enE2Ndb1Sk-yeWmx_pHQ_restaurant" class="event-hero-btn" style="background:var(--pastel-pink); border-color:var(--pastel-pink); color:var(--ink); box-shadow:none;" target="_blank" rel="noopener">Book My Class — £10 →</a>
-      </p>
+      <p class="tuesday-closed" role="note" style="display:block;margin:12px 0;padding:10px 14px;background:#fff;color:#c62828;border:2px solid #c62828;border-radius:10px;font-weight:700;font-size:1rem;line-height:1.4;text-align:left;max-width:100%;box-sizing:border-box;margin-left:auto;margin-right:auto;max-width:640px;">Rogue Tuesdays are currently closed for the winter and will return in January 2027.</p>
     </section>
 
     <!-- ══ FAQ ══ -->
@@ -805,7 +777,8 @@
           });
       }
 
-      wireNightCTA(2, 'tuesdayBookBtn', FALLBACK_HREF); // Tuesday
+      // Tuesdays closed for the winter (return January 2027): no Tuesday booking button to wire.
+      // wireNightCTA(2, 'tuesdayBookBtn', FALLBACK_HREF);
     })();
   </script>
 
