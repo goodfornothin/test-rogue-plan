@@ -148,7 +148,10 @@
       "instagram": "https://www.instagram.com/cafesol_dos/",
       "landingPage": "cafe-sol-event.html",
       "classPrice": "£10",
-      "socialPrice": "Free"
+      "socialPrice": "Free",
+      "status": "closed-for-winter",
+      "notice": "Rogue Tuesdays are currently closed for the winter and will return in January 2027.",
+      "returns": "January 2027"
     },
     {
       "id": "bachata-beginners",
@@ -198,7 +201,10 @@
       "instagram": "https://www.instagram.com/cafesol_dos/",
       "landingPage": "cafe-sol-event.html",
       "classPrice": "£10",
-      "socialPrice": "Free"
+      "socialPrice": "Free",
+      "status": "closed-for-winter",
+      "notice": "Rogue Tuesdays are currently closed for the winter and will return in January 2027.",
+      "returns": "January 2027"
     }
   ],
   "upcomingEvents": [
@@ -220,39 +226,6 @@
       "contactInfo": "Class £10. Free social from 9pm."
     },
     {
-      "event": "Café Sol Salsa Bachata Night",
-      "offeringId": "rogue-bachata-classes",
-      "eventId": "cafe-sol-mar-4-2026",
-      "date": "Tuesday, 3 March 2026",
-      "time": "7:30 pm - 8:30 pm (class), then social dancing till late",
-      "venue": "Cafe Sol London",
-      "address": "56 Clapham High Street, London SW4 7UL",
-      "mapsLink": "https://www.google.com/maps/search/?api=1&query=Cafe+Sol+56+Clapham+High+Street+London+SW4+7UL",
-      "instagram": "https://www.instagram.com/cafesol_dos/",
-      "description": "Join us for a fun Bachata class (7:30-8:30 pm, £10) perfect for those getting into bachata, followed by FREE social dancing and watching for all levels. Hosted by Oscar, Boadicea, and the Cafe Sol team.",
-      "photo": "images/RogueParty.jpg",
-      "status": "upcoming",
-      "registrationLink": "cafe-sol-event.html",
-      "contactInfo": "Class: £10. Social dancing and watching: FREE.",
-      "landingPage": "cafe-sol-event.html"
-    },
-    {
-      "event": "Bachata Tuesdays @ Cafe Sol - Free Social",
-      "offeringId": "rogue-bachata-classes",
-      "eventId": "cafe-sol-social-mar-4-2026",
-      "date": "Tuesday, 3 March 2026",
-      "time": "8:30 pm - Late",
-      "venue": "Cafe Sol London",
-      "address": "56 Clapham High Street, London SW4 7UL",
-      "mapsLink": "https://www.google.com/maps/search/?api=1&query=Cafe+Sol+56+Clapham+High+Street+London+SW4+7UL",
-      "instagram": "https://www.instagram.com/cafesol_dos/",
-      "description": "Join our free social at 8:30 pm! 90% Bachata music being played all night long. No partner required, just come and dance.",
-      "photo": "images/Rogue Tuesdays Poster.JPG",
-      "status": "upcoming",
-      "contactInfo": "Free Entry",
-      "landingPage": "cafe-sol-event.html"
-    },
-    {
       "event": "Rogue Resonance Workshop",
       "offeringId": "rogue-resonance-workshops",
       "eventId": "create-destroy-feb-2026",
@@ -269,6 +242,39 @@
     }
   ],
   "pastEvents": [
+    {
+      "event": "Café Sol Salsa Bachata Night",
+      "offeringId": "rogue-bachata-classes",
+      "eventId": "cafe-sol-mar-4-2026",
+      "date": "Tuesday, 3 March 2026",
+      "time": "7:30 pm - 8:30 pm (class), then social dancing till late",
+      "venue": "Cafe Sol London",
+      "address": "56 Clapham High Street, London SW4 7UL",
+      "mapsLink": "https://www.google.com/maps/search/?api=1&query=Cafe+Sol+56+Clapham+High+Street+London+SW4+7UL",
+      "instagram": "https://www.instagram.com/cafesol_dos/",
+      "description": "Join us for a fun Bachata class (7:30-8:30 pm, £10) perfect for those getting into bachata, followed by FREE social dancing and watching for all levels. Hosted by Oscar, Boadicea, and the Cafe Sol team.",
+      "photo": "images/RogueParty.jpg",
+      "status": "past",
+      "registrationLink": "cafe-sol-event.html",
+      "contactInfo": "Class: £10. Social dancing and watching: FREE.",
+      "landingPage": "cafe-sol-event.html"
+    },
+    {
+      "event": "Bachata Tuesdays @ Cafe Sol - Free Social",
+      "offeringId": "rogue-bachata-classes",
+      "eventId": "cafe-sol-social-mar-4-2026",
+      "date": "Tuesday, 3 March 2026",
+      "time": "8:30 pm - Late",
+      "venue": "Cafe Sol London",
+      "address": "56 Clapham High Street, London SW4 7UL",
+      "mapsLink": "https://www.google.com/maps/search/?api=1&query=Cafe+Sol+56+Clapham+High+Street+London+SW4+7UL",
+      "instagram": "https://www.instagram.com/cafesol_dos/",
+      "description": "Join our free social at 8:30 pm! 90% Bachata music being played all night long. No partner required, just come and dance.",
+      "photo": "images/Rogue Tuesdays Poster.JPG",
+      "status": "past",
+      "contactInfo": "Free Entry",
+      "landingPage": "cafe-sol-event.html"
+    },
     {
       "event": "Bachata Tuesdays @ Cafe Sol - Free Social",
       "offeringId": "rogue-bachata-classes",
