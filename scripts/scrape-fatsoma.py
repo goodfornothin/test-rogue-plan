@@ -56,7 +56,7 @@ WEDNESDAY_AALAAP_URLS = {
     "2026-10-07": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-pst3",
     "2026-10-14": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-copy-ez3e",
     "2026-10-21": "https://aalaap.app/e/rogue-bachata-wednesdays-keystone-crescent-vbdn",
-    # From 28 Oct: two parallel classes (Beginner-friendly Open Level / Intermediate).
+    # From 28 Oct: two parallel classes (Beginners / Experienced dancers).
     "2026-10-28": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-sih2",
     "2026-11-04": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-fan7",
     "2026-11-11": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-2nuo",
