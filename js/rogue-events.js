@@ -270,7 +270,7 @@
   function appendStructure(parent, event) {
     var p = document.createElement('p');
     p.className = 'wed-night-structure';
-    p.textContent = 'Two Rogue Bachata classes run at the same time, 7:30–8:45pm. Pick one: the Beginner-friendly Open Level Bachata Class, for people with 0 to 1 year experience in Bachata, or the Intermediate Bachata Class, for dancers with some bachata experience. Free social 9pm–late.';
+    p.textContent = 'Two Rogue Bachata classes run at the same time, 7:30–8:45pm. Pick one: the Beginners Bachata Class with Kieran, beginner friendly, for dancers with 0 to 1 year of bachata experience, or the Bachata Class for Experienced Dancers with Bo, with emphasis on lead and follow, for dancers with more than one year of experience. Free social 9pm–late.';
     parent.appendChild(p);
   }
 

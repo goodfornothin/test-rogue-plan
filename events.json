@@ -10,18 +10,20 @@
       "url": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-sih2",
       "feature": {
         "tag": "Wednesday 28 October",
-        "headline": "Two Rogue Bachata classes at the same time",
-        "lede": "7:30–8:45pm. Pick one. No partner needed.",
+        "headline": "Two bachata classes at the same time, with Kieran and Bo",
+        "lede": "7:30–8:45pm. Pick the class that fits you. No partner needed.",
         "schedule": [
           {
             "time": "7:30–8:45pm",
-            "title": "Beginner-friendly Open Level Bachata Class",
-            "text": "For people with 0 to 1 year experience in Bachata."
+            "title": "Beginners Bachata Class",
+            "teacher": "Kieran",
+            "text": "Beginner friendly, for dancers with 0 to 1 year of bachata experience."
           },
           {
             "time": "7:30–8:45pm",
-            "title": "Intermediate Bachata Class",
-            "text": "For dancers with some bachata experience."
+            "title": "Bachata Class for Experienced Dancers",
+            "teacher": "Bo",
+            "text": "Emphasis on lead and follow, for dancers with more than one year of experience."
           },
           {
             "time": "9pm–late",
@@ -30,7 +32,11 @@
         ],
         "note": "9 Caledonian Road, N1 9DX, 2 minutes from King's Cross St Pancras. The entry is the plain door at No. 9.",
         "price": "£10 + booking fee"
-      }
+      },
+      "poster": "images/wednesday-28-october-2026-poster.jpg",
+      "posterWidth": 1080,
+      "posterHeight": 1350,
+      "posterAlt": "Poster for Rogue Bachata Wednesdays, Wednesday 28 October 2026 at Keystone Crescent, King's Cross N1 9DX: from 7:30pm, Bachata Class with Bo, emphasis on lead and follow, for dancers with more than one year of experience, and Bachata Class with Kieran, beginner friendly, for dancers with 0 to 1 year of bachata experience. Free social from 9pm. £10 plus booking fee."
     },
     {
       "date": "2026-11-04",
