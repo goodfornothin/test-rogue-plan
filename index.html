@@ -332,6 +332,24 @@
     .night-feature-class.is-lead .night-feature-time { background: #fff; color: #150a14; }
     .night-feature-class.is-lead .night-feature-what strong { font-size: 1.6rem; color: #fff; }
     .night-feature-class.is-lead .night-feature-teacher { font-size: 1.35rem; }
+    .night-feature-schedule li.night-feature-class.has-photo { grid-template-columns: 1fr; justify-items: start; }
+    .night-feature-class-copy { display: grid; gap: 0.45rem; min-width: 0; }
+    .night-feature-shot {
+      width: min(52vw, 200px);
+      height: auto;
+      display: block;
+      margin-top: 0.75rem;
+      border-radius: 14px;
+      object-fit: cover;
+    }
+    @media (min-width: 640px) {
+      .night-feature-schedule li.night-feature-class.has-photo {
+        grid-template-columns: minmax(0, 1fr) 200px;
+        align-items: center;
+        column-gap: 1rem;
+      }
+      .night-feature-shot { width: 200px; margin-top: 0; }
+    }
     .night-feature-note { font-size: 0.88rem; color: rgba(255, 255, 255, 0.82); margin-bottom: 0.35rem; }
     .night-feature-meta { font-size: 0.88rem; font-weight: 600; margin-bottom: 1.3rem; }
     .night-feature-book {
@@ -960,7 +978,7 @@
           <span class="hero-panel-eyebrow">Every Wednesday</span>
           <h2 id="panel-wed-h" class="hero-panel-day">Wednesday</h2>
           <p class="hero-panel-sub">Keystone Crescent Members Club · King's Cross</p>
-          <p class="hero-panel-meta">Next class: <span id="wedNextClass">Wednesday 28 October 2026</span><br>7:30–8:45pm · Beginners class or Experienced dancers class<br>Free social 9pm–late · £10</p>
+          <p class="hero-panel-meta">Next class: <span id="wedNextClass">Wednesday 4 November 2026</span><br><span data-show-until="2026-11-04">7:30–9pm · Connection workshop with Hoi Ung<br>Free social 9pm–late · £10</span><span data-show-from="2026-11-05" hidden>7:30–8:45pm · Beginners class or Experienced dancers class<br>Free social 9pm–late · £10</span></p>
           <a href="rogue-bachata-wednesdays.html" id="wednesdayBookBtn" class="hero-panel-btn">Book Wednesday →</a>
         </div>
       </article>
@@ -979,7 +997,7 @@
         <article class="card offer-card accent-pink">
           <span class="hook">The easiest way in</span>
           <h3>Weekly Classes</h3>
-          <p class="desc">Beginner-friendly bachata every Tuesday in Clapham. Every Wednesday in King's Cross, two Rogue Bachata classes run at the same time, 7:30–8:45pm, Beginners or Experienced dancers, then a free social from 9 — safe to come alone.<span data-show-until="2026-10-28"> Next: Wed 28 Oct.</span></p>
+          <p class="desc">Beginner-friendly bachata every Tuesday in Clapham. Every Wednesday in King's Cross, two Rogue Bachata classes run at the same time, 7:30–8:45pm, Beginners or Experienced dancers, then a free social from 9 — safe to come alone.</p>
           <p class="tuesday-closed" role="note" style="display:block;margin:12px 0;padding:10px 14px;background:#fff;color:#c62828;border:2px solid #c62828;border-radius:10px;font-weight:700;font-size:1rem;line-height:1.4;text-align:left;max-width:100%;box-sizing:border-box;">Rogue Tuesdays are currently closed for the winter and will return in January 2027.</p>
           <p class="price">£10 per class · free social after</p>
           <a class="offer-link" href="#tuesday">See both nights →</a>
@@ -1150,7 +1168,7 @@
         </details>
         <details class="faq-item">
           <summary>How much does it cost?</summary>
-          <p>£10 for the class on both nights. Tuesdays in Clapham: class 7:30pm, free social from 8:30pm. Wednesdays in King's Cross<span data-show-until="2026-10-28">, from Wed 28 Oct</span>: two Rogue Bachata classes, Beginners or Experienced dancers, both 7:30–8:45pm, then a free social from 9pm.</p>
+          <p>£10 for the class on both nights. Tuesdays in Clapham: class 7:30pm, free social from 8:30pm. Wednesdays in King's Cross: two Rogue Bachata classes, Beginners or Experienced dancers, both 7:30–8:45pm, then a free social from 9pm.</p>
           <p class="tuesday-closed" role="note" style="display:block;margin:12px 0;padding:10px 14px;background:#fff;color:#c62828;border:2px solid #c62828;border-radius:10px;font-weight:700;font-size:1rem;line-height:1.4;text-align:left;max-width:100%;box-sizing:border-box;">Rogue Tuesdays are currently closed for the winter and will return in January 2027.</p>
         </details>
         <details class="faq-item">

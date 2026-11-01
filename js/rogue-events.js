@@ -28,8 +28,9 @@
  *     "feature": {
  *       "tag": "Wednesday 21 October",
  *       "headline": "…", "with": "…", "lede": "…", "bannerAlt": "…",
- *       "schedule": [{ "time": "7:30–8:45pm", "title": "…", "teacher": "…", "role": "…", "text": "…", "lead": true }],
- *       "note": "…", "price": "£10 + booking fee"
+ *       "schedule": [{ "time": "7:30–8:45pm", "title": "…", "teacher": "…", "role": "…", "text": "…", "lead": true, "image": "images/….jpg", "imageAlt": "…" }],
+ *       "note": "…", "price": "£10 + booking fee",
+ *       "listText": "Short line used on the plain booking card for this date."
  *     }
  *   }
  * While it is the next Wednesday it shows at the top of the homepage and the
@@ -217,6 +218,28 @@
         addText(what, 'span', 'night-feature-role', item.role);
         addText(what, 'span', 'night-feature-for', item.text);
         li.appendChild(what);
+        /* Optional photo sits beside this block only (a one-night guest, for example). */
+        if (item.image) {
+          var shotSrc = artSrc({ date: event.date, image: item.image }, 'image');
+          if (shotSrc) {
+            var main = document.createElement('div');
+            main.className = 'night-feature-class-copy';
+            while (li.firstChild) main.appendChild(li.firstChild);
+            li.appendChild(main);
+            var shot = document.createElement('img');
+            shot.className = 'night-feature-shot';
+            shot.alt = item.imageAlt || '';
+            if (item.imageWidth) shot.width = item.imageWidth;
+            if (item.imageHeight) shot.height = item.imageHeight;
+            shot.addEventListener('error', function () {
+              shot.remove();
+              li.classList.remove('has-photo');
+            });
+            shot.src = shotSrc;
+            li.appendChild(shot);
+            li.className = (li.className ? li.className + ' ' : '') + 'has-photo';
+          }
+        }
         list.appendChild(li);
       });
       copy.appendChild(list);
@@ -270,7 +293,8 @@
   function appendStructure(parent, event) {
     var p = document.createElement('p');
     p.className = 'wed-night-structure';
-    p.textContent = 'Two Rogue Bachata classes run at the same time, 7:30–8:45pm. Pick one: the Beginners Bachata Class, beginner friendly, for dancers with 0 to 1 year of bachata experience, or the Bachata Class for Experienced Dancers, with emphasis on lead and follow, for dancers with more than one year of experience. Free social 9pm–late.';
+    var custom = event && event.feature && event.feature.listText;
+    p.textContent = custom || 'Two Rogue Bachata classes run at the same time, 7:30–8:45pm. Pick one: the Beginners Bachata Class, beginner friendly, for dancers with 0 to 1 year of bachata experience, or the Bachata Class for Experienced Dancers, with emphasis on lead and follow, for dancers with more than one year of experience. Free social 9pm–late.';
     parent.appendChild(p);
   }
 
