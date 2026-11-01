@@ -642,7 +642,7 @@
       <div class="hero-card">
         <h1 class="card-heading">Try Bachata<br>This Wednesday</h1>
         <p class="card-sub">
-          <span data-show-until="2026-11-04">Wednesday 4 November: Connection workshop with Hoi Ung, 7:30–9pm, then the free social from 9pm.</span><span data-show-from="2026-11-05" hidden>Two Rogue Bachata classes at the same time, 7:30–8:45pm: Beginners or Experienced dancers. Free social 9pm–late.</span>
+          <span data-show-until="2026-11-04">Wednesday 4 November: Connection workshop with Hoi Ung, 7:30–9pm, Open Level Bachata class with Zach, 7:30–9pm, then the free social from 9pm.</span><span data-show-from="2026-11-05" hidden>Two Rogue Bachata classes at the same time, 7:30–8:45pm: Beginners or Experienced dancers. Free social 9pm–late.</span>
           No partner needed.
         </p>
 
@@ -880,8 +880,8 @@
           }
 
           function posterSrc(e) {
-            if (!e || !e.image) return '';
-            var src = String(e.image);
+            if (!e || !(e.poster || e.image)) return '';
+            var src = String(e.poster || e.image);
             if (src.indexOf('wednesday-7-october-2026') !== -1 && e.date !== '2026-10-07') return '';
             return src;
           }
@@ -899,7 +899,7 @@
             + '<div class="feat-card">'
             +   '<span class="feat-tag">Next Wednesday</span>'
             +   '<div class="feat-date">' + fmtFull(feat._d) + '</div>'
-            +   (featPoster ? '<img class="feat-poster" src="' + featPoster + '" alt="Official poster for ' + fmtFull(feat._d) + '">' : '')
+            +   (featPoster ? '<img class="feat-poster" src="' + featPoster + '" alt="' + (feat.posterAlt || ('Official poster for ' + fmtFull(feat._d))) + '">' : '')
             +   '<a href="' + feat.url + '" target="_blank" class="feat-btn">🎉 Book This Wednesday →</a>'
             + '</div>';
 

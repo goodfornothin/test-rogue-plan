@@ -1,17 +1,22 @@
 {
-  "lastUpdated": "2026-10-29T01:07:49Z",
+  "lastUpdated": "2026-11-01T22:35:00Z",
   "source": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-fan7",
   "events": [
     {
       "date": "2026-11-04",
       "startTime": "19:30",
       "title": "Rogue Bachata Wednesdays",
-      "venue": "Keystone Crescent Members Club, King's Cross N1 9DX",
+      "venue": "Keystone Crescent Members Club, King's Cross, N1 9DX",
       "url": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-fan7",
+      "image": "images/wednesday-4-november-2026-poster.jpg",
+      "poster": "images/wednesday-4-november-2026-poster.jpg",
+      "posterAlt": "Poster for Wednesday 4 November 2026 at Keystone Crescent Members Club, King's Cross, N1 9DX: Connection workshop with Hoi Ung, 7:30–9pm, Open Level Bachata class with Zach, 7:30–9pm, and a free social from 9pm.",
+      "posterWidth": 1024,
+      "posterHeight": 1280,
       "feature": {
         "tag": "Wednesday 4 November",
         "headline": "Connection workshop",
-        "lede": "This Wednesday only, at Keystone Crescent, King's Cross. 7:30–9pm, then the free social from 9pm.",
+        "lede": "This Wednesday only, at Keystone Crescent, King's Cross. 7:30–9pm, then the free social from 9pm. An Open Level Bachata class with Zach runs alongside it, 7:30–9pm.",
         "schedule": [
           {
             "time": "7:30–9pm",
@@ -19,11 +24,13 @@
             "teacher": "Hoi Ung",
             "role": "International artist",
             "text": "Hoi Ung is an international Brazilian Zouk dancer, now settled locally in London. He shares some of his 16 years of dance experience, including training with dozens of world-renowned teachers, through concepts and ideas around Connection.",
-            "lead": true,
-            "image": "images/hoi-ung.jpg",
-            "imageAlt": "Hoi Ung",
-            "imageWidth": 640,
-            "imageHeight": 779
+            "lead": true
+          },
+          {
+            "time": "7:30–9pm",
+            "title": "Open Level Bachata class",
+            "teacher": "Zach",
+            "text": "Perfect for absolute beginners and for building confidence on the social dance floor."
           },
           {
             "time": "9pm–late",
@@ -33,7 +40,7 @@
         ],
         "note": "9 Caledonian Road, N1 9DX, 2 minutes from King's Cross St Pancras. The entry is the plain door at No. 9.",
         "price": "£10 + booking fee",
-        "listText": "Connection workshop with Hoi Ung, 7:30–9pm. Free social 9pm–late."
+        "listText": "Connection workshop with Hoi Ung, 7:30–9pm. Open Level Bachata class with Zach, 7:30–9pm. Free social 9pm–late."
       }
     },
     {
