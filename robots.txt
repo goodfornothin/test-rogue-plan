@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /interviews.txt
+Disallow: /*.md
 
 Sitemap: https://roguebachata.com/sitemap.xml
