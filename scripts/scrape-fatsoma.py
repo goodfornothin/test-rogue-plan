@@ -63,7 +63,6 @@ WEDNESDAY_AALAAP_URLS = {
     "2026-11-18": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-l43q",
     "2026-11-25": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-83zq",
     "2026-12-02": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-3a9v",
-    "2026-12-09": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-ny93",
     # Add each new Aalaap date here. When the list runs out, the weekly job
     # fails loudly instead of emptying events.json.
 }
