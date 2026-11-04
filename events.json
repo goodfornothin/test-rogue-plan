@@ -1,48 +1,7 @@
 {
-  "lastUpdated": "2026-11-01T22:35:00Z",
-  "source": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-fan7",
+  "lastUpdated": "2026-11-04T22:50:00Z",
+  "source": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-2nuo",
   "events": [
-    {
-      "date": "2026-11-04",
-      "startTime": "19:30",
-      "title": "Rogue Bachata Wednesdays",
-      "venue": "Keystone Crescent Members Club, King's Cross, N1 9DX",
-      "url": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-fan7",
-      "image": "images/wednesday-4-november-2026-poster-v2.jpg",
-      "poster": "images/wednesday-4-november-2026-poster-v2.jpg",
-      "posterAlt": "Poster for Wednesday 4 November 2026 at Keystone Crescent Members Club, King's Cross, N1 9DX: Connection Workshop with Hoi, 7:30–9pm, where international Brazilian Zouk dancer Hoi Ung explores the fundamentals of partner connection; Open Level Bachata Class with Zach, 7:30–9pm, for people from 0 to 1 year experience and absolute beginners, class £10 + booking fee; Free Social, 9pm till late.",
-      "posterWidth": 1080,
-      "posterHeight": 1350,
-      "feature": {
-        "tag": "Wednesday 4 November",
-        "headline": "Connection workshop",
-        "lede": "This Wednesday only, at Keystone Crescent, King's Cross. 7:30–9pm, then the free social from 9pm. An Open Level Bachata class with Zach runs alongside it, 7:30–9pm.",
-        "schedule": [
-          {
-            "time": "7:30–9pm",
-            "title": "Connection workshop",
-            "teacher": "Hoi Ung",
-            "role": "International artist",
-            "text": "International Brazilian Zouk dancer Hoi Ung will explore the fundamentals of partner connection.",
-            "lead": true
-          },
-          {
-            "time": "7:30–9pm",
-            "title": "Open Level Bachata class",
-            "teacher": "Zach",
-            "text": "Perfect for people from 0 to 1 year experience and absolute beginners."
-          },
-          {
-            "time": "9pm–late",
-            "title": "Free social",
-            "text": "Free social, 9pm–late."
-          }
-        ],
-        "note": "Keystone Crescent Members Club, King's Cross, N1 9DX, 2 minutes from King's Cross St Pancras.",
-        "price": "£10 + booking fee",
-        "listText": "Connection workshop with Hoi Ung, 7:30–9pm. Open Level Bachata class with Zach, 7:30–9pm. Free social 9pm–late."
-      }
-    },
     {
       "date": "2026-11-11",
       "startTime": "19:30",

@@ -42,7 +42,7 @@
  */
 (function (global) {
   var TZ = 'Europe/London';
-  var FALLBACK_URL = 'https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-fan7';
+  var FALLBACK_URL = 'https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-2nuo';
 
   function londonTodayISO() {
     return new Intl.DateTimeFormat('en-CA', {
