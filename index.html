@@ -89,29 +89,12 @@
       {
         "@type": "Event",
         "name": "Rogue Bachata Wednesdays at Keystone Crescent, King's Cross",
-        "description": "Every Wednesday at Keystone Crescent Members Club, 9 Caledonian Road, King's Cross N1 9DX. Two Rogue Bachata classes run at the same time, 7:30–8:45pm. Pick one: the Beginners Bachata Class, beginner friendly, for dancers with 0 to 1 year of bachata experience, or the Bachata Class for Experienced Dancers, with emphasis on lead and follow, for dancers with more than one year of experience. Free social 9pm–late. £10. No partner needed.",
+        "description": "Rogue Bachata Wednesdays will resume in January, as Oscar and Bo are away.",
         "url": "https://roguebachata.com/rogue-bachata-wednesdays.html",
-        "startDate": "2026-07-22T19:30:00+01:00",
-        "eventSchedule": {
-          "@type": "Schedule",
-          "repeatFrequency": "P1W",
-          "byDay": "https://schema.org/Wednesday",
-          "startTime": "19:30",
-          "endTime": "23:00",
-          "scheduleTimezone": "Europe/London"
-        },
         "location": { "@id": "https://roguebachata.com/#keystone" },
         "organizer": { "@id": "https://roguebachata.com/#org" },
-        "offers": {
-          "@type": "Offer",
-          "name": "Beginners Bachata Class or Bachata Class for Experienced Dancers",
-          "price": "10",
-          "priceCurrency": "GBP",
-          "url": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-2nuo",
-          "availability": "https://schema.org/InStock"
-        },
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled"
+        "eventStatus": "https://schema.org/EventPostponed"
       },
       {
         "@type": "FAQPage",
@@ -169,7 +152,7 @@
             "name": "Do I need to book in advance?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Booking is recommended for Wednesdays — use the link on this page or pay at the door. Tuesdays at Cafe Sol are pay-on-the-door, just come along a little before 7:30pm. Rogue Tuesdays are currently closed for the winter and will return in January 2027."
+              "text": "Rogue Bachata Wednesdays will resume in January, as Oscar and Bo are away. Tuesdays at Cafe Sol are pay-on-the-door when they are running. Rogue Tuesdays are currently closed for the winter and will return in January 2027."
             }
           }
         ]
@@ -469,6 +452,42 @@
 
     /* ── SPLIT-NIGHT HERO ── */
     .split-hero { position: relative; padding-top: 68px; }
+    .winter-pause {
+      position: relative;
+      z-index: 3;
+      background: #fff6ea;
+      color: var(--ink);
+      text-align: center;
+      padding: 0.95rem 1.15rem 1.05rem;
+      border-bottom: 3px solid #d9a94e;
+    }
+    .winter-pause-kicker {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--pink-deep);
+      margin-bottom: 0.35rem;
+    }
+    .winter-pause-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(1.05rem, 2.6vw, 1.4rem);
+      line-height: 1.35;
+      max-width: 40rem;
+      margin: 0 auto;
+    }
+    .hero-panel-pause {
+      background: #fff6ea;
+      color: var(--ink);
+      border-radius: 14px;
+      padding: 0.85rem 0.95rem;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.45;
+      text-shadow: none;
+      margin: 0;
+    }
 
     .hero-strip {
       display: flex; align-items: center; justify-content: center; gap: 1rem;
@@ -944,6 +963,10 @@
 
   <!-- ══ SPLIT-NIGHT HERO ══ -->
   <section class="split-hero" aria-labelledby="hero-h">
+    <aside class="winter-pause" role="status">
+      <p class="winter-pause-kicker">A little winter pause</p>
+      <p class="winter-pause-text">Rogue Bachata Wednesdays will resume in January, as Oscar and Bo are away.</p>
+    </aside>
     <aside id="venueNoticeMount" class="venue-alert" hidden aria-label="Venue notice"></aside>
     <div class="section this-wednesday" id="thisWednesdayPoster" hidden></div>
     <div class="hero-strip">
@@ -975,11 +998,10 @@
         </video>
         <div class="hero-panel-overlay"></div>
         <div class="hero-panel-content">
-          <span class="hero-panel-eyebrow">Every Wednesday</span>
+          <span class="hero-panel-eyebrow">Back in January</span>
           <h2 id="panel-wed-h" class="hero-panel-day">Wednesday</h2>
           <p class="hero-panel-sub">Keystone Crescent Members Club · King's Cross</p>
-          <p class="hero-panel-meta">Next class: <span id="wedNextClass">Wednesday 11 November 2026</span><br>7:30–8:45pm · Beginners class or Experienced dancers class<br>Free social 9pm–late · £10</p>
-          <a href="rogue-bachata-wednesdays.html" id="wednesdayBookBtn" class="hero-panel-btn">Book Wednesday →</a>
+          <p class="hero-panel-pause" role="status">Rogue Bachata Wednesdays will resume in January, as Oscar and Bo are away.</p>
         </div>
       </article>
     </div>
@@ -999,6 +1021,7 @@
           <h3>Weekly Classes</h3>
           <p class="desc">Beginner-friendly bachata every Tuesday in Clapham. Every Wednesday in King's Cross, two Rogue Bachata classes run at the same time, 7:30–8:45pm, Beginners or Experienced dancers, then a free social from 9 — safe to come alone.</p>
           <p class="tuesday-closed" role="note" style="display:block;margin:12px 0;padding:10px 14px;background:#fff;color:#c62828;border:2px solid #c62828;border-radius:10px;font-weight:700;font-size:1rem;line-height:1.4;text-align:left;max-width:100%;box-sizing:border-box;">Rogue Tuesdays are currently closed for the winter and will return in January 2027.</p>
+          <p class="hero-panel-pause" role="status" style="margin-top:12px;">Rogue Bachata Wednesdays will resume in January, as Oscar and Bo are away.</p>
           <p class="price">£10 per class · free social after</p>
           <a class="offer-link" href="#tuesday">See both nights →</a>
         </article>
@@ -1182,7 +1205,7 @@
         </details>
         <details class="faq-item">
           <summary>Do I need to book in advance?</summary>
-          <p>Booking is recommended for Wednesdays — use the link on this page or pay at the door. Tuesdays at Cafe Sol are pay-on-the-door, just come along a little before 7:30pm.</p>
+          <p>Rogue Bachata Wednesdays will resume in January, as Oscar and Bo are away. Tuesdays at Cafe Sol are pay-on-the-door when they are running.</p>
           <p class="tuesday-closed" role="note" style="display:block;margin:12px 0;padding:10px 14px;background:#fff;color:#c62828;border:2px solid #c62828;border-radius:10px;font-weight:700;font-size:1rem;line-height:1.4;text-align:left;max-width:100%;box-sizing:border-box;">Rogue Tuesdays are currently closed for the winter and will return in January 2027.</p>
         </details>
       </div>
@@ -1428,17 +1451,15 @@
         .then(function (data) {
           var upcoming = RogueEvents.upcomingEvents(data.events);
           var feat = upcoming[0];
-          var nextLabel = document.getElementById('wedNextClass');
-          if (feat && nextLabel) nextLabel.textContent = 'Wednesday ' + RogueEvents.formatLongDate(feat.date);
-          RogueEvents.applyBookLinks(feat ? feat.url : RogueEvents.FALLBACK_URL);
-          RogueEvents.renderFeaturedPoster(document.getElementById('thisWednesdayPoster'), feat);
+          RogueEvents.applyBookLinks(feat && feat.url ? feat.url : '');
+          RogueEvents.renderFeaturedPoster(document.getElementById('thisWednesdayPoster'), feat || null);
           RogueEvents.renderVenueNotice(
             document.getElementById('venueNoticeMount'),
             RogueEvents.activeVenueNotice(data.events)
           );
         })
         .catch(function () {
-          RogueEvents.applyBookLinks(RogueEvents.FALLBACK_URL);
+          RogueEvents.applyBookLinks('');
         });
     })();
   </script>
