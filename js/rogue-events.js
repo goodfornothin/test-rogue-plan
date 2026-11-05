@@ -7,7 +7,7 @@
  *   {
  *     "date": "2026-11-04",
  *     "venue": "Temporary Venue, Address",
- *     "url": "https://aalaap.app/e/...",
+ *     "url": "https://example.com/tickets",
  *     "venueNotice": {
  *       "endDate": "2026-11-04",
  *       "tag": "This occasion only · 4 November 2026",
@@ -42,7 +42,9 @@
  */
 (function (global) {
   var TZ = 'Europe/London';
-  var FALLBACK_URL = 'https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-2nuo';
+  /* Blank while Wednesdays are paused. Do not point a book button at a ticket URL. */
+  var FALLBACK_URL = '';
+  var WEDNESDAYS_RESUME = '2027-01-01';
 
   function londonTodayISO() {
     return new Intl.DateTimeFormat('en-CA', {
@@ -64,10 +66,22 @@
     return !!(end && todayISO <= end);
   }
 
+  function isWednesdayDate(iso) {
+    var parts = (iso || '').split('-');
+    if (parts.length < 3) return false;
+    var utc = new Date(Date.UTC(+parts[0], +parts[1] - 1, +parts[2]));
+    return !isNaN(utc.getTime()) && utc.getUTCDay() === 3;
+  }
+
+  /* Winter pause: no Wednesday on or after today is shown before January. */
+  function isPausedWednesday(event) {
+    return !!(event && event.date && event.date < WEDNESDAYS_RESUME && isWednesdayDate(event.date));
+  }
+
   function upcomingEvents(list) {
     var today = londonTodayISO();
     return (list || [])
-      .filter(function (e) { return e && e.date && e.date >= today; })
+      .filter(function (e) { return e && e.date && e.date >= today && !isPausedWednesday(e); })
       .sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
   }
 
@@ -80,6 +94,7 @@
     var today = londonTodayISO();
     var events = list || [];
     for (var i = 0; i < events.length; i++) {
+      if (isPausedWednesday(events[i])) continue;
       if (isNoticeActive(events[i], today)) return events[i];
     }
     return null;
@@ -124,6 +139,12 @@
   function applyBookLinks(url) {
     var href = url || FALLBACK_URL;
     document.querySelectorAll('.js-book-link').forEach(function (el) {
+      if (!href) {
+        el.hidden = true;
+        el.removeAttribute('href');
+        return;
+      }
+      el.hidden = false;
       el.href = href;
       el.target = '_blank';
       el.rel = 'noopener';
@@ -131,7 +152,7 @@
   }
 
   var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var PUBLIC_VENUE = "Keystone Crescent Members Club, King's Cross N1 9DX";
+  var PUBLIC_VENUE = "Keystone Crescent Members Club, King's Cross, N1 9DX";
   var DATED_ART = /wednesday-(\d{1,2})-([a-z]+)-(\d{4})/i;
 
   function pad2(n) { return (+n < 10 ? '0' : '') + (+n); }
@@ -248,7 +269,7 @@
     addText(copy, 'p', 'night-feature-note', f.note);
     addText(copy, 'p', 'night-feature-meta', [event.venue || PUBLIC_VENUE, f.price].filter(Boolean).join(' · '));
 
-    if (event.url) {
+    if (event.url && !isPausedWednesday(event)) {
       var book = document.createElement('a');
       book.className = 'night-feature-book';
       book.href = event.url;
@@ -338,7 +359,7 @@
 
       appendStructure(article, ev);
 
-      if (ev.url) {
+      if (ev.url && !isPausedWednesday(ev)) {
         var book = document.createElement('a');
         book.className = 'wed-night-book';
         book.href = ev.url;

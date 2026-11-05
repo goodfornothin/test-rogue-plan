@@ -75,8 +75,7 @@
           "name": "Bachata Beginners Class",
           "price": "10",
           "priceCurrency": "GBP",
-          "url": "https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-2nuo",
-          "availability": "https://schema.org/InStock"
+          "availability": "https://schema.org/Discontinued"
         },
         {
           "@type": "Offer",
@@ -87,7 +86,7 @@
         }
       ],
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "eventStatus": "https://schema.org/EventScheduled",
+      "eventStatus": "https://schema.org/EventPostponed",
       "inLanguage": "en"
     },
     {
@@ -640,20 +639,8 @@
       <div class="dots" id="dots"></div>
 
       <div class="hero-card">
-        <h1 class="card-heading">Try Bachata<br>This Wednesday</h1>
-        <p class="card-sub">
-          Two Rogue Bachata classes at the same time, 7:30–8:45pm: Beginners or Experienced dancers. Free social 9pm–late.
-          No partner needed.
-        </p>
-
-        <div class="btn-group">
-          <a id="heroBookBtn" href="https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-2nuo" target="_blank" class="btn-primary">
-            🎉 Join for £10 →
-          </a>
-          <a href="#upcoming" class="btn-secondary">
-            📅 See dates
-          </a>
-        </div>
+        <h1 class="card-heading">Try Bachata<br>From January</h1>
+        <p class="card-sub">Rogue Bachata Wednesdays will resume in January, as Oscar and Bo are away.</p>
 
         <a href="#details" class="btn-ghost">Find out more <span>↓</span></a>
       </div>
@@ -663,8 +650,8 @@
   <!-- ══ LIVE EVENTS (auto-updated from Fatsoma) ══ -->
   <section class="events-section" id="upcoming">
     <div class="events-inner">
-      <p class="events-label">Upcoming Wednesdays</p>
-      <div id="eventsWidget"><p style="text-align:center;color:rgba(255,255,255,0.5);font-size:0.9rem;">Loading dates…</p></div>
+      <p class="events-label">Wednesdays</p>
+      <div id="eventsWidget"><p style="text-align:center;color:#fff;font-size:1.05rem;font-weight:700;line-height:1.45;">Rogue Bachata Wednesdays will resume in January, as Oscar and Bo are away.</p></div>
     </div>
   </section>
 
@@ -743,13 +730,7 @@
     </div>
 
     <div class="book-block">
-      <p>
-        Reserve your spot in the class — it fills up fast.<br>
-        Or just show up for the free social — no booking needed.
-      </p>
-      <a id="detailsBookBtn" href="https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-2nuo" target="_blank" class="btn-primary" style="display:inline-block; width:100%;">
-        🎉 Book My £10 Class
-      </a>
+      <p>Rogue Bachata Wednesdays will resume in January, as Oscar and Bo are away.</p>
     </div>
 
     <div class="contact-block" id="contact">
@@ -833,7 +814,7 @@
     </details>
     <details style="margin-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:1rem;">
       <summary style="cursor:pointer; color:#fff; font-weight:600;">Where exactly is it?</summary>
-      <p style="margin-top:0.6rem;">Keystone Crescent Members Club, 9 Caledonian Road, King's Cross N1 9DX — 2 minutes from King's Cross St Pancras. The entry is the plain door at No. 9.</p>
+      <p style="margin-top:0.6rem;">Keystone Crescent Members Club, King's Cross, N1 9DX</p>
     </details>
     <details style="margin-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:1rem;">
       <summary style="cursor:pointer; color:#fff; font-weight:600;">What should I wear?</summary>
@@ -841,7 +822,7 @@
     </details>
     <details style="margin-bottom:1rem; padding-bottom:1rem;">
       <summary style="cursor:pointer; color:#fff; font-weight:600;">Do I need to book?</summary>
-      <p style="margin-top:0.6rem;">Booking is recommended to secure your spot. Use the link above. The social from 9pm is free.</p>
+      <p style="margin-top:0.6rem;">Rogue Bachata Wednesdays will resume in January, as Oscar and Bo are away. There is nothing to book until then.</p>
     </details>
   </section>
 
@@ -849,83 +830,7 @@
     <p>© 2026 <a href="index.html">Rogue Bachata</a>. Made with love in London.</p>
   </footer>
 
-  <!-- ══ EVENTS RENDERER (reads events.json the scraper writes) ══ -->
-  <script>
-    (function () {
-      var WIDGET = document.getElementById('eventsWidget');
-      var DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-      var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
-      function fmtFull(d) { return DAYS[d.getDay()] + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear(); }
-      function fmtShort(d) { return DAYS[d.getDay()].slice(0,3) + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()]; }
-      function to12h(t) {
-        if (!t) return '';
-        var p = t.split(':'), h = +p[0], m = p[1];
-        var ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12;
-        return h + (m !== '00' ? ':' + m : '') + ' ' + ap;
-      }
-
-      fetch('events.json')
-        .then(function (r) { return r.json(); })
-        .then(function (data) {
-          var now = new Date();
-          var events = (data.events || [])
-            .map(function (e) { e._d = new Date(e.date + 'T' + (e.startTime || '19:30') + ':00'); return e; })
-            .filter(function (e) { return e._d >= new Date(now.getFullYear(), now.getMonth(), now.getDate()); })
-            .sort(function (a, b) { return a._d - b._d; });
-
-          if (!events.length) {
-            WIDGET.innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.6);">No upcoming dates listed right now. <a href="' + (data.source || 'https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-2nuo') + '" target="_blank" style="color:var(--pink-light);">Book next Wednesday →</a></p>';
-            return;
-          }
-
-          function posterSrc(e) {
-            if (!e || !(e.poster || e.image)) return '';
-            var src = String(e.poster || e.image);
-            if (src.indexOf('wednesday-7-october-2026') !== -1 && e.date !== '2026-10-07') return '';
-            return src;
-          }
-
-          var feat = events[0];
-          var rest = events.slice(1);
-
-          var heroBtn = document.getElementById('heroBookBtn');
-          if (heroBtn) heroBtn.href = feat.url;
-          var detailsBtn = document.getElementById('detailsBookBtn');
-          if (detailsBtn) detailsBtn.href = feat.url;
-
-          var featPoster = posterSrc(feat);
-          var html = ''
-            + '<div class="feat-card">'
-            +   '<span class="feat-tag">Next Wednesday</span>'
-            +   '<div class="feat-date">' + fmtFull(feat._d) + '</div>'
-            +   (featPoster ? '<img class="feat-poster" src="' + featPoster + '" alt="' + (feat.posterAlt || ('Official poster for ' + fmtFull(feat._d))) + '">' : '')
-            +   '<a href="' + feat.url + '" target="_blank" class="feat-btn">🎉 Book This Wednesday →</a>'
-            + '</div>';
-
-          if (rest.length) {
-            html += '<p class="upcoming-heading">Also coming up</p>';
-            html += '<ul class="upcoming-list">';
-            rest.forEach(function (e) {
-              html += '<li class="up-item">'
-                + '<span class="up-date">' + fmtShort(e._d) + '</span>'
-                + '<a class="up-book" href="' + e.url + '" target="_blank">Book →</a>'
-                + '</li>';
-            });
-            html += '</ul>';
-          }
-
-          if (data.lastUpdated) {
-            html += '<p class="events-updated">Updated · ' + new Date(data.lastUpdated).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }) + '</p>';
-          }
-
-          WIDGET.innerHTML = html;
-        })
-        .catch(function () {
-          WIDGET.innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.6);">Couldn\'t load dates. <a href="https://aalaap.app/e/rogue-bachata-wednesdays-king-s-cross-2nuo" target="_blank" style="color:var(--pink-light);">Book next Wednesday →</a></p>';
-        });
-    })();
-  </script>
+  <!-- Wednesday dates stay off the page for the winter pause. No ticket link is rendered. -->
 
   <script>
     const msgs = document.querySelectorAll('.rotating-msg');

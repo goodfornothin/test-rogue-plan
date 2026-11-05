@@ -304,6 +304,18 @@ def is_wednesday(iso_date):
 # Never publish a Tuesday date before this day, even if Fatsoma lists one.
 TUESDAYS_CLOSED_UNTIL = "2027-01-01"
 
+# Rogue Bachata Wednesdays are shut for the winter. Oscar and Bo are away.
+# Do not publish a Wednesday date, and do not roll a Wednesday booking link, before this day.
+WEDNESDAYS_PAUSED_UNTIL = "2027-01-01"
+WEDNESDAYS_PAUSE_NOTICE = (
+    "Rogue Bachata Wednesdays will resume in January, as Oscar and Bo are away."
+)
+
+
+def wednesdays_paused(now=None):
+    now = now or london_now()
+    return now.date().isoformat() < WEDNESDAYS_PAUSED_UNTIL
+
 
 def tuesday_closed(iso_date):
     try:
@@ -370,6 +382,9 @@ def apply_aalaap_booking_urls(events):
         if tuesday_closed(event_date):
             print(f"SKIP {event_date}: Rogue Tuesdays closed for the winter", file=sys.stderr)
             continue
+        if is_wednesday(event_date) and event_date < WEDNESDAYS_PAUSED_UNTIL:
+            print(f"SKIP {event_date}: Rogue Bachata Wednesdays paused until January", file=sys.stderr)
+            continue
         existing = by_date.get(event_date) or {}
         booking = wednesday_booking_url(event_date, ev.get("url", ""), existing.get("url", ""))
         if not booking:
@@ -396,6 +411,8 @@ def apply_aalaap_booking_urls(events):
         by_date[event_date] = ev
 
     for event_date, url in WEDNESDAY_AALAAP_URLS.items():
+        if event_date < WEDNESDAYS_PAUSED_UNTIL:
+            continue
         if not is_still_upcoming(event_date):
             continue
         if event_date in by_date:
@@ -412,6 +429,8 @@ def apply_aalaap_booking_urls(events):
     merged = []
     for ev in by_date.values():
         if not is_still_upcoming(ev.get("date", "")):
+            continue
+        if is_wednesday(ev.get("date", "")) and ev.get("date", "") < WEDNESDAYS_PAUSED_UNTIL:
             continue
         url = ev.get("url", "")
         if is_wednesday(ev.get("date", "")) and "aalaap.app" not in url:
@@ -494,7 +513,29 @@ def extract_date_from_html(html):
     return None
 
 
+def write_payload(payload):
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+
+
 def main():
+    if wednesdays_paused():
+        # Leave every Aalaap URL where it is. Publish no Wednesday date and roll no booking link.
+        write_payload({
+            "lastUpdated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "source": "paused",
+            "pausedUntil": WEDNESDAYS_PAUSED_UNTIL,
+            "notice": WEDNESDAYS_PAUSE_NOTICE,
+            "events": [],
+        })
+        print(
+            "Rogue Bachata Wednesdays are paused until January. "
+            "No dates published and no booking links rolled.",
+            file=sys.stderr,
+        )
+        return
+
     print(f"Fetching {FATSOMA_PROFILE} …", file=sys.stderr)
     html = fetch_page(FATSOMA_PROFILE)
     events = []
@@ -527,15 +568,11 @@ def main():
 
     roll_static_links()
 
-    payload = {
+    write_payload({
         "lastUpdated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "source": next_aalaap_source(events),
         "events": events,
-    }
-
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(payload, f, indent=2, ensure_ascii=False)
-        f.write("\n")
+    })
 
     print(f"Written {OUTPUT_FILE}", file=sys.stderr)
 
